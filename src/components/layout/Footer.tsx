@@ -1,4 +1,5 @@
 import React from 'react';
+import LogoImage from '../../img/Logo.png';
 
 /**
  * Professional Footer component inspired by tech industry leaders
@@ -14,7 +15,7 @@ const Footer: React.FC = () => {
           {/* Company/Brand Section */}
           <div className="footer-column">
             <div className="logo">
-              <img src="/src/img/Logo.png" alt="Harry Ji" style={{height: '32px', width: 'auto'}} />
+              <img src={LogoImage} alt="Harry Ji" style={{height: '32px', width: 'auto'}} />
               <span style={{fontSize: '1.5rem', marginLeft: '8px'}}>Harry Ji</span>
             </div>
             <p style={{marginTop: '15px', lineHeight: '1.6', color: '#aaa'}}>

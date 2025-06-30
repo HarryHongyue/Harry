@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import LogoImage from '../../img/Logo.png';
 
 /**
  * Header component with proper layout:
@@ -9,6 +10,7 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState<boolean>(false);
+  const [isProjectDropdownOpen, setIsProjectDropdownOpen] = useState<boolean>(false);
   const [currentLanguage, setCurrentLanguage] = useState<string>('EN');
 
   // Handle scroll effect for header
@@ -31,6 +33,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleClickOutside = () => {
       setIsLanguageDropdownOpen(false);
+      setIsProjectDropdownOpen(false);
     };
 
     document.addEventListener('click', handleClickOutside);
@@ -48,6 +51,14 @@ const Header: React.FC = () => {
   const toggleLanguageDropdown = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
+    setIsProjectDropdownOpen(false); // Close project dropdown if open
+  };
+
+  // Toggle project dropdown
+  const toggleProjectDropdown = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsProjectDropdownOpen(!isProjectDropdownOpen);
+    setIsLanguageDropdownOpen(false); // Close language dropdown if open
   };
 
   // Handle language change
@@ -129,8 +140,9 @@ const Header: React.FC = () => {
           background-color: var(--bg-tertiary) !important;
         }
 
-        /* 语言切换器容器修复 */
-        .language-switcher {
+        /* 语言切换器和项目切换器容器修复 */
+        .language-switcher,
+        .project-switcher {
           position: relative;
         }
 
@@ -180,7 +192,7 @@ const Header: React.FC = () => {
             {/* Left side: Logo + Site Name */}
             <div className="logo">
               <a href="#home" className="logo-link">
-                <img src="/src/img/Logo.png" alt="Harry Ji Logo" style={{ height: '40px', width: 'auto' }} />
+                <img src={LogoImage} alt="Harry Ji Logo" style={{ height: '40px', width: 'auto' }} />
                 <span>Harry Ji</span>
               </a>
             </div>
@@ -189,7 +201,40 @@ const Header: React.FC = () => {
             <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
               <li><a href="#home" className="active nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Home</a></li>
               <li><a href="#about" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>About</a></li>
-              <li><a href="#projects" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Projects</a></li>
+              <li className="project-switcher">
+                <div className="project-switcher">
+                  <button 
+                    className="language-btn" // Reusing language-btn style
+                    onClick={toggleProjectDropdown}
+                  >
+                    Projects <i className="fas fa-chevron-down"></i>
+                  </button>
+                  {isProjectDropdownOpen && (
+                    <ul className="language-dropdown"> {/* Reusing language-dropdown style */}
+                      <li>
+                        <a 
+                          href="https://odesolver.harryhongyue.site/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{color: 'inherit', textDecoration: 'none'}}
+                        >
+                          ODE Solver
+                        </a>
+                      </li>
+                      <li>
+                        <a 
+                          href="https://surpriseme.harryhongyue.site/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{color: 'inherit', textDecoration: 'none'}}
+                        >
+                          Surprise Me
+                        </a>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+              </li>
               <li><a href="#skills" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Skills</a></li>
               <li><a href="#contact" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Contact</a></li>
               
