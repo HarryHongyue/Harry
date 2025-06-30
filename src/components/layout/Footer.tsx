@@ -51,18 +51,6 @@ const Footer: React.FC = () => {
             </ul>
           </div>
           
-          {/* Services/Technologies */}
-          <div className="footer-column">
-            <h3>Technologies</h3>
-            <ul className="footer-links">
-              <li><a href="#react">React Development</a></li>
-              <li><a href="#nodejs">Node.js Backend</a></li>
-              <li><a href="#mobile">Mobile Apps</a></li>
-              <li><a href="#cloud">Cloud Solutions</a></li>
-              <li><a href="#consulting">Tech Consulting</a></li>
-            </ul>
-          </div>
-          
           {/* Resources */}
           <div className="footer-column">
             <h3>Resources</h3>
@@ -76,26 +64,49 @@ const Footer: React.FC = () => {
           </div>
           
           {/* Contact & Legal */}
-          <div className="footer-column">
+          <div className="footer-column" style={{
+            flex: '0 0 auto',
+            minWidth: 'max-content',
+            whiteSpace: 'nowrap'
+          }}>
             <h3>Connect</h3>
-            <ul className="footer-links">
-              <li>
-                <i className="fas fa-map-marker-alt" style={{marginRight: '8px', color: 'var(--primary-color)'}}></i>
+            <ul className="footer-links" style={{whiteSpace: 'nowrap'}}>
+              <li style={{display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'}}>
+                <i className="fas fa-map-marker-alt" style={{
+                  marginRight: '8px', 
+                  color: 'var(--primary-color)',
+                  flexShrink: 0
+                }}></i>
                 Amsterdam, NL
               </li>
-              <li>
-                <i className="fas fa-envelope" style={{marginRight: '8px', color: 'var(--primary-color)'}}></i>
-                <a href="mailto:contact@harryji.dev">contact@harryji.dev</a>
+              <li style={{display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'}}>
+                <i className="fas fa-envelope" style={{
+                  marginRight: '8px', 
+                  color: 'var(--primary-color)',
+                  flexShrink: 0
+                }}></i>
+                <a href="mailto:contact@harryji.dev" style={{whiteSpace: 'nowrap'}}>
+                  contact@harryji.dev
+                </a>
               </li>
-              <li>
-                <i className="fas fa-phone" style={{marginRight: '8px', color: 'var(--primary-color)'}}></i>
-                <a href="tel:+31612345678">+31 6 1234 5678</a>
+              <li style={{display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'}}>
+                <i className="fas fa-phone" style={{
+                  marginRight: '8px', 
+                  color: 'var(--primary-color)',
+                  flexShrink: 0
+                }}></i>
+                <a href="tel:+31612345678" style={{whiteSpace: 'nowrap'}}>
+                  +31 6 1234 5678
+                </a>
               </li>
             </ul>
             <div style={{marginTop: '20px'}}>
-              <ul className="footer-links" style={{fontSize: '0.85rem'}}>
-                <li><a href="/privacy">Privacy Policy</a></li>
-                <li><a href="/terms">Terms of Service</a></li>
+              <ul className="footer-links" style={{
+                fontSize: '0.85rem',
+                whiteSpace: 'nowrap'
+              }}>
+                <li><a href="/privacy" style={{whiteSpace: 'nowrap'}}>Privacy Policy</a></li>
+                <li><a href="/terms" style={{whiteSpace: 'nowrap'}}>Terms of Service</a></li>
               </ul>
             </div>
           </div>

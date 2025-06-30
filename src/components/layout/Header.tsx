@@ -10,7 +10,6 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState<boolean>(false);
-  const [isProjectDropdownOpen, setIsProjectDropdownOpen] = useState<boolean>(false);
   const [currentLanguage, setCurrentLanguage] = useState<string>('EN');
 
   // Handle scroll effect for header
@@ -33,7 +32,6 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleClickOutside = () => {
       setIsLanguageDropdownOpen(false);
-      setIsProjectDropdownOpen(false);
     };
 
     document.addEventListener('click', handleClickOutside);
@@ -51,14 +49,6 @@ const Header: React.FC = () => {
   const toggleLanguageDropdown = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
-    setIsProjectDropdownOpen(false); // Close project dropdown if open
-  };
-
-  // Toggle project dropdown
-  const toggleProjectDropdown = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsProjectDropdownOpen(!isProjectDropdownOpen);
-    setIsLanguageDropdownOpen(false); // Close language dropdown if open
   };
 
   // Handle language change
@@ -149,6 +139,79 @@ const Header: React.FC = () => {
         .language-hover-wrapper .hover-dropdown {
           background-color: var(--card-bg) !important;
           border: 1px solid var(--border-color) !important;
+          right: 0;
+          left: auto;
+        }
+
+        /* 项目下拉菜单样式 */
+        .project-hover-wrapper {
+          position: relative;
+          display: inline-block;
+        }
+
+        .project-hover-wrapper .project-dropdown {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: var(--card-bg) !important;
+          border: 1px solid var(--border-color) !important;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          border-radius: 5px;
+          min-width: max-content;
+          white-space: nowrap;
+          z-index: 1000;
+          padding: 0;
+          margin: 0;
+          list-style: none;
+        }
+
+        .project-hover-wrapper:hover .project-dropdown {
+          display: block;
+        }
+
+        .project-dropdown li {
+          padding: 10px 15px;
+          color: var(--body-text) !important;
+          background-color: transparent;
+          border-bottom: 1px solid var(--border-color);
+          text-align: right;
+          font-size: 14px;
+        }
+
+        .project-dropdown li:last-child {
+          border-bottom: none;
+        }
+
+        .project-dropdown li:hover {
+          background-color: var(--bg-tertiary) !important;
+          color: var(--primary-color) !important;
+        }
+
+        .project-dropdown li a {
+          color: inherit !important;
+          text-decoration: none !important;
+          display: block;
+          width: 100%;
+          height: 100%;
+          white-space: nowrap;
+        }
+
+        /* 统一下拉菜单字体大小 */
+        .language-dropdown li {
+          color: var(--body-text) !important;
+          background-color: transparent;
+          font-size: 14px;
+          text-align: right;
+          padding: 10px 15px;
+        }
+
+        .language-dropdown {
+          background-color: var(--card-bg) !important;
+          border: 1px solid var(--border-color) !important;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          min-width: max-content;
+          white-space: nowrap;
         }
 
         /* 移动端汉堡菜单 */
@@ -184,6 +247,8 @@ const Header: React.FC = () => {
         .nav-links a::after {
           background-color: var(--primary-color) !important;
         }
+
+        /* 移动端项目下拉菜单 - 已移除不需要的样式 */
       `}</style>
 
       <header className={`${isScrolled ? 'scrolled' : ''}`}>
@@ -201,40 +266,36 @@ const Header: React.FC = () => {
             <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
               <li><a href="#home" className="active nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Home</a></li>
               <li><a href="#about" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>About</a></li>
+              
+              {/* Projects with hover dropdown */}
               <li className="project-switcher">
-                <div className="project-switcher">
-                  <button 
-                    className="language-btn" // Reusing language-btn style
-                    onClick={toggleProjectDropdown}
-                  >
-                    Projects <i className="fas fa-chevron-down"></i>
-                  </button>
-                  {isProjectDropdownOpen && (
-                    <ul className="language-dropdown"> {/* Reusing language-dropdown style */}
-                      <li>
-                        <a 
-                          href="https://odesolver.harryhongyue.site/" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          style={{color: 'inherit', textDecoration: 'none'}}
-                        >
-                          ODE Solver
-                        </a>
-                      </li>
-                      <li>
-                        <a 
-                          href="https://surpriseme.harryhongyue.site/" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          style={{color: 'inherit', textDecoration: 'none'}}
-                        >
-                          Surprise Me
-                        </a>
-                      </li>
-                    </ul>
-                  )}
+                <div className="project-hover-wrapper">
+                  <a href="#projects" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>
+                    Projects
+                  </a>
+                  <ul className="project-dropdown">
+                    <li>
+                      <a 
+                        href="https://odesolver.harryhongyue.site/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        ODE Solver
+                      </a>
+                    </li>
+                    <li>
+                      <a 
+                        href="https://surpriseme.harryhongyue.site/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        Surprise Me
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </li>
+
               <li><a href="#skills" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Skills</a></li>
               <li><a href="#contact" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Contact</a></li>
               
