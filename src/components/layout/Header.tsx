@@ -180,7 +180,7 @@ const Header: React.FC = () => {
             {/* Left side: Logo + Site Name */}
             <div className="logo">
               <a href="#home" className="logo-link">
-                <img src="/src/img/个人网站的logo.png" alt="Harry Ji Logo" style={{ height: '40px', width: 'auto' }} />
+                <img src="/src/img/Logo.png" alt="Harry Ji Logo" style={{ height: '40px', width: 'auto' }} />
                 <span>Harry Ji</span>
               </a>
             </div>
