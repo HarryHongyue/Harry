@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import LogoImage from '../../img/Logo.png';
+import LogoImage from '../../assets/images/Logo.png';
 
 /**
  * Header component with proper layout:
@@ -10,7 +10,9 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState<boolean>(false);
+  const [isProjectDropdownOpen, setIsProjectDropdownOpen] = useState<boolean>(false);
   const [currentLanguage, setCurrentLanguage] = useState<string>('EN');
+  const projectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Handle scroll effect for header
   useEffect(() => {
@@ -59,6 +61,20 @@ const Header: React.FC = () => {
     
     // Trigger language change event
     window.dispatchEvent(new CustomEvent('languageChange', { detail: lang }));
+  };
+
+  // Handle project dropdown
+  const handleProjectMouseEnter = () => {
+    if (projectTimeoutRef.current) {
+      clearTimeout(projectTimeoutRef.current);
+    }
+    setIsProjectDropdownOpen(true);
+  };
+
+  const handleProjectMouseLeave = () => {
+    projectTimeoutRef.current = setTimeout(() => {
+      setIsProjectDropdownOpen(false);
+    }, 300); // 300ms延迟，给用户足够时间移动鼠标
   };
 
   // Handle navigation click
@@ -143,7 +159,7 @@ const Header: React.FC = () => {
           left: auto;
         }
 
-        /* 项目下拉菜单样式 */
+        /* 项目下拉菜单样式 - 使用JavaScript控制显示 */
         .project-hover-wrapper {
           position: relative;
           display: inline-block;
@@ -152,7 +168,7 @@ const Header: React.FC = () => {
         .project-hover-wrapper .project-dropdown {
           display: none;
           position: absolute;
-          top: 100%;
+          top: calc(100% + 15px); /* 保持15px间距 */
           right: 0;
           background-color: var(--card-bg) !important;
           border: 1px solid var(--border-color) !important;
@@ -164,10 +180,15 @@ const Header: React.FC = () => {
           padding: 0;
           margin: 0;
           list-style: none;
+          opacity: 0;
+          transform: translateY(-10px);
+          transition: opacity 0.2s ease, transform 0.2s ease;
         }
 
-        .project-hover-wrapper:hover .project-dropdown {
+        .project-hover-wrapper .project-dropdown.show {
           display: block;
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .project-dropdown li {
@@ -267,13 +288,17 @@ const Header: React.FC = () => {
               <li><a href="#home" className="active nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>Home</a></li>
               <li><a href="#about" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>About</a></li>
               
-              {/* Projects with hover dropdown */}
+              {/* Projects with controlled dropdown */}
               <li className="project-switcher">
-                <div className="project-hover-wrapper">
+                <div 
+                  className="project-hover-wrapper"
+                  onMouseEnter={handleProjectMouseEnter}
+                  onMouseLeave={handleProjectMouseLeave}
+                >
                   <a href="#projects" className="nav-link-no-border" onClick={handleNavClick} style={{border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent'}}>
                     Projects
                   </a>
-                  <ul className="project-dropdown">
+                  <ul className={`project-dropdown ${isProjectDropdownOpen ? 'show' : ''}`}>
                     <li>
                       <a 
                         href="https://odesolver.harryhongyue.site/" 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
-import './index.css'; // 引入包含所有样式的CSS文件
+import './styles/globals.css'; // 引入包含所有样式的CSS文件
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {

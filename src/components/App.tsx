@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-import Hero from './sections/Hero';
-import About from './sections/About';
-import Projects from './sections/Projects';
-import Skills from './sections/Skills';
-import Contact from './sections/Contact';
-import ThemeSwitcher from './common/ThemeSwitcher';
+import Hero from '../pages/Hero';
+import About from '../pages/About';
+import Projects from '../pages/Projects';
+import Skills from '../pages/Skills';
+import Contact from '../pages/Contact';
+import ThemeSwitcher from './ui/ThemeSwitcher';
 
 /**
  * Main App component

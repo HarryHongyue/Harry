@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoImage from '../../img/Logo.png';
+import LogoImage from '../../assets/images/Logo.png';
 
 /**
  * Professional Footer component inspired by tech industry leaders

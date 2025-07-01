@@ -6,7 +6,7 @@ import React from 'react';
  */
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center bg-gradient-to-r from-white/90 to-white/70 bg-cover bg-center bg-[url('../img/hero-bg.jpg')] relative">
+    <section id="home" className="min-h-screen flex items-center bg-gradient-to-r from-white/90 to-white/70 bg-cover bg-center bg-[url('../assets/images/hero-bg.jpg')] relative">
       <div className="w-[90%] max-w-[1200px] mx-auto px-5">
         <div className="max-w-[700px]">
           <h1 className="text-5xl font-bold mb-4">Hello, I'm <span className="text-blue-500">Harry Ji</span></h1>
