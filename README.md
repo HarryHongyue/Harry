@@ -1,6 +1,6 @@
-# Harry Ji - Personal Portfolio
+# Harry Hongyue - Personal Portfolio
 
-This is a personal portfolio website for Harry Ji, showcasing skills, projects, and contact information.
+This is a personal portfolio website for Harry Hongyue, showcasing skills, projects, and contact information.
 
 ## Project Structure
 
