@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { LanguageProvider } from '../contexts/LanguageContext';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import Hero from '../pages/Hero';
@@ -40,18 +41,20 @@ const App: React.FC = () => {
   }, []);
   
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
-      <Header />
-      <main className="flex-grow pt-20">
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <ThemeSwitcher />
-      <Footer />      
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+        <Header />
+        <main className="flex-grow">
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Contact />
+        </main>
+        <ThemeSwitcher />
+        <Footer />      
+      </div>
+    </LanguageProvider>
   );
 };
 

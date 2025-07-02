@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 /**
- * 重新设计的主题切换器组件
- * 正确的主题色彩层次：背景、主色调、文本、强调色
+ * ThemeSwitcher component
+ * Only responsible for color themes, not light/dark mode
+ * Light/dark mode is controlled by buttons in the Header component
  */
 interface ThemeSwitcherProps {
   // Optional props can be added here
@@ -10,17 +11,17 @@ interface ThemeSwitcherProps {
 
 const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [activeTheme, setActiveTheme] = useState<string>('default');
+  const [activeColor, setActiveColor] = useState<string>('indigo');
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const themeSwitcherRef = useRef<HTMLDivElement>(null);
-  
-  // 重新设计的主题配置 - 正确的颜色层次
-  const themes = [
+
+  // Color theme configuration - colors only, no light/dark mode control
+  const colorThemes = [
     { 
       id: 'default', 
-      name: 'Ocean Blue Light', 
+      name: 'Ocean Blue', 
       gradient: 'linear-gradient(135deg, #2d99bd, #49b1d4)',
-      type: 'light',
-      cssVars: {
+      cssVarsLight: {
         '--primary-color': '#2d99bd',
         '--secondary-color': '#49b1d4',
         '--accent-color': '#1a73e8',
@@ -34,14 +35,8 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         '--header-bg': 'rgba(255, 255, 255, 0.95)',
         '--card-bg': '#ffffff',
         '--button-text': '#ffffff'
-      }
-    },
-    { 
-      id: 'default-dark', 
-      name: 'Ocean Blue Dark', 
-      gradient: 'linear-gradient(135deg, #1a5f7a, #2d99bd)',
-      type: 'dark',
-      cssVars: {
+      },
+      cssVarsDark: {
         '--primary-color': '#4fb3d9',
         '--secondary-color': '#6bc5e8',
         '--accent-color': '#2d99bd',
@@ -59,10 +54,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
     },
     { 
       id: 'purple', 
-      name: 'Purple Light', 
+      name: 'Purple', 
       gradient: 'linear-gradient(135deg, #8b5cf6, #a78bfa)',
-      type: 'light',
-      cssVars: {
+      cssVarsLight: {
         '--primary-color': '#8b5cf6',
         '--secondary-color': '#a78bfa',
         '--accent-color': '#7c3aed',
@@ -76,14 +70,8 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         '--header-bg': 'rgba(255, 255, 255, 0.95)',
         '--card-bg': '#ffffff',
         '--button-text': '#ffffff'
-      }
-    },
-    { 
-      id: 'purple-dark', 
-      name: 'Purple Dark', 
-      gradient: 'linear-gradient(135deg, #5b21b6, #7c3aed)',
-      type: 'dark',
-      cssVars: {
+      },
+      cssVarsDark: {
         '--primary-color': '#a78bfa',
         '--secondary-color': '#c4b5fd',
         '--accent-color': '#8b5cf6',
@@ -101,10 +89,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
     },
     { 
       id: 'emerald', 
-      name: 'Emerald Light', 
+      name: 'Emerald', 
       gradient: 'linear-gradient(135deg, #10b981, #34d399)',
-      type: 'light',
-      cssVars: {
+      cssVarsLight: {
         '--primary-color': '#10b981',
         '--secondary-color': '#34d399',
         '--accent-color': '#059669',
@@ -118,14 +105,8 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         '--header-bg': 'rgba(255, 255, 255, 0.95)',
         '--card-bg': '#ffffff',
         '--button-text': '#ffffff'
-      }
-    },
-    { 
-      id: 'emerald-dark', 
-      name: 'Emerald Dark', 
-      gradient: 'linear-gradient(135deg, #065f46, #10b981)',
-      type: 'dark',
-      cssVars: {
+      },
+      cssVarsDark: {
         '--primary-color': '#34d399',
         '--secondary-color': '#6ee7b7',
         '--accent-color': '#10b981',
@@ -143,10 +124,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
     },
     { 
       id: 'orange', 
-      name: 'Orange Light', 
+      name: 'Orange', 
       gradient: 'linear-gradient(135deg, #f97316, #fb923c)',
-      type: 'light',
-      cssVars: {
+      cssVarsLight: {
         '--primary-color': '#f97316',
         '--secondary-color': '#fb923c',
         '--accent-color': '#ea580c',
@@ -160,14 +140,8 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         '--header-bg': 'rgba(255, 255, 255, 0.95)',
         '--card-bg': '#ffffff',
         '--button-text': '#ffffff'
-      }
-    },
-    { 
-      id: 'orange-dark', 
-      name: 'Orange Dark', 
-      gradient: 'linear-gradient(135deg, #c2410c, #ea580c)',
-      type: 'dark',
-      cssVars: {
+      },
+      cssVarsDark: {
         '--primary-color': '#fb923c',
         '--secondary-color': '#fdba74',
         '--accent-color': '#f97316',
@@ -185,10 +159,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
     },
     { 
       id: 'rose', 
-      name: 'Rose Light', 
+      name: 'Rose', 
       gradient: 'linear-gradient(135deg, #e11d48, #f43f5e)',
-      type: 'light',
-      cssVars: {
+      cssVarsLight: {
         '--primary-color': '#e11d48',
         '--secondary-color': '#f43f5e',
         '--accent-color': '#be123c',
@@ -202,14 +175,8 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         '--header-bg': 'rgba(255, 255, 255, 0.95)',
         '--card-bg': '#ffffff',
         '--button-text': '#ffffff'
-      }
-    },
-    { 
-      id: 'rose-dark', 
-      name: 'Rose Dark', 
-      gradient: 'linear-gradient(135deg, #9f1239, #be123c)',
-      type: 'dark',
-      cssVars: {
+      },
+      cssVarsDark: {
         '--primary-color': '#f43f5e',
         '--secondary-color': '#fb7185',
         '--accent-color': '#e11d48',
@@ -227,10 +194,9 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
     },
     { 
       id: 'indigo', 
-      name: 'Indigo Light', 
+      name: 'Indigo', 
       gradient: 'linear-gradient(135deg, #6366f1, #818cf8)',
-      type: 'light',
-      cssVars: {
+      cssVarsLight: {
         '--primary-color': '#6366f1',
         '--secondary-color': '#818cf8',
         '--accent-color': '#4f46e5',
@@ -244,14 +210,8 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         '--header-bg': 'rgba(255, 255, 255, 0.95)',
         '--card-bg': '#ffffff',
         '--button-text': '#ffffff'
-      }
-    },
-    { 
-      id: 'indigo-dark', 
-      name: 'Indigo Dark', 
-      gradient: 'linear-gradient(135deg, #4338ca, #5b21b6)',
-      type: 'dark',
-      cssVars: {
+      },
+      cssVarsDark: {
         '--primary-color': '#818cf8',
         '--secondary-color': '#a5b4fc',
         '--accent-color': '#6366f1',
@@ -268,12 +228,40 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
       }
     }
   ];
-  
-  // 初始化主题
+
+  // Initialize theme and listen for mode changes
   useEffect(() => {
-    applyTheme(activeTheme);
-    
-    // 点击外部关闭调色板
+    // Check current mode
+    const bodyClasses = document.body.classList;
+    const initialDarkMode = bodyClasses.contains('dark-mode');
+    setIsDarkMode(initialDarkMode);
+
+    // Get current color theme or set default
+    const currentColorTheme = Array.from(bodyClasses)
+      .find(cls => cls.endsWith('-theme'));
+    const colorId = currentColorTheme ? currentColorTheme.replace('-theme', '') : 'indigo';
+    setActiveColor(colorId);
+
+    // Apply initial theme
+    applyColorTheme(colorId, initialDarkMode);
+
+    // Listen for mode change events from Header
+    const handleModeChange = (event: CustomEvent) => {
+      const { isDarkMode: newDarkMode } = event.detail;
+      setIsDarkMode(newDarkMode);
+      // When mode changes, reapply current color theme
+      applyColorTheme(activeColor, newDarkMode);
+    };
+
+    // Listen for apply theme events
+    const handleApplyTheme = (event: CustomEvent) => {
+      const { colorId, isDarkMode: newDarkMode } = event.detail;
+      setActiveColor(colorId);
+      setIsDarkMode(newDarkMode);
+      applyColorTheme(colorId, newDarkMode);
+    };
+
+    // Close palette when clicking outside
     const handleClickOutside = (event: MouseEvent) => {
       if (
         themeSwitcherRef.current && 
@@ -282,65 +270,87 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         setIsOpen(false);
       }
     };
-    
+
+    // Load saved color preference
+    const savedColor = localStorage.getItem('preferredColorTheme');
+    if (savedColor) {
+      applyColorTheme(savedColor, initialDarkMode);
+      setActiveColor(savedColor);
+    }
+
+    window.addEventListener('modeChange', handleModeChange as EventListener);
+    window.addEventListener('applyTheme', handleApplyTheme as EventListener);
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
+      window.removeEventListener('modeChange', handleModeChange as EventListener);
+      window.removeEventListener('applyTheme', handleApplyTheme as EventListener);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
-  
-  // 切换调色板显示状态
+  }, [activeColor]);
+
+  // Toggle theme panel visibility
   const toggleThemePanel = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsOpen(!isOpen);
   };
-  
-  // 应用主题
-  const applyTheme = (themeId: string) => {
-    const theme = themes.find(t => t.id === themeId);
+
+  // Apply color theme (without changing light/dark mode)
+  const applyColorTheme = (colorId: string, darkMode: boolean) => {
+    const theme = colorThemes.find(t => t.id === colorId);
     if (!theme) return;
-    
-    // 移除所有主题类
+
+    // Remove all color theme classes
     const bodyClasses = document.body.classList;
     const themeClassesToRemove = Array.from(bodyClasses).filter(cls => 
-      cls.endsWith('-theme') || cls === 'dark-mode' || cls === 'light-mode'
+      cls.endsWith('-theme')
     );
     themeClassesToRemove.forEach(cls => bodyClasses.remove(cls));
-    
-    // 添加新主题类
-    bodyClasses.add(`${themeId}-theme`);
-    
-    // 添加模式类
-    if (theme.type === 'dark') {
-      bodyClasses.add('dark-mode');
-    } else {
-      bodyClasses.add('light-mode');
-    }
-    
-    // 直接设置 CSS 变量到 document.documentElement
+
+    // Add new color theme class
+    bodyClasses.add(`${colorId}-theme`);
+
+    // Select correct CSS variables based on current mode
+    const cssVars = darkMode ? theme.cssVarsDark : theme.cssVarsLight;
+
+    // Apply CSS variables directly to document.documentElement
     const root = document.documentElement;
-    Object.entries(theme.cssVars).forEach(([property, value]) => {
+    Object.entries(cssVars).forEach(([property, value]) => {
       root.style.setProperty(property, value);
     });
-    
-    // 设置 body 背景色
-    document.body.style.backgroundColor = theme.cssVars['--bg-primary'];
-    
-    // 触发主题变更事件
-    window.dispatchEvent(new CustomEvent('themeChange', { detail: themeId }));
+
+    // Set body background color
+    document.body.style.backgroundColor = cssVars['--bg-primary'];
+
+    // Trigger color change event
+    window.dispatchEvent(new CustomEvent('colorChange', { 
+      detail: { 
+        colorId: colorId,
+        isDarkMode: darkMode
+      } 
+    }));
   };
-  
-  // 处理主题选择
-  const handleThemeChange = (themeId: string) => {
-    setActiveTheme(themeId);
-    applyTheme(themeId);
-    
-    // 延迟关闭调色板，让用户看到选中效果
+
+  // Handle color theme selection
+  const handleColorChange = (colorId: string) => {
+    setActiveColor(colorId);
+    applyColorTheme(colorId, isDarkMode);
+
+    // Save color preference to local storage
+    localStorage.setItem('preferredColorTheme', colorId);
+
+    // Delay closing the palette to show selection effect
     setTimeout(() => {
       setIsOpen(false);
     }, 400);
   };
-  
+
+  // Reset to default color theme
+  const handleReset = () => {
+    const defaultColor = 'indigo';
+    handleColorChange(defaultColor);
+  };
+
   return (
     <>
       {/* 内联样式 */}
@@ -433,7 +443,24 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
           overflow: hidden;
         }
 
-        .theme-color-option.light {
+        .reset-button {
+          background: transparent;
+          border: 1px solid var(--border-color);
+          color: var(--text-color);
+          padding: 6px 12px;
+          border-radius: 4px;
+          margin-top: 12px;
+          font-size: 0.85rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          width: 100%;
+        }
+
+        .reset-button:hover {
+          background: var(--bg-tertiary);
+        }
+
+        body.light-mode .theme-color-option {
           border-color: #ffffff;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
@@ -490,23 +517,23 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
             bottom: 20px;
             right: 20px;
           }
-          
+
           .palette-toggle-btn {
             width: 50px;
             height: 50px;
             font-size: 1.2rem;
           }
-          
+
           .theme-palette {
             min-width: 240px;
             padding: 15px;
           }
-          
+
           .theme-grid {
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
           }
-          
+
           .theme-color-option {
             width: 40px;
             height: 40px;
@@ -572,6 +599,16 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
           border: none !important;
           outline: none !important;
           box-shadow: none !important;
+          background-color: transparent !important;
+        }
+
+        /* 确保导航链接项目没有背景 */
+        .nav-links li {
+          background-color: transparent !important;
+        }
+
+        .nav-links li a {
+          background-color: transparent !important;
         }
 
         .nav-links a::after {
@@ -717,6 +754,12 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
 
         /* 移动端导航 */
         .nav-links {
+          background-color: transparent !important;
+          border: none !important;
+        }
+
+        /* 移动端导航菜单展开时的背景 */
+        .nav-links.active {
           background-color: var(--header-bg) !important;
           border: 1px solid var(--border-color);
         }
@@ -869,7 +912,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
         *:focus {
           outline: none !important;
         }
-        
+
         /* 导航链接特殊处理 - 完全移除所有可能的边框和轮廓 */
         .nav-links *,
         .nav-links *::before,
@@ -886,7 +929,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
           text-decoration: none !important;
           -webkit-tap-highlight-color: transparent !important;
         }
-        
+
         /* 导航链接的所有状态 */
         .nav-links a,
         .nav-links a:link,
@@ -915,7 +958,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
           -moz-appearance: none !important;
           appearance: none !important;
         }
-        
+
         /* 表单元素焦点样式 - 不包括导航链接 */
         input:focus,
         textarea:focus,
@@ -924,13 +967,13 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
           outline: none !important;
           box-shadow: 0 0 0 2px var(--primary-color) !important;
         }
-        
+
         /* 普通链接焦点样式 - 不包括导航链接 */
         a:focus:not([class*="nav"]):not(.nav-links *):not(.nav-link-no-border) {
           outline: none !important;
           box-shadow: 0 0 0 2px var(--primary-color) !important;
         }
-        
+
         /* 确保导航链接的父元素也没有边框 */
         .nav-links li {
           border: none !important;
@@ -941,22 +984,22 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
       `}</style>
 
       <div className={`floating-theme-switcher ${isOpen ? 'open' : ''}`} ref={themeSwitcherRef}>
-        {/* 主题选项面板 */}
+        {/* Color theme options panel */}
         <div className={`theme-palette ${isOpen ? 'visible' : ''}`}>
-          <div className="palette-title">Choose Theme</div>
+          <div className="palette-title">Choose Color Theme</div>
           <div className="theme-grid">
-            {themes.map((theme) => (
+            {colorThemes.map((theme) => (
               <div
                 key={theme.id}
-                className={`theme-color-option ${theme.type} ${activeTheme === theme.id ? 'active' : ''}`}
+                className={`theme-color-option ${activeColor === theme.id ? 'active' : ''}`}
                 style={{ 
                   background: theme.gradient,
-                  borderColor: theme.type === 'dark' ? '#000' : '#fff'
+                  borderColor: isDarkMode ? '#1f2937' : '#fff'
                 }}
                 title={theme.name}
-                onClick={() => handleThemeChange(theme.id)}
+                onClick={() => handleColorChange(theme.id)}
               >
-                {activeTheme === theme.id && (
+                {activeColor === theme.id && (
                   <div className="active-indicator">
                     <span>✓</span>
                   </div>
@@ -964,13 +1007,15 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = () => {
               </div>
             ))}
           </div>
+          <button className="reset-button" onClick={handleReset}>Reset to Default</button>
         </div>
         
-        {/* 主调色板按钮 */}
+        {/* Main palette button */}
         <button 
           className="palette-toggle-btn" 
-          onClick={toggleThemePanel}
-          title="Change Theme Colors"
+          onClick={(e) => toggleThemePanel(e)}
+          title="Change Color Theme"
+          type="button"
         >
           🎨
         </button>

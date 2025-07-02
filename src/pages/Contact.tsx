@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 /**
  * Contact section component
  * Provides a contact form and contact information
  */
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   // Form state
   const [formData, setFormData] = useState({
     name: '',
@@ -39,7 +41,7 @@ const Contact: React.FC = () => {
       setIsSubmitting(false);
       setSubmitStatus({
         success: true,
-        message: 'Thank you! Your message has been sent successfully.'
+        message: t('contactSuccess')
       });
       
       // Reset form
@@ -60,7 +62,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title">{t('contactTitle')}</h2>
         
         <div className="contact-container">
           <div className="contact-info">
@@ -68,7 +70,7 @@ const Contact: React.FC = () => {
             <div className="contact-item">
               <i className="fas fa-envelope"></i>
               <div className="contact-item-content">
-                <h4>Email</h4>
+                <h4>{t('contactEmail')}</h4>
                 <p>harry.ji@example.com</p>
               </div>
             </div>
@@ -77,7 +79,7 @@ const Contact: React.FC = () => {
             <div className="contact-item">
               <i className="fas fa-phone"></i>
               <div className="contact-item-content">
-                <h4>Phone</h4>
+                <h4>{t('contactPhone')}</h4>
                 <p>+1 (123) 456-7890</p>
               </div>
             </div>
@@ -86,7 +88,7 @@ const Contact: React.FC = () => {
             <div className="contact-item">
               <i className="fas fa-map-marker-alt"></i>
               <div className="contact-item-content">
-                <h4>Location</h4>
+                <h4>{t('contactLocation')}</h4>
                 <p>San Francisco, CA</p>
               </div>
             </div>
@@ -95,7 +97,7 @@ const Contact: React.FC = () => {
             <div className="contact-item">
               <i className="fas fa-globe"></i>
               <div className="contact-item-content">
-                <h4>Social Media</h4>
+                <h4>{t('contactSocial')}</h4>
                 <div className="social-links">
                   <a href="#" title="GitHub"><i className="fab fa-github"></i></a>
                   <a href="#" title="LinkedIn"><i className="fab fa-linkedin"></i></a>
@@ -110,7 +112,7 @@ const Contact: React.FC = () => {
           <div className="contact-form">
             <form id="contactForm" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">{t('contactName')}</label>
                 <input 
                   type="text" 
                   id="name" 
@@ -123,7 +125,7 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t('contactEmail')}</label>
                 <input 
                   type="email" 
                   id="email" 
@@ -136,7 +138,7 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="form-group">
-                <label htmlFor="subject">Subject</label>
+                <label htmlFor="subject">{t('contactSubject')}</label>
                 <input 
                   type="text" 
                   id="subject" 
@@ -149,7 +151,7 @@ const Contact: React.FC = () => {
               </div>
               
               <div className="form-group">
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">{t('contactMessage')}</label>
                 <textarea 
                   id="message" 
                   name="message"
@@ -165,7 +167,7 @@ const Contact: React.FC = () => {
                 className="btn primary-btn"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? t('contactSending') : t('contactSend')}
               </button>
               
               {submitStatus && (

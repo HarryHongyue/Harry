@@ -1,19 +1,22 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 /**
  * Skills section component
  * Displays skills categorized with proficiency bars
  */
 const Skills: React.FC = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="skills" className="skills">
       <div className="container">
-        <h2 className="section-title">My Skills</h2>
+        <h2 className="section-title">{t('skillsTitle')}</h2>
         
         <div className="skills-container">
           {/* Programming Languages */}
           <div className="skill-category">
-            <h3>Programming Languages</h3>
+            <h3>{t('skillsProgramming')}</h3>
             <div className="skill-item">
               <div className="skill-name">
                 <span>JavaScript</span>
@@ -57,7 +60,7 @@ const Skills: React.FC = () => {
           
           {/* Frameworks & Libraries */}
           <div className="skill-category">
-            <h3>Frameworks & Libraries</h3>
+            <h3>{t('skillsFrameworks')}</h3>
             <div className="skill-item">
               <div className="skill-name">
                 <span>React</span>
@@ -101,7 +104,7 @@ const Skills: React.FC = () => {
           
           {/* Tools & Technologies */}
           <div className="skill-category">
-            <h3>Tools & Technologies</h3>
+            <h3>{t('skillsTools')}</h3>
             <div className="skill-item">
               <div className="skill-name">
                 <span>Git</span>

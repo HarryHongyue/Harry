@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 import LogoImage from '../../assets/images/Logo.png';
 
 /**
@@ -6,6 +7,7 @@ import LogoImage from '../../assets/images/Logo.png';
  * Horizontal layout with clean sections and modern design
  */
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -19,21 +21,24 @@ const Footer: React.FC = () => {
               <span style={{fontSize: '1.5rem', marginLeft: '8px'}}>Harry Ji</span>
             </div>
             <p style={{marginTop: '15px', lineHeight: '1.6', color: '#aaa'}}>
-              Building the future with code.<br />
-              Full-stack developer creating innovative<br />
-              digital experiences and solutions.
+              {t('footerTagline').split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                  {line}
+                  {index < t('footerTagline').split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ))}
             </p>
             <div className="social-links">
-              <a href="https://github.com/harryji" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <a href="https://github.com/harryhongyue" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="https://linkedin.com/in/harryji" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://linkedin.com/in/harryhongyue" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <i className="fab fa-linkedin"></i>
               </a>
-              <a href="https://twitter.com/harryji" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <a href="https://twitter.com/harryhongyue" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="mailto:contact@harryji.dev" aria-label="Email">
+              <a href="mailto:contact@harryhongyue.dev" aria-label="Email">
                 <i className="fas fa-envelope"></i>
               </a>
             </div>
@@ -41,13 +46,13 @@ const Footer: React.FC = () => {
           
           {/* Navigation Links */}
           <div className="footer-column">
-            <h3>Navigation</h3>
+            <h3>{t('footerNavigation')}</h3>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#home">{t('home')}</a></li>
+              <li><a href="#about">{t('about')}</a></li>
+              <li><a href="#projects">{t('projects')}</a></li>
+              <li><a href="#skills">{t('skills')}</a></li>
+              <li><a href="#contact">{t('contact')}</a></li>
             </ul>
           </div>
           
@@ -69,7 +74,7 @@ const Footer: React.FC = () => {
             minWidth: 'max-content',
             whiteSpace: 'nowrap'
           }}>
-            <h3>Connect</h3>
+            <h3>{t('footerConnect')}</h3>
             <ul className="footer-links" style={{whiteSpace: 'nowrap'}}>
               <li style={{display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'}}>
                 <i className="fas fa-map-marker-alt" style={{
@@ -77,7 +82,7 @@ const Footer: React.FC = () => {
                   color: 'var(--primary-color)',
                   flexShrink: 0
                 }}></i>
-                Amsterdam, NL
+                {t('footerLocation')}
               </li>
               <li style={{display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'}}>
                 <i className="fas fa-envelope" style={{
@@ -86,7 +91,7 @@ const Footer: React.FC = () => {
                   flexShrink: 0
                 }}></i>
                 <a href="mailto:contact@harryji.dev" style={{whiteSpace: 'nowrap'}}>
-                  contact@harryji.dev
+                  {t('footerEmail')}
                 </a>
               </li>
               <li style={{display: 'flex', alignItems: 'center', whiteSpace: 'nowrap'}}>
@@ -115,7 +120,7 @@ const Footer: React.FC = () => {
         {/* Footer Bottom Bar */}
         <div className="footer-bottom">
           <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px'}}>
-            <p>&copy; {currentYear} Harry Ji. All rights reserved.</p>
+            <p>{t('footerCopyright').replace('2024', currentYear.toString())}</p>
             <div style={{display: 'flex', alignItems: 'center', gap: '20px', fontSize: '0.9rem'}}>
               <span style={{color: '#aaa'}}>Made with ❤️ in Amsterdam</span>
               <div style={{display: 'flex', gap: '15px'}}>

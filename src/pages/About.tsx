@@ -1,35 +1,36 @@
 import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 /**
  * About section component
  * Displays information about the developer
  */
 const About: React.FC = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="about" className="about">
       <div className="container">
-        <h2 className="section-title">About Me</h2>
+        <h2 className="section-title">{t('aboutTitle')}</h2>
         <div className="about-content">
           <div className="about-image">
-            <div className="image-placeholder">
-              <i className="fas fa-user"></i>
-            </div>
+            <img src="src\assets\images\Personal\IMG-20241113-WA0000.jpg" />
           </div>
           <div className="about-text">
-            <p>I am a passionate software developer with expertise in creating user-friendly applications and websites. My journey in technology began with a curiosity about how things work, which evolved into a career building digital solutions.</p>
-            <p>I enjoy tackling complex problems and turning them into simple, beautiful, and intuitive designs. When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the community.</p>
+            <p>{t('aboutDescription1')}</p>
+            <p>{t('aboutDescription2')}</p>
             <div className="about-details">
               <div className="detail">
                 <i className="fas fa-graduation-cap"></i>
-                <span>Education: Computer Science</span>
+                <span>{t('aboutEducation')}</span>
               </div>
               <div className="detail">
                 <i className="fas fa-map-marker-alt"></i>
-                <span>Location: Available for Remote Work</span>
+                <span>{t('aboutLocation')}</span>
               </div>
               <div className="detail">
                 <i className="fas fa-briefcase"></i>
-                <span>Experience: Software Development</span>
+                <span>{t('aboutExperience')}</span>
               </div>
             </div>
           </div>

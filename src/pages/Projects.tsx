@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 /**
  * Projects section component
  * Displays a filterable grid of projects
  */
 const Projects: React.FC = () => {
+  const { t } = useLanguage();
   // State for active filter
   const [activeFilter, setActiveFilter] = useState<string>('all');
   
@@ -16,35 +18,35 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className="projects">
       <div className="container">
-        <h2 className="section-title">My Projects</h2>
+        <h2 className="section-title">{t('projectsTitle')}</h2>
         <div className="project-filters">
           <button 
             className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`} 
             data-filter="all"
             onClick={() => handleFilterChange('all')}
           >
-            All
+            {t('projectsAll')}
           </button>
           <button 
             className={`filter-btn ${activeFilter === 'web' ? 'active' : ''}`} 
             data-filter="web"
             onClick={() => handleFilterChange('web')}
           >
-            Web
+            {t('projectsWeb')}
           </button>
           <button 
             className={`filter-btn ${activeFilter === 'mobile' ? 'active' : ''}`} 
             data-filter="mobile"
             onClick={() => handleFilterChange('mobile')}
           >
-            Mobile
+            {t('projectsMobile')}
           </button>
           <button 
             className={`filter-btn ${activeFilter === 'other' ? 'active' : ''}`} 
             data-filter="other"
             onClick={() => handleFilterChange('other')}
           >
-            Other
+            {t('projectsOther')}
           </button>
         </div>
         
@@ -66,7 +68,7 @@ const Projects: React.FC = () => {
                 <span>API</span>
               </div>
               <div className="project-links">
-                <a href="#" className="btn small-btn">View Details</a>
+                <a href="#" className="btn small-btn">{t('viewDetails')}</a>
               </div>
             </div>
           </div>
@@ -88,7 +90,7 @@ const Projects: React.FC = () => {
                 <span>CMS</span>
               </div>
               <div className="project-links">
-                <a href="#" className="btn small-btn">View Details</a>
+                <a href="#" className="btn small-btn">{t('viewDetails')}</a>
               </div>
             </div>
           </div>
@@ -110,7 +112,7 @@ const Projects: React.FC = () => {
                 <span>Analytics</span>
               </div>
               <div className="project-links">
-                <a href="#" className="btn small-btn">View Details</a>
+                <a href="#" className="btn small-btn">{t('viewDetails')}</a>
               </div>
             </div>
           </div>

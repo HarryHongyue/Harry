@@ -1,88 +1,7 @@
-/* 全局样式 */
+/* Global Styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* 移除所有元素的焦点轮廓 */
-*:focus {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-/* 针对Firefox浏览器的特定规则 */
-*::-moz-focus-inner {
-  border: 0 !important;
-}
-
-/* 针对所有浏览器的点击效果 */
-*:active, *:focus-visible {
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* 移除所有链接的边框和轮廓 */
-a {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-a:focus,
-a:active,
-a:hover,
-a:visited,
-a.active {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  background-color: transparent !important;
-}
-
-/* 特别针对导航链接的额外规则 */
-header nav a,
-header .nav-links a,
-header .nav-links li a,
-header .nav-links li a:focus,
-header .nav-links li a:active,
-header .nav-links li a:hover,
-header .nav-links li a.active {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background-color: transparent !important;
-  text-decoration: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  border-radius: 0 !important;
-  border-color: transparent !important;
-  border-style: none !important;
-  border-width: 0 !important;
-}
-
-/* 专门针对新添加的类名 */
-.nav-link-no-border,
-.nav-link-no-border:focus,
-.nav-link-no-border:active,
-.nav-link-no-border:hover,
-.nav-link-no-border.active {
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background-color: transparent !important;
-  text-decoration: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  border-radius: 0 !important;
-  border-color: transparent !important;
-  border-style: none !important;
-  border-width: 0 !important;
-  appearance: none !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-}
 
 /* 
  * Portfolio CSS - React版本
@@ -91,11 +10,77 @@ header .nav-links li a.active {
 
 /* CSS变量和主题系统 */
 @layer base {
-  :root {
-    /* Default Theme */
-    --primary-color: #2d99bd;
-    --secondary-color: #49b1d4;
-    --accent-color: #f9e5f4;
+  /* Remove focus outlines */
+  *:focus {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Firefox specific rules */
+  *::-moz-focus-inner {
+    border: 0 !important;
+  }
+
+  /* Click effects */
+  *:active {
+    outline: none !important;
+  }
+
+  /* Remove borders and outlines from all links */
+  a {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Navigation links */
+  header nav a,
+  header .nav-links a,
+  header .nav-links li a {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+  header .nav-links li a:focus,
+  header .nav-links li a:active,
+  header .nav-links li a:hover,
+  header .nav-links li a.active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    border-radius: 0 !important;
+    border-color: transparent !important;
+    border-style: none !important;
+    border-width: 0 !important;
+  }
+
+  /* 专门针对新添加的类名 */
+  .nav-link-no-border,
+  .nav-link-no-border:focus,
+  .nav-link-no-border:active,
+  .nav-link-no-border:hover,
+  .nav-link-no-border.active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    border-radius: 0 !important;
+    border-color: transparent !important;
+    border-style: none !important;
+    border-width: 0 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+  }
+  
+  /* Hero Section Backgrounds - Use CSS variables for theme support */
+  #home {
+    background-color: var(--bg-primary, #ffffff);
     --text-color: #333;
     --light-text: #e7e7e7;
     --dark-bg: #15202b;
@@ -220,8 +205,10 @@ header .nav-links li a.active {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--light-bg);
+    background-color: transparent;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
 
   /* React Root样式 */
@@ -343,9 +330,11 @@ header .nav-links li a.active {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-}-width: 768px) {
+}
+
+@media (max-width: 768px) {
   .nav-links {
-    background-color: #fff;
+    background-color: var(--header-bg);
     position: absolute;
     top: 100%;
     left: 0;
@@ -1280,7 +1269,7 @@ body.violet-dark-theme .form-control::placeholder {
     left: -100%;
     width: 100%;
     height: calc(100vh - 80px);
-    background-color: #fff;
+    background-color: var(--header-bg);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1329,16 +1318,8 @@ body.violet-dark-theme .form-control::placeholder {
   }
 }
 
-  a:hover {
-    color: var(--secondary-color);
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-}
+/* 链接和图片样式 */
+/* 这些样式已移至主@layer base块 */
 
 /* 组件样式 */
 @layer components {
@@ -1424,14 +1405,18 @@ body.violet-dark-theme .form-control::placeholder {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--header-bg);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     transition: var(--transition);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    height: auto;
   }
 
   header.scrolled {
     padding: 10px 0;
+    background-color: rgba(var(--header-bg-rgb), 0.9);
   }
 
   header .container {
@@ -1548,10 +1533,12 @@ body.violet-dark-theme .form-control::placeholder {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
-    background-size: cover;
-    background-position: center;
+    background-color: var(--bg-primary);
+    color: var(--body-text);
     position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 0;
+    padding-top: 80px; /* 确保Hero内容不被Header覆盖 */
   }
 
   .hero-content {
@@ -1978,3 +1965,60 @@ body.violet-dark-theme .form-control::placeholder {
   padding: 10px 0;
 }
 
+/* Hero Section */
+:root {
+  /* Default theme colors */
+  --hero-bg: var(--bg-color);
+  --hero-text: var(--text-color);
+}
+
+/* Theme-specific overrides */
+.dark-theme {
+  --hero-bg: #1a1a2e;
+  --hero-text: #e6e6e6;
+}
+
+.blue-purple-night-theme {
+  --hero-bg: #1a1a2e;
+  --hero-text: #e6e6e6;
+}
+
+.rose-theme {
+  --hero-bg: #fff0f5;
+  --hero-text: #4a2a2a;
+}
+
+.rose-dark-theme {
+  --hero-bg: #4a001f;
+  --hero-text: #ffe4e9;
+}
+
+.violet-theme {
+  --hero-bg: #f5f0ff;
+  --hero-text: #2d1a4a;
+}
+
+.violet-dark-theme {
+  --hero-bg: #2e1065;
+  --hero-text: #f3e8ff;
+}
+
+/* Hero section styles */
+.hero-section {
+  background-color: var(--hero-bg, var(--bg-color));
+  color: var(--hero-text, var(--text-color));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure Hero uses theme variables */
+#home,
+.hero-section {
+  background-color: var(--bg-primary) !important;
+  color: var(--body-text) !important;
+  background-image: none !important;
+}
+}
