@@ -10,25 +10,16 @@ const About: React.FC = () => {
   const { t } = useLanguage();
   
   return (
-    <section id="about" className="about">
+    <section className="about-section">
       <div className="container">
-        <h2 className="section-title">{t('aboutTitle')}</h2>
-        <div className="about-content">
-          <div className="about-image">
-            <img src={PersonalImage} alt="Harry Hongyue" />
-          </div>
-          <div className="about-text">
-            <p>{t('aboutDescription1')}</p>
-            <p>{t('aboutDescription2')}</p>
-            <p>
-              This site now focuses on project clarity: what each repository does, how it is
-              deployed, where users can download releases, and which security guardrails matter.
-            </p>
-            <div className="about-details">
-              <div className="detail">
-                <i className="fas fa-graduation-cap"></i>
-                <span>{t('aboutEducation')}</span>
-              </div>
+        <h2>{t('aboutTitle')}</h2>
+        <p>{t('aboutDescription1')}</p>
+        <p>{t('aboutDescription2')}</p>
+        <p>{t('aboutDescription3')}</p>
+        <div className="about-details">
+          <p>{t('aboutEducation')}</p>
+          <p>{t('aboutLocation')}</p>
+          <p>{t('aboutExperience')}</p>
               <div className="detail">
                 <i className="fas fa-map-marker-alt"></i>
                 <span>{t('aboutLocation')}</span>

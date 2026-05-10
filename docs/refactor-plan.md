@@ -72,7 +72,6 @@ Harry 不应该包含：
 - `/projects`：项目总览。
 - `/projects/:slug`：项目详情。
 - `/downloads`：下载中心。
-- `/deployment`：部署方案。
 - `/security`：安全基线。
 - `/apps/pdf-reader`：需要登录的 PDF Reader 在线应用入口。
 - `/apps/aircargo-edi`：需要登录的 Aircargo EDI 在线应用入口。
@@ -129,8 +128,6 @@ Harry 读取：
 
 核心文档：
 
-- `docs/deployment.md`
-- `docs/deployment-detailed-guide.md`
 - `docs/security-baseline.md`
 - `docs/project-onboarding.md`
 - `docs/unified-release-and-site-plan.md`
@@ -152,7 +149,7 @@ Harry 读取：
 
 ## 验收检查
 
-- `/`、`/projects`、`/projects/pdf-reader`、`/projects/ode-solver`、`/projects/surpriseme`、`/downloads`、`/deployment`、`/security` 正常渲染。
+- `/`、`/projects`、`/projects/pdf-reader`、`/projects/ode-solver`、`/projects/surpriseme`、`/downloads`、`/security` 正常渲染。
 - 项目数据不再依赖二级域名字段。
 - 下载中心可以从项目数据或 release manifest 展示版本信息。
 - TypeScript 类型检查通过。

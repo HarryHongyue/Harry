@@ -1,0 +1,14 @@
+{
+  "securityBaseline": "Security baseline",
+  "securityDescription": "A practical baseline for the personal site, reverse proxy, Docker services, downloads, secrets, and PDF upload APIs.",
+  "infrastructure": "Infrastructure",
+  "infrastructureDescription": "Secure server configuration, firewall rules, and access controls",
+  "application": "Application",
+  "applicationDescription": "Input validation, output encoding, and secure dependencies",
+  "secrets": "Secrets",
+  "secretsDescription": "Environment variables, API keys, and credential management",
+  "uploads": "Uploads",
+  "uploadsDescription": "File validation, size limits, and virus scanning",
+  "deployment": "Deployment",
+  "deploymentDescription": "Secure CI/CD pipelines and deployment automation"
+}

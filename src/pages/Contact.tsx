@@ -60,10 +60,9 @@ const Contact: React.FC = () => {
   };
   
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact-section">
       <div className="container">
-        <h2 className="section-title">{t('contactTitle')}</h2>
-        
+        <h2>{t('contactTitle')}</h2>
         <div className="contact-container">
           <div className="contact-info">
             {/* Email contact item */}
@@ -71,7 +70,7 @@ const Contact: React.FC = () => {
               <i className="fas fa-envelope"></i>
               <div className="contact-item-content">
                 <h4>{t('contactEmail')}</h4>
-                <p><a href="mailto:contact@harryji.dev">contact@harryji.dev</a></p>
+                <p><a href={`mailto:${t('contactEmailValue')}`}>{t('contactEmailValue')}</a></p>
               </div>
             </div>
             
@@ -80,7 +79,7 @@ const Contact: React.FC = () => {
               <i className="fas fa-phone"></i>
               <div className="contact-item-content">
                 <h4>{t('contactPhone')}</h4>
-                <p>Available on request</p>
+                <p>{t('contactPhoneValue')}</p>
               </div>
             </div>
             
@@ -89,7 +88,7 @@ const Contact: React.FC = () => {
               <i className="fas fa-map-marker-alt"></i>
               <div className="contact-item-content">
                 <h4>{t('contactLocation')}</h4>
-                <p>Maastricht, NL / Remote</p>
+                <p>{t('contactLocationValue')}</p>
               </div>
             </div>
             

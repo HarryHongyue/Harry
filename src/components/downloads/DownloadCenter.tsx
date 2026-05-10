@@ -1,7 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { projects } from '../../data/projects';
 
 const DownloadCenter: React.FC = () => {
+  const { t } = useLanguage();
   const assets = projects.flatMap((project) =>
     (project.releaseAssets || []).map((asset) => ({ project, asset })),
   );
@@ -9,8 +11,8 @@ const DownloadCenter: React.FC = () => {
   if (assets.length === 0) {
     return (
       <section className="content-panel">
-        <h2>No release assets yet</h2>
-        <p>Download entries will appear here once projects publish installers, extension packages, or release files.</p>
+        <h2>{t('noReleaseAssetsYet')}</h2>
+        <p>{t('noReleaseAssetsDescription')}</p>
       </section>
     );
   }
@@ -19,12 +21,12 @@ const DownloadCenter: React.FC = () => {
     <div className="download-center">
       <div className="download-table download-table--header">
         <div className="download-row download-row--head">
-          <strong>Project / Asset</strong>
-          <strong>Platform</strong>
-          <strong>Version</strong>
-          <strong>Size</strong>
-          <strong>Checksum</strong>
-          <strong>Link</strong>
+          <strong>{t('projectAsset')}</strong>
+          <strong>{t('platform')}</strong>
+          <strong>{t('version')}</strong>
+          <strong>{t('size')}</strong>
+          <strong>{t('checksum')}</strong>
+          <strong>{t('link')}</strong>
         </div>
         {assets.map(({ project, asset }) => (
           <div className="download-row" key={`${project.slug}-${asset.platform}-${asset.label}`}>
@@ -36,16 +38,15 @@ const DownloadCenter: React.FC = () => {
             <span>{asset.version || 'TBD'}</span>
             <span>{asset.size || 'TBD'}</span>
             <code>{asset.sha256 || 'sha256-to-be-added'}</code>
-            <a href={asset.href} target="_blank" rel="noreferrer">Open</a>
+            <a href={asset.href} target="_blank" rel="noreferrer">{t('open')}</a>
           </div>
         ))}
       </div>
 
       <section className="content-panel">
-        <h2>Download Policy</h2>
+        <h2>{t('downloadPolicy')}</h2>
         <p>
-          Installers and extension packages should be published through GitHub Releases or the
-          first-party downloads route. Harry stores metadata and links only, not long-lived binary packages.
+          {t('downloadPolicyDescription')}
         </p>
       </section>
     </div>

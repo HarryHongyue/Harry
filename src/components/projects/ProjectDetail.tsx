@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { categoryLabels, statusLabels } from '../../data/projects';
 import { getProjectShowcase } from '../../data/projectShowcases';
 import type { Project } from '../../types/project';
@@ -12,6 +13,7 @@ interface ProjectDetailProps {
 }
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
+  const { t } = useLanguage();
   const showcase = getProjectShowcase(project.slug);
 
   return (
@@ -25,7 +27,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
           <div className="project-detail__badges">
             <DeploymentBadge type={project.deploymentType} />
             <span className={`backend-pill ${project.backendRequired ? 'backend-pill--required' : ''}`}>
-              {project.backendRequired ? 'Backend required' : 'No backend in Harry'}
+              {project.backendRequired ? t('backendRequired') : t('noBackendInHarry')}
             </span>
           </div>
         </div>
@@ -56,10 +58,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
       {showcase && (
         <section className="content-panel project-workflow-panel">
           <div>
-            <h2>Unified Harry workflow</h2>
+            <h2>{t('unifiedHarryWorkflow')}</h2>
             <p>
-              This page borrows the original product direction while using Harry's shared shell,
-              theme, routing, and release metadata.
+              {t('unifiedHarryWorkflowDescription')}
             </p>
           </div>
           <ol className="project-workflow">
@@ -75,34 +76,34 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 
     <div className="project-detail__grid">
       <section className="content-panel">
-        <h2>Overview</h2>
+        <h2>{t('overview')}</h2>
         <p>{project.longDescription || project.description}</p>
         <TechStackBadges techStack={project.techStack} />
       </section>
 
       <aside className="content-panel project-facts">
-        <h2>Project Facts</h2>
+        <h2>{t('projectFacts')}</h2>
         <dl>
-          <dt>Repository</dt>
-          <dd>{project.repo || 'Not published yet'}</dd>
-          <dt>Public URL</dt>
+          <dt>{t('repository')}</dt>
+          <dd>{project.repo || t('notPublishedYet')}</dd>
+          <dt>{t('publicUrl')}</dt>
           <dd>{project.publicUrl || 'TBD'}</dd>
-          <dt>API base</dt>
-          <dd>{project.apiBasePath || 'Not required'}</dd>
-          <dt>Reverse proxy path</dt>
-          <dd>{project.reverseProxyPath || 'Not required'}</dd>
+          <dt>{t('apiBase')}</dt>
+          <dd>{project.apiBasePath || t('notRequired')}</dd>
+          <dt>{t('reverseProxyPath')}</dt>
+          <dd>{project.reverseProxyPath || t('notRequired')}</dd>
         </dl>
       </aside>
     </div>
 
     <section className="content-panel">
-      <h2>Links</h2>
+      <h2>{t('links')}</h2>
       <ProjectLinks links={project.links} />
     </section>
 
     {project.releaseAssets && project.releaseAssets.length > 0 && (
       <section className="content-panel">
-        <h2>Downloads</h2>
+        <h2>{t('downloads')}</h2>
         <div className="download-table">
           {project.releaseAssets.map((asset) => (
             <div className="download-row" key={`${asset.platform}-${asset.label}`}>
@@ -112,7 +113,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
               </div>
               <div>{asset.size || 'TBD'}</div>
               <code>{asset.sha256 || 'sha256-to-be-added'}</code>
-              <a href={asset.href} target="_blank" rel="noreferrer">Download</a>
+              <a href={asset.href} target="_blank" rel="noreferrer">{t('download')}</a>
             </div>
           ))}
         </div>
@@ -121,17 +122,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
 
     <div className="project-detail__grid">
       <section className="content-panel">
-        <h2>Deployment Notes</h2>
+        <h2>{t('deploymentNotes')}</h2>
         <ul className="check-list">
-          {(project.deploymentNotes || ['Deployment notes will be added as the project matures.']).map((note) => (
+          {(project.deploymentNotes || [t('deploymentNotesPlaceholder')]).map((note) => (
             <li key={note}>{note}</li>
           ))}
         </ul>
       </section>
       <section className="content-panel">
-        <h2>Security Notes</h2>
+        <h2>{t('securityNotes')}</h2>
         <ul className="check-list">
-          {(project.securityNotes || ['Follow the shared security baseline for public deployment.']).map((note) => (
+          {(project.securityNotes || [t('securityNotesPlaceholder')]).map((note) => (
             <li key={note}>{note}</li>
           ))}
         </ul>
@@ -139,10 +140,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
     </div>
 
     <div className="page-actions">
-      <Link className="btn secondary-btn" to="/projects">Back to projects</Link>
-      <Link className="btn primary-btn" to="/downloads">Open downloads</Link>
+      <Link className="btn secondary-btn" to="/projects">{t('backToProjects')}</Link>
+      <Link className="btn primary-btn" to="/downloads">{t('openDownloads')}</Link>
       {showcase && showcase.appStatus !== 'external' && (
-        <Link className="btn primary-btn" to={`/apps/${project.slug}`}>Open app route</Link>
+        <Link className="btn primary-btn" to={`/apps/${project.slug}`}>{t('openAppRoute')}</Link>
       )}
     </div>
   </article>

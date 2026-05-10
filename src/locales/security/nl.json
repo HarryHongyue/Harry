@@ -1,0 +1,15 @@
+{
+  "securityBaseline": "Security-baseline",
+  "security": "Security",
+  "securityDescription": "Een praktische baseline voor de persoonlijke site, reverse proxy, Docker-services, downloads, secrets en PDF-upload API's.",
+  "infrastructure": "Infrastructuur",
+  "infrastructureDescription": "Beveiligde serverconfiguratie, firewallregels en toegangscontroles",
+  "application": "Applicatie",
+  "applicationDescription": "Invoervalidatie, uitvoerencoding en veilige afhankelijkheden",
+  "secrets": "Secrets",
+  "secretsDescription": "Omgevingsvariabelen, API-sleutels en credentialbeheer",
+  "uploads": "Uploads",
+  "uploadsDescription": "Bestandsvalidatie, groottelimieten en virusscanning",
+  "deployment": "Deployment",
+  "deploymentDescription": "Beveiligde CI/CD-pipelines en deploymentautomatisering"
+}

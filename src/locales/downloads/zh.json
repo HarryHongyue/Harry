@@ -1,0 +1,15 @@
+{
+  "releaseAssets": "发布资产",
+  "downloads": "下载",
+  "downloadsDescription": "来自项目数据层的安装程序、扩展包、版本占位符和校验和槽位的聚合。",
+  "downloadPolicy": "下载策略",
+  "policyDescription": "安装程序和扩展包应通过 GitHub Releases 或第一方下载路由发布。Harry 仅存储元数据和链接，不存储长期二进制包。",
+  "noReleaseAssetsYet": "暂无发布资产",
+  "noReleaseAssetsDescription": "一旦项目发布安装程序、扩展包或发布文件，下载条目将在此处显示。",
+  "projectAsset": "项目 / 资产",
+  "platform": "平台",
+  "version": "版本",
+  "size": "大小",
+  "checksum": "校验和",
+  "link": "链接"
+}

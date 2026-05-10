@@ -1,0 +1,15 @@
+{
+  "releaseAssets": "Release assets",
+  "downloads": "Downloads",
+  "downloadsDescription": "Aggregated installers, extension packages, version placeholders, and checksum slots from the project data layer.",
+  "downloadPolicy": "Download Policy",
+  "policyDescription": "Installers and extension packages should be published through GitHub Releases or the first-party downloads route. Harry stores metadata and links only, not long-lived binary packages.",
+  "noReleaseAssetsYet": "No release assets yet",
+  "noReleaseAssetsDescription": "Download entries will appear here once projects publish installers, extension packages, or release files.",
+  "projectAsset": "Project / Asset",
+  "platform": "Platform",
+  "version": "Version",
+  "size": "Size",
+  "checksum": "Checksum",
+  "link": "Link"
+}

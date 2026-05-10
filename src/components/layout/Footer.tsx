@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../../contexts/LanguageContext';
 import LogoImage from '../../assets/images/Logo.png';
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -15,7 +17,7 @@ const Footer: React.FC = () => {
               <span style={{ fontSize: '1.5rem', marginLeft: '8px' }}>Harry Hongyue</span>
             </div>
             <p style={{ marginTop: '15px', lineHeight: '1.6', color: '#aaa' }}>
-              Personal showcase, project catalog, downloads, deployment notes, and security baseline.
+              {t('footerTagline')}
             </p>
             <div className="social-links">
               <a href="https://github.com/HarryHongyue" target="_blank" rel="noreferrer" aria-label="GitHub">
@@ -31,41 +33,40 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="footer-column">
-            <h3>Navigation</h3>
+            <h3>{t('footerNavigation')}</h3>
             <ul className="footer-links">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/projects">Projects</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/">{t('home')}</Link></li>
+              <li><Link to="/about">{t('about')}</Link></li>
+              <li><Link to="/projects">{t('projects')}</Link></li>
+              <li><Link to="/contact">{t('contact')}</Link></li>
             </ul>
           </div>
 
           <div className="footer-column">
-            <h3>Resources</h3>
+            <h3>{t('footerResources')}</h3>
             <ul className="footer-links">
-              <li><Link to="/projects">Project Overview</Link></li>
-              <li><Link to="/downloads">Download Center</Link></li>
-              <li><Link to="/deployment">Deployment Guide</Link></li>
-              <li><Link to="/security">Security Baseline</Link></li>
+              <li><Link to="/projects">{t('footerProjectOverview')}</Link></li>
+              <li><Link to="/downloads">{t('downloads')}</Link></li>
+              <li><Link to="/security">{t('security')}</Link></li>
             </ul>
           </div>
 
           <div className="footer-column">
-            <h3>Project Links</h3>
+            <h3>{t('footerProjectLinks')}</h3>
             <ul className="footer-links">
-              <li><a href="https://github.com/HarryHongyue/Harry" target="_blank" rel="noreferrer">Harry Repository</a></li>
-              <li><a href="https://github.com/HarryHongyue/PDF-Reader" target="_blank" rel="noreferrer">PDF Reader</a></li>
-              <li><a href="https://github.com/HarryHongyue/ODE-All-In-One-Solver" target="_blank" rel="noreferrer">ODE Solver</a></li>
-              <li><a href="https://github.com/HarryHongyue/SurpriseMe" target="_blank" rel="noreferrer">SurpriseMe</a></li>
+              <li><a href="https://github.com/HarryHongyue/Harry" target="_blank" rel="noreferrer">{t('footerHarryRepo')}</a></li>
+              <li><a href="https://github.com/HarryHongyue/PDF-Reader" target="_blank" rel="noreferrer">{t('footerPdfReader')}</a></li>
+              <li><a href="https://github.com/HarryHongyue/ODE-All-In-One-Solver" target="_blank" rel="noreferrer">{t('footerOdeSolver')}</a></li>
+              <li><a href="https://github.com/HarryHongyue/SurpriseMe" target="_blank" rel="noreferrer">{t('footerSurpriseMe')}</a></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
           <div>
-            <p>Copyright {currentYear} Harry Hongyue. All rights reserved.</p>
+            <p>{t('footerCopyright').replace('{year}', currentYear.toString())}</p>
             <div>
-              <span style={{ color: '#aaa' }}>Independent projects, unified showcase.</span>
+              <span style={{ color: '#aaa' }}>{t('footerIndependentProjects')}</span>
             </div>
           </div>
         </div>

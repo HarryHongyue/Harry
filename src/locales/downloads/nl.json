@@ -1,0 +1,15 @@
+{
+  "releaseAssets": "Release-assets",
+  "downloads": "Downloads",
+  "downloadsDescription": "Geaggregeerde installers, uitbreidingspakketten, versieplaatsaanduidingen en checksum-slots uit de projectdatalaag.",
+  "downloadPolicy": "Downloadbeleid",
+  "policyDescription": "Installers en uitbreidingspakketten moeten via GitHub Releases of de first-party downloadroute worden gepubliceerd. Harry slaat alleen metadata en links op, geen langdurige binaire pakketten.",
+  "noReleaseAssetsYet": "Nog geen release-assets",
+  "noReleaseAssetsDescription": "Download-items verschijnen hier zodra projecten installers, uitbreidingspakketten of releasebestanden publiceren.",
+  "projectAsset": "Project / Asset",
+  "platform": "Platform",
+  "version": "Versie",
+  "size": "Grootte",
+  "checksum": "Checksum",
+  "link": "Link"
+}

@@ -10,7 +10,6 @@ const navItems = [
   { to: '/about', labelKey: 'about' },
   { to: '/projects', labelKey: 'projects' },
   { to: '/downloads', labelKey: 'downloads' },
-  { to: '/deployment', labelKey: 'deployment' },
   { to: '/security', labelKey: 'security' },
   { to: '/contact', labelKey: 'contact' },
 ] satisfies Array<{ to: string; labelKey: keyof Translations }>;

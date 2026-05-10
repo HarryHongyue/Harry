@@ -1,0 +1,15 @@
+{
+  "contact": "Contact",
+  "contactPageTitle": "Get in touch",
+  "contactPageDescription": "For project collaboration, deployment questions, or release planning, use the contact links below.",
+  "email": "Email",
+  "phone": "Phone",
+  "location": "Location",
+  "socialLinks": "Social Links",
+  "name": "Name",
+  "subject": "Subject",
+  "message": "Message",
+  "sendMessage": "Send Message",
+  "sending": "Sending...",
+  "success": "Thank you. This demo form does not send mail yet, but the interaction works."
+}

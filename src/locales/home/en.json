@@ -1,0 +1,12 @@
+{
+  "mainShowcaseShell": "Main showcase shell",
+  "onePersonalSiteManyProjects": "One personal site, many independent projects.",
+  "mainShowcaseDescription": "Harry is now the unified entry point for project introductions, demo links, release downloads, deployment notes, and security baselines. Each project keeps its own repository and deployment lifecycle.",
+  "whatThisSiteCoordinates": "What this site coordinates",
+  "projectCatalogAndDetailPages": "Project catalog and detail pages",
+  "githubDemoApiDownloadLinks": "GitHub, demo, API, and download links",
+  "oracleVmDeploymentGuidance": "Oracle VM reverse proxy deployment guidance",
+  "securityChecklistForUploadHeavyApis": "Security checklist for upload-heavy APIs",
+  "featuredProjects": "Featured Projects",
+  "browseAllProjects": "Browse all projects"
+}

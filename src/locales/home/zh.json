@@ -1,0 +1,12 @@
+{
+  "mainShowcaseShell": "主要展示壳",
+  "onePersonalSiteManyProjects": "一个个人站点，多个独立项目。",
+  "mainShowcaseDescription": "Harry 现在是项目介绍、演示链接、发布下载、部署说明和安全基线的统一入口。每个项目保留自己的仓库和部署生命周期。",
+  "whatThisSiteCoordinates": "本站点协调的内容",
+  "projectCatalogAndDetailPages": "项目目录和详情页面",
+  "githubDemoApiDownloadLinks": "GitHub、演示、API 和下载链接",
+  "oracleVmDeploymentGuidance": "Oracle VM 反向代理部署指南",
+  "securityChecklistForUploadHeavyApis": "上传密集型 API 的安全清单",
+  "featuredProjects": "精选项目",
+  "browseAllProjects": "浏览所有项目"
+}

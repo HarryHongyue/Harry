@@ -1,0 +1,16 @@
+{
+  "contactPageTitle": "联系我",
+  "contactPageDescription": "如需项目合作、部署问题或发布计划，请使用下方的联系方式。",
+  "getInTouch": "联系",
+  "description": "欢迎讨论项目、部署或协作。",
+  "email": "邮箱",
+  "phone": "电话",
+  "location": "位置",
+  "socialLinks": "社交链接",
+  "name": "姓名",
+  "subject": "主题",
+  "message": "消息",
+  "sendMessage": "发送消息",
+  "sending": "发送中...",
+  "success": "谢谢。这个演示表单暂不发送邮件，但交互已生效。"
+}

@@ -14,29 +14,34 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [currentLanguage, setCurrentLanguage] = useState<string>('en');
+  const [currentLanguage, setCurrentLanguage] = useState<string>(() => {
+    // 从 localStorage 读取保存的语言
+    return localStorage.getItem('language') || 'en';
+  });
 
   useEffect(() => {
     // 监听语言变化事件
     const handleLanguageChange = (event: CustomEvent) => {
-      setCurrentLanguage(event.detail);
+      const lang = event.detail;
+      setCurrentLanguage(lang);
+      localStorage.setItem('language', lang);
       // 同时设置全局变量供其他组件使用
-      (window as any).currentLanguage = event.detail;
+      (window as any).currentLanguage = lang;
     };
 
     window.addEventListener('languageChange', handleLanguageChange as EventListener);
     
-    // 初始化语言
-    setCurrentLanguage('en');
-    (window as any).currentLanguage = 'en';
+    // 初始化时设置全局变量
+    (window as any).currentLanguage = currentLanguage;
 
     return () => {
       window.removeEventListener('languageChange', handleLanguageChange as EventListener);
     };
-  }, []);
+  }, [currentLanguage]);
 
   const setLanguage = (lang: string) => {
     setCurrentLanguage(lang);
+    localStorage.setItem('language', lang);
     (window as any).currentLanguage = lang;
     // 触发语言变化事件
     window.dispatchEvent(new CustomEvent('languageChange', { detail: lang }));

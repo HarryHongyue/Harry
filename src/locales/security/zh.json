@@ -1,0 +1,15 @@
+{
+  "securityBaseline": "安全基线",
+  "security": "安全",
+  "securityDescription": "个人站点、反向代理、Docker 服务、下载、密钥和 PDF 上传 API 的实用基线。",
+  "infrastructure": "基础设施",
+  "infrastructureDescription": "安全的服务器配置、防火墙规则和访问控制",
+  "application": "应用程序",
+  "applicationDescription": "输入验证、输出编码和安全依赖项",
+  "secrets": "密钥",
+  "secretsDescription": "环境变量、API 密钥和凭据管理",
+  "uploads": "上传",
+  "uploadsDescription": "文件验证、大小限制和病毒扫描",
+  "deployment": "部署",
+  "deploymentDescription": "安全的 CI/CD 管道和部署自动化"
+}

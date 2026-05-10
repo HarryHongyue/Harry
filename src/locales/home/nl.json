@@ -1,0 +1,12 @@
+{
+  "mainShowcaseShell": "Hoofd showcase shell",
+  "onePersonalSiteManyProjects": "Eén persoonlijke site, veel onafhankelijke projecten.",
+  "mainShowcaseDescription": "Harry is nu de centrale ingang voor projectintroducties, demo-links, release-downloads, deployment-notities en security-baselines. Elk project behoudt zijn eigen repository en deployment-levenscyclus.",
+  "whatThisSiteCoordinates": "Wat deze site coördineert",
+  "projectCatalogAndDetailPages": "Projectcatalogus en detailpagina's",
+  "githubDemoApiDownloadLinks": "GitHub-, demo-, API- en download-links",
+  "oracleVmDeploymentGuidance": "Oracle VM reverse proxy deployment-gids",
+  "securityChecklistForUploadHeavyApis": "Security-checklist voor upload-zware API's",
+  "featuredProjects": "Uitgelichte projecten",
+  "browseAllProjects": "Alle projecten bekijken"
+}
