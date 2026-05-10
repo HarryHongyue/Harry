@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
               <i className="fas fa-envelope"></i>
               <div className="contact-item-content">
                 <h4>{t('contactEmail')}</h4>
-                <p>harry.ji@example.com</p>
+                <p><a href="mailto:contact@harryji.dev">contact@harryji.dev</a></p>
               </div>
             </div>
             
@@ -80,7 +80,7 @@ const Contact: React.FC = () => {
               <i className="fas fa-phone"></i>
               <div className="contact-item-content">
                 <h4>{t('contactPhone')}</h4>
-                <p>+1 (123) 456-7890</p>
+                <p>Available on request</p>
               </div>
             </div>
             
@@ -89,7 +89,7 @@ const Contact: React.FC = () => {
               <i className="fas fa-map-marker-alt"></i>
               <div className="contact-item-content">
                 <h4>{t('contactLocation')}</h4>
-                <p>San Francisco, CA</p>
+                <p>Maastricht, NL / Remote</p>
               </div>
             </div>
             
@@ -99,10 +99,8 @@ const Contact: React.FC = () => {
               <div className="contact-item-content">
                 <h4>{t('contactSocial')}</h4>
                 <div className="social-links">
-                  <a href="#" title="GitHub"><i className="fab fa-github"></i></a>
-                  <a href="#" title="LinkedIn"><i className="fab fa-linkedin"></i></a>
-                  <a href="#" title="Twitter"><i className="fab fa-twitter"></i></a>
-                  <a href="#" title="Instagram"><i className="fab fa-instagram"></i></a>
+                  <a href="https://github.com/HarryHongyue" target="_blank" rel="noreferrer" title="GitHub"><i className="fab fa-github"></i></a>
+                  <a href="https://linkedin.com/in/harryhongyue" target="_blank" rel="noreferrer" title="LinkedIn"><i className="fab fa-linkedin"></i></a>
                 </div>
               </div>
             </div>

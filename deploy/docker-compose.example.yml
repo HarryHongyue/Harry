@@ -1,0 +1,48 @@
+# Template only. Backend services come from independent repositories.
+# Replace build.context with image: entries if the service source is not copied
+# into the deployment workspace.
+
+services:
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./sites/main:/srv/sites/main:ro
+      - ./sites/pdf-reader:/srv/sites/pdf-reader:ro
+      - ./sites/ode-solver:/srv/sites/ode-solver:ro
+      - ./sites/surpriseme:/srv/sites/surpriseme:ro
+      - ./downloads:/srv/downloads:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - pdf-reader-api
+      - aircargo-edi-api
+
+  pdf-reader-api:
+    # Option A: build from a copied deployment checkout of HarryHongyue/PDF-Reader.
+    build:
+      context: ../services/pdf-reader-api
+    # Option B: use a published image instead.
+    # image: ghcr.io/harryhongyue/pdf-reader-api:latest
+    environment:
+      - ENV=production
+    expose:
+      - "8000"
+
+  aircargo-edi-api:
+    # Option A: build from a copied deployment checkout of HarryHongyue/Aircargo-EDI.
+    build:
+      context: ../services/aircargo-edi-api
+    # Option B: use a published image instead.
+    # image: ghcr.io/harryhongyue/aircargo-edi-api:latest
+    environment:
+      - ENV=production
+    expose:
+      - "8000"
+
+volumes:
+  caddy_data:
+  caddy_config:

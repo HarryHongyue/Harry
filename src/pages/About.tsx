@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import PersonalImage from '../assets/images/Personal/IMG-20241113-WA0000.jpg';
 
 /**
  * About section component
@@ -14,11 +15,15 @@ const About: React.FC = () => {
         <h2 className="section-title">{t('aboutTitle')}</h2>
         <div className="about-content">
           <div className="about-image">
-            <img src="src\assets\images\Personal\IMG-20241113-WA0000.jpg" />
+            <img src={PersonalImage} alt="Harry Hongyue" />
           </div>
           <div className="about-text">
             <p>{t('aboutDescription1')}</p>
             <p>{t('aboutDescription2')}</p>
+            <p>
+              This site now focuses on project clarity: what each repository does, how it is
+              deployed, where users can download releases, and which security guardrails matter.
+            </p>
             <div className="about-details">
               <div className="detail">
                 <i className="fas fa-graduation-cap"></i>

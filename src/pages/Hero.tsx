@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroButton from '../components/ui/HeroButton';
+import { Link } from 'react-router-dom';
 
 /**
  * The first section visible when the page loads
@@ -15,28 +15,19 @@ const Hero: React.FC = () => {
       <div className="w-[90%] max-w-[1200px] mx-auto px-5">
         <div className="max-w-[700px]">
           <h1 className="text-5xl font-bold mb-4 text-left">
-            Hello, I'm <span className="highlight">Harry</span>
+            Harry <span className="highlight">Project Showcase</span>
           </h1>
           <h2 className="text-3xl font-semibold mb-4 text-left">
-            Software Developer & Tech Enthusiast
+            Personal site, project catalog, downloads, and deployment notes
           </h2>
           <p className="text-lg mb-8 text-left opacity-90">
-            I create innovative solutions and bring ideas to life through code.
+            A lightweight main shell for Harry Hongyue's independent projects: PDF processing,
+            logistics EDI, desktop software, browser extensions, and architecture references.
           </p>
           
           <div className="flex flex-row flex-wrap gap-4 md:gap-6 mt-8 justify-start">
-            <HeroButton 
-              href="#projects" 
-              variant="primary"
-            >
-              View My Work
-            </HeroButton>
-            <HeroButton 
-              href="#contact" 
-              variant="secondary"
-            >
-              Contact Me
-            </HeroButton>
+            <Link to="/projects" className="btn primary-btn">Explore projects</Link>
+            <Link to="/downloads" className="btn secondary-btn">Open downloads</Link>
           </div>
         </div>
       </div>

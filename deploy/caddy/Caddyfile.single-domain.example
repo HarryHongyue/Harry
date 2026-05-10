@@ -1,0 +1,39 @@
+harryhongyue.com {
+    root * /opt/harry-site/sites/main/current
+    encode gzip zstd
+
+    handle_path /downloads/* {
+        root * /opt/harry-site/downloads
+        file_server
+    }
+
+    handle_path /releases/* {
+        root * /opt/harry-site/releases
+        file_server
+    }
+
+    # Use localhost ports when Caddy is installed as a system service.
+    # Run backend containers with:
+    #   -p 127.0.0.1:8000:8000
+    #   -p 127.0.0.1:8001:8000
+    handle_path /api/pdf-reader/* {
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    handle_path /api/aircargo-edi/* {
+        reverse_proxy 127.0.0.1:8001
+    }
+
+    try_files {path} /index.html
+    file_server
+
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy strict-origin-when-cross-origin
+    }
+}
+
+www.harryhongyue.com {
+    redir https://harryhongyue.com{uri}
+}

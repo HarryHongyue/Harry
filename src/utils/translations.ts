@@ -1,28 +1,23 @@
-// 多语言翻译系统
 export interface Translations {
-  // Header Navigation
   home: string;
   about: string;
   projects: string;
+  downloads: string;
+  deployment: string;
+  security: string;
   skills: string;
   contact: string;
-  
-  // Hero Section
   heroTitle: string;
   heroSubtitle: string;
   heroDescription: string;
   viewMyWork: string;
   contactMe: string;
-  
-  // About Section
   aboutTitle: string;
   aboutDescription1: string;
   aboutDescription2: string;
   aboutEducation: string;
   aboutLocation: string;
   aboutExperience: string;
-  
-  // Projects Section
   projectsTitle: string;
   projectsDescription: string;
   projectsAll: string;
@@ -30,15 +25,11 @@ export interface Translations {
   projectsMobile: string;
   projectsOther: string;
   viewDetails: string;
-  
-  // Skills Section
   skillsTitle: string;
   skillsDescription: string;
   skillsProgramming: string;
   skillsFrameworks: string;
   skillsTools: string;
-  
-  // Contact Section
   contactTitle: string;
   contactDescription: string;
   contactEmail: string;
@@ -51,8 +42,6 @@ export interface Translations {
   contactSend: string;
   contactSending: string;
   contactSuccess: string;
-  
-  // Footer
   footerTagline: string;
   footerNavigation: string;
   footerConnect: string;
@@ -63,206 +52,160 @@ export interface Translations {
 
 export const translations: Record<string, Translations> = {
   en: {
-    // Header Navigation
     home: 'Home',
     about: 'About',
     projects: 'Projects',
+    downloads: 'Downloads',
+    deployment: 'Deployment',
+    security: 'Security',
     skills: 'Skills',
     contact: 'Contact',
-    
-    // Hero Section
     heroTitle: "Hello, I'm Harry Ji",
     heroSubtitle: 'Software Developer & Tech Enthusiast',
-    heroDescription: 'I create innovative solutions and bring ideas to life through code.',
+    heroDescription: 'I create practical software projects and document how they can be deployed safely.',
     viewMyWork: 'View My Work',
     contactMe: 'Contact Me',
-    
-    // About Section
     aboutTitle: 'About Me',
-    aboutDescription1: 'I am a passionate software developer with expertise in creating user-friendly applications and websites. My journey in technology began with a curiosity about how things work, which evolved into a career building digital solutions.',
-    aboutDescription2: 'I enjoy tackling complex problems and turning them into simple, beautiful, and intuitive designs. When I\'m not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the community.',
+    aboutDescription1:
+      'I build practical software across web apps, document processing, desktop tools, and browser extensions.',
+    aboutDescription2:
+      'My current focus is turning independent repositories into a clear product ecosystem with understandable deployment and security boundaries.',
     aboutEducation: 'Education: Computer Science',
-    aboutLocation: 'Location: Available for Remote Work',
-    aboutExperience: 'Experience: Full-Stack Development',
-    
-    // Projects Section
-    projectsTitle: 'My Projects',
-    projectsDescription: 'Here are some of the projects I\'ve worked on, showcasing my skills and creativity.',
+    aboutLocation: 'Location: Maastricht, NL / Remote',
+    aboutExperience: 'Experience: Full-stack and product-oriented development',
+    projectsTitle: 'Projects',
+    projectsDescription: 'Independent repositories presented through one lightweight showcase.',
     projectsAll: 'All',
     projectsWeb: 'Web',
     projectsMobile: 'Mobile',
     projectsOther: 'Other',
     viewDetails: 'View Details',
-    
-    // Skills Section
-    skillsTitle: 'My Skills',
-    skillsDescription: 'Technologies and tools I use to bring ideas to life.',
-    skillsProgramming: 'Programming Languages',
-    skillsFrameworks: 'Frameworks & Libraries',
-    skillsTools: 'Tools & Technologies',
-    
-    // Contact Section
+    skillsTitle: 'Technical Direction',
+    skillsDescription: 'Technologies and practices used across the project ecosystem.',
+    skillsProgramming: 'Languages & Runtime',
+    skillsFrameworks: 'Frameworks & UI',
+    skillsTools: 'Tools & Deployment',
     contactTitle: 'Get In Touch',
-    contactDescription: 'Let\'s work together to create something amazing.',
+    contactDescription: 'Let us discuss projects, deployment, or collaboration.',
     contactEmail: 'Email',
     contactPhone: 'Phone',
     contactLocation: 'Location',
-    contactSocial: 'Social Media',
+    contactSocial: 'Social Links',
     contactName: 'Name',
     contactSubject: 'Subject',
     contactMessage: 'Message',
     contactSend: 'Send Message',
     contactSending: 'Sending...',
-    contactSuccess: 'Thank you! Your message has been sent successfully.',
-    
-    // Footer
-    footerTagline: 'Building the future with code.\nFull-stack developer creating innovative\ndigital experiences and solutions.',
+    contactSuccess: 'Thank you. This demo form does not send mail yet, but the interaction works.',
+    footerTagline: 'Personal showcase, project catalog, downloads, deployment notes, and security baseline.',
     footerNavigation: 'Navigation',
     footerConnect: 'Connect',
     footerLocation: 'Maastricht, NL',
     footerEmail: 'contact@harryji.dev',
-    footerCopyright: '© 2024 Harry Ji. All rights reserved.'
+    footerCopyright: 'Copyright 2024 Harry Ji. All rights reserved.',
   },
-  
   zh: {
-    // Header Navigation
     home: '首页',
-    about: '关于我',
+    about: '关于',
     projects: '项目',
-    skills: '技能',
+    downloads: '下载',
+    deployment: '部署',
+    security: '安全',
+    skills: '技术',
     contact: '联系',
-    
-    // Hero Section
     heroTitle: '你好，我是 Harry Ji',
-    heroSubtitle: '软件开发者 & 技术爱好者',
-    heroDescription: '我用代码创造创新解决方案，将想法变为现实。',
-    viewMyWork: '查看我的作品',
+    heroSubtitle: '软件开发者与技术实践者',
+    heroDescription: '我构建实用软件项目，并记录它们如何被安全、清晰地部署。',
+    viewMyWork: '查看项目',
     contactMe: '联系我',
-    
-    // About Section
     aboutTitle: '关于我',
-    aboutDescription1: '我是一名充满激情的软件开发者，专注于创建用户友好的应用程序和网站。我的技术之旅始于对事物运作原理的好奇心，这种好奇心演变成了构建数字解决方案的职业生涯。',
-    aboutDescription2: '我喜欢解决复杂问题，并将它们转化为简单、美观和直观的设计。当我不编程时，你可以发现我在探索新技术、为开源项目做贡献，或与社区分享知识。',
+    aboutDescription1: '我关注 Web 应用、文档处理、桌面工具和浏览器扩展等实用软件方向。',
+    aboutDescription2: '当前重点是把多个独立仓库整理成清晰的项目生态，同时保留部署和安全边界。',
     aboutEducation: '教育背景：计算机科学',
-    aboutLocation: '地点：可远程工作',
-    aboutExperience: '经验：全栈开发',
-    
-    // Projects Section
-    projectsTitle: '我的项目',
-    projectsDescription: '这里展示了我参与的一些项目，体现了我的技能和创造力。',
+    aboutLocation: '位置：Maastricht, NL / 远程',
+    aboutExperience: '经验：全栈与产品导向开发',
+    projectsTitle: '项目',
+    projectsDescription: '多个独立仓库，通过一个轻量主站统一展示。',
     projectsAll: '全部',
     projectsWeb: '网页',
     projectsMobile: '移动端',
     projectsOther: '其他',
     viewDetails: '查看详情',
-    
-    // Skills Section
-    skillsTitle: '我的技能',
-    skillsDescription: '我用来实现想法的技术和工具。',
-    skillsProgramming: '编程语言',
-    skillsFrameworks: '框架和库',
-    skillsTools: '工具和技术',
-    
-    // Contact Section
-    contactTitle: '联系我',
-    contactDescription: '让我们一起合作，创造令人惊叹的作品。',
+    skillsTitle: '技术方向',
+    skillsDescription: '项目生态中使用的技术和工程实践。',
+    skillsProgramming: '语言与运行时',
+    skillsFrameworks: '框架与界面',
+    skillsTools: '工具与部署',
+    contactTitle: '联系',
+    contactDescription: '欢迎讨论项目、部署或协作。',
     contactEmail: '邮箱',
     contactPhone: '电话',
-    contactLocation: '地址',
-    contactSocial: '社交媒体',
+    contactLocation: '位置',
+    contactSocial: '社交链接',
     contactName: '姓名',
     contactSubject: '主题',
     contactMessage: '消息',
     contactSend: '发送消息',
     contactSending: '发送中...',
-    contactSuccess: '谢谢您！您的消息已成功发送。',
-    
-    // Footer
-    footerTagline: '用代码构建未来。\n全栈开发者，创造创新的\n数字体验和解决方案。',
+    contactSuccess: '谢谢。这个演示表单暂不发送邮件，但交互已生效。',
+    footerTagline: '个人展示、项目目录、下载入口、部署说明和安全基线。',
     footerNavigation: '导航',
-    footerConnect: '联系方式',
-    footerLocation: '荷兰 马斯特里赫特',
+    footerConnect: '联系',
+    footerLocation: 'Maastricht, NL',
     footerEmail: 'contact@harryji.dev',
-    footerCopyright: '© 2024 Harry Ji. 保留所有权利。'
+    footerCopyright: 'Copyright 2024 Harry Ji. All rights reserved.',
   },
-  
   nl: {
-    // Header Navigation
     home: 'Home',
-    about: 'Over Mij',
+    about: 'Over mij',
     projects: 'Projecten',
-    skills: 'Vaardigheden',
+    downloads: 'Downloads',
+    deployment: 'Deployment',
+    security: 'Security',
+    skills: 'Techniek',
     contact: 'Contact',
-    
-    // Hero Section
     heroTitle: 'Hallo, ik ben Harry Ji',
-    heroSubtitle: 'Software Ontwikkelaar & Tech Enthousiast',
-    heroDescription: 'Ik creëer innovatieve oplossingen en breng ideeën tot leven met code.',
-    viewMyWork: 'Bekijk Mijn Werk',
-    contactMe: 'Neem Contact Op',
-    
-    // About Section
-    aboutTitle: 'Over Mij',
-    aboutDescription1: 'Ik ben een gepassioneerde software ontwikkelaar met expertise in het creëren van gebruiksvriendelijke applicaties en websites. Mijn reis in technologie begon met nieuwsgierigheid naar hoe dingen werken, wat evolueerde naar een carrière in het bouwen van digitale oplossingen.',
-    aboutDescription2: 'Ik geniet van het aanpakken van complexe problemen en het omzetten ervan in eenvoudige, mooie en intuïtieve ontwerpen. Wanneer ik niet aan het programmeren ben, kun je me vinden terwijl ik nieuwe technologieën verken, bijdraag aan open-source projecten, of kennis deel met de gemeenschap.',
+    heroSubtitle: 'Softwareontwikkelaar en tech-praktijkbouwer',
+    heroDescription: 'Ik bouw praktische softwareprojecten en documenteer veilige deployment.',
+    viewMyWork: 'Bekijk projecten',
+    contactMe: 'Contact',
+    aboutTitle: 'Over mij',
+    aboutDescription1:
+      'Ik werk aan webapps, documentverwerking, desktoptools en browserextensies.',
+    aboutDescription2:
+      'Mijn focus is een duidelijke projectervaring met behoud van onafhankelijke repositories en deploymentgrenzen.',
     aboutEducation: 'Opleiding: Informatica',
-    aboutLocation: 'Locatie: Beschikbaar voor Remote Werk',
-    aboutExperience: 'Ervaring: Full-Stack Development',
-    
-    // Projects Section
-    projectsTitle: 'Mijn Projecten',
-    projectsDescription: 'Hier zijn enkele projecten waar ik aan heb gewerkt, die mijn vaardigheden en creativiteit tonen.',
+    aboutLocation: 'Locatie: Maastricht, NL / Remote',
+    aboutExperience: 'Ervaring: Full-stack en productgerichte ontwikkeling',
+    projectsTitle: 'Projecten',
+    projectsDescription: 'Onafhankelijke repositories gepresenteerd via een lichte hoofdsite.',
     projectsAll: 'Alle',
     projectsWeb: 'Web',
     projectsMobile: 'Mobiel',
     projectsOther: 'Overig',
-    viewDetails: 'Bekijk Details',
-    
-    // Skills Section
-    skillsTitle: 'Mijn Vaardigheden',
-    skillsDescription: 'Technologieën en tools die ik gebruik om ideeën tot leven te brengen.',
-    skillsProgramming: 'Programmeertalen',
-    skillsFrameworks: 'Frameworks & Libraries',
-    skillsTools: 'Tools & Technologieën',
-    
-    // Contact Section
-    contactTitle: 'Neem Contact Op',
-    contactDescription: 'Laten we samenwerken om iets geweldigs te creëren.',
+    viewDetails: 'Details',
+    skillsTitle: 'Technische richting',
+    skillsDescription: 'Technologie en werkwijzen binnen het projectecosysteem.',
+    skillsProgramming: 'Talen & runtime',
+    skillsFrameworks: 'Frameworks & UI',
+    skillsTools: 'Tools & deployment',
+    contactTitle: 'Neem contact op',
+    contactDescription: 'Laten we projecten, deployment of samenwerking bespreken.',
     contactEmail: 'E-mail',
     contactPhone: 'Telefoon',
     contactLocation: 'Locatie',
-    contactSocial: 'Social Media',
+    contactSocial: 'Sociale links',
     contactName: 'Naam',
     contactSubject: 'Onderwerp',
     contactMessage: 'Bericht',
-    contactSend: 'Verstuur Bericht',
+    contactSend: 'Versturen',
     contactSending: 'Verzenden...',
-    contactSuccess: 'Dank je wel! Je bericht is succesvol verzonden.',
-    
-    // Footer
-    footerTagline: 'De toekomst bouwen met code.\nFull-stack ontwikkelaar die innovatieve\ndigitale ervaringen en oplossingen creëert.',
+    contactSuccess: 'Dank je. Dit demoformulier verstuurt nog geen e-mail, maar de interactie werkt.',
+    footerTagline: 'Persoonlijke showcase, projectcatalogus, downloads, deploymentnotities en security baseline.',
     footerNavigation: 'Navigatie',
-    footerConnect: 'Verbinden',
+    footerConnect: 'Contact',
     footerLocation: 'Maastricht, NL',
     footerEmail: 'contact@harryji.dev',
-    footerCopyright: '© 2024 Harry Ji. Alle rechten voorbehouden.'
-  }
-};
-
-// 语言管理钩子
-export const useLanguage = () => {
-  const getCurrentLanguage = (): string => {
-    if (typeof window !== 'undefined') {
-      // 从自定义事件或默认值获取当前语言
-      return (window as any).currentLanguage || 'en';
-    }
-    return 'en';
-  };
-
-  const getTranslation = (key: keyof Translations): string => {
-    const currentLang = getCurrentLanguage();
-    return translations[currentLang]?.[key] || translations['en'][key];
-  };
-
-  return { getTranslation, getCurrentLanguage };
+    footerCopyright: 'Copyright 2024 Harry Ji. Alle rechten voorbehouden.',
+  },
 };

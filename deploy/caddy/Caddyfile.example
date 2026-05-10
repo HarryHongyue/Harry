@@ -1,0 +1,38 @@
+your-domain.com {
+    root * /srv/sites/main
+    try_files {path} /index.html
+    file_server
+}
+
+pdf.your-domain.com {
+    root * /srv/sites/pdf-reader
+    try_files {path} /index.html
+    file_server
+}
+
+ode.your-domain.com {
+    root * /srv/sites/ode-solver
+    try_files {path} /index.html
+    file_server
+}
+
+surpriseme.your-domain.com {
+    root * /srv/sites/surpriseme
+    try_files {path} /index.html
+    file_server
+}
+
+api.your-domain.com {
+    handle_path /pdf-reader/* {
+        reverse_proxy pdf-reader-api:8000
+    }
+
+    handle_path /aircargo-edi/* {
+        reverse_proxy aircargo-edi-api:8000
+    }
+}
+
+downloads.your-domain.com {
+    root * /srv/downloads
+    file_server
+}
