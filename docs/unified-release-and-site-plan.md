@@ -1,238 +1,111 @@
-# 统一主站与一键发布方案
-
-## 最终结论
-
-可以，而且这是当前最适合你的方案：
-
+# 缁熶竴涓荤珯涓庝竴閿彂甯冩柟妗?
+## 鏈€缁堢粨璁?
+鍙互锛岃€屼笖杩欐槸褰撳墠鏈€閫傚悎浣犵殑鏂规锛?
 ```text
-Harry 主站负责统一展示、统一下载、统一路由、统一主题、统一多语言。
-各独立项目负责自己的核心能力、应用端构建、后端服务、安装包和 Release 发布。
-```
+Harry 涓荤珯璐熻矗缁熶竴灞曠ず銆佺粺涓€涓嬭浇銆佺粺涓€璺敱銆佺粺涓€涓婚銆佺粺涓€澶氳瑷€銆?鍚勭嫭绔嬮」鐩礋璐ｈ嚜宸辩殑鏍稿績鑳藉姏銆佸簲鐢ㄧ鏋勫缓銆佸悗绔湇鍔°€佸畨瑁呭寘鍜?Release 鍙戝竷銆?```
 
-不要再让每个小项目各自维护一个完整官网，也不要为每个项目配置一个二级域名。那样会让部署、主题、多语言、下载链接和版本更新变得越来越分散。
-
-## 推荐总架构
-
+涓嶈鍐嶈姣忎釜灏忛」鐩悇鑷淮鎶や竴涓畬鏁村畼缃戯紝涔熶笉瑕佷负姣忎釜椤圭洰閰嶇疆涓€涓簩绾у煙鍚嶃€傞偅鏍蜂細璁╅儴缃层€佷富棰樸€佸璇█銆佷笅杞介摼鎺ュ拰鐗堟湰鏇存柊鍙樺緱瓒婃潵瓒婂垎鏁ｃ€?
+## 鎺ㄨ崘鎬绘灦鏋?
 ```text
 Harry
-├── /
-├── /about
-├── /projects
-├── /projects/ode-solver
-├── /projects/surpriseme
-├── /projects/pdf-reader
-├── /projects/aircargo-edi
-├── /downloads
-├── /deployment
-├── /security
-└── /apps
-    ├── /apps/pdf-reader
-    └── /apps/aircargo-edi
+鈹溾攢鈹€ /
+鈹溾攢鈹€ /about
+鈹溾攢鈹€ /projects
+鈹溾攢鈹€ /projects/ode-solver
+鈹溾攢鈹€ /projects/surpriseme
+鈹溾攢鈹€ /projects/pdf-reader
+鈹溾攢鈹€ /projects/aircargo-edi
+鈹溾攢鈹€ /downloads
+鈹溾攢鈹€ /deployment
+鈹溾攢鈹€ /security
+鈹斺攢鈹€ /apps
+    鈹溾攢鈹€ /apps/pdf-reader
+    鈹斺攢鈹€ /apps/aircargo-edi
 ```
 
-## 仓库职责划分
+## 浠撳簱鑱岃矗鍒掑垎
 
-### Harry 主站
+### Harry 涓荤珯
 
-Harry 负责：
+Harry 璐熻矗锛?
+- 椤圭洰灞曠ず椤甸潰銆?- 涓嬭浇涓績銆?- 鐗堟湰鍙峰睍绀恒€?- Release notes 鎽樿銆?- 涓嬭浇鎸夐挳銆?- 澶氳瑷€鍐呭銆?- 鏄庢殫涓婚銆?- `/apps/...` 鍦ㄧ嚎搴旂敤鍏ュ彛銆?- 缁熶竴閮ㄧ讲鏂囨。鍜屽畨鍏ㄦ枃妗ｃ€?
+Harry 涓嶈礋璐ｏ細
 
-- 项目展示页面。
-- 下载中心。
-- 版本号展示。
-- Release notes 摘要。
-- 下载按钮。
-- 多语言内容。
-- 明暗主题。
-- `/apps/...` 在线应用入口。
-- 统一部署文档和安全文档。
-
-Harry 不负责：
-
-- OCR 算法实现。
-- PDF 解析核心逻辑。
-- JavaFX 桌面源码。
-- 浏览器扩展源码。
-- 大型安装包二进制长期存储。
-
+- OCR 绠楁硶瀹炵幇銆?- PDF 瑙ｆ瀽鏍稿績閫昏緫銆?- JavaFX 妗岄潰婧愮爜銆?- 娴忚鍣ㄦ墿灞曟簮鐮併€?- 澶у瀷瀹夎鍖呬簩杩涘埗闀挎湡瀛樺偍銆?
 ### ODE All-In-One Solver
 
-ODE 仓库保留：
-
-- Java/Maven/JavaFX 桌面应用源码。
-- 数值求解核心逻辑。
-- 安装包构建脚本。
-- GitHub Release 发布脚本。
-
-迁入 Harry：
-
-- 产品介绍页。
-- 功能亮点。
-- 安装步骤。
-- 下载按钮。
-- 当前版本展示。
-- Release notes 摘要。
-
-不建议继续单独维护 ODE 官网前端。ODE 的旧前端内容可以迁移成 Harry 内部页面组件，但不要原样复制整套 React 应用壳。
-
+ODE 浠撳簱淇濈暀锛?
+- Java/Maven/JavaFX 妗岄潰搴旂敤婧愮爜銆?- 鏁板€兼眰瑙ｆ牳蹇冮€昏緫銆?- 瀹夎鍖呮瀯寤鸿剼鏈€?- GitHub Release 鍙戝竷鑴氭湰銆?
+杩佸叆 Harry锛?
+- 浜у搧浠嬬粛椤点€?- 鍔熻兘浜偣銆?- 瀹夎姝ラ銆?- 涓嬭浇鎸夐挳銆?- 褰撳墠鐗堟湰灞曠ず銆?- Release notes 鎽樿銆?
+涓嶅缓璁户缁崟鐙淮鎶?ODE 瀹樼綉鍓嶇銆侽DE 鐨勬棫鍓嶇鍐呭鍙互杩佺Щ鎴?Harry 鍐呴儴椤甸潰缁勪欢锛屼絾涓嶈鍘熸牱澶嶅埗鏁村 React 搴旂敤澹炽€?
 ### SurpriseMe
 
-SurpriseMe 仓库保留：
-
-- Chrome / Firefox / Safari 扩展源码。
-- 扩展打包脚本。
-- 商店发布资料。
-- GitHub Release 发布脚本。
-
-迁入 Harry：
-
-- 产品介绍页。
-- 功能亮点。
-- 浏览器下载入口。
-- 隐私说明入口。
-- 当前版本展示。
-- Release notes 摘要。
-
-不建议继续单独维护 SurpriseMe 官网前端。SurpriseMe 的旧前端内容可以迁移成 Harry 内部页面组件。
-
+SurpriseMe 浠撳簱淇濈暀锛?
+- Chrome / Firefox / Safari 鎵╁睍婧愮爜銆?- 鎵╁睍鎵撳寘鑴氭湰銆?- 鍟嗗簵鍙戝竷璧勬枡銆?- GitHub Release 鍙戝竷鑴氭湰銆?
+杩佸叆 Harry锛?
+- 浜у搧浠嬬粛椤点€?- 鍔熻兘浜偣銆?- 娴忚鍣ㄤ笅杞藉叆鍙ｃ€?- 闅愮璇存槑鍏ュ彛銆?- 褰撳墠鐗堟湰灞曠ず銆?- Release notes 鎽樿銆?
+涓嶅缓璁户缁崟鐙淮鎶?SurpriseMe 瀹樼綉鍓嶇銆係urpriseMe 鐨勬棫鍓嶇鍐呭鍙互杩佺Щ鎴?Harry 鍐呴儴椤甸潰缁勪欢銆?
 ### PDF Reader
 
-PDF Reader 仓库保留：
-
-- FastAPI 后端。
-- OCR pipeline。
-- PDF 上传处理。
-- 解析逻辑。
-- Dockerfile。
-- 桌面版或离线版构建脚本。
-- Release 发布脚本。
-
-Harry 负责：
-
-- `/projects/pdf-reader` 产品展示页。
-- `/apps/pdf-reader` 在线工具页面。
-- `/downloads` 中的应用版下载入口。
-
-后端部署：
-
+PDF Reader 浠撳簱淇濈暀锛?
+- FastAPI 鍚庣銆?- OCR pipeline銆?- PDF 涓婁紶澶勭悊銆?- 瑙ｆ瀽閫昏緫銆?- Dockerfile銆?- 妗岄潰鐗堟垨绂荤嚎鐗堟瀯寤鸿剼鏈€?- Release 鍙戝竷鑴氭湰銆?
+Harry 璐熻矗锛?
+- `/projects/pdf-reader` 浜у搧灞曠ず椤点€?- `/apps/pdf-reader` 鍦ㄧ嚎宸ュ叿椤甸潰銆?- `/downloads` 涓殑搴旂敤鐗堜笅杞藉叆鍙ｃ€?
+鍚庣閮ㄧ讲锛?
 ```text
 https://harryhongyue.com/api/pdf-reader/*
 ```
 
 ### Aircargo EDI
 
-Aircargo EDI 仓库保留：
-
-- PDF 解析。
-- AWB/HAWB 数据结构。
-- Cargo-IMP FWB/FHL 生成。
-- FastAPI 后端。
-- 桌面版或离线版构建脚本。
-- Dockerfile。
-- Release 发布脚本。
-
-Harry 负责：
-
-- `/projects/aircargo-edi` 产品展示页。
-- `/apps/aircargo-edi` 在线工具页面。
-- `/downloads` 中的应用版下载入口。
-
-后端部署：
-
+Aircargo EDI 浠撳簱淇濈暀锛?
+- PDF 瑙ｆ瀽銆?- AWB/HAWB 鏁版嵁缁撴瀯銆?- Cargo-IMP FWB/FHL 鐢熸垚銆?- FastAPI 鍚庣銆?- 妗岄潰鐗堟垨绂荤嚎鐗堟瀯寤鸿剼鏈€?- Dockerfile銆?- Release 鍙戝竷鑴氭湰銆?
+Harry 璐熻矗锛?
+- `/projects/aircargo-edi` 浜у搧灞曠ず椤点€?- `/apps/aircargo-edi` 鍦ㄧ嚎宸ュ叿椤甸潰銆?- `/downloads` 涓殑搴旂敤鐗堜笅杞藉叆鍙ｃ€?
+鍚庣閮ㄧ讲锛?
 ```text
 https://harryhongyue.com/api/aircargo-edi/*
 ```
 
-## 为什么不把所有项目都 Docker 化
-
-Docker 适合后端服务，不适合解决静态展示页统一问题。
-
-推荐规则：
-
-- Harry 主站：不需要 Docker，本地构建 `dist` 后上传。
-- ODE Solver：不需要 Docker，发布桌面安装包。
-- SurpriseMe：不需要 Docker，发布扩展包。
-- PDF Reader 后端：适合 Docker。
-- Aircargo EDI 后端：适合 Docker。
-
-如果把 ODE 和 SurpriseMe 的静态前端也 Docker 化，只是多套容器、多套路由、多次构建，并不会让维护更简单。
-
-## 一键发布目标
-
-每个独立项目最终提供一个发布脚本，例如：
-
+## 涓轰粈涔堜笉鎶婃墍鏈夐」鐩兘 Docker 鍖?
+Docker 閫傚悎鍚庣鏈嶅姟锛屼笉閫傚悎瑙ｅ喅闈欐€佸睍绀洪〉缁熶竴闂銆?
+鎺ㄨ崘瑙勫垯锛?
+- Harry 涓荤珯锛氫笉闇€瑕?Docker锛屾湰鍦版瀯寤?`dist` 鍚庝笂浼犮€?- ODE Solver锛氫笉闇€瑕?Docker锛屽彂甯冩闈㈠畨瑁呭寘銆?- SurpriseMe锛氫笉闇€瑕?Docker锛屽彂甯冩墿灞曞寘銆?- PDF Reader 鍚庣锛氶€傚悎 Docker銆?- Aircargo EDI 鍚庣锛氶€傚悎 Docker銆?
+濡傛灉鎶?ODE 鍜?SurpriseMe 鐨勯潤鎬佸墠绔篃 Docker 鍖栵紝鍙槸澶氬瀹瑰櫒銆佸濂楄矾鐢便€佸娆℃瀯寤猴紝骞朵笉浼氳缁存姢鏇寸畝鍗曘€?
+## 涓€閿彂甯冪洰鏍?
+姣忎釜鐙珛椤圭洰鏈€缁堟彁渚涗竴涓彂甯冭剼鏈紝渚嬪锛?
 ```powershell
 .\scripts\release.ps1 -Version 1.0.1
 ```
 
-脚本负责：
-
-1. 更新版本号。
-2. 构建安装包、扩展包或后端镜像。
-3. 生成 sha256。
-4. 创建 GitHub Release。
-5. 上传 release asset。
-6. 更新 release manifest。
-7. 如有后端，构建 Docker image。
-8. 如有后端，重启服务器容器。
-
-## Harry 动态更新方式
-
-Harry 前端运行时读取：
+鑴氭湰璐熻矗锛?
+1. 鏇存柊鐗堟湰鍙枫€?2. 鏋勫缓瀹夎鍖呫€佹墿灞曞寘鎴栧悗绔暅鍍忋€?3. 鐢熸垚 sha256銆?4. 鍒涘缓 GitHub Release銆?5. 涓婁紶 release asset銆?6. 鏇存柊 release manifest銆?7. 濡傛湁鍚庣锛屾瀯寤?Docker image銆?8. 濡傛湁鍚庣锛岄噸鍚湇鍔″櫒瀹瑰櫒銆?
+## Harry 鍔ㄦ€佹洿鏂版柟寮?
+Harry 鍓嶇杩愯鏃惰鍙栵細
 
 ```text
 /releases/release-manifest.json
 ```
 
-页面自动显示：
+椤甸潰鑷姩鏄剧ず锛?
+- 鏈€鏂扮増鏈€?- 涓嬭浇閾炬帴銆?- 骞冲彴銆?- 鏂囦欢澶у皬銆?- sha256銆?- Release notes銆?
+杩欐牱 ODE銆丼urpriseMe銆丳DF Reader 鎴?Aircargo EDI 鍙戝竷鏂扮増鍚庯紝Harry 涓嶄竴瀹氶渶瑕侀噸鏂版瀯寤恒€傚畠鍍忎竴涓€滀俊鎭潰鏉库€濓紝璇诲彇 manifest 鍚庤嚜鍔ㄦ崲涓婃渶鏂扮増鏈俊鎭€?
+## `/apps` 鐧诲綍瑕佹眰
 
-- 最新版本。
-- 下载链接。
-- 平台。
-- 文件大小。
-- sha256。
-- Release notes。
-
-这样 ODE、SurpriseMe、PDF Reader 或 Aircargo EDI 发布新版后，Harry 不一定需要重新构建。它像一个“信息面板”，读取 manifest 后自动换上最新版本信息。
-
-## `/apps` 登录要求
-
-`/projects/...` 是公开展示页。
-
-`/apps/...` 是在线功能页面，后续应加登录门槛：
-
+`/projects/...` 鏄叕寮€灞曠ず椤点€?
+`/apps/...` 鏄湪绾垮姛鑳介〉闈紝鍚庣画搴斿姞鐧诲綍闂ㄦ锛?
 ```text
 /apps/pdf-reader
 /apps/aircargo-edi
 ```
 
-推荐实现顺序：
+鎺ㄨ崘瀹炵幇椤哄簭锛?
+1. 鍏堝仛涓€涓交閲忕櫥褰曠獥鍙ｃ€?2. 鐧诲綍鐘舵€佷繚瀛樺湪 HttpOnly session cookie 涓€?3. 鍚庣 API 鍚屾椂妫€鏌?session銆?4. 鏈櫥褰曡闂?`/apps/...` 鏃舵樉绀虹櫥褰曢潰鏉裤€?5. 鐧诲綍鍚庢墠鏄剧ず鍦ㄧ嚎宸ュ叿椤甸潰銆?
+涓嶈鍙湪鍓嶇闅愯棌椤甸潰銆傜湡姝ｇ殑涓婁紶銆佽В鏋愩€佺敓鎴愭帴鍙ｅ繀椤荤敱鍚庣妫€鏌ョ櫥褰曠姸鎬併€?
+## 褰撳墠鎵ц椤哄簭
 
-1. 先做一个轻量登录窗口。
-2. 登录状态保存在 HttpOnly session cookie 中。
-3. 后端 API 同时检查 session。
-4. 未登录访问 `/apps/...` 时显示登录面板。
-5. 登录后才显示在线工具页面。
+1. 鍏堢ǔ瀹?Harry 鍗曞煙鍚嶉儴缃层€?2. 鎶婃枃妗ｅ叏閮ㄧ粺涓€鎴愬崟鍩熷悕璺敱鏂规銆?3. 缁?Harry 澧炲姞 release manifest 璇诲彇鑳藉姏銆?4. 鎶?ODE 灞曠ず椤靛唴瀹硅縼鍏?Harry銆?5. 鎶?SurpriseMe 灞曠ず椤靛唴瀹硅縼鍏?Harry銆?6. 缁?ODE 鍐欎竴閿?Release 鑴氭湰銆?7. 缁?SurpriseMe 鍐欎竴閿?Release 鑴氭湰銆?8. 缁?PDF Reader 鍚庣 Docker 鍖栧苟鎺ュ叆 `/api/pdf-reader/*`銆?9. 缁?Aircargo EDI 鍚庣 Docker 鍖栧苟鎺ュ叆 `/api/aircargo-edi/*`銆?10. 瀹炵幇 `/apps/pdf-reader` 鍜?`/apps/aircargo-edi` 鐧诲綍淇濇姢銆?
+## 鍏抽敭鍘熷垯
 
-不要只在前端隐藏页面。真正的上传、解析、生成接口必须由后端检查登录状态。
-
-## 当前执行顺序
-
-1. 先稳定 Harry 单域名部署。
-2. 把文档全部统一成单域名路由方案。
-3. 给 Harry 增加 release manifest 读取能力。
-4. 把 ODE 展示页内容迁入 Harry。
-5. 把 SurpriseMe 展示页内容迁入 Harry。
-6. 给 ODE 写一键 Release 脚本。
-7. 给 SurpriseMe 写一键 Release 脚本。
-8. 给 PDF Reader 后端 Docker 化并接入 `/api/pdf-reader/*`。
-9. 给 Aircargo EDI 后端 Docker 化并接入 `/api/aircargo-edi/*`。
-10. 实现 `/apps/pdf-reader` 和 `/apps/aircargo-edi` 登录保护。
-
-## 关键原则
-
-- 不再为项目展示页使用二级域名。
-- 不再让每个项目维护独立官网。
-- 不原样复制其他项目的 React 应用壳。
-- 迁移内容、组件和业务入口，不迁移重复的 Header、Footer、ThemeSwitcher、i18n Provider。
-- 后端算力项目保留在各自仓库，通过 Docker + API 路由接入 Harry。
-- 桌面应用和扩展包通过 GitHub Releases 发布，Harry 读取 manifest 展示最新版本。
+- 涓嶅啀涓洪」鐩睍绀洪〉浣跨敤浜岀骇鍩熷悕銆?- 涓嶅啀璁╂瘡涓」鐩淮鎶ょ嫭绔嬪畼缃戙€?- 涓嶅師鏍峰鍒跺叾浠栭」鐩殑 React 搴旂敤澹炽€?- 杩佺Щ鍐呭銆佺粍浠跺拰涓氬姟鍏ュ彛锛屼笉杩佺Щ閲嶅鐨?Header銆丗ooter銆乀hemeSwitcher銆乮18n Provider銆?- 鍚庣绠楀姏椤圭洰淇濈暀鍦ㄥ悇鑷粨搴擄紝閫氳繃 Docker + API 璺敱鎺ュ叆 Harry銆?- 妗岄潰搴旂敤鍜屾墿灞曞寘閫氳繃 GitHub Releases 鍙戝竷锛孒arry 璇诲彇 manifest 灞曠ず鏈€鏂扮増鏈€?

@@ -12,6 +12,7 @@ import DownloadsPage from '../pages/DownloadsPage';
 import DeploymentPage from '../pages/DeploymentPage';
 import SecurityPage from '../pages/SecurityPage';
 import ContactPage from '../pages/ContactPage';
+import AppRoutePage from '../pages/AppRoutePage';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const ScrollToTop: React.FC = () => {
@@ -69,6 +70,7 @@ const App: React.FC = () => {
               <Route path="/downloads" element={<DownloadsPage />} />
               <Route path="/deployment" element={<DeploymentPage />} />
               <Route path="/security" element={<SecurityPage />} />
+              <Route path="/apps/:slug" element={<AppRoutePage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

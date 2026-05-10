@@ -4,10 +4,12 @@
 
 当前推荐方案是：
 
-- 前端在本地构建。
-- 服务器只负责托管静态文件。
+- Harry 主站继续使用 Vite + React + React Router。
+- 页面可以使用丰富 React 组件、动画、主题和项目展示区块。
+- 可以选择本地构建后上传静态文件。
+- 也可以选择 Docker 一键构建并运行 Harry 主站容器。
 - Caddy 负责 HTTPS、反向代理和 SPA 路由回退。
-- Docker 只用于后端 API，不用于 Harry 主站点前端。
+- PDF Reader 和 Aircargo EDI 后端仍然作为独立 Docker API 服务。
 
 ---
 
@@ -142,9 +144,9 @@ sudo systemctl status caddy
 
 ## 6. 创建服务器目录结构
 
-Harry 主站点是 Vite + React 构建出的静态网站，不需要 Docker。
+Harry 主站点是 Vite + React 应用。它可以构建成静态文件，也可以通过 Docker 镜像一键构建和运行。
 
-服务器上只需要创建放置静态文件的目录：
+如果采用传统静态上传模式，服务器上创建放置静态文件的目录：
 
 ```bash
 sudo mkdir -p /opt/harry-site/sites/main/current
@@ -176,6 +178,20 @@ tree /opt/harry-site
     └── main
         ├── current
         └── releases
+```
+
+如果采用 Docker 一键部署模式，可以只保留 `compose.yml`、反向代理配置和 release/downloads 挂载目录。此时 Harry 容器会在镜像构建阶段运行 `npm run build`，再由 Nginx 在容器内托管 `dist`。
+
+本地或服务器运行：
+
+```bash
+docker compose up -d --build harry-web
+```
+
+默认容器访问端口：
+
+```text
+http://localhost:8080
 ```
 
 ---

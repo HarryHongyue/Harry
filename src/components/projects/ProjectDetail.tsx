@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { categoryLabels, statusLabels } from '../../data/projects';
+import { getProjectShowcase } from '../../data/projectShowcases';
 import type { Project } from '../../types/project';
 import DeploymentBadge from './DeploymentBadge';
 import ProjectLinks from './ProjectLinks';
@@ -10,17 +11,67 @@ interface ProjectDetailProps {
   project: Project;
 }
 
-const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => (
-  <article className="project-detail">
-    <div className="page-eyebrow">{categoryLabels[project.category]} / {statusLabels[project.status]}</div>
-    <h1>{project.name}</h1>
-    <p className="page-lead">{project.tagline}</p>
-    <div className="project-detail__badges">
-      <DeploymentBadge type={project.deploymentType} />
-      <span className={`backend-pill ${project.backendRequired ? 'backend-pill--required' : ''}`}>
-        {project.backendRequired ? 'Backend required' : 'No backend in Harry'}
-      </span>
-    </div>
+const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
+  const showcase = getProjectShowcase(project.slug);
+
+  return (
+    <article className="project-detail" style={showcase ? { '--project-accent': showcase.accent } as React.CSSProperties : undefined}>
+      <section className="project-showcase-hero">
+        <div className="project-showcase-hero__content">
+          <div className="page-eyebrow">{showcase?.eyebrow || `${categoryLabels[project.category]} / ${statusLabels[project.status]}`}</div>
+          <h1>{project.name}</h1>
+          <p className="page-lead">{showcase?.headline || project.tagline}</p>
+          <p className="project-showcase-summary">{showcase?.summary || project.longDescription || project.description}</p>
+          <div className="project-detail__badges">
+            <DeploymentBadge type={project.deploymentType} />
+            <span className={`backend-pill ${project.backendRequired ? 'backend-pill--required' : ''}`}>
+              {project.backendRequired ? 'Backend required' : 'No backend in Harry'}
+            </span>
+          </div>
+        </div>
+        {showcase && (
+          <div className="project-orb-card">
+            <img src={showcase.logo} alt={`${project.name} logo`} />
+            <div>
+              {showcase.metrics.map((metric) => (
+                <span key={metric}>{metric}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+
+      {showcase && (
+        <section className="project-feature-strip">
+          {showcase.features.map((feature) => (
+            <div className="project-feature-card" key={feature.title}>
+              <i className={`fas ${feature.icon}`} aria-hidden="true"></i>
+              <h2>{feature.title}</h2>
+              <p>{feature.description}</p>
+            </div>
+          ))}
+        </section>
+      )}
+
+      {showcase && (
+        <section className="content-panel project-workflow-panel">
+          <div>
+            <h2>Unified Harry workflow</h2>
+            <p>
+              This page borrows the original product direction while using Harry's shared shell,
+              theme, routing, and release metadata.
+            </p>
+          </div>
+          <ol className="project-workflow">
+            {showcase.workflow.map((step) => (
+              <li key={step.title}>
+                <strong>{step.title}</strong>
+                <span>{step.description}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
     <div className="project-detail__grid">
       <section className="content-panel">
@@ -90,8 +141,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => (
     <div className="page-actions">
       <Link className="btn secondary-btn" to="/projects">Back to projects</Link>
       <Link className="btn primary-btn" to="/downloads">Open downloads</Link>
+      {showcase && showcase.appStatus !== 'external' && (
+        <Link className="btn primary-btn" to={`/apps/${project.slug}`}>Open app route</Link>
+      )}
     </div>
   </article>
-);
+  );
+};
 
 export default ProjectDetail;
