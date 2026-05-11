@@ -1,5 +1,26 @@
 # HarryOS Rebuild Plan
 
+## 2026-05-11 Update
+
+The site has now been rebuilt around a dark blue-violet neumorphism system instead of the earlier command-center plus Apple-storytelling direction.
+
+Current implementation direction:
+
+- unified dark neumorphic surface system
+- responsive full-width layout
+- centered primary navigation with right-aligned language switch
+- interactive hero scenes with subtle hover depth
+- project catalog driven from shared project and tech-stack data
+- breadcrumb navigation on secondary routes
+- home page absorbs the most important personal/about content
+- deployment and security removed from the primary navigation, but their routes still exist as secondary reference pages
+
+Open refinement targets:
+
+- replace remaining placeholder links with real production links
+- keep upgrading project-specific hero visuals when more logo and screenshot assets are available
+- continue polishing language-specific typography so long Chinese and Dutch titles stay on one line when possible
+
 ## Objective
 
 Turn the current Harry portfolio into a command-center home page plus Apple-style project storytelling system, while keeping the codebase maintainable inside the current Vite + React + TypeScript stack.

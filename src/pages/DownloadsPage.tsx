@@ -1,26 +1,20 @@
 import React from 'react';
-import { ArrowRight, Download, Globe2, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Download, Globe2 } from 'lucide-react';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
-import NeoIconBox from '../components/ui/NeoIconBox';
 import NeoSection from '../components/ui/NeoSection';
 import NeoTable from '../components/ui/NeoTable';
-import { projects } from '../data/projects';
+import { downloadsProjects } from '../data/projects';
 import { useLanguage } from '../contexts/LanguageContext';
 import { pickText, uiText } from '../data/siteContent';
 import type { ProjectReleaseAsset } from '../types/project';
 import { neoButtonClass } from '../components/ui/NeoButton';
+import ProjectLogo from '../components/common/ProjectLogo';
+import InteractiveHeroScene from '../components/common/InteractiveHeroScene';
+import { getProjectDisplayName } from '../lib/projectText';
 
 const DownloadsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
-
-  const ode = projects.find((project) => project.slug === 'ode-solver');
-  const surpriseMe = projects.find((project) => project.slug === 'surpriseme');
-  const pdfReader = projects.find((project) => project.slug === 'pdf-reader');
-  const aircargo = projects.find((project) => project.slug === 'aircargo-edi');
-  const docs = projects.find((project) => project.slug === 'harry-showcase');
-
-  const sections = [ode, surpriseMe, pdfReader, aircargo, docs].filter(Boolean) as typeof projects;
 
   const columns = [
     {
@@ -41,7 +35,7 @@ const DownloadsPage: React.FC = () => {
     {
       key: 'sha256',
       header: 'SHA-256',
-      render: (row: ProjectReleaseAsset) => <code style={{ color: 'var(--text-secondary)' }}>{row.sha256.slice(0, 14)}...</code>,
+      render: (row: ProjectReleaseAsset) => <code style={{ color: 'var(--text-secondary)' }}>{row.sha256.slice(0, 12)}...</code>,
     },
     {
       key: 'releaseDate',
@@ -52,7 +46,8 @@ const DownloadsPage: React.FC = () => {
       key: 'href',
       header: currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download',
       render: (row: ProjectReleaseAsset) => (
-        <a href={row.href} className={neoButtonClass('ghost')}>
+        <a href={row.href} className={`${neoButtonClass('ghost')} neo-download-button`} target={row.href.startsWith('http') ? '_blank' : undefined} rel={row.href.startsWith('http') ? 'noreferrer' : undefined}>
+          <Download size={16} />
           {pickText(currentLanguage, uiText.common.download)}
         </a>
       ),
@@ -60,15 +55,14 @@ const DownloadsPage: React.FC = () => {
   ];
 
   return (
-    <div className="neo-page">
+    <div className="neo-page" data-lang={currentLanguage}>
       <div className="section-shell">
-        <section className="neo-hero">
+        <section className="neo-hero neo-hero--downloads">
           <div className="neo-hero__copy">
-            <div className="neo-eyebrow">{pickText(currentLanguage, uiText.downloads.eyebrow)}</div>
-            <h1>{pickText(currentLanguage, uiText.downloads.title)}</h1>
+            <h1 className="neo-hero-title">{pickText(currentLanguage, uiText.downloads.title)}</h1>
             <div className="neo-hero__subtitle">
               <strong>{uiText.home.subtitleEn}</strong>
-              <span>{uiText.home.subtitleZh}</span>
+              <span>{currentLanguage === 'zh' ? uiText.home.subtitleZh : currentLanguage === 'nl' ? uiText.home.subtitleNl : uiText.home.subtitleZh}</span>
             </div>
             <p>{pickText(currentLanguage, uiText.downloads.intro)}</p>
             <div className="neo-inline-actions">
@@ -76,7 +70,7 @@ const DownloadsPage: React.FC = () => {
                 <Globe2 size={18} />
                 {pickText(currentLanguage, uiText.common.githubReleases)}
               </a>
-              <a href="/downloads" className={neoButtonClass('primary')}>
+              <a href="https://omnigent.nl" target="_blank" rel="noreferrer" className={neoButtonClass('primary')}>
                 {pickText(currentLanguage, uiText.common.officialMirrors)}
                 <ArrowRight size={18} />
               </a>
@@ -84,54 +78,26 @@ const DownloadsPage: React.FC = () => {
             <NeoBadge tone="teal">{pickText(currentLanguage, uiText.common.verifyChecksum)}</NeoBadge>
           </div>
 
-          <div className="neo-hero__visual">
-            <div className="neo-hero__mini neo-hero__mini--top-left">
-              <Download size={28} color="var(--accent-teal)" />
-            </div>
-            <div className="neo-hero__mini neo-hero__mini--top-right">
-              <Globe2 size={28} color="var(--accent-blue)" />
-            </div>
-            <div className="neo-hero__glyph">H</div>
-          </div>
+          <InteractiveHeroScene variant="home" />
         </section>
       </div>
 
       <div className="section-shell neo-download-groups">
-        {sections.map((project) => (
-          <div key={project.slug} className="neo-table-card">
+        {downloadsProjects.map((project) => (
+          <div key={project.slug} className="neo-table-card neo-table-card--rich">
             <div className="neo-table-card__header">
               <div className="neo-project-card__header">
-                <NeoIconBox tone="cyan" icon={<Download size={22} />} />
+                <ProjectLogo src={project.logo} alt={project.englishName} />
                 <div>
-                  <h3>{pickText(currentLanguage, project.name)}</h3>
+                  <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
                   <p>{pickText(currentLanguage, project.tagline)}</p>
                 </div>
               </div>
               {project.releaseAssets[0] ? <NeoBadge tone="teal">{project.releaseAssets[0].version}</NeoBadge> : null}
             </div>
-            <NeoTable<ProjectReleaseAsset>
-              rowKey={(row) => `${row.label.en}-${row.version}`}
-              rows={project.releaseAssets}
-              columns={columns}
-            />
+            <NeoTable<ProjectReleaseAsset> rowKey={(row) => `${row.label.en}-${row.version}`} rows={project.releaseAssets} columns={columns} />
           </div>
         ))}
-      </div>
-
-      <div className="section-shell">
-        <NeoCard variant="glowing" className="neo-note-banner">
-          <div className="neo-project-card__header">
-            <NeoIconBox tone="success" icon={<ShieldCheck size={22} />} />
-            <div>
-              <h3>{currentLanguage === 'zh' ? '始终通过官方来源下载。' : currentLanguage === 'nl' ? 'Download altijd via officiële bronnen.' : 'Always download from official sources.'}</h3>
-              <p>{currentLanguage === 'zh' ? '下载后请校验 SHA-256，并在发现问题时反馈。' : currentLanguage === 'nl' ? 'Controleer SHA-256 na het downloaden en meld problemen.' : 'Verify SHA-256 after downloading and report issues if anything looks wrong.'}</p>
-            </div>
-          </div>
-          <a href="https://github.com/HarryHongyue" target="_blank" rel="noreferrer" className={neoButtonClass('primary')}>
-            <Globe2 size={18} />
-            {pickText(currentLanguage, uiText.common.githubReleases)}
-          </a>
-        </NeoCard>
       </div>
     </div>
   );

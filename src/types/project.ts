@@ -7,28 +7,36 @@ export interface LocalizedText {
 }
 
 export type ProjectCategory =
-  | 'main-site'
-  | 'web-app'
-  | 'backend'
-  | 'desktop-software'
+  | 'personal-website'
+  | 'enterprise-website'
+  | 'saas-platform'
+  | 'web-application'
+  | 'desktop-application'
   | 'browser-extension'
+  | 'developer-resource-hub'
+  | 'education-platform'
+  | 'ecommerce-wordpress'
+  | 'logistics-air-cargo'
+  | 'document-intelligence'
+  | 'scientific-computing'
   | 'architecture-reference';
 
-export type ProjectStatus = 'featured' | 'active' | 'planned' | 'experimental';
+export type ProjectStatus = 'featured' | 'active' | 'planned' | 'school-project' | 'client-project';
 
-export type DeploymentType =
-  | 'main-showcase'
-  | 'static-web'
-  | 'web-plus-api'
-  | 'backend-service'
-  | 'desktop-release'
-  | 'browser-extension-release'
-  | 'reference-architecture';
+export type ProjectType =
+  | 'portfolio'
+  | 'website'
+  | 'web-app'
+  | 'desktop-app'
+  | 'browser-extension'
+  | 'api-service'
+  | 'resource-platform'
+  | 'saas-concept';
 
 export interface ProjectLink {
   label: LocalizedText;
   href: string;
-  type: 'repo' | 'demo' | 'docs' | 'download' | 'api' | 'release';
+  type: 'repo' | 'demo' | 'docs' | 'download' | 'api' | 'website' | 'release';
   external?: boolean;
 }
 
@@ -42,44 +50,39 @@ export interface ProjectReleaseAsset {
   releaseDate: string;
 }
 
-export interface ProjectFeature {
-  title: LocalizedText;
-  description: LocalizedText;
-}
-
-export interface ProjectArchitectureNode {
-  title: LocalizedText;
-  description: LocalizedText;
-}
-
-export interface ProjectStat {
-  label: LocalizedText;
-  value: LocalizedText;
-}
-
 export interface Project {
   slug: string;
-  name: LocalizedText;
-  shortName?: LocalizedText;
+  name: string;
+  englishName: string;
+  chineseName?: string;
+  dutchName?: string;
   tagline: LocalizedText;
   description: LocalizedText;
-  overview: LocalizedText;
-  category: ProjectCategory;
+  longDescription: LocalizedText;
+  category: ProjectCategory[];
   status: ProjectStatus;
-  deploymentType: DeploymentType;
-  techStack: string[];
-  backendRequired: boolean;
+  projectType: ProjectType[];
+  logo?: string;
+  repoPath?: string;
   repoUrl?: string;
   demoUrl?: string;
   downloadUrl?: string;
-  docsUrl?: string;
   apiBasePath?: string;
+  websiteUrl?: string;
+  techStackIds: string[];
+  backendRequired: boolean;
+  downloadable: boolean;
+  desktopApp: boolean;
+  browserExtension: boolean;
+  webVersion: boolean;
+  screenshots?: string[];
   releaseAssets: ProjectReleaseAsset[];
   securityNotes: LocalizedText[];
   deploymentNotes: LocalizedText[];
-  featureBadges: LocalizedText[];
-  keyFeatures: ProjectFeature[];
-  architecture: ProjectArchitectureNode[];
-  stats: ProjectStat[];
+  features: LocalizedText[];
+  useCases: LocalizedText[];
+  architectureNotes: LocalizedText[];
+  roadmap?: LocalizedText[];
+  chips?: LocalizedText[];
   featured?: boolean;
 }

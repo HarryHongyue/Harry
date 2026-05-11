@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
@@ -13,6 +13,7 @@ import SecurityPage from '../pages/SecurityPage';
 import ContactPage from '../pages/ContactPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import SiteBackground from './ui/SiteBackground';
+import Breadcrumbs from './navigation/Breadcrumbs';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -33,6 +34,7 @@ const App: React.FC = () => {
           <SiteBackground />
           <Header />
           <main className="app-main">
+            <Breadcrumbs />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
@@ -42,6 +44,7 @@ const App: React.FC = () => {
               <Route path="/deployment" element={<DeploymentPage />} />
               <Route path="/security" element={<SecurityPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/projects/ode-solver" element={<Navigate to="/projects/ode-all-in-one-solver" replace />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>

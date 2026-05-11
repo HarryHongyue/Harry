@@ -1,5 +1,5 @@
 import React from 'react';
-import { BriefcaseBusiness, Globe2, Mail, Radio, Rss } from 'lucide-react';
+import { Mail, MessageCircleMore, Radio, Send, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { pickText, uiText } from '../../data/siteContent';
@@ -12,7 +12,9 @@ const Footer: React.FC = () => {
       <div className="neo-footer__grid">
         <div className="neo-footer__brand">
           <div className="site-logo">
-            <span className="site-logo__mark">H</span>
+            <span className="site-logo__mark">
+              <img src="/project-assets/harry-logo.png" alt="Harry logo" />
+            </span>
             <span className="site-logo__copy">
               <strong>{pickText(currentLanguage, uiText.brand)}</strong>
               <small>{pickText(currentLanguage, uiText.brandSub)}</small>
@@ -23,50 +25,53 @@ const Footer: React.FC = () => {
         </div>
 
         <div>
-          <h4>{pickText(currentLanguage, uiText.nav.home)}</h4>
+          <h4>{pickText(currentLanguage, uiText.nav.projects)}</h4>
           <div className="neo-footer__links">
             <Link to="/">{pickText(currentLanguage, uiText.nav.home)}</Link>
-            <Link to="/about">{pickText(currentLanguage, uiText.nav.about)}</Link>
             <Link to="/projects">{pickText(currentLanguage, uiText.nav.projects)}</Link>
             <Link to="/downloads">{pickText(currentLanguage, uiText.nav.downloads)}</Link>
+            <Link to="/contact">{pickText(currentLanguage, uiText.nav.contact)}</Link>
           </div>
         </div>
 
         <div>
           <h4>{pickText(currentLanguage, uiText.common.documentation)}</h4>
           <div className="neo-footer__links">
-            <Link to="/deployment">{pickText(currentLanguage, uiText.nav.deployment)}</Link>
-            <Link to="/security">{pickText(currentLanguage, uiText.nav.security)}</Link>
-            <Link to="/downloads">{pickText(currentLanguage, uiText.nav.downloads)}</Link>
+            <Link to="/projects/harry">{currentLanguage === 'zh' ? '主站项目页' : currentLanguage === 'nl' ? 'Hoofdsite-project' : 'Main Site Case Study'}</Link>
+            <Link to="/projects/harrys-hub">{currentLanguage === 'zh' ? '资源站项目页' : currentLanguage === 'nl' ? 'Resourcehub-project' : 'Resource Hub Case Study'}</Link>
+            <Link to="/projects/future-website-building-platform">{currentLanguage === 'zh' ? '平台架构页' : currentLanguage === 'nl' ? 'Platformarchitectuur' : 'Platform Architecture'}</Link>
           </div>
         </div>
 
         <div>
           <h4>{pickText(currentLanguage, uiText.nav.contact)}</h4>
           <div className="neo-footer__links">
-            <a href="mailto:hello@harry.dev">hello@harry.dev</a>
-            <span>Global / Remote</span>
-            <span>{pickText(currentLanguage, uiText.common.availability)}</span>
+            <a href="mailto:HarryHongyue@omnigent.nl">HarryHongyue@omnigent.nl</a>
+            <a href="https://omnigent.nl" target="_blank" rel="noreferrer">omnigent.nl</a>
+            <span>{currentLanguage === 'zh' ? '全球 / 远程合作' : currentLanguage === 'nl' ? 'Global / remote' : 'Global / Remote'}</span>
           </div>
         </div>
 
         <div>
-          <h4>Follow Me</h4>
+          <h4>{currentLanguage === 'zh' ? '联系渠道' : currentLanguage === 'nl' ? 'Kanalen' : 'Channels'}</h4>
           <div className="neo-footer__socials">
-            <a className="neo-circle-link" href="https://github.com/HarryHongyue" target="_blank" rel="noreferrer">
-              <Globe2 size={18} />
-            </a>
-            <a className="neo-circle-link" href="https://linkedin.com/in/harryhongyue" target="_blank" rel="noreferrer">
-              <BriefcaseBusiness size={18} />
-            </a>
-            <a className="neo-circle-link" href="https://x.com" target="_blank" rel="noreferrer">
-              <Radio size={18} />
-            </a>
-            <a className="neo-circle-link" href="mailto:hello@harry.dev">
+            <a className="neo-circle-link" href="mailto:HarryHongyue@omnigent.nl" aria-label="Email">
               <Mail size={18} />
             </a>
-            <a className="neo-circle-link" href="/downloads">
-              <Rss size={18} />
+            <a className="neo-circle-link" href="https://wa.me/310000000000" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+              <MessageCircleMore size={18} />
+            </a>
+            <a className="neo-circle-link" href="https://x.com" target="_blank" rel="noreferrer" aria-label="XChat">
+              <Radio size={18} />
+            </a>
+            <a className="neo-circle-link" href="https://x.com" target="_blank" rel="noreferrer" aria-label="X">
+              <Radio size={18} />
+            </a>
+            <a className="neo-circle-link" href="https://signal.me/#eu/example" target="_blank" rel="noreferrer" aria-label="Signal">
+              <Shield size={18} />
+            </a>
+            <a className="neo-circle-link" href="https://t.me/example" target="_blank" rel="noreferrer" aria-label="Telegram">
+              <Send size={18} />
             </a>
           </div>
         </div>

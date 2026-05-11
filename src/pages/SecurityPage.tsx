@@ -1,10 +1,7 @@
 import React from 'react';
-import { Lock, ShieldCheck } from 'lucide-react';
 import NeoCard from '../components/ui/NeoCard';
-import NeoIconBox from '../components/ui/NeoIconBox';
 import NeoSection from '../components/ui/NeoSection';
 import { useLanguage } from '../contexts/LanguageContext';
-import { pickText, uiText } from '../data/siteContent';
 
 const SecurityPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -26,47 +23,19 @@ const SecurityPage: React.FC = () => {
 
   return (
     <div className="neo-page">
-      <NeoSection eyebrow={pickText(currentLanguage, uiText.security.eyebrow)} title={pickText(currentLanguage, uiText.security.title)} description={pickText(currentLanguage, uiText.security.intro)}>
-        <div className="neo-grid neo-grid--3">
-          {controls.map((control, index) => (
-            <NeoCard key={control} hoverable>
-              <div className="neo-project-card__header">
-                <NeoIconBox tone={index % 3 === 0 ? 'cyan' : index % 3 === 1 ? 'teal' : 'blue'} icon={<ShieldCheck size={20} />} />
-                <div>
-                  <h3>{control}</h3>
-                  <p>
-                    {currentLanguage === 'zh'
-                      ? '把这项控制落实到公开路由、项目服务和下载分发中。'
-                      : currentLanguage === 'nl'
-                        ? 'Pas deze controle toe op publieke routes, projectservices en distributie.'
-                        : 'Apply this control across public routes, project services, and release distribution.'}
-                  </p>
-                </div>
-              </div>
-            </NeoCard>
-          ))}
-        </div>
-      </NeoSection>
-
-      <NeoSection title={currentLanguage === 'zh' ? 'Best practices in this ecosystem' : currentLanguage === 'nl' ? 'Best practices in dit ecosysteem' : 'Best practices in this ecosystem'}>
+      <NeoSection title={currentLanguage === 'zh' ? '安全说明已下沉到各项目' : currentLanguage === 'nl' ? 'Security is nu projectspecifiek' : 'Security is now handled per project'}>
         <div className="neo-grid neo-grid--2">
           <NeoCard>
-            <div className="neo-project-card__header">
-              <NeoIconBox tone="teal" icon={<Lock size={22} />} />
-              <div>
-                <h3>{currentLanguage === 'zh' ? 'Public showcase, private runtime' : currentLanguage === 'nl' ? 'Publieke showcase, private runtime' : 'Public showcase, private runtime'}</h3>
-                <p>{currentLanguage === 'zh' ? '主站展示项目，但不应暴露真实处理服务的原始入口。' : currentLanguage === 'nl' ? 'De hoofdsite toont projecten, maar mag ruwe service-ingangen niet blootstellen.' : 'The main site showcases projects without exposing raw runtime entry points.'}</p>
-              </div>
-            </div>
+            <h3>{currentLanguage === 'zh' ? '为什么不再单独做主导航页' : currentLanguage === 'nl' ? 'Waarom dit geen hoofdnav-pagina meer is' : 'Why this is no longer a main-nav page'}</h3>
+            <p>{currentLanguage === 'zh' ? '因为这是个人展示网站，不是单一 SaaS 产品官网。安全内容更适合跟着项目类型走，而不是独立悬空。' : currentLanguage === 'nl' ? 'Omdat dit een persoonlijke showcasesite is en geen enkel SaaS-product. Security past beter per projecttype dan als losstaande hoofdpagina.' : 'Because this is a personal showcase site, not one single SaaS product. Security makes more sense attached to each project type than floating as a separate main page.'}</p>
           </NeoCard>
           <NeoCard variant="inset">
-            <div className="neo-project-card__header">
-              <NeoIconBox tone="blue" icon={<ShieldCheck size={22} />} />
-              <div>
-                <h3>{currentLanguage === 'zh' ? 'Documented controls' : currentLanguage === 'nl' ? 'Gedocumenteerde controles' : 'Documented controls'}</h3>
-                <p>{currentLanguage === 'zh' ? '上传校验、校验值、部署说明和发布渠道都需要写进公开文档。' : currentLanguage === 'nl' ? 'Uploadvalidatie, checksums, deployment-notes en releasekanalen horen in publieke documentatie.' : 'Upload validation, checksums, deployment notes, and release channels should be documented publicly.'}</p>
-              </div>
-            </div>
+            <h3>{currentLanguage === 'zh' ? '依然遵循的通用控制' : currentLanguage === 'nl' ? 'Algemene controls die nog steeds gelden' : 'Shared controls still followed'}</h3>
+            <ul className="neo-list">
+              {controls.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </NeoCard>
         </div>
       </NeoSection>

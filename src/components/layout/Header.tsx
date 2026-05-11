@@ -11,11 +11,8 @@ const Header: React.FC = () => {
 
   const navItems = [
     { to: '/', label: pickText(currentLanguage, uiText.nav.home) },
-    { to: '/about', label: pickText(currentLanguage, uiText.nav.about) },
     { to: '/projects', label: pickText(currentLanguage, uiText.nav.projects) },
     { to: '/downloads', label: pickText(currentLanguage, uiText.nav.downloads) },
-    { to: '/deployment', label: pickText(currentLanguage, uiText.nav.deployment) },
-    { to: '/security', label: pickText(currentLanguage, uiText.nav.security) },
     { to: '/contact', label: pickText(currentLanguage, uiText.nav.contact) },
   ];
 
@@ -24,7 +21,9 @@ const Header: React.FC = () => {
       <div className="neo-navbar__inner">
         <div className="site-header__left">
           <Link to="/" className="site-logo" onClick={() => setIsOpen(false)}>
-            <span className="site-logo__mark">H</span>
+            <span className="site-logo__mark">
+              <img src="/project-assets/harry-logo.png" alt="Harry logo" />
+            </span>
             <span className="site-logo__copy">
               <strong>{pickText(currentLanguage, uiText.brand)}</strong>
               <small>{pickText(currentLanguage, uiText.brandSub)}</small>
