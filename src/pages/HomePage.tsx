@@ -63,7 +63,16 @@ const HomePage: React.FC = () => {
         </section>
       </div>
 
-      <NeoSection title={pickText(currentLanguage, uiText.home.featuredTitle)} description={pickText(currentLanguage, uiText.home.featuredBody)}>
+      <NeoSection
+        title={pickText(currentLanguage, uiText.home.featuredTitle)}
+        description={pickText(currentLanguage, uiText.home.featuredBody)}
+        actions={
+          <Link to="/projects" className={neoButtonClass('secondary')}>
+            {pickText(currentLanguage, uiText.common.viewProjects)}
+            <ArrowRight size={18} />
+          </Link>
+        }
+      >
         <div className="selected-work-grid">
           {displayFeatured.map((project) => (
             <ProjectPreviewCard key={project.slug} project={project} />

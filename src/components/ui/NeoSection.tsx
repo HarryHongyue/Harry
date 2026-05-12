@@ -19,10 +19,12 @@ const NeoSection: React.FC<NeoSectionProps> = ({ eyebrow, title, description, ac
     >
       <section className={cn('neo-section section-shell', className)} {...props}>
       {eyebrow || title || description || actions ? (
-        <div className="neo-section__header">
-          {eyebrow ? <div className="neo-section__eyebrow">{eyebrow}</div> : null}
-          {title ? <h2 className="neo-section__title">{title}</h2> : null}
-          {description ? <p className="neo-section__description">{description}</p> : null}
+        <div className={cn('neo-section__header', actions && 'neo-section__header--with-actions')}>
+          <div>
+            {eyebrow ? <div className="neo-section__eyebrow">{eyebrow}</div> : null}
+            {title ? <h2 className="neo-section__title">{title}</h2> : null}
+            {description ? <p className="neo-section__description">{description}</p> : null}
+          </div>
           {actions ? <div className="neo-section__actions">{actions}</div> : null}
         </div>
       ) : null}
