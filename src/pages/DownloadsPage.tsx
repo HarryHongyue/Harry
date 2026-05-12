@@ -1,6 +1,5 @@
 import React from 'react';
-import { Apple, ArrowRight, Download, ExternalLink, Globe2, MonitorDown, TerminalSquare } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, Download, Globe2 } from 'lucide-react';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
 import NeoSection from '../components/ui/NeoSection';
@@ -11,30 +10,18 @@ import { pickText, uiText } from '../data/siteContent';
 import type { ProjectReleaseAsset } from '../types/project';
 import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
-import Hero3DShowcase from '../components/hero3d/Hero3DShowcase';
+import DownloadHero3DScene from '../components/hero3d/DownloadHero3DScene';
 import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const DownloadsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
 
-  const renderPlatformMark = (row: ProjectReleaseAsset) => {
-    const text = `${pickText(currentLanguage, row.label)} ${pickText(currentLanguage, row.platform)}`.toLowerCase();
-    const icon = text.includes('mac') ? <Apple size={18} /> : text.includes('linux') ? <TerminalSquare size={18} /> : <MonitorDown size={18} />;
-
-    return (
-      <span className="neo-platform-name">
-        <span className="neo-platform-name__icon">{icon}</span>
-        <span>{pickText(currentLanguage, row.label)}</span>
-      </span>
-    );
-  };
-
   const columns = [
     {
       key: 'label',
       header: currentLanguage === 'zh' ? '名称' : currentLanguage === 'nl' ? 'Naam' : 'Name',
-      render: (row: ProjectReleaseAsset) => renderPlatformMark(row),
+      render: (row: ProjectReleaseAsset) => pickText(currentLanguage, row.label),
     },
     {
       key: 'version',
@@ -70,10 +57,10 @@ const DownloadsPage: React.FC = () => {
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
+      <Breadcrumbs />
       <div className="section-shell">
         <section className="neo-hero neo-hero--downloads">
           <div className="neo-hero__copy">
-            <Breadcrumbs />
             <h1 className="neo-hero-title">{pickText(currentLanguage, uiText.downloads.title)}</h1>
             <div className="neo-hero__subtitle">
               <strong>{uiText.home.subtitleEn}</strong>
@@ -93,7 +80,7 @@ const DownloadsPage: React.FC = () => {
             <NeoBadge tone="teal">{pickText(currentLanguage, uiText.common.verifyChecksum)}</NeoBadge>
           </div>
 
-          <Hero3DShowcase intensity="high" />
+          <DownloadHero3DScene intensity="high" />
         </section>
       </div>
 
@@ -104,17 +91,11 @@ const DownloadsPage: React.FC = () => {
               <div className="neo-project-card__header">
                 <ProjectLogo src={project.logo} alt={project.englishName} />
                 <div>
-                  <div className="neo-download-title-row">
-                    <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
-                    {project.releaseAssets[0] ? <NeoBadge tone="teal">{project.releaseAssets[0].version}</NeoBadge> : null}
-                  </div>
+                  <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
                   <p>{pickText(currentLanguage, project.tagline)}</p>
                 </div>
               </div>
-              <Link to={`/projects/${project.slug}`} className={`${neoButtonClass('ghost')} neo-download-detail-link`}>
-                {currentLanguage === 'zh' ? '项目详情' : currentLanguage === 'nl' ? 'Projectdetails' : 'Project Details'}
-                <ExternalLink size={15} />
-              </Link>
+              {project.releaseAssets[0] ? <NeoBadge tone="teal">{project.releaseAssets[0].version}</NeoBadge> : null}
             </div>
             <NeoTable<ProjectReleaseAsset> rowKey={(row) => `${row.label.en}-${row.version}`} rows={project.releaseAssets} columns={columns} />
           </div>

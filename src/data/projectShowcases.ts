@@ -27,7 +27,7 @@ export const projectShowcases: Record<string, ProjectShowcase> = {
   'ode-solver': {
     slug: 'ode-solver',
     logo: '/project-assets/ode-solver-logo.png',
-    accent: '#2563eb',
+    accent: '#7A80E2',
     eyebrow: 'Desktop numerical lab',
     headline: 'Solve, compare, and visualize ordinary differential equations in one focused desktop tool.',
     summary: 'Migrated from the original ODE website concept: a clean hero, numerical method highlights, Windows installer flow, and release-driven download experience.',

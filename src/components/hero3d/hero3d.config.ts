@@ -1,10 +1,10 @@
 export const HERO3D_COLORS = {
-  cyan: '#65d6ff',
-  teal: '#46f0d4',
-  blue: '#6878ff',
-  navy: '#07111f',
-  graphite: '#111827',
-  panel: 'rgba(10, 20, 35, 0.72)',
+  cyan: '#A4A6FF',
+  teal: '#CACEEF',
+  blue: '#7A80E2',
+  navy: '#263D91',
+  graphite: '#414BA3',
+  panel: 'rgba(38, 61, 145, 0.72)',
 };
 
 export const HERO3D_INTENSITY = {

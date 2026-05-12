@@ -15,9 +15,9 @@ const CircuitOverlay: React.FC<CircuitOverlayProps> = ({ reducedMotion = false }
         </feMerge>
       </filter>
       <linearGradient id="hero3dCircuitStroke" x1="0" x2="1">
-        <stop offset="0%" stopColor="rgba(37, 99, 235, 0.08)" />
-        <stop offset="48%" stopColor="rgba(34, 211, 238, 0.72)" />
-        <stop offset="100%" stopColor="rgba(37, 99, 235, 0.18)" />
+        <stop offset="0%" stopColor="rgba(122, 128, 226, 0.10)" />
+        <stop offset="48%" stopColor="rgba(164, 166, 255, 0.72)" />
+        <stop offset="100%" stopColor="rgba(122, 128, 226, 0.20)" />
       </linearGradient>
     </defs>
 

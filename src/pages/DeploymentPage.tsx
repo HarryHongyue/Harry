@@ -2,14 +2,13 @@ import React from 'react';
 import NeoCard from '../components/ui/NeoCard';
 import NeoSection from '../components/ui/NeoSection';
 import { useLanguage } from '../contexts/LanguageContext';
-import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const DeploymentPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
 
   return (
     <div className="neo-page">
-      <NeoSection eyebrow={<Breadcrumbs />} title={currentLanguage === 'zh' ? '部署说明已并入项目详情' : currentLanguage === 'nl' ? 'Deployment-notities zitten nu in de projectpagina’s' : 'Deployment notes now live inside project pages'}>
+      <NeoSection title={currentLanguage === 'zh' ? '部署说明已并入项目详情' : currentLanguage === 'nl' ? 'Deployment-notities zitten nu in de projectpagina’s' : 'Deployment notes now live inside project pages'}>
         <div className="neo-grid neo-grid--2">
           <NeoCard>
             <h3>{currentLanguage === 'zh' ? '为什么保留这个路由' : currentLanguage === 'nl' ? 'Waarom deze route blijft bestaan' : 'Why this route still exists'}</h3>

@@ -45,7 +45,8 @@ const ProjectsPage: React.FC = () => {
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
-      <NeoSection className="neo-projects-hero-section" eyebrow={<Breadcrumbs />} title={pickText(currentLanguage, uiText.projects.title)} description={pickText(currentLanguage, uiText.projects.intro)}>
+      <Breadcrumbs />
+      <NeoSection className="neo-projects-hero-section" title={pickText(currentLanguage, uiText.projects.title)} description={pickText(currentLanguage, uiText.projects.intro)}>
         <div className="neo-projects-toolbar">
           <div className="neo-filter-bar">
             {projectFilters.map((filter) => (

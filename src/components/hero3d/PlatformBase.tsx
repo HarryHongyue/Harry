@@ -89,7 +89,7 @@ const PlatformBase: React.FC<PlatformBaseProps> = ({ intensity = 'medium', reduc
         {ledPositions.map((x, index) => (
           <mesh key={x} position={[x, 0, 0]}>
             <sphereGeometry args={[index % 3 === 0 ? 0.075 : 0.052, 18, 18]} />
-            <meshStandardMaterial color={index > 2 ? HERO3D_COLORS.teal : '#8fb8ff'} emissive={index > 2 ? HERO3D_COLORS.teal : HERO3D_COLORS.blue} emissiveIntensity={(index > 2 ? 1.25 : 0.7) * accent.glow} />
+            <meshStandardMaterial color={index > 2 ? HERO3D_COLORS.teal : '#A4A6FF'} emissive={index > 2 ? HERO3D_COLORS.teal : HERO3D_COLORS.blue} emissiveIntensity={(index > 2 ? 1.25 : 0.7) * accent.glow} />
           </mesh>
         ))}
       </group>

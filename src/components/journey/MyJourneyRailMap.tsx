@@ -323,7 +323,7 @@ export const MyJourneyRailMap: React.FC = () => {
                   <feColorMatrix
                     in="blur"
                     type="matrix"
-                    values="0 0 0 0 0.05 0 0 0 0 0.82 0 0 0 0 1 0 0 0 0.9 0"
+                    values="0 0 0 0 0.64 0 0 0 0 0.65 0 0 0 0 1 0 0 0 0.9 0"
                   />
                   <feMerge>
                     <feMergeNode />
@@ -331,10 +331,10 @@ export const MyJourneyRailMap: React.FC = () => {
                   </feMerge>
                 </filter>
                 <linearGradient id="railGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#19f7ff" />
-                  <stop offset="46%" stopColor="#3c8dff" />
-                  <stop offset="72%" stopColor="#7b5cff" />
-                  <stop offset="100%" stopColor="#20f0c8" />
+                  <stop offset="0%" stopColor="#A4A6FF" />
+                  <stop offset="46%" stopColor="#7A80E2" />
+                  <stop offset="72%" stopColor="#525EB9" />
+                  <stop offset="100%" stopColor="#CACEEF" />
                 </linearGradient>
               </defs>
 

@@ -1,12 +1,16 @@
 import React, { Suspense, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import { Group } from 'three';
 import HLogoMesh from './HLogoMesh';
 import PlatformBase from './PlatformBase';
-import FloatingPanel3D from './FloatingPanel3D';
 import DatabaseCylinder from './DatabaseCylinder';
 import ServerCube from './ServerCube';
+import CircuitLines from './CircuitLines';
+import FloatingAnalyticsPanel from './FloatingAnalyticsPanel';
+import FloatingCodeIconPanel from './FloatingCodeIconPanel';
+import FloatingCodePanel from './FloatingCodePanel';
 import { HERO3D_COLORS, type Hero3DIntensity } from './hero3d.config';
 import type { HeroParallaxValue } from './useHeroParallax';
 
@@ -36,6 +40,7 @@ const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medi
       <pointLight color={HERO3D_COLORS.blue} intensity={1.35} distance={6} position={[2.6, -0.55, 1.7]} />
       <rectAreaLight color={HERO3D_COLORS.cyan} intensity={1.2} width={4} height={2.5} position={[-2.5, 3.2, 2.2]} rotation={[-0.6, -0.35, 0.2]} />
 
+      <CircuitLines reducedMotion={reducedMotion} />
       <PlatformBase intensity={intensity} reducedMotion={reducedMotion} />
       <HLogoMesh logoText={logoText} intensity={intensity} reducedMotion={reducedMotion} parallax={parallax} />
       <DatabaseCylinder intensity={intensity} reducedMotion={reducedMotion} />
@@ -43,13 +48,16 @@ const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medi
 
       {showPanels ? (
         <>
-          <FloatingPanel3D variant="code" position={[-3.4, 2.2, -0.4]} rotation={[0.05, 0.45, -0.04]} phase={0.2} reducedMotion={reducedMotion} />
-          <FloatingPanel3D variant="chart" position={[2.08, 2.6, -0.6]} rotation={[0.05, -0.35, 0.02]} phase={1.4} reducedMotion={reducedMotion} />
-          <FloatingPanel3D variant="symbol" position={[2.95, 1.68, 0.28]} rotation={[0.02, -0.42, 0]} phase={2.1} reducedMotion={reducedMotion} />
+          <FloatingCodePanel reducedMotion={reducedMotion} />
+          <FloatingAnalyticsPanel reducedMotion={reducedMotion} />
+          <FloatingCodeIconPanel reducedMotion={reducedMotion} />
         </>
       ) : null}
 
       <Environment preset="city" />
+      <EffectComposer multisampling={0}>
+        <Bloom intensity={1.05} luminanceThreshold={0.22} luminanceSmoothing={0.62} mipmapBlur />
+      </EffectComposer>
       <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
     </group>
   );

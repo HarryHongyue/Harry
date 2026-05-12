@@ -6,17 +6,17 @@
   isolation: isolate;
   border-radius: 34px;
   background:
-    radial-gradient(circle at calc(50% + (var(--hero-parallax-x, 0) * 8%)) calc(32% + (var(--hero-parallax-y, 0) * 8%)), rgba(34, 211, 238, 0.18), transparent 26%),
-    radial-gradient(circle at 78% 68%, rgba(37, 99, 235, 0.14), transparent 28%),
-    linear-gradient(145deg, #0b1424 0%, #07101d 48%, #040812 100%);
-  border: 1px solid rgba(110, 180, 255, 0.13);
+    radial-gradient(circle at calc(50% + (var(--hero-parallax-x, 0) * 8%)) calc(32% + (var(--hero-parallax-y, 0) * 8%)), rgba(164, 166, 255, 0.20), transparent 26%),
+    radial-gradient(circle at 78% 68%, rgba(122, 128, 226, 0.18), transparent 28%),
+    linear-gradient(145deg, #525EB9 0%, #414BA3 48%, #263D91 100%);
+  border: 1px solid rgba(202, 206, 239, 0.20);
   box-shadow:
-    18px 18px 40px rgba(0, 0, 0, 0.45),
-    -10px -10px 30px rgba(80, 160, 255, 0.06),
-    inset 1px 1px 1px rgba(255, 255, 255, 0.06),
-    inset -10px -10px 24px rgba(0, 0, 0, 0.25),
-    0 0 52px rgba(34, 211, 238, 0.08);
-  filter: drop-shadow(0 0 24px rgba(34, 211, 238, 0.12));
+    18px 18px 40px rgba(38, 61, 145, 0.34),
+    -10px -10px 30px rgba(202, 206, 239, 0.06),
+    inset 1px 1px 1px rgba(246, 248, 255, 0.08),
+    inset -10px -10px 24px rgba(38, 61, 145, 0.25),
+    0 0 52px rgba(164, 166, 255, 0.12);
+  filter: drop-shadow(0 0 24px rgba(164, 166, 255, 0.14));
   animation: hero-showcase-drift 11s ease-in-out infinite;
 }
 
@@ -28,8 +28,8 @@
   pointer-events: none;
   border-radius: 33px;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent 18%, transparent 78%, rgba(34, 211, 238, 0.08)),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 38%);
+    linear-gradient(90deg, rgba(246, 248, 255, 0.08), transparent 18%, transparent 78%, rgba(164, 166, 255, 0.10)),
+    linear-gradient(180deg, rgba(246, 248, 255, 0.06), transparent 38%);
   mix-blend-mode: screen;
 }
 
@@ -39,8 +39,8 @@
   z-index: 0;
   border-radius: 28px;
   background:
-    linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(202, 206, 239, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202, 206, 239, 0.09) 1px, transparent 1px);
   background-size: 46px 46px;
   opacity: 0.33;
   mask-image: radial-gradient(circle at 50% 54%, black 0%, rgba(0, 0, 0, 0.72) 38%, transparent 82%);
@@ -71,13 +71,13 @@
 }
 
 .circuit-node {
-  fill: #22d3ee;
+  fill: #A4A6FF;
   opacity: 0.82;
   animation: circuit-node-pulse 3.8s ease-in-out infinite;
 }
 
 .circuit-node--1 {
-  fill: #2563eb;
+  fill: #7A80E2;
   animation-delay: -1.2s;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .circuit-node--3 {
-  fill: #14f1dd;
+  fill: #CACEEF;
   animation-delay: -0.6s;
 }
 
@@ -95,17 +95,17 @@
   width: 188px;
   min-height: 126px;
   padding: 14px;
-  color: rgba(230, 248, 255, 0.9);
-  border: 1px solid rgba(34, 211, 238, 0.25);
+  color: rgba(246, 248, 255, 0.92);
+  border: 1px solid rgba(164, 166, 255, 0.28);
   border-radius: 14px;
-  background: rgba(10, 20, 35, 0.72);
+  background: rgba(38, 61, 145, 0.72);
   box-shadow:
-    inset 8px 8px 18px rgba(0, 0, 0, 0.35),
-    inset -4px -4px 12px rgba(80, 160, 255, 0.08),
-    0 20px 60px rgba(0, 180, 255, 0.18);
+    inset 8px 8px 18px rgba(38, 61, 145, 0.28),
+    inset -4px -4px 12px rgba(202, 206, 239, 0.08),
+    0 20px 60px rgba(122, 128, 226, 0.20);
   backdrop-filter: blur(16px);
   transform-style: preserve-3d;
-  filter: drop-shadow(0 0 24px rgba(34, 211, 238, 0.22));
+  filter: drop-shadow(0 0 24px rgba(164, 166, 255, 0.24));
   user-select: none;
 }
 
@@ -124,21 +124,27 @@
   width: 7px;
   height: 7px;
   border-radius: 999px;
-  background: #22d3ee;
-  box-shadow: 0 0 10px rgba(34, 211, 238, 0.75);
+  background: #A4A6FF;
+  box-shadow: 0 0 10px rgba(164, 166, 255, 0.68);
+}
+
+.hero-3d-fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .panel-dots span:first-child {
-  background: #fb7185;
+  background: #F0A3B4;
 }
 
 .panel-dots span:last-child {
-  background: #14f1dd;
+  background: #CACEEF;
 }
 
 .floating-code-panel code {
   display: grid;
-  color: #d7efff;
+  color: #DDE2FF;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   white-space: pre;
 }
@@ -146,7 +152,7 @@
 .floating-code-panel code span:nth-child(2),
 .floating-code-panel code span:nth-child(3),
 .floating-code-panel code span:nth-child(n + 6) {
-  color: #48d8ff;
+  color: #A4A6FF;
 }
 
 .floating-chart-panel {
@@ -155,7 +161,7 @@
 }
 
 .floating-chart-panel strong {
-  color: #34f5ef;
+  color: #CACEEF;
   font-size: 12px;
   letter-spacing: 0.08em;
 }
@@ -168,15 +174,15 @@
   height: 70px;
   padding: 8px 4px 0;
   background:
-    linear-gradient(rgba(97, 165, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(97, 165, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(202, 206, 239, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(202, 206, 239, 0.08) 1px, transparent 1px);
   background-size: 100% 25%, 20% 100%;
 }
 
 .chart-grid span {
   border-radius: 5px 5px 2px 2px;
-  background: linear-gradient(180deg, #36e4ff, #2563eb);
-  box-shadow: 0 0 16px rgba(37, 99, 235, 0.55);
+  background: linear-gradient(180deg, #A4A6FF, #7A80E2);
+  box-shadow: 0 0 16px rgba(122, 128, 226, 0.55);
 }
 
 .floating-chart-panel svg {
@@ -186,9 +192,9 @@
 
 .floating-chart-panel path {
   fill: none;
-  stroke: #22d3ee;
+  stroke: #A4A6FF;
   stroke-width: 3;
-  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.65));
+  filter: drop-shadow(0 0 8px rgba(164, 166, 255, 0.62));
 }
 
 .floating-symbol-panel {
@@ -198,18 +204,18 @@
 }
 
 .floating-symbol-panel b {
-  color: #5ba7ff;
+  color: #A4A6FF;
   font-size: 42px;
   line-height: 1;
-  text-shadow: 0 0 20px rgba(34, 211, 238, 0.7);
+  text-shadow: 0 0 20px rgba(164, 166, 255, 0.62);
 }
 
 .floating-symbol-panel span {
   width: 58px;
   height: 4px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #2563eb, #22d3ee);
-  box-shadow: 0 0 12px rgba(34, 211, 238, 0.42);
+  background: linear-gradient(90deg, #7A80E2, #A4A6FF);
+  box-shadow: 0 0 12px rgba(164, 166, 255, 0.42);
 }
 
 .floating-symbol-panel span:last-child {
@@ -217,10 +223,10 @@
 }
 
 .neon-button-like {
-  color: #dffbff;
-  border-color: rgba(34, 211, 238, 0.34);
-  background: linear-gradient(145deg, rgba(15, 30, 48, 0.86), rgba(5, 12, 24, 0.88));
-  box-shadow: 0 0 22px rgba(34, 211, 238, 0.24), inset 0 0 18px rgba(37, 99, 235, 0.12);
+  color: #F6F8FF;
+  border-color: rgba(164, 166, 255, 0.34);
+  background: linear-gradient(145deg, rgba(82, 94, 185, 0.62), rgba(38, 61, 145, 0.76));
+  box-shadow: 0 0 22px rgba(164, 166, 255, 0.24), inset 0 0 18px rgba(122, 128, 226, 0.16);
 }
 
 .glow-orb {
@@ -237,13 +243,13 @@
 .glow-orb--cyan {
   top: 18%;
   left: 42%;
-  background: rgba(20, 241, 221, 0.34);
+  background: rgba(164, 166, 255, 0.34);
 }
 
 .glow-orb--blue {
   right: 6%;
   bottom: 16%;
-  background: rgba(37, 99, 235, 0.32);
+  background: rgba(122, 128, 226, 0.32);
 }
 
 @keyframes circuit-flow {
@@ -275,80 +281,10 @@
   }
 }
 
-.neo-hero--downloads {
-  position: relative;
-  min-height: 560px;
-  grid-template-columns: minmax(0, 0.92fr) minmax(520px, 1.08fr);
-  background:
-    radial-gradient(circle at 73% 42%, rgba(34, 211, 238, 0.16), transparent 30%),
-    radial-gradient(circle at 88% 74%, rgba(37, 99, 235, 0.16), transparent 24%),
-    linear-gradient(145deg, rgba(18, 27, 49, 0.96), rgba(10, 16, 31, 0.98));
-  border: 0;
-  padding: 0 30px 30px;
-}
-
-.neo-hero--downloads .neo-hero__copy {
-  align-content: start;
-  justify-items: start;
-  padding-top: 0;
-  padding-bottom: 32px;
-  padding-left: 0;
-  max-width: 640px;
-  gap: 28px;
-}
-
-.neo-hero--downloads .neo-hero-title {
-  margin-bottom: clamp(12px, 1.5vw, 20px);
-}
-
-.neo-hero--downloads .hero-3d-shell {
-  align-self: stretch;
-  width: min(100%, 900px);
-  min-height: 100%;
-  border: 0;
-  border-radius: 0;
-  background: rgba(10, 13, 28, 0.18);
-  box-shadow: none;
-  filter: none;
-}
-
-.neo-hero--downloads .hero-3d-canvas {
-  inset: -8% -5% -4%;
-}
-
-.neo-hero--downloads .circuit-overlay {
-  opacity: 0.62;
-}
-
-.neo-hero--downloads .hero-3d-shell::after {
-  display: none;
-}
-
-.neo-hero--downloads .hero-3d-panel {
-  inset: 0;
-  border-radius: 0;
-  opacity: 0.24;
-  mask-image: radial-gradient(circle at 55% 54%, black 0%, rgba(0, 0, 0, 0.62) 34%, transparent 78%);
-}
-
 @media (max-width: 1180px) {
   .hero-3d-shell {
     width: 100%;
     min-height: 480px;
-  }
-
-  .neo-hero--downloads {
-    min-height: auto;
-    grid-template-columns: 1fr;
-  }
-
-  .neo-hero--downloads .neo-hero__copy {
-    padding-top: 18px;
-  }
-
-  .neo-hero--downloads .hero-3d-shell {
-    min-height: 480px;
-    border-radius: 24px;
   }
 }
 
@@ -356,10 +292,6 @@
   .hero-3d-shell {
     min-height: 360px;
     border-radius: 26px;
-  }
-
-  .neo-hero--downloads .hero-3d-shell {
-    min-height: 360px;
   }
 
   .hero-3d-shell::after {

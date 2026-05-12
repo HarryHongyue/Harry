@@ -45,10 +45,10 @@ const ProjectDetailPage: React.FC = () => {
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
+      <Breadcrumbs />
       <div className="section-shell">
         <div className={`neo-detail-hero ${isPdf ? 'is-pdf' : isOde ? 'is-ode' : 'is-generic'}`}>
           <NeoCard className="neo-detail-card neo-detail-card--main">
-            <Breadcrumbs />
             <div className="neo-project-card__header neo-project-card__header--hero">
               <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--hero" />
               <div>

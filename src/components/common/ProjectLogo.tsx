@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '../../lib/cn';
 
 interface ProjectLogoProps {
@@ -9,11 +9,9 @@ interface ProjectLogoProps {
 }
 
 const ProjectLogo: React.FC<ProjectLogoProps> = ({ src, alt, className, imageClassName }) => {
-  const [failed, setFailed] = useState(false);
-
   return (
     <div className={cn('neo-project-logo', className)}>
-      {src && !failed ? <img src={src} alt={alt} className={cn('neo-project-logo__image', imageClassName)} onError={() => setFailed(true)} /> : <span className="neo-project-logo__fallback">{alt.slice(0, 1)}</span>}
+      {src ? <img src={src} alt={alt} className={cn('neo-project-logo__image', imageClassName)} /> : <span className="neo-project-logo__fallback">{alt.slice(0, 1)}</span>}
     </div>
   );
 };

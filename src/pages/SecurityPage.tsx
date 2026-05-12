@@ -2,7 +2,6 @@ import React from 'react';
 import NeoCard from '../components/ui/NeoCard';
 import NeoSection from '../components/ui/NeoSection';
 import { useLanguage } from '../contexts/LanguageContext';
-import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const SecurityPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -24,7 +23,7 @@ const SecurityPage: React.FC = () => {
 
   return (
     <div className="neo-page">
-      <NeoSection eyebrow={<Breadcrumbs />} title={currentLanguage === 'zh' ? '安全说明已下沉到各项目' : currentLanguage === 'nl' ? 'Security is nu projectspecifiek' : 'Security is now handled per project'}>
+      <NeoSection title={currentLanguage === 'zh' ? '安全说明已下沉到各项目' : currentLanguage === 'nl' ? 'Security is nu projectspecifiek' : 'Security is now handled per project'}>
         <div className="neo-grid neo-grid--2">
           <NeoCard>
             <h3>{currentLanguage === 'zh' ? '为什么不再单独做主导航页' : currentLanguage === 'nl' ? 'Waarom dit geen hoofdnav-pagina meer is' : 'Why this is no longer a main-nav page'}</h3>

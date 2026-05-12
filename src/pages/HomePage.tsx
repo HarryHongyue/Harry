@@ -25,8 +25,8 @@ const HomePage: React.FC = () => {
           <div className="neo-hero__copy">
             <h1 className="neo-hero-title">{pickText(currentLanguage, uiText.home.title)}</h1>
             <div className="neo-hero__subtitle">
-              <strong>{uiText.home.subtitleEn}</strong>
-              <span>{currentLanguage === 'zh' ? uiText.home.subtitleZh : currentLanguage === 'nl' ? uiText.home.subtitleNl : uiText.home.subtitleZh}</span>
+              <strong>{currentLanguage === 'zh' ? '一个愿景。多个项目。统一生态。' : currentLanguage === 'nl' ? 'Eén visie. Meerdere projecten. Eén ecosysteem.' : uiText.home.subtitleEn}</strong>
+              <span>{currentLanguage === 'en' ? '一个愿景 多重项目 统一生态' : uiText.home.subtitleEn}</span>
             </div>
             <p>{pickText(currentLanguage, uiText.home.body)}</p>
             <div className="neo-hero__actions">
@@ -58,10 +58,6 @@ const HomePage: React.FC = () => {
             <div className="neo-home-photo-showcase__frame">
               <img src={personalHeroPhoto} alt="Harry" />
             </div>
-            <div className="neo-home-photo-showcase__plate">
-              <span>{currentLanguage === 'zh' ? '个人主站' : currentLanguage === 'nl' ? 'Hoofdsite' : 'Main Site'}</span>
-              <strong>Harry</strong>
-            </div>
           </div>
         </section>
       </div>
@@ -69,7 +65,7 @@ const HomePage: React.FC = () => {
       <NeoSection title={pickText(currentLanguage, uiText.home.featuredTitle)} description={pickText(currentLanguage, uiText.home.featuredBody)}>
         <div className="neo-project-grid neo-project-grid--featured">
           {displayFeatured.map((project) => (
-            <NeoCard key={project.slug} hoverable className="neo-project-card neo-project-card--spotlight">
+            <NeoCard key={project.slug} hoverable className="neo-project-card neo-project-card--spotlight neo-home-feature-card">
               <div className="neo-project-card__header">
                 <ProjectLogo src={project.logo} alt={project.englishName} />
                 <div>

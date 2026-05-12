@@ -154,8 +154,8 @@
 }
 
 .journey-train__lamp {
-  fill: #d9ffff;
-  filter: drop-shadow(0 0 13px rgba(216, 255, 255, 0.98));
+  fill: #F6F8FF;
+  filter: drop-shadow(0 0 13px rgba(202, 206, 239, 0.82));
 }
 
 .journey-card {
@@ -164,15 +164,15 @@
   flex-direction: row;
   gap: clamp(0.45rem, 0.7vw, 0.7rem);
   padding: clamp(0.78rem, 0.95vw, 0.95rem);
-  border: 1px solid rgba(80, 220, 255, 0.16);
+  border: 1px solid rgba(202, 206, 239, 0.18);
   border-radius: 16px;
   background:
-    linear-gradient(145deg, rgba(11, 26, 45, 0.99), rgba(5, 13, 26, 0.99)),
-    rgb(8, 20, 36);
+    linear-gradient(145deg, rgba(82, 94, 185, 0.46), rgba(38, 61, 145, 0.72)),
+    rgb(38, 61, 145);
   box-shadow:
-    16px 18px 34px rgba(0, 0, 0, 0.44),
-    -6px -6px 16px rgba(255, 255, 255, 0.025),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    16px 18px 34px rgba(38, 61, 145, 0.34),
+    -6px -6px 16px rgba(202, 206, 239, 0.04),
+    inset 0 1px 0 rgba(246, 248, 255, 0.08),
     inset 0 -22px 30px rgba(0, 0, 0, 0.18);
   opacity: 0;
   transform: translateY(12px) scale(0.98);
@@ -235,12 +235,12 @@
 .journey-card:hover,
 .journey-card.is-active {
   transform: translateY(-4px) scale(1.01);
-  border-color: rgba(50, 240, 255, 0.38);
+  border-color: rgba(164, 166, 255, 0.38);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 30px rgba(0, 220, 255, 0.18),
-    0 0 0 1px rgba(53, 214, 255, 0.08);
+    0 20px 50px rgba(38, 61, 145, 0.34),
+    inset 0 1px 0 rgba(246, 248, 255, 0.08),
+    0 0 30px rgba(164, 166, 255, 0.18),
+    0 0 0 1px rgba(164, 166, 255, 0.08);
 }
 
 .journey-card__icon {
@@ -249,34 +249,34 @@
   width: clamp(42px, 3.8vw, 54px);
   height: clamp(42px, 3.8vw, 54px);
   flex-shrink: 0;
-  border: 1px solid rgba(52, 215, 255, 0.2);
+  border: 1px solid rgba(164, 166, 255, 0.24);
   border-radius: 50%;
-  color: #19f7ff;
+  color: #A4A6FF;
   background:
-    radial-gradient(circle at 35% 25%, rgba(53, 214, 255, 0.2), transparent 42%),
-    linear-gradient(145deg, rgba(15, 39, 67, 0.95), rgba(6, 15, 29, 0.98));
+    radial-gradient(circle at 35% 25%, rgba(164, 166, 255, 0.22), transparent 42%),
+    linear-gradient(145deg, rgba(82, 94, 185, 0.62), rgba(38, 61, 145, 0.82));
   box-shadow:
-    9px 11px 20px rgba(0, 0, 0, 0.44),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 22px rgba(53, 214, 255, 0.1);
+    9px 11px 20px rgba(38, 61, 145, 0.34),
+    inset 1px 1px 0 rgba(246, 248, 255, 0.08),
+    0 0 22px rgba(164, 166, 255, 0.12);
 }
 
 .journey-card__icon span {
-  color: #d9ffff;
+  color: #F6F8FF;
   font-size: 1.02rem;
   font-weight: 900;
   letter-spacing: 0;
-  text-shadow: 0 0 12px rgba(31, 246, 255, 0.78);
+  text-shadow: 0 0 12px rgba(164, 166, 255, 0.66);
 }
 
 .journey-card.is-active .journey-card__icon,
 .journey-card.is-passed .journey-card__icon {
-  color: #74ffff;
-  border-color: rgba(53, 214, 255, 0.44);
+  color: #CACEEF;
+  border-color: rgba(164, 166, 255, 0.44);
   box-shadow:
-    9px 11px 20px rgba(0, 0, 0, 0.44),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 26px rgba(53, 214, 255, 0.26);
+    9px 11px 20px rgba(38, 61, 145, 0.34),
+    inset 1px 1px 0 rgba(246, 248, 255, 0.10),
+    0 0 26px rgba(164, 166, 255, 0.26);
 }
 
 .journey-card__body {
@@ -297,15 +297,15 @@
 .journey-card__year {
   display: block;
   margin-bottom: 2px;
-  color: #14f8ff;
+  color: #A4A6FF;
   font-size: clamp(1rem, 1.18vw, 1.26rem);
   font-weight: 800;
   line-height: 1.1;
-  text-shadow: 0 0 14px rgba(20, 248, 255, 0.24);
+  text-shadow: 0 0 14px rgba(164, 166, 255, 0.24);
 }
 
 .journey-card h3 {
-  color: #f3f8ff;
+  color: #F6F8FF;
   font-size: clamp(0.78rem, 0.86vw, 0.98rem);
   letter-spacing: 0;
   line-height: 1.2;
@@ -314,7 +314,7 @@
 
 .journey-card__description {
   margin-top: 2px;
-  color: rgba(214, 225, 240, 0.82);
+  color: rgba(221, 226, 255, 0.82);
   font-size: clamp(0.66rem, 0.7vw, 0.82rem);
   line-height: 1.34;
   display: -webkit-box;
@@ -341,8 +341,8 @@
   min-height: 23px;
   padding: 4px 7px;
   border-radius: 4px;
-  background: rgba(20, 48, 82, 0.72);
-  color: rgba(180, 210, 240, 0.9);
+  background: rgba(122, 128, 226, 0.18);
+  color: rgba(202, 206, 239, 0.92);
   font-size: clamp(0.56rem, 0.6vw, 0.68rem);
   font-weight: 600;
   white-space: nowrap;
@@ -351,7 +351,7 @@
 }
 
 .journey-card.is-active .journey-card__year {
-  color: #80ffff;
+  color: #CACEEF;
 }
 
 .journey-mobile-rail {
@@ -422,8 +422,8 @@
     width: 10px;
     height: 10px;
     border-radius: 999px;
-    background: var(--journey-cyan, #19f7ff);
-    box-shadow: 0 0 18px rgba(0, 229, 255, 0.8);
+    background: var(--journey-cyan, #A4A6FF);
+    box-shadow: 0 0 18px rgba(164, 166, 255, 0.62);
   }
 
   .journey-card__icon {
@@ -449,10 +449,10 @@
     display: block;
     width: 8px;
     border-radius: 999px;
-    background: rgba(6, 19, 35, 0.95);
+    background: rgba(38, 61, 145, 0.86);
     box-shadow:
-      inset 0 0 0 1px rgba(53, 214, 255, 0.14),
-      inset 0 0 18px rgba(0, 0, 0, 0.68);
+      inset 0 0 0 1px rgba(164, 166, 255, 0.18),
+      inset 0 0 18px rgba(38, 61, 145, 0.54);
   }
 
   .journey-mobile-rail span {
@@ -460,7 +460,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(180deg, #20f0c8, #19f7ff, #3c8dff, #7b5cff);
+    background: linear-gradient(180deg, #CACEEF, #A4A6FF, #7A80E2, #525EB9);
     transition: height 120ms ease;
   }
 
@@ -469,10 +469,10 @@
     left: -5px;
     width: 18px;
     height: 18px;
-    border: 2px solid #19f7ff;
+    border: 2px solid #A4A6FF;
     border-radius: 50%;
-    background: #0c1d35;
-    box-shadow: 0 0 10px rgba(25, 247, 255, 0.6);
+    background: #263D91;
+    box-shadow: 0 0 10px rgba(164, 166, 255, 0.56);
     transition: top 120ms ease;
   }
 }

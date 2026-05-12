@@ -7,9 +7,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { pickText, uiText } from '../data/siteContent';
 import NeoButton from '../components/ui/NeoButton';
 import InteractiveHeroScene from '../components/common/InteractiveHeroScene';
-import ProjectLogo from '../components/common/ProjectLogo';
-import Breadcrumbs from '../components/navigation/Breadcrumbs';
 import SocialLogo from '../components/common/SocialLogo';
+import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const CONTACT_EMAIL = 'HarryHongyue@omnigent.nl';
 
@@ -81,10 +80,10 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
+      <Breadcrumbs />
       <div className="section-shell">
         <section className="neo-hero neo-hero--contact">
           <div className="neo-hero__copy">
-            <Breadcrumbs />
             <h1 className="neo-hero-title neo-hero-title--contact">{pickText(currentLanguage, uiText.contact.title)}</h1>
             <div className="neo-hero__subtitle">
               <strong>{uiText.home.subtitleEn}</strong>
@@ -109,11 +108,7 @@ const ContactPage: React.FC = () => {
           {cards.map((card, index) => (
             <NeoCard key={card.title} hoverable className="neo-contact-card neo-project-card--spotlight">
               <div className="neo-contact-card__header">
-                {card.title === 'GitHub' ? (
-                  <ProjectLogo src="/project-assets/harry-logo.png" alt="GitHub style" className="neo-project-logo--icon" imageClassName="neo-project-logo__githubish" />
-                ) : (
-                  <div className={`neo-icon-box ${index % 2 === 0 ? 'neo-icon-box--cyan' : 'neo-icon-box--purple'}`}>{card.icon}</div>
-                )}
+                <div className={`neo-icon-box ${index % 2 === 0 ? 'neo-icon-box--cyan' : 'neo-icon-box--purple'}`}>{card.icon}</div>
                 <div>
                   <h3>{card.title}</h3>
                   <p>{card.body}</p>
@@ -143,7 +138,7 @@ const ContactPage: React.FC = () => {
               <MessageCircleMore size={18} />
               <h3>{currentLanguage === 'zh' ? '联系方式' : currentLanguage === 'nl' ? 'Contactkanalen' : 'Contact Channels'}</h3>
             </div>
-            <a className="neo-contact-email-line" href={`mailto:${CONTACT_EMAIL}`}>
+            <a className="neo-contact-link-block neo-contact-link-block--email" href={`mailto:${CONTACT_EMAIL}`}>
               <SocialLogo name="email" size={20} />
               <span>{CONTACT_EMAIL}</span>
             </a>
@@ -211,7 +206,9 @@ const ContactPage: React.FC = () => {
           </NeoCard>
           <NeoCard variant="glowing" hoverable>
             <div className="neo-info-card__title">
-              <ProjectLogo src="/project-assets/harry-logo.png" alt="Harry" className="neo-project-logo--icon" />
+              <span className="neo-icon-box neo-icon-box--cyan">
+                <Code2 size={22} />
+              </span>
               <h3>{currentLanguage === 'zh' ? '下一步' : currentLanguage === 'nl' ? 'Volgende stap' : 'Next Steps'}</h3>
             </div>
             <p>{currentLanguage === 'zh' ? '你把项目背景、现状和目标发给我，我会先快速帮你判断路径、结构和优先级。' : currentLanguage === 'nl' ? 'Stuur me context, huidige situatie en doelen. Ik help eerst snel met richting, structuur en prioriteiten.' : 'Send me the project context, current state, and goal. I will first help shape the direction, structure, and priorities.'}</p>

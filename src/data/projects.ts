@@ -292,7 +292,7 @@ export const projects: Project[] = [
     techStackIds: ['react', 'typescript', 'vite', 'python', 'fastapi', 'ocr', 'pdfjs', 'tesseract', 'rest-api'],
     backendRequired: true,
     downloadable: true,
-    desktopApp: false,
+    desktopApp: true,
     browserExtension: false,
     webVersion: true,
     releaseAssets: [
@@ -428,7 +428,8 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: true,
     releaseAssets: [
-      asset(l('Implementation Guide', '实施指南', 'Implementatiegids'), l('PDF Guide', 'PDF 指南', 'PDF-gids'), 'v0.9.0', '2.8 MB', '/downloads', 'b1238b4472d5f3adff0ea7f962ce8d94fd6a1cc5127bd004e92dcb026f9d0f30', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v0.9.0', '86 MB', '/downloads', 'b1238b4472d5f3adff0ea7f962ce8d94fd6a1cc5127bd004e92dcb026f9d0f30', '2026-05-11'),
+      asset(l('iOS Installer', 'iOS 安装程序', 'iOS-installer'), l('iOS App', 'iOS 应用', 'iOS-app'), 'v0.9.0', '42 MB', '/downloads', 'a0b1e7d8e2c14b6d8a7f04b67de0b835fc5c82d4474e8f1d309389cd787cf6b1', '2026-05-11'),
     ],
     securityNotes: [
       l('Shipment documents should be treated as untrusted input and validated before message generation.', '货运单据必须被视作不可信输入，在生成报文之前完成校验。', 'Zendingdocumenten moeten als onbetrouwbare input worden behandeld en gevalideerd vóór berichtgeneratie.'),

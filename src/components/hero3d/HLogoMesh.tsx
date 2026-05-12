@@ -18,11 +18,11 @@ const HLogoMesh: React.FC<HLogoMeshProps> = ({ logoText = 'H', intensity = 'medi
   const material = useMemo(
     () =>
       new MeshStandardMaterial({
-        color: '#0fd8c8',
-        emissive: HERO3D_COLORS.teal,
-        emissiveIntensity: 0.46 * accent.glow,
-        roughness: 0.34,
-        metalness: 0.1,
+        color: '#14e6d2',
+        emissive: '#00f5ff',
+        emissiveIntensity: 0.82 * accent.glow,
+        roughness: 0.28,
+        metalness: 0.24,
         toneMapped: false,
       }),
     [accent.glow],
@@ -42,9 +42,9 @@ const HLogoMesh: React.FC<HLogoMeshProps> = ({ logoText = 'H', intensity = 'medi
 
   return (
     <group ref={group} position={[0, 0.68, 0]} castShadow>
-      <RoundedBox args={[0.64, 3.1, 0.7]} radius={0.16} smoothness={8} position={[-0.78, 0, 0]} material={material} />
-      <RoundedBox args={[0.64, 3.1, 0.7]} radius={0.16} smoothness={8} position={[0.78, 0, 0]} material={material} />
-      <RoundedBox args={[1.78, 0.62, 0.7]} radius={0.16} smoothness={8} position={[0, -0.06, 0]} material={material} />
+      <RoundedBox args={[0.55, 2.65, 0.58]} radius={0.16} smoothness={14} position={[-0.55, 0.28, 0]} material={material} />
+      <RoundedBox args={[0.55, 2.65, 0.58]} radius={0.16} smoothness={14} position={[0.55, 0.28, 0]} material={material} />
+      <RoundedBox args={[1.25, 0.52, 0.58]} radius={0.15} smoothness={14} position={[0, 0.12, 0]} material={material} />
       <pointLight color={HERO3D_COLORS.teal} intensity={1.8 * accent.glow} distance={4.6} position={[0, 0.6, 1.4]} />
       <mesh position={[0, -1.9, 0.43]}>
         <ringGeometry args={[1.15, 1.21, 96]} />
