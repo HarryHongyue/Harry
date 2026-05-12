@@ -159,6 +159,10 @@ img {
   max-width: 980px;
 }
 
+.neo-section__eyebrow {
+  width: fit-content;
+}
+
 .neo-section__title,
 h1,
 h2,
@@ -207,12 +211,14 @@ p {
   max-width: 16ch;
   font-size: clamp(2rem, 3.4vw, 3.5rem);
   line-height: 1.02;
+  white-space: nowrap;
 }
 
 [data-lang='zh'] .neo-hero-title--contact {
   max-width: 18ch;
   font-size: clamp(1.7rem, 2.8vw, 3rem);
   line-height: 1.04;
+  white-space: nowrap;
 }
 
 .neo-hero-title--detail {
@@ -236,8 +242,7 @@ p {
 .neo-form,
 .neo-table-card,
 .neo-rail__item,
-.neo-reference-panel,
-.neo-breadcrumbs {
+.neo-reference-panel {
   border: 1px solid var(--border);
 }
 
@@ -250,8 +255,7 @@ p {
 .neo-form,
 .neo-table-card,
 .neo-rail__item,
-.neo-reference-panel,
-.neo-breadcrumbs {
+.neo-reference-panel {
   background: linear-gradient(145deg, rgba(18, 27, 49, 0.96), rgba(10, 16, 31, 0.98));
   box-shadow: var(--shadow-raised);
 }
@@ -642,10 +646,15 @@ select.neo-input {
   flex-wrap: wrap;
   gap: 8px;
   width: fit-content;
-  margin: 6px 0 0;
-  padding: 10px 14px;
-  border-radius: 16px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   color: var(--text-secondary);
+  font-size: 0.92rem;
+  align-self: start;
 }
 
 .neo-breadcrumbs__link:hover {
@@ -658,6 +667,7 @@ select.neo-input {
 
 .neo-breadcrumbs__sep {
   color: var(--text-muted);
+  opacity: 0.7;
 }
 
 .neo-grid {
@@ -689,6 +699,11 @@ select.neo-input {
 
 .neo-hero--contact {
   min-height: 540px;
+}
+
+.neo-hero--contact .neo-hero__copy {
+  align-content: start;
+  padding-top: 8px;
 }
 
 .neo-hero__copy {
@@ -1315,9 +1330,51 @@ select.neo-input {
   gap: 16px;
 }
 
+.neo-download-title-row {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.neo-download-title-row .neo-badge {
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-inset), 0 0 14px rgba(32, 208, 192, 0.12);
+}
+
+.neo-download-detail-link {
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  white-space: nowrap;
+}
+
+.neo-platform-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.neo-platform-name__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  color: var(--accent-cyan);
+  background: linear-gradient(145deg, rgba(17, 31, 50, 0.98), rgba(8, 14, 26, 0.98));
+  box-shadow: var(--shadow-inset), 0 0 16px rgba(53, 214, 255, 0.12);
+}
+
 .neo-table {
   overflow: hidden;
   border-radius: 22px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(18, 27, 49, 0.96), rgba(10, 16, 31, 0.98));
+  box-shadow: var(--shadow-raised);
 }
 
 .neo-table table {
@@ -1327,19 +1384,24 @@ select.neo-input {
 
 .neo-table th,
 .neo-table td {
-  padding: 16px 18px;
+  padding: 14px 20px;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .neo-table th {
   color: var(--text-secondary);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(32, 208, 192, 0.06);
+  border-bottom: 1px solid rgba(32, 208, 192, 0.15);
 }
 
 .neo-table td {
   color: var(--text-primary);
+  font-size: 0.92rem;
 }
 
 .neo-table tbody tr {
@@ -1348,10 +1410,11 @@ select.neo-input {
 
 .neo-table tbody tr:hover {
   transform: translateY(-1px);
+  background: rgba(32, 208, 192, 0.03);
 }
 
 .neo-table tbody tr:hover td {
-  background: rgba(255, 255, 255, 0.016);
+  color: var(--text-primary);
 }
 
 .neo-table tbody tr:last-child td {
@@ -1548,6 +1611,10 @@ select.neo-input {
   .neo-table-card__header,
   .neo-project-card__actions {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .neo-table-card__header .neo-project-card__header {
     align-items: flex-start;
   }
 

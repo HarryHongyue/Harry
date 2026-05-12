@@ -60,7 +60,7 @@ export const uiText = {
     featuredTitle: l('Selected Work', '重点项目', 'Geselecteerd werk'),
     featuredBody: l('The projects below define the current shape of Harry’s portfolio and long-term direction.', '下面这些项目决定了 Harry 当前作品集的核心轮廓和长期方向。', 'De onderstaande projecten bepalen de huidige vorm en langetermijnrichting van Harry’s portfolio.'),
     storyTitle: l('How I Built My Path', '我的学习与成长路径', 'Hoe ik mijn pad heb opgebouwd'),
-    storyBody: l('A continuous journey from Java and databases to Python, frontend systems, AI workflows, and product-level delivery.', '这条路径从 Java 和数据库开始，逐步深入 Python、前端系统、AI 工作流与产品级交付。', 'Dit pad loopt van Java en databases naar Python, frontendsystemen, AI-workflows en productniveau-levering.'),
+    storyBody: l('A continuous route from H5 pages and WordPress practice into Java, Python, independent projects, TypeScript, Docker, Maven, SQL, graph theory, and AI systems.', '这条路径从 H5 页面和 WordPress 实践开始，逐步进入 Java、Python、独立项目开发、TypeScript、Docker、Maven、SQL、图论与 AI 系统。', 'Dit pad loopt van H5-pagina’s en WordPress-praktijk naar Java, Python, zelfstandige projecten, TypeScript, Docker, Maven, SQL, grafentheorie en AI-systemen.'),
     aboutTitle: l('About Harry', '关于 Harry', 'Over Harry'),
     aboutBody: l('Builder. Problem Solver. Engineer.', '构建者 问题解决者 工程师', 'Bouwer Probleemoplosser Engineer'),
   },

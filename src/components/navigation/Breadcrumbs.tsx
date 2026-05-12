@@ -45,25 +45,23 @@ const Breadcrumbs: React.FC = () => {
   }
 
   return (
-    <div className="section-shell">
-      <nav className="neo-breadcrumbs" aria-label="Breadcrumb">
-        {crumbs.map((crumb, index) => {
-          const isCurrent = index === crumbs.length - 1;
-          return (
-            <React.Fragment key={`${crumb.label}-${index}`}>
-              {index === 0 ? <Home size={14} /> : <ChevronRight size={14} className="neo-breadcrumbs__sep" />}
-              {crumb.href && !isCurrent ? (
-                <Link to={crumb.href} className="neo-breadcrumbs__link">
-                  {crumb.label}
-                </Link>
-              ) : (
-                <span className={`neo-breadcrumbs__current ${isCurrent ? 'is-current' : ''}`}>{crumb.label}</span>
-              )}
-            </React.Fragment>
-          );
-        })}
-      </nav>
-    </div>
+    <nav className="neo-breadcrumbs" aria-label="Breadcrumb">
+      {crumbs.map((crumb, index) => {
+        const isCurrent = index === crumbs.length - 1;
+        return (
+          <React.Fragment key={`${crumb.label}-${index}`}>
+            {index === 0 ? <Home size={14} /> : <ChevronRight size={14} className="neo-breadcrumbs__sep" />}
+            {crumb.href && !isCurrent ? (
+              <Link to={crumb.href} className="neo-breadcrumbs__link">
+                {crumb.label}
+              </Link>
+            ) : (
+              <span className={`neo-breadcrumbs__current ${isCurrent ? 'is-current' : ''}`}>{crumb.label}</span>
+            )}
+          </React.Fragment>
+        );
+      })}
+    </nav>
   );
 };
 

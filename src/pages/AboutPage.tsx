@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import NeoCard from '../components/ui/NeoCard';
 import { useLanguage } from '../contexts/LanguageContext';
 import { neoButtonClass } from '../components/ui/NeoButton';
+import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const AboutPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -11,6 +12,7 @@ const AboutPage: React.FC = () => {
     <div className="neo-page">
       <div className="section-shell">
         <NeoCard>
+          <Breadcrumbs />
           <h1>{currentLanguage === 'zh' ? '关于内容已经并入首页' : currentLanguage === 'nl' ? 'De about-inhoud is nu opgenomen op de homepage' : 'About content now lives on the homepage'}</h1>
           <p>
             {currentLanguage === 'zh'

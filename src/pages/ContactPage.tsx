@@ -8,6 +8,7 @@ import { pickText, uiText } from '../data/siteContent';
 import NeoButton from '../components/ui/NeoButton';
 import InteractiveHeroScene from '../components/common/InteractiveHeroScene';
 import ProjectLogo from '../components/common/ProjectLogo';
+import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const ContactPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -71,6 +72,7 @@ const ContactPage: React.FC = () => {
       <div className="section-shell">
         <section className="neo-hero neo-hero--contact">
           <div className="neo-hero__copy">
+            <Breadcrumbs />
             <h1 className="neo-hero-title neo-hero-title--contact">{pickText(currentLanguage, uiText.contact.title)}</h1>
             <div className="neo-hero__subtitle">
               <strong>{uiText.home.subtitleEn}</strong>

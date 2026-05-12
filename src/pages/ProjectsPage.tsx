@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Download, Search } from 'lucide-react';
+import { ArrowRight, Download, Search, Globe, Monitor, Puzzle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
@@ -13,6 +13,7 @@ import type { Project, ProjectCategory } from '../types/project';
 import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
 import { getProjectDisplayName } from '../lib/projectText';
+import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const ProjectsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -39,7 +40,7 @@ const ProjectsPage: React.FC = () => {
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
-      <NeoSection title={pickText(currentLanguage, uiText.projects.title)} description={pickText(currentLanguage, uiText.projects.intro)}>
+      <NeoSection eyebrow={<Breadcrumbs />} title={pickText(currentLanguage, uiText.projects.title)} description={pickText(currentLanguage, uiText.projects.intro)}>
         <div className="neo-filter-bar">
           {projectFilters.map((filter) => (
             <button
@@ -81,24 +82,44 @@ const ProjectsPage: React.FC = () => {
               </div>
               <div className="neo-project-card__actions">
                 <span className="neo-card__hint">
-                  {project.downloadable ? <Download size={14} /> : null}
-                  {project.browserExtension
-                    ? currentLanguage === 'zh'
-                      ? '浏览器扩展'
-                      : currentLanguage === 'nl'
-                        ? 'Browserextensie'
-                        : 'Browser Extension'
-                    : project.desktopApp
-                      ? currentLanguage === 'zh'
+                  {project.browserExtension ? (
+                    <>
+                      <Puzzle size={14} />
+                      {currentLanguage === 'zh'
+                        ? '浏览器扩展'
+                        : currentLanguage === 'nl'
+                          ? 'Browserextensie'
+                          : 'Browser Extension'}
+                    </>
+                  ) : project.desktopApp && project.webVersion ? (
+                    <>
+                      <Monitor size={14} />
+                      <Globe size={14} />
+                      {currentLanguage === 'zh'
+                        ? '桌面软件 / Web 项目'
+                        : currentLanguage === 'nl'
+                          ? 'Desktopsoftware / Webproject'
+                          : 'Desktop Software / Web Project'}
+                    </>
+                  ) : project.desktopApp ? (
+                    <>
+                      <Monitor size={14} />
+                      {currentLanguage === 'zh'
                         ? '桌面软件'
                         : currentLanguage === 'nl'
                           ? 'Desktopsoftware'
-                          : 'Desktop Software'
-                      : currentLanguage === 'zh'
+                          : 'Desktop Software'}
+                    </>
+                  ) : (
+                    <>
+                      <Globe size={14} />
+                      {currentLanguage === 'zh'
                         ? 'Web 项目'
                         : currentLanguage === 'nl'
                           ? 'Webproject'
                           : 'Web Project'}
+                    </>
+                  )}
                 </span>
                 <Link to={`/projects/${project.slug}`} className={neoButtonClass('ghost')}>
                   {pickText(currentLanguage, uiText.common.learnMore)}

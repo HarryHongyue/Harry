@@ -100,6 +100,167 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: 'ominigent',
+    name: 'Ominigent',
+    englishName: 'Ominigent',
+    chineseName: 'Ominigent 公司网站',
+    dutchName: 'Ominigent',
+    tagline: l(
+      'A founder-led B2B solutions website focused on systems, logistics, digital operations, and enterprise delivery.',
+      '一个由创始人驱动的 B2B 解决方案网站，聚焦系统、物流、数字化运营与企业交付。',
+      'Een founder-led B2B oplossingenwebsite gericht op systemen, logistiek, digitale operations en enterprise delivery.',
+    ),
+    description: l(
+      'The company website for Harry\'s own business direction, framed around practical problem solving rather than generic "software services".',
+      '这是 Harry 个人公司的官网方向，强调实际问题解决，而不是泛泛的"软件服务"。',
+      'Dit is de bedrijfswebsite voor Harry\'s eigen bedrijfslijn, gericht op praktisch probleemoplossen in plaats van generieke "software services".',
+    ),
+    longDescription: l(
+      'Ominigent repositions Harry\'s technical capabilities as a clear B2B offer: systems, logistics, warehouse design, process improvement, and operations automation. The site is less about portfolio nostalgia and more about credibility, clarity, and matching real client problems to solution surfaces.',
+      'Ominigent 把 Harry 的技术能力重新包装成清晰的 B2B 提案：系统、物流、仓储设计、流程优化和运营自动化。它不是怀旧式作品展示，而是更强调可信度、清晰度，以及如何把客户问题映射到真正的解决方案。',
+      'Ominigent herpositioneert Harry\'s technische capaciteiten als een helder B2B-aanbod: systemen, logistiek, magazijnontwerp, procesverbetering en operations-automatisering. De site draait minder om portfolio-nostalgie en meer om geloofwaardigheid, helderheid en het koppelen van echte klantproblemen aan concrete oplossingsoppervlakken.',
+    ),
+    category: ['enterprise-website'],
+    status: 'active',
+    projectType: ['website'],
+    logo: '/project-assets/ominigent-logo.png',
+    repoPath: 'G:\\GitHubPersonal\\Ominigent',
+    websiteUrl: 'https://omnigent.nl',
+    techStackIds: ['react', 'typescript', 'vite', 'tailwind'],
+    backendRequired: false,
+    downloadable: false,
+    desktopApp: false,
+    browserExtension: false,
+    webVersion: true,
+    releaseAssets: [],
+    securityNotes: [
+      l('As a business-facing site, client inquiry handling and lead data should stay minimal and controlled.', '作为企业网站，客户询盘和线索数据应保持最小化与可控。', 'Als businessgerichte site moeten klantaanvragen en lead-data minimaal en gecontroleerd blijven.'),
+    ],
+    deploymentNotes: [
+      l('A multi-page solutions site with clear routing and breadcrumbs better supports trust and service discovery.', '多页面解决方案官网配合清晰路由与面包屑，更适合建立信任和引导服务发现。', 'Een multipage oplossingenwebsite met duidelijke routing en breadcrumbs ondersteunt vertrouwen en service discovery beter.'),
+    ],
+    features: [
+      l('Founder-led solution framing instead of generic freelancer copy.', '以创始人驱动的解决方案表达，避免泛自由职业文案。', 'Founder-led oplossingsframing in plaats van generieke freelancer-copy.'),
+      l('Structured services, industries, and pricing surfaces.', '清晰组织服务、行业和价格页面。', 'Duidelijk gestructureerde services-, industrie- en pricing-oppervlakken.'),
+    ],
+    useCases: [
+      l('B2B lead generation for operational and system improvement projects.', '面向运营改造和系统升级项目的 B2B 获客。', 'B2B leadgeneratie voor operationele verbeter- en systeemprojecten.'),
+    ],
+    architectureNotes: [
+      l('Multi-page service site -> solution pages -> trust layers -> contact conversion.', '多页服务站 -> 解决方案页 -> 信任层 -> 联系转化。', 'Multipage servicesite -> oplossingspagina\'s -> vertrouwenslagen -> contactconversie.'),
+    ],
+    roadmap: [l('Keep refining service detail pages and case-based proof.', '继续补强服务详情页和案例证明。', 'Services-detailpagina\'s en case-based proof verder verfijnen.')],
+  },
+  {
+    slug: 'cryocore-cooling',
+    name: 'CryoCore Cooling',
+    englishName: 'CryoCore Cooling',
+    chineseName: 'CryoCore Cooling 企业网站',
+    dutchName: 'CryoCore Cooling',
+    tagline: l(
+      'A B2B cooling technology website focused on AI data center liquid cooling, product storytelling, and technical sales surfaces.',
+      '一个面向 AI 数据中心液冷方案的 B2B 企业网站，强调产品表达、技术说明和销售转化。',
+      'Een B2B-website voor koeltechnologie gericht op vloeistofkoeling voor AI-datacenters, productstorytelling en technische sales-oppervlakken.',
+    ),
+    description: l(
+      'An enterprise website with a React frontend, backend service layer, and WordPress-backed content structure.',
+      '一个带 React 前端、服务层后端和 WordPress 内容结构的企业官网项目。',
+      'Een enterprise website met een React-frontend, backend-servicelaag en WordPress-gestuurde contentstructuur.',
+    ),
+    longDescription: l(
+      'CryoCore Cooling is a serious B2B company site rather than a simple landing page. It combines product marketing, technical resource sections, and a hybrid stack that includes React, Node.js, WordPress, Docker, and deployment workflows aimed at real-world maintainability.',
+      'CryoCore Cooling 不是一张简单落地页，而是一个真正的 B2B 企业网站。它结合了产品营销、技术资源内容，以及 React、Node.js、WordPress、Docker 等混合技术栈，目标是支撑现实中的长期维护。',
+      'CryoCore Cooling is geen simpele landing page, maar een echte B2B-bedrijfswebsite. Het combineert productmarketing, technische resource-secties en een hybride stack met React, Node.js, WordPress, Docker en deploymentworkflows voor onderhoudbaarheid in de praktijk.',
+    ),
+    category: ['enterprise-website'],
+    status: 'client-project',
+    projectType: ['website', 'web-app'],
+    logo: '/project-assets/cryocore-cooling-logo.png',
+    repoPath: 'G:\\GitHubPersonal\\CryocoreCooling',
+    techStackIds: ['react', 'typescript', 'vite', 'tailwind', 'framer-motion', 'nodejs', 'express', 'wordpress', 'mysql', 'docker', 'nginx'],
+    backendRequired: true,
+    downloadable: false,
+    desktopApp: false,
+    browserExtension: false,
+    webVersion: true,
+    releaseAssets: [],
+    securityNotes: [
+      l('Lead forms, content APIs, and CMS access should be isolated and monitored.', '表单、内容 API 和 CMS 权限都应隔离并监控。', 'Leadformulieren, content-API\'s en CMS-toegang moeten geïsoleerd en gemonitord worden.'),
+      l('Production deployment should keep the React frontend, API, and CMS clearly separated.', '生产部署应把 React 前端、API 和 CMS 清晰分离。', 'Productiedeployment moet de React-frontend, API en CMS duidelijk scheiden.'),
+    ],
+    deploymentNotes: [
+      l('The project already points toward containerized deployment and hybrid CMS integration.', '这个项目已经具备容器化部署和混合 CMS 集成的明确方向。', 'Het project wijst al duidelijk richting containerized deployment en hybride CMS-integratie.'),
+    ],
+    features: [
+      l('B2B solutions storytelling for technical products.', '适合技术产品的 B2B 解决方案表达。', 'B2B-oplossingsstorytelling voor technische producten.'),
+      l('Resource, blog, and case-study ready structure.', '具备资源、博客和案例扩展结构。', 'Klaar voor resources, blog en case-study structuur.'),
+      l('Hybrid React + CMS content model.', 'React + CMS 的混合内容模型。', 'Hybride React + CMS-contentmodel.'),
+    ],
+    useCases: [
+      l('Technical product marketing and enterprise lead generation.', '技术产品营销与企业线索转化。', 'Technische productmarketing en enterprise leadgeneratie.'),
+    ],
+    architectureNotes: [
+      l('React frontend -> Node.js API -> WordPress CMS -> MySQL -> containerized deployment.', 'React 前端 -> Node.js API -> WordPress CMS -> MySQL -> 容器化部署。', 'React-frontend -> Node.js API -> WordPress CMS -> MySQL -> containerized deployment.'),
+    ],
+    roadmap: [l('Continue strengthening content operations and deployment reliability.', '继续补强内容运营能力和部署可靠性。', 'Contentoperaties en deploymentbetrouwbaarheid verder versterken.')],
+    chips: [l('B2B Website', 'B2B 企业站', 'B2B-website'), l('Hybrid CMS', '混合 CMS', 'Hybride CMS')],
+    featured: true,
+  },
+  {
+    slug: 'song-yan',
+    name: 'Song Yan',
+    englishName: 'Song Yan',
+    chineseName: '松言独立站',
+    dutchName: 'Song Yan',
+    tagline: l(
+      'A real independent store built around WordPress, WooCommerce, and a custom-designed frontend experience.',
+      '一个真实的独立站项目，基于 WordPress / WooCommerce 和自定义前端设计。',
+      'Een echte onafhankelijke shop gebouwd rond WordPress, WooCommerce en een custom frontend-ervaring.',
+    ),
+    description: l(
+      'An e-commerce website with a custom frontend, multilingual structure, and self-hosted deployment planning.',
+      '一个带自定义前端、多语言结构和自托管部署规划的电商独立站项目。',
+      'Een e-commerce website met custom frontend, meertalige structuur en self-hosted deploymentplanning.',
+    ),
+    longDescription: l(
+      'Song Yan is not just a theme tweak. It is a real independent-store architecture that pairs a custom frontend with WordPress and WooCommerce, plus containerized infrastructure, multilingual pages, and commerce workflows that are meant to scale beyond a basic template site.',
+      'Song Yan 不是简单套模板，而是真正意义上的独立站架构：自定义前端 + WordPress / WooCommerce + 容器化基础设施 + 多语言页面 + 电商工作流，目标是超出普通模板站点的能力上限。',
+      'Song Yan is niet zomaar een thematweak, maar een echte independent-store architectuur: custom frontend + WordPress / WooCommerce + containerized infrastructuur + meertalige pagina\'s + commerceworkflows, bedoeld om verder te gaan dan een standaard templatesite.',
+    ),
+    category: ['ecommerce-wordpress', 'enterprise-website'],
+    status: 'client-project',
+    projectType: ['website', 'web-app'],
+    logo: '/project-assets/song-yan-logo.png',
+    repoPath: 'G:\\GitHubPersonal\\Eshop-Wordpress',
+    techStackIds: ['astro', 'typescript', 'tailwind', 'react', 'wordpress', 'woocommerce', 'mariadb', 'redis', 'docker', 'caddy'],
+    backendRequired: true,
+    downloadable: false,
+    desktopApp: false,
+    browserExtension: false,
+    webVersion: true,
+    releaseAssets: [],
+    securityNotes: [
+      l('Commerce checkout, payment integrations, and customer data require strict deployment hygiene.', '商城结账、支付集成和客户数据都要求严格的部署与权限卫生。', 'Checkout, betalingen en klantdata vereisen strikte deployment- en toegangsdiscipline.'),
+      l('WordPress and commerce surfaces should be segmented from the public storefront layer.', 'WordPress 后台与商城逻辑应与公开店面层清晰分段。', 'WordPress-backoffice en commerce-logica moeten duidelijk gescheiden blijven van de publieke storefrontlaag.'),
+    ],
+    deploymentNotes: [
+      l('Designed around Docker, Caddy, WordPress, MariaDB, and multilingual storefront routing.', '围绕 Docker、Caddy、WordPress、MariaDB 和多语言店面路由来设计。', 'Ontworpen rond Docker, Caddy, WordPress, MariaDB en meertalige storefront-routing.'),
+    ],
+    features: [
+      l('Custom storefront frontend rather than a stock WordPress theme.', '不是套用成品主题，而是定制前端店面。', 'Geen standaard WordPress-thema, maar een custom storefront-frontend.'),
+      l('Multilingual paths and commerce-ready infrastructure.', '多语言路径与电商基础设施已具备方向。', 'Meertalige routes en commerceklare infrastructuur.'),
+    ],
+    useCases: [
+      l('Independent brand e-commerce and direct customer sales.', '独立品牌电商与直接面向顾客销售。', 'Onafhankelijke merk-e-commerce en directe klantverkoop.'),
+    ],
+    architectureNotes: [
+      l('Custom frontend -> commerce APIs -> WordPress / WooCommerce -> MariaDB / Redis -> containerized hosting.', '定制前端 -> 商城 API -> WordPress / WooCommerce -> MariaDB / Redis -> 容器托管。', 'Custom frontend -> commerce-API\'s -> WordPress / WooCommerce -> MariaDB / Redis -> gecontaineriseerde hosting.'),
+    ],
+    roadmap: [l('Continue connecting product, cart, checkout, and content layers.', '继续打通产品、购物车、结账和内容层。', 'Product-, cart-, checkout- en contentlagen verder verbinden.')],
+    chips: [l('E-commerce', '电商', 'E-commerce'), l('WordPress', 'WordPress', 'WordPress')],
+    featured: true,
+  },
+  {
     slug: 'pdf-reader',
     name: 'PDF Reader',
     englishName: 'PDF Reader',
@@ -117,7 +278,7 @@ export const projects: Project[] = [
     ),
     longDescription: l(
       'PDF Reader is built for document-heavy teams that need more than simple previewing. It focuses on extraction modes, OCR, coordinate-based parsing, and structured outputs that can be used in downstream workflows without exposing the processing pipeline directly to the public web.',
-      'PDF Reader 面向真正高频处理文档的团队，不只是“看 PDF”。它强调不同识别模式、OCR、坐标驱动的解析方式，以及能被后续工作流直接利用的结构化输出，同时保证核心处理链路不会直接暴露在公网。',
+      'PDF Reader 面向真正高频处理文档的团队，不只是"看 PDF"。它强调不同识别模式、OCR、坐标驱动的解析方式，以及能被后续工作流直接利用的结构化输出，同时保证核心处理链路不会直接暴露在公网。',
       'PDF Reader is gebouwd voor teams die intensief met documenten werken en meer nodig hebben dan alleen previewen. De focus ligt op meerdere extractiemodi, OCR, coördinaatgestuurde parsing en gestructureerde output die direct in vervolgworkflows kan worden gebruikt, zonder de kernverwerkingspijplijn publiek bloot te stellen.',
     ),
     category: ['document-intelligence', 'web-application'],
@@ -141,7 +302,7 @@ export const projects: Project[] = [
     ],
     securityNotes: [
       l('Uploads should be validated by file type, request size, and allowed processing mode before entering OCR.', '上传必须先经过文件类型、大小限制和允许模式校验，再进入 OCR 处理。', 'Uploads moeten worden gevalideerd op bestandstype, grootte en toegestane modus voordat ze OCR ingaan.'),
-      l('CORS, private API routing, and temporary-file cleanup are part of the product boundary, not optional extras.', 'CORS、私有 API 路由和临时文件清理都属于产品边界的一部分，不是可选项。', 'CORS, private API-routing en tijdelijke-bestandsopschoning horen bij de productgrens en zijn geen optionele extra’s.'),
+      l('CORS, private API routing, and temporary-file cleanup are part of the product boundary, not optional extras.', 'CORS、私有 API 路由和临时文件清理都属于产品边界的一部分，不是可选项。', 'CORS, private API-routing en tijdelijke-bestandsopschoning horen bij de productgrens en zijn geen optionele extra\'s.'),
     ],
     deploymentNotes: [
       l('A public frontend can remain lightweight while OCR and extraction stay behind a private API boundary.', '前端可以保持轻量公开，而 OCR 与解析继续留在私有 API 边界之后。', 'Een publieke frontend kan licht blijven terwijl OCR en extractie achter een private API-grens blijven.'),
@@ -149,13 +310,13 @@ export const projects: Project[] = [
     ],
     features: [
       l('Multiple PDF processing modes for different document shapes.', '支持面向不同文档形态的多种处理模式。', 'Meerdere verwerkingsmodi voor verschillende documentvormen.'),
-      l('OCR for scanned PDFs plus text and table extraction.', '支持扫描 PDF 的 OCR，以及文本和表格提取。', 'OCR voor gescande PDF’s plus tekst- en tabel-extractie.'),
+      l('OCR for scanned PDFs plus text and table extraction.', '支持扫描 PDF 的 OCR，以及文本和表格提取。', 'OCR voor gescande PDF\'s plus tekst- en tabel-extractie.'),
       l('Coordinate-aware extraction for precise field capture.', '通过坐标感知解析实现精确字段捕获。', 'Coördinaatbewuste extractie voor nauwkeurige veldcaptatie.'),
       l('REST API surface for integration into larger workflows.', '提供可接入更大工作流的 REST API。', 'REST API-oppervlak voor integratie in grotere workflows.'),
     ],
     useCases: [
       l('Invoice, certificate, and form extraction.', '发票、证书、表单的提取处理。', 'Extractie van facturen, certificaten en formulieren.'),
-      l('Turning scanned PDFs into copyable structured data.', '把扫描件转换为可复制的结构化数据。', 'Gescande PDF’s omzetten naar kopieerbare gestructureerde data.'),
+      l('Turning scanned PDFs into copyable structured data.', '把扫描件转换为可复制的结构化数据。', 'Gescande PDF\'s omzetten naar kopieerbare gestructureerde data.'),
     ],
     architectureNotes: [
       l('Frontend -> API Gateway -> Backend API -> OCR / PDF Extraction Pipeline -> Temporary Storage', '前端 -> API Gateway -> 后端 API -> OCR / PDF 提取管线 -> 临时存储', 'Frontend -> API Gateway -> Backend API -> OCR / PDF-extractiepijplijn -> Tijdelijke opslag'),
@@ -467,58 +628,6 @@ export const projects: Project[] = [
     chips: [l('B2B Website', 'B2B 企业站', 'B2B-website'), l('Hybrid CMS', '混合 CMS', 'Hybride CMS')],
   },
   {
-    slug: 'song-yan',
-    name: 'Song Yan',
-    englishName: 'Song Yan',
-    chineseName: '松岩独立站',
-    dutchName: 'Song Yan',
-    tagline: l(
-      'A real independent store built around WordPress, WooCommerce, and a custom-designed frontend experience.',
-      '一个真实的独立站项目，基于 WordPress / WooCommerce 和自定义前端设计。',
-      'Een echte onafhankelijke shop gebouwd rond WordPress, WooCommerce en een custom frontend-ervaring.',
-    ),
-    description: l(
-      'An e-commerce website with a custom frontend, multilingual structure, and self-hosted deployment planning.',
-      '一个带自定义前端、多语言结构和自托管部署规划的电商独立站项目。',
-      'Een e-commerce website met custom frontend, meertalige structuur en self-hosted deploymentplanning.',
-    ),
-    longDescription: l(
-      'Song Yan is not just a theme tweak. It is a real independent-store architecture that pairs a custom frontend with WordPress and WooCommerce, plus containerized infrastructure, multilingual pages, and commerce workflows that are meant to scale beyond a basic template site.',
-      'Song Yan 不是简单套模板，而是真正意义上的独立站架构：自定义前端 + WordPress / WooCommerce + 容器化基础设施 + 多语言页面 + 电商工作流，目标是超出普通模板站点的能力上限。',
-      'Song Yan is niet zomaar een thematweak, maar een echte independent-store architectuur: custom frontend + WordPress / WooCommerce + containerized infrastructuur + meertalige pagina’s + commerceworkflows, bedoeld om verder te gaan dan een standaard templatesite.',
-    ),
-    category: ['ecommerce-wordpress', 'enterprise-website'],
-    status: 'client-project',
-    projectType: ['website', 'web-app'],
-    logo: '/project-assets/song-yan-logo.jpg',
-    repoPath: 'G:\\GitHubPersonal\\Eshop-Wordpress',
-    techStackIds: ['astro', 'typescript', 'tailwind', 'react', 'wordpress', 'woocommerce', 'mariadb', 'redis', 'docker', 'caddy'],
-    backendRequired: true,
-    downloadable: false,
-    desktopApp: false,
-    browserExtension: false,
-    webVersion: true,
-    releaseAssets: [],
-    securityNotes: [
-      l('Commerce checkout, payment integrations, and customer data require strict deployment hygiene.', '商城结账、支付集成和客户数据都要求严格的部署与权限卫生。', 'Checkout, betalingen en klantdata vereisen strikte deployment- en toegangsdiscipline.'),
-      l('WordPress and commerce surfaces should be segmented from the public storefront layer.', 'WordPress 后台与商城逻辑应与公开店面层清晰分段。', 'WordPress-backoffice en commerce-logica moeten duidelijk gescheiden blijven van de publieke storefrontlaag.'),
-    ],
-    deploymentNotes: [
-      l('Designed around Docker, Caddy, WordPress, MariaDB, and multilingual storefront routing.', '围绕 Docker、Caddy、WordPress、MariaDB 和多语言店面路由来设计。', 'Ontworpen rond Docker, Caddy, WordPress, MariaDB en meertalige storefront-routing.'),
-    ],
-    features: [
-      l('Custom storefront frontend rather than a stock WordPress theme.', '不是套用成品主题，而是定制前端店面。', 'Geen standaard WordPress-thema, maar een custom storefront-frontend.'),
-      l('Multilingual paths and commerce-ready infrastructure.', '多语言路径与电商基础设施已具备方向。', 'Meertalige routes en commerceklare infrastructuur.'),
-    ],
-    useCases: [
-      l('Independent brand e-commerce and direct customer sales.', '独立品牌电商与直接面向顾客销售。', 'Onafhankelijke merk-e-commerce en directe klantverkoop.'),
-    ],
-    architectureNotes: [
-      l('Custom frontend -> commerce APIs -> WordPress / WooCommerce -> MariaDB / Redis -> containerized hosting.', '定制前端 -> 商城 API -> WordPress / WooCommerce -> MariaDB / Redis -> 容器托管。', 'Custom frontend -> commerce-API’s -> WordPress / WooCommerce -> MariaDB / Redis -> gecontaineriseerde hosting.'),
-    ],
-    roadmap: [l('Continue connecting product, cart, checkout, and content layers.', '继续打通产品、购物车、结账和内容层。', 'Product-, cart-, checkout- en contentlagen verder verbinden.')],
-  },
-  {
     slug: 'electronic-product-specifications-analysis',
     name: 'Electronic Product Specifications Analysis',
     englishName: 'Electronic Product Specifications Analysis',
@@ -569,58 +678,6 @@ export const projects: Project[] = [
       l('Next.js content site -> localized pages -> standards taxonomy -> optional CMS / API integration.', 'Next.js 内容站 -> 多语言页面 -> 标准分类体系 -> 可选 CMS / API 集成。', 'Next.js contentsite -> meertalige pagina’s -> standaardentaxonomie -> optionele CMS / API-integratie.'),
     ],
     roadmap: [l('Expand protocol timelines, visual explainers, and comparison tools.', '继续扩展协议时间线、图形讲解和对比工具。', 'Protocoltijdlijnen, visuele explainers en vergelijkingstools verder uitbreiden.')],
-  },
-  {
-    slug: 'ominigent',
-    name: 'Ominigent',
-    englishName: 'Ominigent',
-    chineseName: 'Ominigent 公司网站',
-    dutchName: 'Ominigent',
-    tagline: l(
-      'A founder-led B2B solutions website focused on systems, logistics, digital operations, and enterprise delivery.',
-      '一个由创始人驱动的 B2B 解决方案网站，聚焦系统、物流、数字化运营与企业交付。',
-      'Een founder-led B2B oplossingenwebsite gericht op systemen, logistiek, digitale operations en enterprise delivery.',
-    ),
-    description: l(
-      'The company website for Harry’s own business direction, framed around practical problem solving rather than generic “software services”.',
-      '这是 Harry 个人公司的官网方向，强调实际问题解决，而不是泛泛的“软件服务”。',
-      'Dit is de bedrijfswebsite voor Harry’s eigen bedrijfslijn, gericht op praktisch probleemoplossen in plaats van generieke “software services”.',
-    ),
-    longDescription: l(
-      'Ominigent repositions Harry’s technical capabilities as a clear B2B offer: systems, logistics, warehouse design, process improvement, and operations automation. The site is less about portfolio nostalgia and more about credibility, clarity, and matching real client problems to solution surfaces.',
-      'Ominigent 把 Harry 的技术能力重新包装成清晰的 B2B 提案：系统、物流、仓储设计、流程优化和运营自动化。它不是怀旧式作品展示，而是更强调可信度、清晰度，以及如何把客户问题映射到真正的解决方案。',
-      'Ominigent herpositioneert Harry’s technische capaciteiten als een helder B2B-aanbod: systemen, logistiek, magazijnontwerp, procesverbetering en operations-automatisering. De site draait minder om portfolio-nostalgie en meer om geloofwaardigheid, helderheid en het koppelen van echte klantproblemen aan concrete oplossingsoppervlakken.',
-    ),
-    category: ['enterprise-website'],
-    status: 'active',
-    projectType: ['website'],
-    logo: '/project-assets/ominigent-logo.png',
-    repoPath: 'G:\\GitHubPersonal\\Ominigent',
-    websiteUrl: 'https://omnigent.nl',
-    techStackIds: ['react', 'typescript', 'vite', 'tailwind'],
-    backendRequired: false,
-    downloadable: false,
-    desktopApp: false,
-    browserExtension: false,
-    webVersion: true,
-    releaseAssets: [],
-    securityNotes: [
-      l('As a business-facing site, client inquiry handling and lead data should stay minimal and controlled.', '作为企业网站，客户询盘和线索数据应保持最小化与可控。', 'Als businessgerichte site moeten klantaanvragen en lead-data minimaal en gecontroleerd blijven.'),
-    ],
-    deploymentNotes: [
-      l('A multi-page solutions site with clear routing and breadcrumbs better supports trust and service discovery.', '多页面解决方案官网配合清晰路由与面包屑，更适合建立信任和引导服务发现。', 'Een multipage oplossingenwebsite met duidelijke routing en breadcrumbs ondersteunt vertrouwen en service discovery beter.'),
-    ],
-    features: [
-      l('Founder-led solution framing instead of generic freelancer copy.', '以创始人驱动的解决方案表达，避免泛自由职业文案。', 'Founder-led oplossingsframing in plaats van generieke freelancer-copy.'),
-      l('Structured services, industries, and pricing surfaces.', '清晰组织服务、行业和价格页面。', 'Duidelijk gestructureerde services-, industrie- en pricing-oppervlakken.'),
-    ],
-    useCases: [
-      l('B2B lead generation for operational and system improvement projects.', '面向运营改造和系统升级项目的 B2B 获客。', 'B2B leadgeneratie voor operationele verbeter- en systeemprojecten.'),
-    ],
-    architectureNotes: [
-      l('Multi-page service site -> solution pages -> trust layers -> contact conversion.', '多页服务站 -> 解决方案页 -> 信任层 -> 联系转化。', 'Multipage servicesite -> oplossingspagina’s -> vertrouwenslagen -> contactconversie.'),
-    ],
-    roadmap: [l('Keep refining service detail pages and case-based proof.', '继续补强服务详情页和案例证明。', 'Services-detailpagina’s en case-based proof verder verfijnen.')],
   },
   {
     slug: 'surpriseme',
@@ -800,7 +857,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const filteredProjects = projects.filter((project) => project.slug !== 'ominigent-logo-system');
+export const filteredProjects = projects.filter((project) => project.slug !== 'ominigent-logo-system' && project.slug !== 'harry-comprehensive-website');
 
 export const featuredProjects = filteredProjects.filter((project) => project.featured);
 

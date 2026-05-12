@@ -10,7 +10,7 @@ import { pickText, uiText } from '../data/siteContent';
 import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
 import InteractiveHeroScene from '../components/common/InteractiveHeroScene';
-import TimelineRail from '../components/common/TimelineRail';
+import { MyJourneyRailMap } from '../components/journey/MyJourneyRailMap';
 import { getProjectDisplayName } from '../lib/projectText';
 
 const HomePage: React.FC = () => {
@@ -94,7 +94,7 @@ const HomePage: React.FC = () => {
       </NeoSection>
 
       <NeoSection title={pickText(currentLanguage, uiText.home.storyTitle)} description={pickText(currentLanguage, uiText.home.storyBody)}>
-        <TimelineRail />
+        <MyJourneyRailMap />
       </NeoSection>
 
       <NeoSection title={pickText(currentLanguage, uiText.home.aboutTitle)} description={pickText(currentLanguage, uiText.home.aboutBody)}>

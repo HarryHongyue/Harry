@@ -13,7 +13,6 @@ import SecurityPage from '../pages/SecurityPage';
 import ContactPage from '../pages/ContactPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import SiteBackground from './ui/SiteBackground';
-import Breadcrumbs from './navigation/Breadcrumbs';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -34,7 +33,6 @@ const App: React.FC = () => {
           <SiteBackground />
           <Header />
           <main className="app-main">
-            <Breadcrumbs />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />

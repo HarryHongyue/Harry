@@ -1,0 +1,63 @@
+import React, { useMemo, useRef } from 'react';
+import { RoundedBox } from '@react-three/drei';
+import { Group, MeshStandardMaterial } from 'three';
+import { useFrame } from '@react-three/fiber';
+import { HERO3D_COLORS, HERO3D_INTENSITY, type Hero3DIntensity } from './hero3d.config';
+import type { HeroParallaxValue } from './useHeroParallax';
+
+interface HLogoMeshProps {
+  logoText?: string;
+  intensity?: Hero3DIntensity;
+  reducedMotion?: boolean;
+  parallax: React.MutableRefObject<HeroParallaxValue>;
+}
+
+const HLogoMesh: React.FC<HLogoMeshProps> = ({ logoText = 'H', intensity = 'medium', reducedMotion = false, parallax }) => {
+  const group = useRef<Group>(null);
+  const accent = HERO3D_INTENSITY[intensity];
+  const material = useMemo(
+    () =>
+      new MeshStandardMaterial({
+        color: '#0fd8c8',
+        emissive: HERO3D_COLORS.teal,
+        emissiveIntensity: 0.46 * accent.glow,
+        roughness: 0.34,
+        metalness: 0.1,
+        toneMapped: false,
+      }),
+    [accent.glow],
+  );
+
+  useFrame(({ clock }) => {
+    if (!group.current || reducedMotion) return;
+    const elapsed = clock.getElapsedTime();
+    const pulse = 0.78 + Math.sin(elapsed * 1.8) * 0.18;
+
+    group.current.position.y = 0.68 + Math.sin(elapsed * 0.8) * 0.08 * accent.motion + parallax.current.y * -0.08;
+    group.current.position.x = parallax.current.x * 0.16;
+    group.current.rotation.x = -0.08 + Math.sin(elapsed * 0.55) * 0.02 + parallax.current.y * 0.08;
+    group.current.rotation.y = Math.sin(elapsed * 0.48) * 0.05 + parallax.current.x * 0.12;
+    material.emissiveIntensity = pulse * accent.glow;
+  });
+
+  return (
+    <group ref={group} position={[0, 0.68, 0]} castShadow>
+      <RoundedBox args={[0.64, 3.1, 0.7]} radius={0.16} smoothness={8} position={[-0.78, 0, 0]} material={material} />
+      <RoundedBox args={[0.64, 3.1, 0.7]} radius={0.16} smoothness={8} position={[0.78, 0, 0]} material={material} />
+      <RoundedBox args={[1.78, 0.62, 0.7]} radius={0.16} smoothness={8} position={[0, -0.06, 0]} material={material} />
+      <pointLight color={HERO3D_COLORS.teal} intensity={1.8 * accent.glow} distance={4.6} position={[0, 0.6, 1.4]} />
+      <mesh position={[0, -1.9, 0.43]}>
+        <ringGeometry args={[1.15, 1.21, 96]} />
+        <meshBasicMaterial color={HERO3D_COLORS.cyan} transparent opacity={0.34 * accent.glow} />
+      </mesh>
+      <group position={[0, 1.86, 0.4]}>
+        <mesh>
+          <planeGeometry args={[0.5, 0.2]} />
+          <meshBasicMaterial color={HERO3D_COLORS.teal} transparent opacity={logoText === 'H' ? 0 : 0.18} />
+        </mesh>
+      </group>
+    </group>
+  );
+};
+
+export default HLogoMesh;
