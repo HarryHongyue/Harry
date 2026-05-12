@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code2, Mail, MessageCircleMore, Radio, Rocket, Send, Shield, Users } from 'lucide-react';
+import { Code2, Mail, MessageCircleMore, Rocket, Users } from 'lucide-react';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
 import NeoInput from '../components/ui/NeoInput';
@@ -9,34 +9,46 @@ import NeoButton from '../components/ui/NeoButton';
 import InteractiveHeroScene from '../components/common/InteractiveHeroScene';
 import ProjectLogo from '../components/common/ProjectLogo';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
+import SocialLogo from '../components/common/SocialLogo';
+
+const CONTACT_EMAIL = 'HarryHongyue@omnigent.nl';
 
 const ContactPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
 
   const cards = [
     {
-      icon: <Mail size={24} />,
-      title: 'Email',
-      body: 'HarryHongyue@omnigent.nl',
-      detail: currentLanguage === 'zh' ? '直接给我发邮件，适合项目沟通和正式合作。' : currentLanguage === 'nl' ? 'Mail mij direct voor projecten en formele samenwerking.' : 'Email me directly for project discussions and formal collaboration.',
-    },
-    {
       icon: <Code2 size={24} />,
       title: 'GitHub',
       body: 'client/private-example-repo',
-      detail: currentLanguage === 'zh' ? '您获得所有代码的所有权。这里展示的是客户代码库类型的例子，而不是我的个人仓库。' : currentLanguage === 'nl' ? 'U krijgt het eigendom van alle code. Dit toont een voorbeeld van een klantrepository, niet mijn persoonlijke repo.' : 'You retain ownership of the delivered code. This shows the kind of client repository I work in, not my personal repo.',
+      detail:
+        currentLanguage === 'zh'
+          ? '交付代码会按项目边界整理清楚，便于后续维护、交接和扩展。'
+          : currentLanguage === 'nl'
+            ? 'Opgeleverde code wordt per project duidelijk gestructureerd voor onderhoud en overdracht.'
+            : 'Delivered code is structured around the project boundary so it stays maintainable and easy to hand over.',
     },
     {
       icon: <Users size={24} />,
-      title: currentLanguage === 'zh' ? '合作方式' : currentLanguage === 'nl' ? 'Samenwerking' : 'Collaboration',
+      title: pickText(currentLanguage, uiText.common.collaboration),
       body: currentLanguage === 'zh' ? '产品、系统、前端、自动化' : currentLanguage === 'nl' ? 'Product, systemen, frontend, automatisering' : 'Product, systems, frontend, automation',
-      detail: currentLanguage === 'zh' ? '适合中长期项目合作，也适合结构梳理和从零到一搭建。' : currentLanguage === 'nl' ? 'Geschikt voor middellange en langetermijnprojecten, maar ook voor structurering en greenfield-opbouw.' : 'Best suited for mid- to long-term collaboration, but also good for structure work and greenfield builds.',
+      detail:
+        currentLanguage === 'zh'
+          ? '适合中长期项目合作，也适合结构梳理、系统重构和从零搭建。'
+          : currentLanguage === 'nl'
+            ? 'Geschikt voor middellange en langetermijnprojecten, structurering en greenfield-opbouw.'
+            : 'Best suited for mid- to long-term collaboration, structure work, refactors, and greenfield builds.',
     },
     {
       icon: <Rocket size={24} />,
-      title: currentLanguage === 'zh' ? '可合作状态' : currentLanguage === 'nl' ? 'Beschikbaarheid' : 'Availability',
+      title: pickText(currentLanguage, uiText.common.availability),
       body: currentLanguage === 'zh' ? '全球 / 远程' : currentLanguage === 'nl' ? 'Global / remote' : 'Global / Remote',
-      detail: currentLanguage === 'zh' ? '欢迎新项目、升级项目和深度长期合作。' : currentLanguage === 'nl' ? 'Open voor nieuwe projecten, upgrades en langdurige samenwerking.' : 'Open for new projects, upgrades, and long-term collaboration.',
+      detail:
+        currentLanguage === 'zh'
+          ? '欢迎新项目、升级项目和需要长期技术判断的合作。'
+          : currentLanguage === 'nl'
+            ? 'Open voor nieuwe projecten, upgrades en langdurige samenwerking.'
+            : 'Open for new projects, upgrades, and long-term collaboration.',
     },
   ];
 
@@ -61,10 +73,10 @@ const ContactPage: React.FC = () => {
   ];
 
   const contactButtons = [
-    { label: 'WhatsApp', href: 'https://wa.me/310000000000', icon: <MessageCircleMore size={18} /> },
-    { label: 'Telegram', href: 'https://t.me/example', icon: <Send size={18} /> },
-    { label: 'XChat', href: 'https://x.com', icon: <Radio size={18} /> },
-    { label: 'Signal', href: 'https://signal.me/#eu/example', icon: <Shield size={18} /> },
+    { label: 'WhatsApp', href: 'https://wa.me/310000000000', logo: 'whatsapp' as const },
+    { label: 'Telegram', href: 'https://t.me/example', logo: 'telegram' as const },
+    { label: 'XChat', href: 'https://x.com', logo: 'xchat' as const },
+    { label: 'Signal', href: 'https://signal.me/#eu/example', logo: 'signal' as const },
   ];
 
   return (
@@ -93,7 +105,7 @@ const ContactPage: React.FC = () => {
       </div>
 
       <div className="section-shell">
-        <div className="neo-contact-grid">
+        <div className="neo-contact-grid neo-contact-grid--three">
           {cards.map((card, index) => (
             <NeoCard key={card.title} hoverable className="neo-contact-card neo-project-card--spotlight">
               <div className="neo-contact-card__header">
@@ -115,10 +127,10 @@ const ContactPage: React.FC = () => {
 
       <div className="section-shell neo-contact-row neo-contact-row--swapped">
         <div className="neo-info-stack">
-          <NeoCard hoverable>
+          <NeoCard hoverable className="neo-expectation-card">
             <div className="neo-info-card__title">
               <Rocket size={18} />
-              <h3>{currentLanguage === 'zh' ? 'What to Expect' : currentLanguage === 'nl' ? 'Wat je kunt verwachten' : 'What to Expect'}</h3>
+              <h3>{currentLanguage === 'zh' ? 'What to Expect 你可以期待什么' : currentLanguage === 'nl' ? 'Wat je kunt verwachten' : 'What to Expect'}</h3>
             </div>
             <ul className="neo-list neo-list--spaced">
               {expectations.map((item) => (
@@ -126,15 +138,21 @@ const ContactPage: React.FC = () => {
               ))}
             </ul>
           </NeoCard>
-          <NeoCard variant="inset" hoverable>
+          <NeoCard variant="inset" hoverable className="neo-contact-channels-card">
             <div className="neo-info-card__title">
               <MessageCircleMore size={18} />
               <h3>{currentLanguage === 'zh' ? '联系方式' : currentLanguage === 'nl' ? 'Contactkanalen' : 'Contact Channels'}</h3>
             </div>
+            <a className="neo-contact-email-line" href={`mailto:${CONTACT_EMAIL}`}>
+              <SocialLogo name="email" size={20} />
+              <span>{CONTACT_EMAIL}</span>
+            </a>
             <div className="neo-contact-actions-grid">
               {contactButtons.map((button) => (
                 <a key={button.label} href={button.href} target="_blank" rel="noreferrer" className="neo-contact-link-block">
-                  <span className="neo-contact-link-block__icon">{button.icon}</span>
+                  <span className="neo-contact-link-block__icon">
+                    <SocialLogo name={button.logo} size={28} />
+                  </span>
                   <span>{button.label}</span>
                 </a>
               ))}
@@ -145,12 +163,12 @@ const ContactPage: React.FC = () => {
         <div className="neo-form">
           <h2>{pickText(currentLanguage, uiText.common.sendMessage)}</h2>
           <div className="neo-form__grid neo-form__grid--2">
-            <NeoInput label={currentLanguage === 'zh' ? 'Your Name' : currentLanguage === 'nl' ? 'Naam' : 'Your Name'} placeholder={currentLanguage === 'zh' ? '请输入你的姓名' : currentLanguage === 'nl' ? 'Vul je naam in' : 'Enter your full name'} />
+            <NeoInput label={currentLanguage === 'zh' ? '你的姓名' : currentLanguage === 'nl' ? 'Naam' : 'Your Name'} placeholder={currentLanguage === 'zh' ? '请输入你的姓名' : currentLanguage === 'nl' ? 'Vul je naam in' : 'Enter your full name'} />
             <NeoInput label="Email Address" placeholder={currentLanguage === 'zh' ? '输入你的邮箱地址' : currentLanguage === 'nl' ? 'Vul je e-mailadres in' : 'Enter your email address'} />
           </div>
           <div className="neo-form__grid neo-form__grid--2">
             <label className="neo-field">
-              <span className="neo-field__label">{currentLanguage === 'zh' ? 'Project Type' : currentLanguage === 'nl' ? 'Projecttype' : 'Project Type'}</span>
+              <span className="neo-field__label">{currentLanguage === 'zh' ? '项目类型' : currentLanguage === 'nl' ? 'Projecttype' : 'Project Type'}</span>
               <select className="neo-input" defaultValue="">
                 <option value="" disabled>
                   {currentLanguage === 'zh' ? '选择项目类型' : currentLanguage === 'nl' ? 'Kies een projecttype' : 'Select project type'}
@@ -160,10 +178,10 @@ const ContactPage: React.FC = () => {
                 ))}
               </select>
             </label>
-            <NeoInput label={currentLanguage === 'zh' ? 'Best Contact Email' : currentLanguage === 'nl' ? 'Beste contactmail' : 'Best Contact Email'} value="HarryHongyue@omnigent.nl" readOnly />
+            <NeoInput label={currentLanguage === 'zh' ? '最佳联系邮箱' : currentLanguage === 'nl' ? 'Beste contactmail' : 'Best Contact Email'} value={CONTACT_EMAIL} readOnly />
           </div>
           <label className="neo-field">
-            <span className="neo-field__label">{currentLanguage === 'zh' ? 'Project Summary' : currentLanguage === 'nl' ? 'Projectsamenvatting' : 'Project Summary'}</span>
+            <span className="neo-field__label">{currentLanguage === 'zh' ? '项目概要' : currentLanguage === 'nl' ? 'Projectsamenvatting' : 'Project Summary'}</span>
             <textarea className="neo-input" rows={7} placeholder={currentLanguage === 'zh' ? '告诉我你的目标、边界、时间预期，以及我可以怎样帮你。' : currentLanguage === 'nl' ? 'Vertel me over je doelen, grenzen, timing en hoe ik kan helpen.' : 'Tell me about your goals, constraints, timing, and how I can help.'} />
           </label>
           <NeoButton variant="primary" iconLeft={<Mail size={18} />}>
@@ -176,7 +194,7 @@ const ContactPage: React.FC = () => {
       <div className="section-shell">
         <div className="neo-grid neo-grid--3">
           <NeoCard hoverable>
-            <h3>{currentLanguage === 'zh' ? '我感兴趣的合作' : currentLanguage === 'nl' ? 'Waar ik graag aan werk' : 'I’m Interested In'}</h3>
+            <h3>{currentLanguage === 'zh' ? '我感兴趣的合作' : currentLanguage === 'nl' ? 'Waar ik graag aan werk' : "I'm Interested In"}</h3>
             <ul className="neo-list">
               {interestList.map((item) => (
                 <li key={item}>{item}</li>

@@ -1,15 +1,14 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, Download, Search, Globe, Monitor, Puzzle } from 'lucide-react';
+import { ArrowRight, Globe, LayoutDashboard, Monitor, Puzzle, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
 import NeoInput from '../components/ui/NeoInput';
 import NeoSection from '../components/ui/NeoSection';
-import NeoTable from '../components/ui/NeoTable';
 import { categoryLabels, filteredProjects, projectFilters, statusLabels } from '../data/projects';
 import { useLanguage } from '../contexts/LanguageContext';
 import { pickText, uiText } from '../data/siteContent';
-import type { Project, ProjectCategory } from '../types/project';
+import type { ProjectCategory } from '../types/project';
 import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
 import { getProjectDisplayName } from '../lib/projectText';
@@ -22,7 +21,12 @@ const ProjectsPage: React.FC = () => {
 
   const visibleProjects = useMemo(() => {
     const normalized = query.trim().toLowerCase();
+    const seen = new Set<string>();
+
     return filteredProjects.filter((project) => {
+      if (seen.has(project.slug)) return false;
+      seen.add(project.slug);
+
       const matchesFilter = activeFilter === 'all' || project.category.includes(activeFilter);
       const haystack = [
         project.englishName,
@@ -34,28 +38,31 @@ const ProjectsPage: React.FC = () => {
       ]
         .join(' ')
         .toLowerCase();
+
       return matchesFilter && (!normalized || haystack.includes(normalized));
     });
   }, [activeFilter, currentLanguage, query]);
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
-      <NeoSection eyebrow={<Breadcrumbs />} title={pickText(currentLanguage, uiText.projects.title)} description={pickText(currentLanguage, uiText.projects.intro)}>
-        <div className="neo-filter-bar">
-          {projectFilters.map((filter) => (
-            <button
-              key={filter.key}
-              type="button"
-              className={`neo-badge neo-filter-chip ${activeFilter === filter.key ? 'is-active' : ''}`}
-              onClick={() => setActiveFilter(filter.key)}
-            >
-              {pickText(currentLanguage, filter.label)}
-            </button>
-          ))}
-        </div>
-        <div className="neo-search-shell neo-search-shell--icon">
-          <Search size={18} />
-          <NeoInput value={query} onChange={(event) => setQuery(event.target.value)} placeholder={pickText(currentLanguage, uiText.common.searchPlaceholder)} />
+      <NeoSection className="neo-projects-hero-section" eyebrow={<Breadcrumbs />} title={pickText(currentLanguage, uiText.projects.title)} description={pickText(currentLanguage, uiText.projects.intro)}>
+        <div className="neo-projects-toolbar">
+          <div className="neo-filter-bar">
+            {projectFilters.map((filter) => (
+              <button
+                key={filter.key}
+                type="button"
+                className={`neo-badge neo-filter-chip ${activeFilter === filter.key ? 'is-active' : ''}`}
+                onClick={() => setActiveFilter(filter.key)}
+              >
+                {pickText(currentLanguage, filter.label)}
+              </button>
+            ))}
+          </div>
+          <div className="neo-search-shell neo-search-shell--icon">
+            <Search size={18} />
+            <NeoInput value={query} onChange={(event) => setQuery(event.target.value)} placeholder={pickText(currentLanguage, uiText.common.searchPlaceholder)} />
+          </div>
         </div>
       </NeoSection>
 
@@ -85,39 +92,23 @@ const ProjectsPage: React.FC = () => {
                   {project.browserExtension ? (
                     <>
                       <Puzzle size={14} />
-                      {currentLanguage === 'zh'
-                        ? '浏览器扩展'
-                        : currentLanguage === 'nl'
-                          ? 'Browserextensie'
-                          : 'Browser Extension'}
+                      {currentLanguage === 'zh' ? '浏览器扩展' : currentLanguage === 'nl' ? 'Browserextensie' : 'Browser Extension'}
                     </>
                   ) : project.desktopApp && project.webVersion ? (
                     <>
                       <Monitor size={14} />
                       <Globe size={14} />
-                      {currentLanguage === 'zh'
-                        ? '桌面软件 / Web 项目'
-                        : currentLanguage === 'nl'
-                          ? 'Desktopsoftware / Webproject'
-                          : 'Desktop Software / Web Project'}
+                      {currentLanguage === 'zh' ? '桌面软件 / Web 项目' : currentLanguage === 'nl' ? 'Desktopsoftware / Webproject' : 'Desktop Software / Web Project'}
                     </>
                   ) : project.desktopApp ? (
                     <>
                       <Monitor size={14} />
-                      {currentLanguage === 'zh'
-                        ? '桌面软件'
-                        : currentLanguage === 'nl'
-                          ? 'Desktopsoftware'
-                          : 'Desktop Software'}
+                      {currentLanguage === 'zh' ? '桌面软件' : currentLanguage === 'nl' ? 'Desktopsoftware' : 'Desktop Software'}
                     </>
                   ) : (
                     <>
                       <Globe size={14} />
-                      {currentLanguage === 'zh'
-                        ? 'Web 项目'
-                        : currentLanguage === 'nl'
-                          ? 'Webproject'
-                          : 'Web Project'}
+                      {currentLanguage === 'zh' ? 'Web 项目' : currentLanguage === 'nl' ? 'Webproject' : 'Web Project'}
                     </>
                   )}
                 </span>
@@ -131,27 +122,60 @@ const ProjectsPage: React.FC = () => {
         </div>
       </div>
 
-      <NeoSection title={pickText(currentLanguage, uiText.projects.tableTitle)}>
-        <NeoTable<Project>
-          rowKey={(project) => project.slug}
-          rows={visibleProjects}
-          columns={[
-            { key: 'name', header: currentLanguage === 'zh' ? '项目' : currentLanguage === 'nl' ? 'Project' : 'Project', render: (project) => getProjectDisplayName(project, currentLanguage) },
-            { key: 'category', header: currentLanguage === 'zh' ? '分类' : currentLanguage === 'nl' ? 'Categorie' : 'Category', render: (project) => pickText(currentLanguage, categoryLabels[project.category[0]]) },
-            { key: 'types', header: currentLanguage === 'zh' ? '类型' : currentLanguage === 'nl' ? 'Type' : 'Type', render: (project) => project.projectType.join(' / ') },
-            { key: 'backend', header: currentLanguage === 'zh' ? '后端' : currentLanguage === 'nl' ? 'Backend' : 'Backend', render: (project) => (project.backendRequired ? 'Yes' : 'No') },
-            { key: 'stack', header: currentLanguage === 'zh' ? '技术栈' : currentLanguage === 'nl' ? 'Stack' : 'Stack', render: (project) => project.techStackIds.slice(0, 3).join(', ') },
-            {
-              key: 'open',
-              header: currentLanguage === 'zh' ? '打开' : currentLanguage === 'nl' ? 'Openen' : 'Open',
-              render: (project) => (
-                <Link to={`/projects/${project.slug}`} className={neoButtonClass('ghost')}>
-                  {pickText(currentLanguage, uiText.common.learnMore)}
-                </Link>
-              ),
-            },
-          ]}
-        />
+      <NeoSection className="neo-project-overview-section">
+        <div className="neo-project-overview-card">
+          <div className="neo-project-overview-card__title">
+            <LayoutDashboard size={30} />
+            <h2>
+              Projects at a Glance <span>{currentLanguage === 'zh' ? '项目速览' : currentLanguage === 'nl' ? 'Projectenoverzicht' : 'Project Overview'}</span>
+            </h2>
+          </div>
+          <div className="neo-project-overview-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>{currentLanguage === 'zh' ? '项目' : currentLanguage === 'nl' ? 'Project' : 'Project'}</th>
+                  <th>{currentLanguage === 'zh' ? '类型' : currentLanguage === 'nl' ? 'Type' : 'Type'}</th>
+                  <th>{currentLanguage === 'zh' ? '后端' : currentLanguage === 'nl' ? 'Backend' : 'Backend'}</th>
+                  <th>{currentLanguage === 'zh' ? '主要技术' : currentLanguage === 'nl' ? 'Primary Tech' : 'Primary Tech'}</th>
+                  <th>{currentLanguage === 'zh' ? '状态' : currentLanguage === 'nl' ? 'Status' : 'Status'}</th>
+                  <th>{currentLanguage === 'zh' ? '打开' : currentLanguage === 'nl' ? 'Openen' : 'Open'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {visibleProjects.map((project) => {
+                  const statusTone = project.status === 'active' || project.status === 'featured' ? 'green' : project.status === 'client-project' || project.status === 'school-project' ? 'yellow' : 'blue';
+                  return (
+                    <tr key={project.slug}>
+                      <td>
+                        <strong>{getProjectDisplayName(project, currentLanguage)}</strong>
+                      </td>
+                      <td>{project.projectType.join(' / ')}</td>
+                      <td>
+                        <span className={`neo-status-pill neo-status-pill--${project.backendRequired ? 'blue' : 'green'}`}>
+                          <i />
+                          {project.backendRequired ? (currentLanguage === 'zh' ? '需要' : currentLanguage === 'nl' ? 'Vereist' : 'Required') : currentLanguage === 'zh' ? '不需要' : currentLanguage === 'nl' ? 'Niet nodig' : 'Not Required'}
+                        </span>
+                      </td>
+                      <td>{project.techStackIds.slice(0, 3).join(', ')}</td>
+                      <td>
+                        <span className={`neo-status-pill neo-status-pill--${statusTone}`}>
+                          <i />
+                          {pickText(currentLanguage, statusLabels[project.status])}
+                        </span>
+                      </td>
+                      <td>
+                        <Link to={`/projects/${project.slug}`} className={neoButtonClass('ghost')}>
+                          {pickText(currentLanguage, uiText.common.learnMore)}
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </NeoSection>
     </div>
   );

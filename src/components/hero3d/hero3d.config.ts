@@ -1,7 +1,7 @@
 export const HERO3D_COLORS = {
-  cyan: '#22d3ee',
-  teal: '#14f1dd',
-  blue: '#2563eb',
+  cyan: '#65d6ff',
+  teal: '#46f0d4',
+  blue: '#6878ff',
   navy: '#07111f',
   graphite: '#111827',
   panel: 'rgba(10, 20, 35, 0.72)',

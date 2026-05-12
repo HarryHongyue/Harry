@@ -296,9 +296,8 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: true,
     releaseAssets: [
-      asset(l('Sample Invoice PDF', '示例发票 PDF', 'Voorbeeldfactuur PDF'), l('PDF Document', 'PDF 文档', 'PDF-document'), 'v1.2.3', '1.24 MB', '/downloads', 'a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2', '2026-05-11'),
-      asset(l('Scanned PDF Example', '扫描件示例', 'Gescanneerde PDF'), l('PDF Document', 'PDF 文档', 'PDF-document'), 'v1.2.3', '2.48 MB', '/downloads', '45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e', '2026-05-11'),
-      asset(l('Postman Collection', 'Postman 集合', 'Postman-collectie'), l('JSON File', 'JSON 文件', 'JSON-bestand'), 'v1.2.3', '18 KB', '/downloads', '8c26dd3b9226678cda94652f01d4cf78c5e22b4b1df9b3e71a59ca3774b01343', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.2.3', '148 MB', '/downloads', 'a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2', '2026-05-11'),
+      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS Universal', 'macOS 通用版', 'macOS universal'), 'v1.2.3', '142 MB', '/downloads', '45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e', '2026-05-11'),
     ],
     securityNotes: [
       l('Uploads should be validated by file type, request size, and allowed processing mode before entering OCR.', '上传必须先经过文件类型、大小限制和允许模式校验，再进入 OCR 处理。', 'Uploads moeten worden gevalideerd op bestandstype, grootte en toegestane modus voordat ze OCR ingaan.'),
@@ -364,8 +363,8 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: true,
     releaseAssets: [
-      asset(l('Windows Installer', 'Windows 安装包', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.0.0', '126.8 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', '3f2b7e5c90f0b62d4a6df1e8bc9d2f7b441e3b9d52cfab8e01c7ddda7f1d53f2', '2026-05-11'),
-      asset(l('macOS Package', 'macOS 安装包', 'macOS-pakket'), l('macOS ARM64', 'macOS ARM64', 'macOS ARM64'), 'v1.0.0', '124.8 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', 'ccad1207e3c4432f11f98e87ab7c16da229983db3d7f8f3f3b86f938f2d6bb15', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.0.0', '126.8 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', '3f2b7e5c90f0b62d4a6df1e8bc9d2f7b441e3b9d52cfab8e01c7ddda7f1d53f2', '2026-05-11'),
+      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS ARM64', 'macOS ARM64', 'macOS ARM64'), 'v1.0.0', '124.8 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', 'ccad1207e3c4432f11f98e87ab7c16da229983db3d7f8f3f3b86f938f2d6bb15', '2026-05-11'),
       asset(l('Linux Archive', 'Linux 压缩包', 'Linux-archief'), l('Linux 64-bit', 'Linux 64 位', 'Linux 64-bit'), 'v1.0.0', '122.3 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', 'ae7b236bc4177f0a84ab38fbc12a67d7dd1fe44322e4a88f169bc92834f55a12', '2026-05-11'),
     ],
     securityNotes: [
@@ -770,7 +769,7 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: false,
     releaseAssets: [
-      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Desktop Installer', '桌面安装包', 'Desktop-installer'), 'v1.0.0', '50 MB+', '/downloads', 'bc1186e59bd6d633ba44f1be5ddcc2ccde4373358d4e8c2f42187f0c88403aa2', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), 'v1.0.0', '50 MB+', '/downloads', 'bc1186e59bd6d633ba44f1be5ddcc2ccde4373358d4e8c2f42187f0c88403aa2', '2026-05-11'),
     ],
     securityNotes: [
       l('Local certificate data and attachments should be stored with clear backup and export procedures.', '本地证书数据和附件应配备清晰的备份与导出流程。', 'Lokale certificaatdata en bijlagen moeten duidelijke back-up- en exportprocedures hebben.'),

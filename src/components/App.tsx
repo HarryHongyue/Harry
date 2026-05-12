@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { ArrowUp } from 'lucide-react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
@@ -24,6 +25,28 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
+const ScrollTopButton: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsVisible(window.scrollY > 520);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <button
+      type="button"
+      className={`scroll-top-button ${isVisible ? 'is-visible' : ''}`}
+      aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    >
+      <ArrowUp size={20} />
+    </button>
+  );
+};
+
 const App: React.FC = () => {
   return (
     <LanguageProvider>
@@ -46,6 +69,7 @@ const App: React.FC = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
+          <ScrollTopButton />
           <div className="section-shell" style={{ paddingBottom: 32 }}>
             <Footer />
           </div>

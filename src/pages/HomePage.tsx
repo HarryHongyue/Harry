@@ -9,14 +9,14 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { pickText, uiText } from '../data/siteContent';
 import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
-import InteractiveHeroScene from '../components/common/InteractiveHeroScene';
 import { MyJourneyRailMap } from '../components/journey/MyJourneyRailMap';
 import { getProjectDisplayName } from '../lib/projectText';
+import personalHeroPhoto from '../assets/images/Personal/个人首页展示照片.jpg';
 
 const HomePage: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const homeProject = filteredProjects.find((project) => project.slug === 'harry');
-  const displayFeatured = featuredProjects.slice(0, 4);
+  const displayFeatured = featuredProjects.filter((project) => project.slug !== 'song-yan').slice(0, 3);
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
@@ -54,7 +54,15 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          <InteractiveHeroScene variant="home" />
+          <div className="neo-home-photo-showcase" aria-label="Harry portrait">
+            <div className="neo-home-photo-showcase__frame">
+              <img src={personalHeroPhoto} alt="Harry" />
+            </div>
+            <div className="neo-home-photo-showcase__plate">
+              <span>{currentLanguage === 'zh' ? '个人主站' : currentLanguage === 'nl' ? 'Hoofdsite' : 'Main Site'}</span>
+              <strong>Harry</strong>
+            </div>
+          </div>
         </section>
       </div>
 
@@ -93,7 +101,7 @@ const HomePage: React.FC = () => {
         </div>
       </NeoSection>
 
-      <NeoSection title={pickText(currentLanguage, uiText.home.storyTitle)} description={pickText(currentLanguage, uiText.home.storyBody)}>
+      <NeoSection className="neo-section--journey" title={pickText(currentLanguage, uiText.home.storyTitle)} description={pickText(currentLanguage, uiText.home.storyBody)}>
         <MyJourneyRailMap />
       </NeoSection>
 

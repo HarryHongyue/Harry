@@ -14,9 +14,9 @@ import {
 import './MyJourneyRailMap.css';
 
 const VIEWBOX_WIDTH = 1440;
-const VIEWBOX_HEIGHT = 960;
+const VIEWBOX_HEIGHT = 1040;
 
-const RAIL_PATH_D = `M 120 78 H 1280 Q 1365 78 1365 165 V 260 Q 1365 328 1295 328 H 145 Q 75 328 75 398 V 510 Q 75 578 145 578 H 1295 Q 1365 578 1365 650 V 725 Q 1365 795 1295 795 H 720`;
+const RAIL_PATH_D = `M 80 78 H 1320 Q 1410 78 1410 168 V 238 Q 1410 328 1320 328 H 120 Q 30 328 30 418 V 488 Q 30 578 120 578 H 1320 Q 1410 578 1410 668 V 738 Q 1410 828 1320 828 H 720`;
 
 type JourneyIconName =
   | 'wordpress'
@@ -71,8 +71,8 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Started with H5 pages, semantic structure, responsive layouts, and interactive browser UI basics.',
     tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive UI'],
     icon: 'monitor',
-    card: { x: 70, y: 115, w: 350, h: 150 },
-    station: { x: 245, y: 78 },
+    card: { x: 80, y: 115, w: 370, h: 170 },
+    station: { x: 230, y: 78 },
     pathProgress: 0.06,
   },
   {
@@ -82,7 +82,7 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Used and customized WordPress sites, themes, plugins, hosting, pages, and content structure.',
     tech: ['WordPress', 'Themes', 'Plugins', 'Hosting'],
     icon: 'wordpress',
-    card: { x: 545, y: 115, w: 350, h: 150 },
+    card: { x: 535, y: 115, w: 370, h: 170 },
     station: { x: 720, y: 78 },
     pathProgress: 0.18,
   },
@@ -93,8 +93,8 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Studied Java fundamentals, object-oriented design, Maven workflows, and desktop project structure.',
     tech: ['Java', 'OOP', 'Maven', 'JavaFX'],
     icon: 'java',
-    card: { x: 1020, y: 115, w: 350, h: 150 },
-    station: { x: 1195, y: 78 },
+    card: { x: 990, y: 115, w: 370, h: 170 },
+    station: { x: 1210, y: 78 },
     pathProgress: 0.30,
   },
   {
@@ -104,8 +104,8 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Built Python scripts and small utilities for automation, parsing, APIs, and practical workflows.',
     tech: ['Python', 'Automation', 'APIs', 'Utilities'],
     icon: 'python',
-    card: { x: 1020, y: 365, w: 350, h: 150 },
-    station: { x: 1195, y: 328 },
+    card: { x: 990, y: 365, w: 370, h: 170 },
+    station: { x: 1210, y: 328 },
     pathProgress: 0.42,
   },
   {
@@ -115,7 +115,7 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Moved from exercises into complete personal projects with clearer structure and delivery goals.',
     tech: ['Project Design', 'Frontend', 'Backend', 'Release'],
     icon: 'layers',
-    card: { x: 545, y: 365, w: 350, h: 150 },
+    card: { x: 535, y: 365, w: 370, h: 170 },
     station: { x: 720, y: 328 },
     pathProgress: 0.52,
   },
@@ -126,8 +126,8 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Used TypeScript to make larger projects safer, easier to refactor, and more maintainable.',
     tech: ['TypeScript', 'React', 'Vite', 'Architecture'],
     icon: 'cube',
-    card: { x: 70, y: 365, w: 350, h: 150 },
-    station: { x: 245, y: 328 },
+    card: { x: 80, y: 365, w: 370, h: 170 },
+    station: { x: 230, y: 328 },
     pathProgress: 0.62,
   },
   {
@@ -137,8 +137,8 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Packaged services and Java projects with containers, Maven builds, and repeatable deployment steps.',
     tech: ['Docker', 'Maven', 'Builds', 'Deployment'],
     icon: 'cloud',
-    card: { x: 70, y: 615, w: 350, h: 150 },
-    station: { x: 245, y: 578 },
+    card: { x: 80, y: 615, w: 370, h: 170 },
+    station: { x: 230, y: 578 },
     pathProgress: 0.72,
   },
   {
@@ -148,7 +148,7 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Deepened database thinking, SQL modeling, query structure, and graph algorithm foundations.',
     tech: ['SQL', 'Databases', 'Graphs', 'Algorithms'],
     icon: 'database',
-    card: { x: 545, y: 615, w: 350, h: 150 },
+    card: { x: 535, y: 615, w: 370, h: 170 },
     station: { x: 720, y: 578 },
     pathProgress: 0.82,
   },
@@ -159,8 +159,8 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Focused on AI learning, Transformer concepts, model workflows, and intelligent application patterns.',
     tech: ['Transformer', 'LLMs', 'RAG', 'Prompting'],
     icon: 'brain',
-    card: { x: 1020, y: 615, w: 350, h: 150 },
-    station: { x: 1195, y: 578 },
+    card: { x: 990, y: 615, w: 370, h: 170 },
+    station: { x: 1210, y: 578 },
     pathProgress: 0.92,
   },
   {
@@ -170,8 +170,8 @@ const journeyMilestones: JourneyMilestone[] = [
     description: 'Continue building practical systems where AI, interaction design, and engineering foundations work together.',
     tech: ['AI Agents', 'Interaction', 'Full Stack', 'Platform Design'],
     icon: 'flag',
-    card: { x: 420, y: 820, w: 600, h: 125 },
-    station: { x: 720, y: 795 },
+    card: { x: 350, y: 865, w: 740, h: 145 },
+    station: { x: 720, y: 828 },
     pathProgress: 1,
   },
 ];
@@ -308,7 +308,8 @@ export const MyJourneyRailMap: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const basePathRef = useRef<SVGPathElement>(null);
   const { progress, train, activeIndex, totalLength, reducedMotion } = useRailScrollProgress(sectionRef, basePathRef);
-  const progressOffset = totalLength * (1 - progress);
+  const trainGlowLength = 86;
+  const trainGlowOffset = -(progress * totalLength - trainGlowLength / 2);
 
   return (
     <section ref={sectionRef} className="journey-section" aria-label="My Journey rail map">
@@ -396,7 +397,10 @@ export const MyJourneyRailMap: React.FC = () => {
               <path
                 className="journey-rail-path journey-rail-path--progress"
                 d={RAIL_PATH_D}
-                style={{ strokeDasharray: totalLength, strokeDashoffset: progressOffset }}
+                style={{
+                  strokeDasharray: `${trainGlowLength} ${Math.max(totalLength, 1)}`,
+                  strokeDashoffset: trainGlowOffset,
+                }}
               />
 
               {journeyMilestones.map((milestone, index) => {
@@ -419,13 +423,16 @@ export const MyJourneyRailMap: React.FC = () => {
                 className="journey-train"
                 transform={`translate(${train.x} ${train.y}) rotate(${train.angle})`}
               >
-                <rect x="-33" y="-13" width="43" height="26" rx="10" fill="url(#trainGradient)" />
-                <rect x="13" y="-10" width="25" height="20" rx="8" className="journey-train__car" />
-                <rect x="-23" y="-7" width="10" height="8" rx="3" className="journey-train__window" />
-                <rect x="-8" y="-7" width="10" height="8" rx="3" className="journey-train__window" />
-                <circle cx="-22" cy="14" r="4" className="journey-train__wheel" />
-                <circle cx="20" cy="13" r="3.5" className="journey-train__wheel" />
-                <circle cx="-38" cy="0" r="6" className="journey-train__lamp" />
+                <path
+                  className="journey-train__nose"
+                  d="M -46 0 C -38 -16 -18 -22 10 -18 L 36 -12 C 46 -9 52 -4 54 0 C 52 4 46 9 36 12 L 10 18 C -18 22 -38 16 -46 0 Z"
+                />
+                <path className="journey-train__stripe" d="M -20 -11 H 30 C 37 -11 43 -7 46 -2 H -27 C -25 -6 -23 -9 -20 -11 Z" />
+                <rect x="-18" y="-7" width="11" height="8" rx="3" className="journey-train__window" />
+                <rect x="-3" y="-8" width="12" height="9" rx="3" className="journey-train__window" />
+                <rect x="13" y="-7" width="12" height="8" rx="3" className="journey-train__window" />
+                <path className="journey-train__shadow" d="M -32 12 H 25" />
+                <circle cx="50" cy="0" r="5" className="journey-train__lamp" />
               </g>
             </svg>
           </div>

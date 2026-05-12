@@ -1,8 +1,8 @@
 import React from 'react';
-import { Mail, MessageCircleMore, Radio, Send, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { pickText, uiText } from '../../data/siteContent';
+import SocialLogo from '../common/SocialLogo';
 
 const Footer: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -56,22 +56,22 @@ const Footer: React.FC = () => {
           <h4>{currentLanguage === 'zh' ? '联系渠道' : currentLanguage === 'nl' ? 'Kanalen' : 'Channels'}</h4>
           <div className="neo-footer__socials">
             <a className="neo-circle-link" href="mailto:HarryHongyue@omnigent.nl" aria-label="Email">
-              <Mail size={18} />
+              <SocialLogo name="email" size={20} />
             </a>
             <a className="neo-circle-link" href="https://wa.me/310000000000" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-              <MessageCircleMore size={18} />
+              <SocialLogo name="whatsapp" size={22} />
             </a>
             <a className="neo-circle-link" href="https://x.com" target="_blank" rel="noreferrer" aria-label="XChat">
-              <Radio size={18} />
+              <SocialLogo name="xchat" size={22} />
             </a>
             <a className="neo-circle-link" href="https://x.com" target="_blank" rel="noreferrer" aria-label="X">
-              <Radio size={18} />
+              <SocialLogo name="x" size={22} />
             </a>
             <a className="neo-circle-link" href="https://signal.me/#eu/example" target="_blank" rel="noreferrer" aria-label="Signal">
-              <Shield size={18} />
+              <SocialLogo name="signal" size={22} />
             </a>
             <a className="neo-circle-link" href="https://t.me/example" target="_blank" rel="noreferrer" aria-label="Telegram">
-              <Send size={18} />
+              <SocialLogo name="telegram" size={22} />
             </a>
           </div>
         </div>

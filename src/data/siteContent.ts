@@ -60,13 +60,13 @@ export const uiText = {
     featuredTitle: l('Selected Work', '重点项目', 'Geselecteerd werk'),
     featuredBody: l('The projects below define the current shape of Harry’s portfolio and long-term direction.', '下面这些项目决定了 Harry 当前作品集的核心轮廓和长期方向。', 'De onderstaande projecten bepalen de huidige vorm en langetermijnrichting van Harry’s portfolio.'),
     storyTitle: l('How I Built My Path', '我的学习与成长路径', 'Hoe ik mijn pad heb opgebouwd'),
-    storyBody: l('A continuous route from H5 pages and WordPress practice into Java, Python, independent projects, TypeScript, Docker, Maven, SQL, graph theory, and AI systems.', '这条路径从 H5 页面和 WordPress 实践开始，逐步进入 Java、Python、独立项目开发、TypeScript、Docker、Maven、SQL、图论与 AI 系统。', 'Dit pad loopt van H5-pagina’s en WordPress-praktijk naar Java, Python, zelfstandige projecten, TypeScript, Docker, Maven, SQL, grafentheorie en AI-systemen.'),
+    storyBody: l('A continuous route from H5 pages and WordPress practice into Java, Python, independent projects, TypeScript, Docker, Maven, SQL, graph theory, and AI systems', '这条路径从 H5 页面和 WordPress 实践开始，逐步进入 Java、Python、独立项目开发、TypeScript、Docker、Maven、SQL、图论与 AI 系统', 'Dit pad loopt van H5-pagina’s en WordPress-praktijk naar Java, Python, zelfstandige projecten, TypeScript, Docker, Maven, SQL, grafentheorie en AI-systemen'),
     aboutTitle: l('About Harry', '关于 Harry', 'Over Harry'),
     aboutBody: l('Builder. Problem Solver. Engineer.', '构建者 问题解决者 工程师', 'Bouwer Probleemoplosser Engineer'),
   },
   projects: {
     title: l('Projects', '项目', 'Projecten'),
-    intro: l('A structured project catalog with real logos, real delivery modes, and clearer categories.', '一个带真实 logo、真实交付方式和更清晰分类的项目目录。', 'Een gestructureerde projectcatalogus met echte logo’s, echte leveringsvormen en duidelijkere categorieën.'),
+    intro: l('A practical view of the systems, websites, desktop tools, and product experiments that shape my current engineering work.', '这里集中展示我正在构建和维护的系统、网站、桌面工具与产品实验。', 'Een praktisch overzicht van de systemen, websites, desktoptools en productexperimenten die mijn huidige engineeringwerk vormen.'),
     tableTitle: l('Projects at a Glance', '项目速览', 'Projecten in één oogopslag'),
   },
   downloads: {
