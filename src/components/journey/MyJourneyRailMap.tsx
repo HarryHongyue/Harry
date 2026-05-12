@@ -14,9 +14,9 @@ import {
 import './MyJourneyRailMap.css';
 
 const VIEWBOX_WIDTH = 1440;
-const VIEWBOX_HEIGHT = 880;
+const VIEWBOX_HEIGHT = 960;
 
-const RAIL_PATH_D = `M 120 62 H 1285 Q 1375 62 1375 152 V 222 Q 1375 302 1295 302 H 145 Q 65 302 65 382 V 462 Q 65 542 145 542 H 1295 Q 1375 542 1375 622 V 725 Q 1375 812 1288 812 H 720`;
+const RAIL_PATH_D = `M 120 78 H 1280 Q 1365 78 1365 165 V 260 Q 1365 328 1295 328 H 145 Q 75 328 75 398 V 510 Q 75 578 145 578 H 1295 Q 1365 578 1365 650 V 725 Q 1365 795 1295 795 H 720`;
 
 type JourneyIconName =
   | 'wordpress'
@@ -65,113 +65,113 @@ const milestoneIcons = {
 
 const journeyMilestones: JourneyMilestone[] = [
   {
-    id: 'wordpress',
-    year: '2014',
-    title: 'WordPress Foundations',
-    description: 'Built early websites with WordPress, themes, plugins, hosting, domains, and content structure.',
-    tech: ['WordPress', 'HTML', 'CSS', 'cPanel'],
-    icon: 'wordpress',
-    card: { x: 45, y: 95, w: 365, h: 155 },
-    station: { x: 225, y: 62 },
+    id: 'h5-pages',
+    year: '2021',
+    title: 'H5 Page Development',
+    description: 'Started with H5 pages, semantic structure, responsive layouts, and interactive browser UI basics.',
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'Responsive UI'],
+    icon: 'monitor',
+    card: { x: 70, y: 115, w: 350, h: 150 },
+    station: { x: 245, y: 78 },
     pathProgress: 0.06,
   },
   {
-    id: 'frontend',
-    year: '2016',
-    title: 'Frontend Curiosity',
-    description: 'Explored how web pages really work and learned responsive UI design.',
-    tech: ['HTML5', 'CSS3', 'JavaScript'],
-    icon: 'monitor',
-    card: { x: 535, y: 95, w: 365, h: 155 },
-    station: { x: 718, y: 62 },
+    id: 'wordpress',
+    year: '2021',
+    title: 'WordPress Practice',
+    description: 'Used and customized WordPress sites, themes, plugins, hosting, pages, and content structure.',
+    tech: ['WordPress', 'Themes', 'Plugins', 'Hosting'],
+    icon: 'wordpress',
+    card: { x: 545, y: 115, w: 350, h: 150 },
+    station: { x: 720, y: 78 },
     pathProgress: 0.18,
   },
   {
     id: 'java',
-    year: '2018',
-    title: 'Java Programming',
-    description: 'Learned Java concepts, OOP, data structures, and desktop application fundamentals.',
+    year: '2024',
+    title: 'Java Learning',
+    description: 'Studied Java fundamentals, object-oriented design, Maven workflows, and desktop project structure.',
     tech: ['Java', 'OOP', 'Maven', 'JavaFX'],
     icon: 'java',
-    card: { x: 1025, y: 95, w: 365, h: 155 },
-    station: { x: 1208, y: 62 },
+    card: { x: 1020, y: 115, w: 350, h: 150 },
+    station: { x: 1195, y: 78 },
     pathProgress: 0.30,
   },
   {
-    id: 'fullstack',
-    year: '2021',
-    title: 'Full-Stack Growth',
-    description: 'Connected frontend, backend, and databases into complete real-world applications.',
-    tech: ['Node.js', 'Express', 'REST API', 'React'],
-    icon: 'layers',
-    card: { x: 1025, y: 335, w: 365, h: 155 },
-    station: { x: 1208, y: 302 },
+    id: 'python',
+    year: '2024',
+    title: 'Python Learning',
+    description: 'Built Python scripts and small utilities for automation, parsing, APIs, and practical workflows.',
+    tech: ['Python', 'Automation', 'APIs', 'Utilities'],
+    icon: 'python',
+    card: { x: 1020, y: 365, w: 350, h: 150 },
+    station: { x: 1195, y: 328 },
     pathProgress: 0.42,
   },
   {
-    id: 'database',
-    year: '2020',
-    title: 'Database Thinking',
-    description: 'Learned data modeling, SQL queries, persistence, schema design, and optimization.',
-    tech: ['MySQL', 'PostgreSQL', 'SQL', 'Schema Design'],
-    icon: 'database',
-    card: { x: 535, y: 335, w: 365, h: 155 },
-    station: { x: 718, y: 302 },
+    id: 'independent-projects',
+    year: '2024',
+    title: 'Independent Projects',
+    description: 'Moved from exercises into complete personal projects with clearer structure and delivery goals.',
+    tech: ['Project Design', 'Frontend', 'Backend', 'Release'],
+    icon: 'layers',
+    card: { x: 545, y: 365, w: 350, h: 150 },
+    station: { x: 720, y: 328 },
     pathProgress: 0.52,
   },
   {
-    id: 'python',
-    year: '2019',
-    title: 'Python Exploration',
-    description: 'Discovered Python scripting, automation, backend utilities, and data processing.',
-    tech: ['Python', 'Flask', 'Automation', 'APIs'],
-    icon: 'python',
-    card: { x: 45, y: 335, w: 365, h: 155 },
-    station: { x: 225, y: 302 },
+    id: 'typescript',
+    year: '2025',
+    title: 'TypeScript Systems',
+    description: 'Used TypeScript to make larger projects safer, easier to refactor, and more maintainable.',
+    tech: ['TypeScript', 'React', 'Vite', 'Architecture'],
+    icon: 'cube',
+    card: { x: 70, y: 365, w: 350, h: 150 },
+    station: { x: 245, y: 328 },
     pathProgress: 0.62,
   },
   {
-    id: 'cloud',
-    year: '2022',
-    title: 'Cloud & Deployment',
-    description: 'Deployed apps on Linux servers using reverse proxies, containers, CI/CD, and cloud infrastructure.',
-    tech: ['Ubuntu', 'Nginx', 'Docker', 'Oracle Cloud'],
+    id: 'docker-maven',
+    year: '2025',
+    title: 'Docker & Maven',
+    description: 'Packaged services and Java projects with containers, Maven builds, and repeatable deployment steps.',
+    tech: ['Docker', 'Maven', 'Builds', 'Deployment'],
     icon: 'cloud',
-    card: { x: 45, y: 575, w: 365, h: 155 },
-    station: { x: 225, y: 542 },
+    card: { x: 70, y: 615, w: 350, h: 150 },
+    station: { x: 245, y: 578 },
     pathProgress: 0.72,
   },
   {
-    id: 'product',
-    year: '2023',
-    title: 'Product Engineering',
-    description: 'Focused on architecture, maintainability, testing, modular systems, and product thinking.',
-    tech: ['TypeScript', 'Next.js', 'Tailwind', 'Architecture'],
-    icon: 'cube',
-    card: { x: 535, y: 575, w: 365, h: 155 },
-    station: { x: 718, y: 542 },
+    id: 'sql-graph-theory',
+    year: '2025',
+    title: 'SQL & Graph Theory',
+    description: 'Deepened database thinking, SQL modeling, query structure, and graph algorithm foundations.',
+    tech: ['SQL', 'Databases', 'Graphs', 'Algorithms'],
+    icon: 'database',
+    card: { x: 545, y: 615, w: 350, h: 150 },
+    station: { x: 720, y: 578 },
     pathProgress: 0.82,
   },
   {
-    id: 'ai',
-    year: '2024',
-    title: 'AI & LLM Era',
-    description: 'Built with AI tools, prompt workflows, model integration, and intelligent applications.',
-    tech: ['LLMs', 'OpenAI API', 'RAG', 'Prompt Engineering'],
+    id: 'ai-foundations',
+    year: '2026',
+    title: 'AI Foundations',
+    description: 'Focused on AI learning, Transformer concepts, model workflows, and intelligent application patterns.',
+    tech: ['Transformer', 'LLMs', 'RAG', 'Prompting'],
     icon: 'brain',
-    card: { x: 1025, y: 575, w: 365, h: 155 },
-    station: { x: 1208, y: 542 },
+    card: { x: 1020, y: 615, w: 350, h: 150 },
+    station: { x: 1195, y: 578 },
     pathProgress: 0.92,
   },
   {
     id: 'future',
     year: 'Future',
-    title: 'Intelligent Systems',
-    description: 'Continue building practical, secure, scalable systems powered by AI and strong engineering foundations.',
-    tech: ['AI Agents', 'Full Stack', 'Security', 'Platform Design'],
+    title: 'AI Interaction Systems',
+    description: 'Continue building practical systems where AI, interaction design, and engineering foundations work together.',
+    tech: ['AI Agents', 'Interaction', 'Full Stack', 'Platform Design'],
     icon: 'flag',
-    card: { x: 420, y: 765, w: 600, h: 105 },
-    station: { x: 720, y: 812 },
+    card: { x: 420, y: 820, w: 600, h: 125 },
+    station: { x: 720, y: 795 },
     pathProgress: 1,
   },
 ];
@@ -188,7 +188,7 @@ function useRailScrollProgress(
   const [state, setState] = useState({
     progress: 0,
     activeIndex: 0,
-    train: { x: 120, y: 62, angle: 0 },
+    train: { x: 120, y: 78, angle: 0 },
     totalLength: 0,
   });
   const reducedMotion = useMemo(getReducedMotion, []);
@@ -335,15 +335,11 @@ export const MyJourneyRailMap: React.FC = () => {
                   <stop offset="72%" stopColor="#7b5cff" />
                   <stop offset="100%" stopColor="#20f0c8" />
                 </linearGradient>
-                <linearGradient id="trainGradient" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#1ff6ff" />
-                  <stop offset="58%" stopColor="#3b8cff" />
-                  <stop offset="100%" stopColor="#8d70ff" />
-                </linearGradient>
               </defs>
 
               <path className="journey-rail-path journey-rail-path--shadow" d={RAIL_PATH_D} />
               <path ref={basePathRef} id="journeyRailPath" className="journey-rail-path journey-rail-path--base" d={RAIL_PATH_D} />
+              <path className="journey-rail-path journey-rail-path--glow" d={RAIL_PATH_D} />
               <path className="journey-rail-path journey-rail-path--dashes" d={RAIL_PATH_D} />
             </svg>
 
@@ -364,7 +360,9 @@ export const MyJourneyRailMap: React.FC = () => {
                 return (
                   <article
                     key={milestoneKey}
-                    className={`journey-card ${isActive ? 'is-active' : ''} ${isPassed ? 'is-passed' : ''}`}
+                    className={`journey-card ${milestone.id === 'future' ? 'journey-card--future' : ''} ${
+                      isActive ? 'is-active' : ''
+                    } ${isPassed ? 'is-passed' : ''}`}
                     style={cardStyle}
                   >
                     <div className="journey-card__icon" aria-hidden="true">
@@ -374,11 +372,11 @@ export const MyJourneyRailMap: React.FC = () => {
                       <div className="journey-card__body">
                         <span className="journey-card__year">{milestone.year}</span>
                         <h3>{milestone.title}</h3>
-                        <p>{milestone.description}</p>
+                        <p className="journey-card__description">{milestone.description}</p>
                       </div>
                       <div className="journey-card__chips" aria-label={`${milestone.year} technologies`}>
                         {milestone.tech.map((tech) => (
-                          <span key={tech}>{tech}</span>
+                          <span className="journey-card__chip" key={tech}>{tech}</span>
                         ))}
                       </div>
                     </div>
@@ -388,10 +386,13 @@ export const MyJourneyRailMap: React.FC = () => {
             </div>
 
             <svg className="journey-rail-overlay-svg" viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`} preserveAspectRatio="none" aria-hidden="true">
-              <path
-                className="journey-rail-path journey-rail-path--glow"
-                d={RAIL_PATH_D}
-              />
+              <defs>
+                <linearGradient id="trainGradient" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#1ff6ff" />
+                  <stop offset="58%" stopColor="#3b8cff" />
+                  <stop offset="100%" stopColor="#8d70ff" />
+                </linearGradient>
+              </defs>
               <path
                 className="journey-rail-path journey-rail-path--progress"
                 d={RAIL_PATH_D}
