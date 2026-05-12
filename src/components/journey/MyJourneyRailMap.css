@@ -170,8 +170,8 @@
     linear-gradient(145deg, rgba(82, 94, 185, 0.46), rgba(38, 61, 145, 0.72)),
     rgb(38, 61, 145);
   box-shadow:
-    16px 18px 34px rgba(38, 61, 145, 0.34),
-    -6px -6px 16px rgba(202, 206, 239, 0.04),
+    16px 18px 34px rgba(38, 61, 145, 0.18),
+    -6px -6px 16px rgba(202, 206, 239, 0.02),
     inset 0 1px 0 rgba(246, 248, 255, 0.08),
     inset 0 -22px 30px rgba(0, 0, 0, 0.18);
   opacity: 0;
@@ -256,9 +256,9 @@
     radial-gradient(circle at 35% 25%, rgba(164, 166, 255, 0.22), transparent 42%),
     linear-gradient(145deg, rgba(82, 94, 185, 0.62), rgba(38, 61, 145, 0.82));
   box-shadow:
-    9px 11px 20px rgba(38, 61, 145, 0.34),
+    9px 11px 20px rgba(38, 61, 145, 0.18),
     inset 1px 1px 0 rgba(246, 248, 255, 0.08),
-    0 0 22px rgba(164, 166, 255, 0.12);
+    inset -1px -1px 1px rgba(38, 61, 145, 0.12);
 }
 
 .journey-card__icon span {
@@ -274,9 +274,9 @@
   color: #CACEEF;
   border-color: rgba(164, 166, 255, 0.44);
   box-shadow:
-    9px 11px 20px rgba(38, 61, 145, 0.34),
+    9px 11px 20px rgba(38, 61, 145, 0.18),
     inset 1px 1px 0 rgba(246, 248, 255, 0.10),
-    0 0 26px rgba(164, 166, 255, 0.26);
+    inset -1px -1px 1px rgba(38, 61, 145, 0.14);
 }
 
 .journey-card__body {

@@ -98,6 +98,8 @@ export const projects: Project[] = [
     ],
     chips: [l('Largest Project', '最大项目', 'Grootste project'), l('Modular SaaS', '模块化 SaaS', 'Modulaire SaaS'), l('Architecture First', '架构优先', 'Architectuur eerst')],
     featured: true,
+    previewVariant: 'future-platform',
+    displayTags: ['Platform', 'Coming Soon'],
   },
   {
     slug: 'ominigent',
@@ -150,6 +152,8 @@ export const projects: Project[] = [
       l('Multi-page service site -> solution pages -> trust layers -> contact conversion.', '多页服务站 -> 解决方案页 -> 信任层 -> 联系转化。', 'Multipage servicesite -> oplossingspagina\'s -> vertrouwenslagen -> contactconversie.'),
     ],
     roadmap: [l('Keep refining service detail pages and case-based proof.', '继续补强服务详情页和案例证明。', 'Services-detailpagina\'s en case-based proof verder verfijnen.')],
+    previewVariant: 'harry-website',
+    displayTags: ['Web Project'],
   },
   {
     slug: 'cryocore-cooling',
@@ -205,6 +209,8 @@ export const projects: Project[] = [
     roadmap: [l('Continue strengthening content operations and deployment reliability.', '继续补强内容运营能力和部署可靠性。', 'Contentoperaties en deploymentbetrouwbaarheid verder versterken.')],
     chips: [l('B2B Website', 'B2B 企业站', 'B2B-website'), l('Hybrid CMS', '混合 CMS', 'Hybride CMS')],
     featured: true,
+    previewVariant: 'harry-website',
+    displayTags: ['Web Project'],
   },
   {
     slug: 'song-yan',
@@ -259,6 +265,8 @@ export const projects: Project[] = [
     roadmap: [l('Continue connecting product, cart, checkout, and content layers.', '继续打通产品、购物车、结账和内容层。', 'Product-, cart-, checkout- en contentlagen verder verbinden.')],
     chips: [l('E-commerce', '电商', 'E-commerce'), l('WordPress', 'WordPress', 'WordPress')],
     featured: true,
+    previewVariant: 'harry-website',
+    displayTags: ['Web Project'],
   },
   {
     slug: 'pdf-reader',
@@ -327,6 +335,8 @@ export const projects: Project[] = [
     ],
     chips: [l('OCR Powered', 'OCR 驱动', 'OCR-aangedreven'), l('Text & Table Extraction', '文本与表格提取', 'Tekst- en tabel-extractie'), l('Secure & Private', '安全且私有', 'Veilig en privé'), l('RESTful API', 'RESTful API', 'RESTful API')],
     featured: true,
+    previewVariant: 'pdf-reader',
+    displayTags: ['Desktop App', 'C++ / Qt'],
   },
   {
     slug: 'ode-all-in-one-solver',
@@ -394,6 +404,8 @@ export const projects: Project[] = [
     ],
     chips: [l('Desktop-First', '桌面优先', 'Desktop-first'), l('Numerical Methods', '数值方法', 'Numerieke methoden'), l('Actively Maintained', '持续维护', 'Actief onderhouden')],
     featured: true,
+    previewVariant: 'ode-solver',
+    displayTags: ['Desktop App', 'Python / PyQt'],
   },
   {
     slug: 'aircargo-edi',
@@ -457,6 +469,8 @@ export const projects: Project[] = [
     ],
     chips: [l('Air Cargo', '空运货代', 'Luchtvracht'), l('EDI', 'EDI', 'EDI'), l('Desktop + Web', '桌面 + Web', 'Desktop + web')],
     featured: true,
+    previewVariant: 'aircargo-edi',
+    displayTags: ['Enterprise', 'EDI / .NET'],
   },
   {
     slug: 'harry',
@@ -514,6 +528,8 @@ export const projects: Project[] = [
       l('Keep expanding detail pages with richer mockups and proof.', '继续为项目详情补更强的视觉 mockup 和证明材料。', 'Projectdetailpagina’s verder uitbreiden met rijkere mockups en bewijs.'),
     ],
     chips: [l('Portfolio Hub', '作品集主站', 'Portfoliohub'), l('Dark Neumorphism', '深色新拟态', 'Dark neumorphism'), l('Multilingual', '多语言', 'Meertalig')],
+    previewVariant: 'harry-website',
+    displayTags: ['Website', 'Next.js / Tailwindcss'],
   },
   {
     slug: 'harrys-hub',

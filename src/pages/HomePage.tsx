@@ -11,12 +11,13 @@ import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
 import { MyJourneyRailMap } from '../components/journey/MyJourneyRailMap';
 import { getProjectDisplayName } from '../lib/projectText';
+import ProjectPreviewCard from '../components/project/ProjectPreviewCard';
 import personalHeroPhoto from '../assets/images/Personal/个人首页展示照片.jpg';
 
 const HomePage: React.FC = () => {
   const { currentLanguage } = useLanguage();
   const homeProject = filteredProjects.find((project) => project.slug === 'harry');
-  const displayFeatured = featuredProjects.filter((project) => project.slug !== 'song-yan').slice(0, 3);
+  const displayFeatured = featuredProjects.filter((project) => project.slug !== 'song-yan' && project.slug !== 'ode-all-in-one-solver' && project.slug !== 'aircargo-edi').slice(0, 6);
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
@@ -63,36 +64,9 @@ const HomePage: React.FC = () => {
       </div>
 
       <NeoSection title={pickText(currentLanguage, uiText.home.featuredTitle)} description={pickText(currentLanguage, uiText.home.featuredBody)}>
-        <div className="neo-project-grid neo-project-grid--featured">
+        <div className="selected-work-grid">
           {displayFeatured.map((project) => (
-            <NeoCard key={project.slug} hoverable className="neo-project-card neo-project-card--spotlight neo-home-feature-card">
-              <div className="neo-project-card__header">
-                <ProjectLogo src={project.logo} alt={project.englishName} />
-                <div>
-                  <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
-                  <p>{pickText(currentLanguage, project.tagline)}</p>
-                </div>
-              </div>
-              <div className="neo-chip-row">
-                {(project.chips ?? []).slice(0, 2).map((chip) => (
-                  <NeoBadge key={chip.en}>{pickText(currentLanguage, chip)}</NeoBadge>
-                ))}
-              </div>
-              <p>{pickText(currentLanguage, project.description)}</p>
-              <div className="neo-chip-row">
-                {project.techStackIds.slice(0, 4).map((stack) => (
-                  <NeoBadge key={stack} tone="teal">
-                    {stack.replace(/-/g, ' ')}
-                  </NeoBadge>
-                ))}
-              </div>
-              <div className="neo-project-card__actions">
-                <span className="neo-card__hint">{project.backendRequired ? (currentLanguage === 'zh' ? '包含后端能力' : currentLanguage === 'nl' ? 'Met backend' : 'Backend included') : currentLanguage === 'zh' ? '以前端展示为主' : currentLanguage === 'nl' ? 'Frontend-first' : 'Frontend-first'}</span>
-                <Link to={`/projects/${project.slug}`} className={neoButtonClass('ghost')}>
-                  {pickText(currentLanguage, uiText.common.learnMore)}
-                </Link>
-              </div>
-            </NeoCard>
+            <ProjectPreviewCard key={project.slug} project={project} />
           ))}
         </div>
       </NeoSection>

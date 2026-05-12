@@ -85,4 +85,7 @@ export interface Project {
   roadmap?: LocalizedText[];
   chips?: LocalizedText[];
   featured?: boolean;
+  previewImage?: string;
+  previewVariant?: 'pdf-reader' | 'aircargo-edi' | 'ode-solver' | 'surpriseme' | 'harry-website' | 'future-platform';
+  displayTags?: string[];
 }
