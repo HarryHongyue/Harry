@@ -159,10 +159,26 @@ img {
   gap: 18px;
 }
 
+.neo-section--journey {
+  margin-top: 32px;
+}
+
 .neo-section__header {
   display: grid;
   gap: 10px;
   max-width: 980px;
+}
+
+.neo-section__header--with-actions {
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  max-width: none;
+}
+
+.neo-section__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
 }
 
 .neo-section__eyebrow {
@@ -188,6 +204,10 @@ h2,
 .neo-section__title {
   font-size: clamp(1.6rem, 2vw, 2.2rem);
   line-height: 1.08;
+}
+
+.neo-section__description {
+  margin-top: 2px;
 }
 
 h3 {
@@ -1672,7 +1692,7 @@ select.neo-input {
   position: relative;
   z-index: 1;
   width: 120%;
-  height: calc(100% - 30px);
+  height: clamp(420px, 34vw, 500px);
   max-height: 500px;
   border-radius: 30px;
   overflow: hidden;
@@ -2039,6 +2059,15 @@ select.neo-input {
   .neo-section--journey .neo-section__description {
     white-space: normal;
   }
+
+  .neo-section__header--with-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .neo-section__actions {
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -2094,7 +2123,7 @@ select.neo-input {
 
   .neo-home-photo-showcase__frame {
     width: 120%;
-    height: calc(100% - 20px);
+    height: clamp(300px, 54vw, 360px);
     max-height: 360px;
     margin-left: 10px;
   }
@@ -2217,13 +2246,15 @@ select.neo-input {
   overflow: hidden;
   min-height: 360px;
   border-radius: 24px;
-  border: 1px solid rgba(120, 180, 255, 0.16);
+  border: 1px solid rgba(202, 206, 239, 0.20);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015)),
-    rgba(6, 14, 28, 0.72);
+    linear-gradient(145deg, rgba(164, 166, 255, 0.14), rgba(82, 94, 185, 0.38)),
+    rgba(38, 61, 145, 0.58);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 18px 50px rgba(0, 0, 0, 0.35);
+    inset 1px 1px 1px rgba(202, 206, 239, 0.14),
+    inset -1px -1px 1px rgba(38, 61, 145, 0.12),
+    14px 14px 34px rgba(38, 61, 145, 0.24),
+    -6px -6px 18px rgba(202, 206, 239, 0.05);
   text-decoration: none;
   color: inherit;
   transition:
@@ -2234,19 +2265,21 @@ select.neo-input {
 
 .project-preview-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(120, 190, 255, 0.32);
+  border-color: rgba(202, 206, 239, 0.34);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 24px 70px rgba(0, 0, 0, 0.42),
-    0 0 36px rgba(60, 140, 255, 0.12);
+    inset 1px 1px 1px rgba(202, 206, 239, 0.18),
+    inset -1px -1px 1px rgba(38, 61, 145, 0.10),
+    18px 18px 42px rgba(38, 61, 145, 0.28),
+    -8px -8px 22px rgba(202, 206, 239, 0.07),
+    0 0 24px rgba(164, 166, 255, 0.12);
 }
 
 .project-preview-card__mockup {
   position: relative;
   height: 190px;
   overflow: hidden;
-  border-bottom: 1px solid rgba(120, 180, 255, 0.14);
-  background: rgba(4, 10, 22, 0.7);
+  border-bottom: 1px solid rgba(202, 206, 239, 0.18);
+  background: rgba(38, 61, 145, 0.56);
 }
 
 .project-preview-card__image {
@@ -2259,7 +2292,7 @@ select.neo-input {
 .project-preview-card__mockup-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(180deg, rgba(82, 94, 185, 0.08), rgba(38, 61, 145, 0.32));
   pointer-events: none;
 }
 
@@ -2276,8 +2309,8 @@ select.neo-input {
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: rgba(38, 61, 145, 0.68);
-  border: 1px solid rgba(202, 206, 239, 0.3);
+  background: rgba(82, 94, 185, 0.62);
+  border: 1px solid rgba(202, 206, 239, 0.34);
 }
 
 .project-preview-card__icon .neo-project-logo {
@@ -2335,8 +2368,8 @@ select.neo-input {
 
 .project-preview-card__tag {
   border-radius: 999px;
-  border: 1px solid rgba(120, 180, 255, 0.16);
-  background: rgba(20, 50, 85, 0.34);
+  border: 1px solid rgba(202, 206, 239, 0.18);
+  background: rgba(164, 166, 255, 0.12);
   padding: 0.42rem 0.68rem;
   font-size: 0.82rem;
   color: rgba(202, 206, 239, 0.62);
