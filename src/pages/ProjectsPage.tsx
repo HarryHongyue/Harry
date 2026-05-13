@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { ArrowRight, Globe, LayoutDashboard, Monitor, Puzzle, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
 import NeoInput from '../components/ui/NeoInput';
@@ -16,6 +16,7 @@ import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
 const ProjectsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState<'all' | ProjectCategory>('all');
   const [query, setQuery] = useState('');
 
@@ -70,7 +71,12 @@ const ProjectsPage: React.FC = () => {
       <div className="section-shell">
         <div className="neo-project-grid">
           {visibleProjects.map((project) => (
-            <NeoCard key={project.slug} hoverable className="neo-project-card neo-project-card--spotlight">
+            <NeoCard
+              key={project.slug}
+              hoverable
+              className="neo-project-card neo-project-card--spotlight"
+              onClick={() => navigate(`/projects/${project.slug}`)}
+            >
               <div className="neo-project-card__header">
                 <ProjectLogo src={project.logo} alt={project.englishName} />
                 <div>
@@ -113,7 +119,7 @@ const ProjectsPage: React.FC = () => {
                     </>
                   )}
                 </span>
-                <Link to={`/projects/${project.slug}`} className={neoButtonClass('ghost')}>
+                <Link to={`/projects/${project.slug}`} className={neoButtonClass('ghost')} onClick={(e) => e.stopPropagation()}>
                   {pickText(currentLanguage, uiText.common.learnMore)}
                   <ArrowRight size={16} />
                 </Link>
