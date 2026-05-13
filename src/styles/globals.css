@@ -1206,6 +1206,12 @@ select.neo-input option:hover {
   backdrop-filter: blur(12px);
 }
 
+.neo-project-logo--compact {
+  width: 56px;
+  height: 56px;
+  padding: 5px;
+}
+
 .neo-project-logo--icon {
   width: 64px;
   height: 64px;

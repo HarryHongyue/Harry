@@ -698,14 +698,14 @@ export const projects: Project[] = [
   },
   {
     slug: 'surpriseme',
-    name: 'SurpriseMe',
-    englishName: 'SurpriseMe',
-    chineseName: 'SurpriseMe 浏览器扩展',
-    dutchName: 'SurpriseMe',
+    name: 'Supreme',
+    englishName: 'SurpriseMe Browser Extension',
+    chineseName: 'SurpriseMe 浏览器插件',
+    dutchName: 'SurpriseMe Browserextensie',
     tagline: l(
-      'A playful browser extension that adds bold color framing and visual distinction between browser windows, inspired by Peacock.',
-      '一个受 Peacock 启发的浏览器扩展，通过鲜艳颜色框帮助区分不同浏览器窗口。',
-      'Een speelse browserextensie geïnspireerd door Peacock, die kleurkaders toevoegt om browservensters beter te onderscheiden.',
+      'A playful browser plugin that adds bold color framing and visual distinction between browser windows, inspired by Peacock.',
+      '一个受 Peacock 启发的浏览器插件，通过鲜艳颜色框帮助区分不同浏览器窗口。',
+      'Een speelse browserplugin geïnspireerd door Peacock, die kleurkaders toevoegt om browservensters beter te onderscheiden.',
     ),
     description: l(
       'A browser productivity concept focused on lightweight visual organization instead of heavy workflow complexity.',
@@ -713,9 +713,9 @@ export const projects: Project[] = [
       'Een browserproductiviteitsconcept gericht op lichte visuele organisatie in plaats van zware workflowcomplexiteit.',
     ),
     longDescription: l(
-      'SurpriseMe brings a small but memorable interaction layer to the browser. Instead of trying to become a full platform, it solves one very specific problem well: helping users visually distinguish windows and browsing contexts with expressive color framing and a lightweight extension footprint.',
-      'SurpriseMe 是一个小而明确的浏览器体验增强工具。它不试图变成复杂平台，而是专注解决一个具体问题：通过轻量扩展和鲜艳边框，让用户能更直观地区分不同浏览器窗口和工作上下文。',
-      'SurpriseMe is een kleine maar duidelijke browserervaring-verbetering. In plaats van een complex platform te willen zijn, lost het één concreet probleem goed op: gebruikers helpen browservensters en werkcontexten visueel te onderscheiden via expressieve kleurkaders en een lichte extensie-footprint.',
+      'Supreme brings a small but memorable interaction layer to the browser. Instead of trying to become a full platform, it solves one very specific problem well: helping users visually distinguish windows and browsing contexts with expressive color framing and a lightweight plugin footprint.',
+      'Supreme 是一个小而明确的浏览器体验增强工具。它不试图变成复杂平台，而是专注解决一个具体问题：通过轻量插件和鲜艳边框，让用户能更直观地区分不同浏览器窗口和工作上下文。',
+      'Supreme is een kleine maar duidelijke browserervaring-verbetering. In plaats van een complex platform te willen zijn, lost het één concreet probleem goed op: gebruikers helpen browservensters en werkcontexten visueel te onderscheiden via expressieve kleurkaders en een lichte plugin-footprint.',
     ),
     category: ['browser-extension'],
     status: 'completed',
@@ -732,7 +732,7 @@ export const projects: Project[] = [
     browserExtension: true,
     webVersion: true,
     releaseAssets: [
-      asset(l('Chrome Package', 'Chrome 扩展包', 'Chrome-pakket'), l('CRX Package', 'CRX 包', 'CRX-pakket'), 'v1.4.0', '4.2 MB', 'https://github.com/HarryHongyue/SurpriseMe/releases', '4c18ae29c9c44b83e8af3fef4a3d8622e2eb1cb4463ae9dfbf3ff12d11a2e2f0', '2026-05-11'),
+      asset(l('Browser Plugin', '浏览器插件', 'Browserplugin'), l('CRX Package', 'CRX 包', 'CRX-pakket'), 'v1.4.0', '4.2 MB', 'https://github.com/HarryHongyue/SurpriseMe/releases', '4c18ae29c9c44b83e8af3fef4a3d8622e2eb1cb4463ae9dfbf3ff12d11a2e2f0', '2026-05-11'),
     ],
     securityNotes: [
       l('The extension should request only the browser permissions that are strictly needed for window framing.', '扩展只应申请实现窗口着色所必需的浏览器权限。', 'De extensie mag alleen de browserrechten aanvragen die strikt nodig zijn voor vensterframing.'),
