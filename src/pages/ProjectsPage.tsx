@@ -75,7 +75,12 @@ const ProjectsPage: React.FC = () => {
               key={project.slug}
               hoverable
               className="neo-project-card neo-project-card--spotlight"
-              onClick={() => navigate(`/projects/${project.slug}`)}
+              onClick={() => {
+                const selection = window.getSelection();
+                if (selection && selection.toString().trim() === '') {
+                  navigate(`/projects/${project.slug}`);
+                }
+              }}
             >
               <div className="neo-project-card__header">
                 <ProjectLogo src={project.logo} alt={project.englishName} />

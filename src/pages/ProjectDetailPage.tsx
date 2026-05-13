@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Calculator, ChartLine, Download, ExternalLink, GitCompareArrows, Globe2, Lock, Palette, Puzzle, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Calculator, ChartLine, Download, ExternalLink, GitCompareArrows, Globe2, Lock, ShieldCheck } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
@@ -11,6 +11,7 @@ import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
 import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
+import SurpriseMeShowcase from '../components/project/SurpriseMeShowcase';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -127,7 +128,7 @@ const ProjectDetailPage: React.FC = () => {
   return (
     <div className="neo-page" data-lang={currentLanguage}>
       <Breadcrumbs />
-      {!isOde ? (
+      {!isOde && !isSurpriseMe ? (
         <div className="section-shell">
           <div className={`neo-detail-hero ${isPdf ? 'is-pdf' : 'is-generic'}`}>
             <NeoCard className="neo-detail-card neo-detail-card--main">
@@ -326,7 +327,9 @@ const ProjectDetailPage: React.FC = () => {
         </>
       ) : null}
 
-      {!isOde ? (
+      {isSurpriseMe ? <SurpriseMeShowcase /> : null}
+
+      {!isOde && !isSurpriseMe ? (
         <NeoSection title={currentLanguage === 'zh' ? '概览' : currentLanguage === 'nl' ? 'Overzicht' : 'Overview'}>
           <div className="neo-grid neo-grid--2">
             <NeoCard hoverable className="neo-content-card">
@@ -390,7 +393,7 @@ const ProjectDetailPage: React.FC = () => {
         </>
       ) : null}
 
-      {!isPdf && !isOde ? (
+      {!isPdf && !isOde && !isSurpriseMe ? (
         <NeoSection title={currentLanguage === 'zh' ? '架构与后续计划' : currentLanguage === 'nl' ? 'Architectuur en roadmap' : 'Architecture & Roadmap'}>
           <div className="neo-grid neo-grid--2">
             <NeoCard hoverable>
