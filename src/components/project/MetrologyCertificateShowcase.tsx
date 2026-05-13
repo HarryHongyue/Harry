@@ -36,6 +36,15 @@ const MetrologyCertificateShowcase: React.FC = () => {
       icon: <Database size={22} />,
     },
   ];
+  const versionChanges = [
+    currentLanguage === 'zh' ? '计量证书管理系统初始版本发布。' : currentLanguage === 'nl' ? 'Eerste release van het meetcertificaatbeheersysteem.' : 'Initial release of the metrology certificate management system.',
+    currentLanguage === 'zh' ? '支持证书的新增、编辑、查询和维护功能。' : currentLanguage === 'nl' ? 'Ondersteuning voor toevoegen, bewerken, zoeken en onderhouden van certificaten.' : 'Support for creating, editing, searching, and maintaining certificates.',
+    currentLanguage === 'zh' ? '支持证书附件的本地存储和管理。' : currentLanguage === 'nl' ? 'Ondersteuning voor lokale opslag en beheer van certificaatbijlagen.' : 'Support for local storage and management of certificate attachments.',
+    currentLanguage === 'zh' ? '提供桌面安装包交付，支持Windows系统。' : currentLanguage === 'nl' ? 'Desktop-installatiepakket beschikbaar voor Windows.' : 'Desktop installer package available for Windows.',
+  ];
+  const versionHistory = [
+    { version: 'v1.0.0', date: '2025-03-15', changes: versionChanges },
+  ];
   const handleScreenshotMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const ratio = (event.clientX - rect.left) / rect.width;
@@ -90,7 +99,29 @@ const MetrologyCertificateShowcase: React.FC = () => {
               <Download size={24} />
               {currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows'}
             </a>
-            <p>{currentLanguage === 'zh' ? '版本 1.0.0 | 本地桌面版' : currentLanguage === 'nl' ? 'Versie 1.0.0 | Lokale desktopversie' : 'Version 1.0.0 | Local Desktop Edition'}</p>
+            <p>{currentLanguage === 'zh' ? '版本 v1.0.0 | 本地桌面版' : currentLanguage === 'nl' ? 'Versie v1.0.0 | Lokale desktopversie' : 'Version v1.0.0 | Local Desktop Edition'}</p>
+          </div>
+        </NeoCard>
+      </section>
+
+      <section className="section-shell metrology-showcase-section">
+        <h2 className="metrology-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2>
+        <NeoCard className="metrology-showcase-updates-card">
+          <div className="metrology-showcase-updates-card__current">
+            <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>v1.0.0</span></h3>
+          </div>
+          <div className="metrology-showcase-version-list">
+            {versionHistory.map((version, index) => (
+              <div key={version.version} className={`metrology-showcase-version ${index !== 0 ? 'metrology-showcase-version--divided' : ''}`}>
+                <div className="metrology-showcase-version__header">
+                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
+                  <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
+                </div>
+                <ul className="metrology-showcase-version__changes">
+                  {version.changes.map((change) => <li key={change}>{change}</li>)}
+                </ul>
+              </div>
+            ))}
           </div>
         </NeoCard>
       </section>

@@ -183,6 +183,63 @@
   font-weight: 800;
 }
 
+.metrology-showcase-updates-card {
+  display: grid;
+  gap: 32px;
+  width: 100%;
+  justify-self: center;
+  padding: 36px;
+}
+
+.metrology-showcase-updates-card__current h3 {
+  font-size: 1.55rem;
+}
+
+.metrology-showcase-updates-card__current span {
+  color: white;
+}
+
+.metrology-showcase-version-list {
+  display: grid;
+  gap: 30px;
+}
+
+.metrology-showcase-version {
+  display: grid;
+  gap: 16px;
+}
+
+.metrology-showcase-version--divided {
+  padding-top: 30px;
+  border-top: 1px solid rgba(202, 206, 239, 0.18);
+}
+
+.metrology-showcase-version__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.metrology-showcase-version__header h4 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.metrology-showcase-version__header span {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.metrology-showcase-version__changes {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+  color: var(--text-secondary);
+}
+
 .metrology-showcase-privacy__heading {
   display: grid;
   justify-items: center;
