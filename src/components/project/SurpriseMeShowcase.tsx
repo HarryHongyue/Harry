@@ -1,5 +1,7 @@
 import React from 'react';
 import { Download, Globe2, Palette, Puzzle, ShieldCheck } from 'lucide-react';
+import { FaChrome, FaSafari, FaFirefox, FaEdge } from 'react-icons/fa';
+import { SiOpera, SiBrave, SiVivaldi } from 'react-icons/si';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -11,13 +13,13 @@ const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
 );
 
 const browserLinks = [
-  { label: 'Safari', href: 'https://apps.apple.com/app/surpriseme-extension/id', tone: '#007aff' },
-  { label: 'Firefox', href: 'https://addons.mozilla.org/zh-CN/firefox/addon/surpriseme/', tone: '#FF7139' },
-  { label: 'Edge', href: 'https://microsoftedge.microsoft.com/addons/detail/jippmlfidaidmnhlmphilhbmkdfhkebh', tone: '#0078D4' },
-  { label: 'Opera', href: 'https://addons.opera.com/extensions/details/surpriseme', tone: '#FF1B2D' },
-  { label: 'Brave', href: 'https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg', tone: '#FB542B' },
-  { label: 'Vivaldi', href: 'https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg', tone: '#EF3939' },
-  { label: 'Arc', href: 'https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg', tone: '#A4A6FF' },
+  { label: 'Safari', href: 'https://apps.apple.com/app/surpriseme-extension/id', tone: '#007aff', icon: <FaSafari size={32} /> },
+  { label: 'Firefox', href: 'https://addons.mozilla.org/zh-CN/firefox/addon/surpriseme/', tone: '#FF7139', icon: <FaFirefox size={32} /> },
+  { label: 'Edge', href: 'https://microsoftedge.microsoft.com/addons/detail/jippmlfidaidmnhlmphilhbmkdfhkebh', tone: '#0078D4', icon: <FaEdge size={32} /> },
+  { label: 'Opera', href: 'https://addons.opera.com/extensions/details/surpriseme', tone: '#FF1B2D', icon: <SiOpera size={32} /> },
+  { label: 'Brave', href: 'https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg', tone: '#FB542B', icon: <SiBrave size={32} /> },
+  { label: 'Vivaldi', href: 'https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg', tone: '#EF3939', icon: <SiVivaldi size={32} /> },
+  { label: 'Arc', href: 'https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg', tone: '#A4A6FF', icon: <img src="/project-assets/arc-logo.png" alt="Arc" style={{ width: 32, height: 32 }} /> },
 ];
 
 const SurpriseMeShowcase: React.FC = () => {
@@ -61,13 +63,18 @@ const SurpriseMeShowcase: React.FC = () => {
         <p className="surprise-showcase-section__subtitle">{currentLanguage === 'zh' ? '立即开始使用 SurpriseMe！只需几秒钟即可安装，适用于 Chrome 浏览器。' : 'Get started with SurpriseMe in just a few clicks. Available for Chrome browser.'}</p>
         <NeoCard className="surprise-showcase-download-card">
           <div className="surprise-showcase-download-main">
-            <div><h3>{currentLanguage === 'zh' ? '下载Chrome版本' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? '版本 1.0.0 - 主要版本' : 'Version 1.0.0 - Primary Release'}</p></div>
-            <a href="https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg" className={`${neoButtonClass('primary')} surprise-showcase-download-button`} target="_blank" rel="noreferrer"><Globe2 size={20} />{currentLanguage === 'zh' ? '下载Chrome版本' : 'Add to Chrome'}</a>
+            <div><h3>Add to Chrome</h3><p>{currentLanguage === 'zh' ? '版本 1.0.0 - 主要版本' : 'Version 1.0.0 - Primary Release'}</p></div>
+            <a href="https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg" className={`${neoButtonClass('primary')} surprise-showcase-download-button`} target="_blank" rel="noreferrer"><Globe2 size={20} />Add to Chrome</a>
           </div>
           <div className="surprise-showcase-browser-panel">
             <h4>{currentLanguage === 'zh' ? '可用于其他浏览器' : 'Available on Other Browsers'}</h4>
             <div className="surprise-showcase-browser-grid">
-              {browserLinks.map((browser) => <a key={browser.label} href={browser.href} className="surprise-showcase-browser-button" target="_blank" rel="noreferrer"><span style={{ color: browser.tone }}>{browser.label.slice(0, 1)}</span><strong>{browser.label}</strong></a>)}
+              {browserLinks.map((browser) => (
+                <a key={browser.label} href={browser.href} className="surprise-showcase-browser-button" target="_blank" rel="noreferrer">
+                  <span style={{ color: browser.tone }}>{browser.icon}</span>
+                  <strong>{browser.label}</strong>
+                </a>
+              ))}
             </div>
           </div>
           <div className="surprise-showcase-manual-panel">
