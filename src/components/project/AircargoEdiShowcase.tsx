@@ -60,13 +60,32 @@ const AircargoEdiShowcase: React.FC<AircargoEdiShowcaseProps> = ({ project }) =>
           <div className="aircargo-showcase-hero__visual" aria-hidden="true">
             <NeoCard className="aircargo-showcase-visual-card">
               <div className="aircargo-showcase-visual-card__header"><span>AWB 160-12345675</span><PlaneTakeoff size={24} /></div>
-              <div className="aircargo-showcase-route"><span>AMS</span><i /><span>PVG</span><i /><span>HKG</span></div>
-              <div className="aircargo-showcase-document-list">
-                <div><strong>HAWB</strong><span>3 house shipments parsed</span></div>
-                <div><strong>FWB</strong><span>Message draft ready</span></div>
-                <div><strong>FHL</strong><span>Validation pending</span></div>
+              <div className="aircargo-showcase-awb-content">
+                <div className="aircargo-showcase-awb-section">
+                  <div className="aircargo-showcase-awb-label">ROUTE</div>
+                  <div className="aircargo-showcase-awb-value">AMS → PVG → HKG</div>
+                </div>
+                <div className="aircargo-showcase-awb-section">
+                  <div className="aircargo-showcase-awb-label">SHIPPER</div>
+                  <div className="aircargo-showcase-awb-value">EXAMPLE COMPANY LTD</div>
+                </div>
+                <div className="aircargo-showcase-awb-section">
+                  <div className="aircargo-showcase-awb-label">CONSIGNEE</div>
+                  <div className="aircargo-showcase-awb-value">EXAMPLE LOGISTICS INC</div>
+                </div>
+                <div className="aircargo-showcase-awb-section">
+                  <div className="aircargo-showcase-awb-label">PIECES/WEIGHT</div>
+                  <div className="aircargo-showcase-awb-value">3 PCS / 1250.5 KG</div>
+                </div>
+                <div className="aircargo-showcase-awb-section">
+                  <div className="aircargo-showcase-awb-label">GOODS DESCRIPTION</div>
+                  <div className="aircargo-showcase-awb-value">ELECTRONIC COMPONENTS</div>
+                </div>
+                <div className="aircargo-showcase-awb-section">
+                  <div className="aircargo-showcase-awb-label">CHARGEABLE WEIGHT</div>
+                  <div className="aircargo-showcase-awb-value">1250.5 KG</div>
+                </div>
               </div>
-              <div className="aircargo-showcase-terminal"><span>{'>'} parse awb.pdf</span><span>{'>'} validate cargo fields</span><span>{'>'} generate edi payload</span></div>
             </NeoCard>
           </div>
         </div>
