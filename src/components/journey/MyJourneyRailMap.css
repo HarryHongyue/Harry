@@ -67,7 +67,6 @@
 .journey-rail-path--shadow {
   stroke: rgba(0, 0, 0, 0.62);
   stroke-width: 28;
-  filter: drop-shadow(14px 18px 18px rgba(0, 0, 0, 0.42));
 }
 
 .journey-rail-path--base {
