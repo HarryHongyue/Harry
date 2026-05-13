@@ -139,7 +139,9 @@ const ContactPage: React.FC = () => {
               <h3>{currentLanguage === 'zh' ? '联系方式' : currentLanguage === 'nl' ? 'Contactkanalen' : 'Contact Channels'}</h3>
             </div>
             <a className="neo-contact-link-block neo-contact-link-block--email" href={`mailto:${CONTACT_EMAIL}`}>
-              <SocialLogo name="email" size={20} />
+              <span className="neo-contact-link-block__icon">
+                <SocialLogo name="email" size={28} />
+              </span>
               <span>{CONTACT_EMAIL}</span>
             </a>
             <div className="neo-contact-actions-grid">

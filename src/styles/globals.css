@@ -1676,6 +1676,10 @@ select.neo-input {
   color: #CACEEF;
 }
 
+.social-logo--xchat {
+  transform: scale(1.3);
+}
+
 .social-logo--email {
   color: var(--accent-teal);
 }
@@ -1804,17 +1808,19 @@ select.neo-input {
 .neo-contact-link-block {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 5px;
   min-height: 76px;
-  padding: 14px 18px;
+  padding: 14px 24px;
   text-align: left;
 }
 
 .neo-contact-link-block__icon {
   display: grid;
   place-items: center;
-  flex: 0 0 auto;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
 }
 
 .neo-projects-hero-section .neo-section__header {
@@ -1944,26 +1950,26 @@ select.neo-input {
 .scroll-top-button {
   position: fixed;
   right: clamp(18px, 3vw, 34px);
-  bottom: clamp(18px, 3vw, 34px);
+  bottom: clamp(70px, 10vw, 100px);
   z-index: 20;
   display: grid;
   place-items: center;
   width: 52px;
   height: 52px;
   border-radius: 18px;
-  border: 1px solid rgba(202, 206, 239, 0.26);
-  color: var(--text-primary);
-  background: linear-gradient(145deg, rgba(164, 166, 255, 0.18), rgba(82, 94, 185, 0.34), rgba(38, 61, 145, 0.46));
+  border: 1px solid rgba(202, 206, 239, 0.38);
+  color: var(--accent-cyan);
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.28), rgba(82, 94, 185, 0.42), rgba(38, 61, 145, 0.52));
   box-shadow:
-    10px 10px 22px rgba(38, 61, 145, 0.34),
-    -5px -5px 14px rgba(202, 206, 239, 0.10),
-    inset 1px 1px 1px rgba(202, 206, 239, 0.24),
-    0 0 24px rgba(164, 166, 255, 0.20);
+    12px 12px 24px rgba(38, 61, 145, 0.48),
+    -6px -6px 16px rgba(202, 206, 239, 0.14),
+    inset 1px 1px 2px rgba(202, 206, 239, 0.28),
+    inset -1px -1px 2px rgba(38, 61, 145, 0.18);
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
   transition: opacity 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(24px);
 }
 
 .scroll-top-button.is-visible {
