@@ -95,7 +95,7 @@ const DownloadsPage: React.FC = () => {
                   <p>
                     {pickText(currentLanguage, project.tagline)}
                     {project.releaseAssets[0] ? (
-                      <NeoBadge tone="cyan" className="neo-badge--inline">{project.releaseAssets[0].version}</NeoBadge>
+                      <NeoBadge tone="success" className="neo-badge--inline">{project.releaseAssets[0].version}</NeoBadge>
                     ) : null}
                   </p>
                 </div>

@@ -536,7 +536,7 @@ export const projects: Project[] = [
     slug: 'harrys-hub',
     name: "Harry's Hub",
     englishName: "Harry's Hub",
-    chineseName: 'Harry 综合开发资源站',
+    chineseName: "Harry's Hub",
     dutchName: "Harry's Hub",
     tagline: l(
       'A curated resource website that gathers official download links for development tools, runtimes, and future AI learning content.',
@@ -668,6 +668,7 @@ export const projects: Project[] = [
     category: ['education-platform', 'web-application'],
     status: 'active',
     projectType: ['website', 'web-app'],
+    logo: '/project-assets/electronic-product-specifications-analysis.png',
     repoPath: 'G:\\GitHubPersonal\\Electronic-Product-Specifications-Analysis-Front-End',
     techStackIds: ['nextjs', 'react', 'typescript', 'tailwind', 'framer-motion', 'wordpress'],
     backendRequired: true,

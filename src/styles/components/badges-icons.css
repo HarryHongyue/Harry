@@ -54,12 +54,12 @@
 
 .neo-badge--inline {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   margin-left: 8px;
-  padding: 6px 10px;
-  font-size: 0.85em;
-  border-radius: 10px;
-  vertical-align: middle;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border-radius: 12px;
+  vertical-align: bottom;
   box-shadow:
     inset 3px 3px 6px rgba(38, 61, 145, 0.18),
     inset -2px -2px 4px rgba(164, 166, 255, 0.10),
