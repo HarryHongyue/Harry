@@ -13,6 +13,7 @@ export interface Hero3DShowcaseProps {
   reducedMotion?: boolean;
   showPanels?: boolean;
   showCircuit?: boolean;
+  showBase?: boolean;
 }
 
 const Hero3DShowcase: React.FC<Hero3DShowcaseProps> = ({
@@ -22,6 +23,7 @@ const Hero3DShowcase: React.FC<Hero3DShowcaseProps> = ({
   reducedMotion,
   showPanels = true,
   showCircuit = true,
+  showBase = true,
 }) => {
   const parallaxApi = useHeroParallax(reducedMotion);
   const shouldReduceMotion = Boolean(reducedMotion || parallaxApi.prefersReducedMotion);
@@ -40,7 +42,7 @@ const Hero3DShowcase: React.FC<Hero3DShowcaseProps> = ({
       {showCircuit ? <CircuitOverlay reducedMotion={shouldReduceMotion} /> : null}
       <div className="glow-orb glow-orb--cyan" />
       <div className="glow-orb glow-orb--blue" />
-      <Hero3DCanvas logoText={logoText} intensity={intensity} reducedMotion={shouldReduceMotion} showPanels={showPanels} parallax={parallaxApi.parallax} />
+      <Hero3DCanvas logoText={logoText} intensity={intensity} reducedMotion={shouldReduceMotion} showPanels={showPanels} showBase={showBase} parallax={parallaxApi.parallax} />
     </motion.div>
   );
 };

@@ -14,17 +14,6 @@ const ledPositions = [-1.64, -1.34, -1.04, 1.02, 1.32, 1.62];
 const PlatformBase: React.FC<PlatformBaseProps> = ({ intensity = 'medium', reducedMotion = false }) => {
   const ring = useRef<Group>(null);
   const accent = HERO3D_INTENSITY[intensity];
-  const bottomMaterial = useMemo(
-    () =>
-      new MeshStandardMaterial({
-        color: '#4D57B0',
-        emissive: '#263D91',
-        emissiveIntensity: 0.05 * accent.glow,
-        roughness: 0.34,
-        metalness: 0.42,
-      }),
-    [],
-  );
   const middleMaterial = useMemo(
     () =>
       new MeshStandardMaterial({
@@ -58,7 +47,6 @@ const PlatformBase: React.FC<PlatformBaseProps> = ({ intensity = 'medium', reduc
 
   return (
     <group position={[0, -1.18, 0]} receiveShadow>
-      <RoundedBox args={[5.35, 0.3, 3.36]} radius={0.34} smoothness={30} position={[0, -0.45, 0]} material={bottomMaterial} receiveShadow castShadow />
       <RoundedBox args={[5.08, 0.18, 3.1]} radius={0.28} smoothness={30} position={[0, -0.22, 0]} material={middleMaterial} receiveShadow castShadow />
       <RoundedBox args={[4.54, 0.055, 2.62]} radius={0.22} smoothness={24} position={[0, -0.09, 0.02]} material={glassMaterial} receiveShadow castShadow />
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0.24, 0.02]}>

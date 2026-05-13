@@ -16,15 +16,7 @@
 }
 
 .neo-hero--downloads::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(rgba(202, 206, 239, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(202, 206, 239, 0.05) 1px, transparent 1px);
-  background-size: 54px 54px;
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.34) 48%, rgba(0, 0, 0, 0.72) 100%);
+  display: none;
 }
 
 .neo-hero--downloads .neo-hero__copy {
@@ -33,19 +25,21 @@
 }
 
 .neo-hero--downloads .hero-3d-shell {
-  position: relative;
-  justify-self: stretch;
-  align-self: stretch;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  min-height: 0;
   overflow: visible;
-  border: 0;
+  border: 0 !important;
   border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  filter: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
   animation: none;
   isolation: auto;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .neo-hero--downloads .hero-3d-shell::after {
@@ -57,23 +51,12 @@
 }
 
 .neo-hero--downloads .glow-orb {
-  filter: blur(38px);
-  opacity: 0.58;
-}
-
-.neo-hero--downloads .glow-orb--cyan {
-  right: 12%;
-  top: 12%;
-}
-
-.neo-hero--downloads .glow-orb--blue {
-  right: 28%;
-  bottom: 3%;
+  display: none;
 }
 
 .neo-hero--downloads .hero-3d-canvas {
-  inset: -10% -7% -9% -18%;
-  transform: translate3d(calc((var(--hero-parallax-x, 0) * -10px)), calc((var(--hero-parallax-y, 0) * -7px)), 0);
+  inset: -12% -20% -10% 18%;
+  transform: translate3d(calc(62px + (var(--hero-parallax-x, 0) * -10px)), calc((var(--hero-parallax-y, 0) * -7px)), 0);
 }
 
 .neo-content-card {
@@ -155,18 +138,18 @@
 }
 
 .neo-table-card__header h3 {
-  margin-bottom: 0;
+  margin-bottom: -12px;
 }
 
-.neo-table-card__tagline-wrapper {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-.neo-table-card__tagline-wrapper p {
+.neo-table-card__header p {
   margin: 0;
   line-height: 1.35;
+  display: inline;
+}
+
+.neo-project-card__header-content--centered .neo-badge--inline {
+  margin-left: 6px;
+  vertical-align: text-bottom;
 }
 
 .neo-download-title-row {

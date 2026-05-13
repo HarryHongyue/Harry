@@ -59,11 +59,6 @@ const DownloadsPage: React.FC = () => {
       render: (row: ProjectReleaseAsset) => row.size,
     },
     {
-      key: 'sha256',
-      header: 'SHA-256',
-      render: (row: ProjectReleaseAsset) => <code style={{ color: 'var(--text-secondary)' }}>{row.sha256.slice(0, 12)}...</code>,
-    },
-    {
       key: 'releaseDate',
       header: currentLanguage === 'zh' ? '发布日期' : currentLanguage === 'nl' ? 'Releasedatum' : 'Release Date',
       render: (row: ProjectReleaseAsset) => row.releaseDate,
@@ -100,7 +95,7 @@ const DownloadsPage: React.FC = () => {
             </div>
           </div>
 
-          <DownloadHero3DScene className="hero-3d-shell--downloads-integrated" intensity="high" showCircuit={false} />
+          <DownloadHero3DScene className="hero-3d-shell--downloads-integrated" intensity="high" showCircuit={false} showBase />
         </section>
       </div>
 
@@ -112,12 +107,10 @@ const DownloadsPage: React.FC = () => {
                 <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--compact" />
                 <div className="neo-project-card__header-content--centered">
                   <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
-                  <div className="neo-table-card__tagline-wrapper">
-                    <p>{pickText(currentLanguage, project.tagline)}</p>
-                    {project.releaseAssets[0] ? (
-                      <NeoBadge tone="success" className="neo-badge--inline">{project.releaseAssets[0].version}</NeoBadge>
-                    ) : null}
-                  </div>
+                  <p>{pickText(currentLanguage, project.tagline)}</p>
+                  {project.releaseAssets[0] ? (
+                    <NeoBadge tone="success" className="neo-badge--inline">{project.releaseAssets[0].version}</NeoBadge>
+                  ) : null}
                 </div>
               </div>
             </div>

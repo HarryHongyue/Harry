@@ -19,10 +19,11 @@ interface SceneContentProps {
   intensity?: Hero3DIntensity;
   reducedMotion?: boolean;
   showPanels?: boolean;
+  showBase?: boolean;
   parallax: React.MutableRefObject<HeroParallaxValue>;
 }
 
-const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medium', reducedMotion = false, showPanels = true, parallax }) => {
+const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medium', reducedMotion = false, showPanels = true, showBase = true, parallax }) => {
   const root = useRef<Group>(null);
 
   useFrame(() => {
@@ -33,7 +34,7 @@ const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medi
   });
 
   return (
-    <group ref={root} position={[0.02, -0.08, 0]} scale={[0.92, 0.92, 0.92]}>
+    <group ref={root} position={[showBase ? 0.02 : 0.18, showBase ? -0.08 : -0.04, 0]} scale={showBase ? [0.92, 0.92, 0.92] : [1, 1, 1]}>
       <ambientLight intensity={0.52} />
       <directionalLight color="#eef2ff" intensity={1.75} position={[-4.8, 7.2, 5.6]} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />
       <pointLight color={HERO3D_COLORS.cyan} intensity={2.8} distance={7.2} position={[0, 1.7, 2.6]} />
@@ -42,7 +43,7 @@ const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medi
       <rectAreaLight color={HERO3D_COLORS.cyan} intensity={1.65} width={5.4} height={3.2} position={[-2.8, 3.5, 2.8]} rotation={[-0.62, -0.38, 0.2]} />
 
       <CircuitLines reducedMotion={reducedMotion} />
-      <PlatformBase intensity={intensity} reducedMotion={reducedMotion} />
+      {showBase ? <PlatformBase intensity={intensity} reducedMotion={reducedMotion} /> : null}
       <HLogoMesh logoText={logoText} intensity={intensity} reducedMotion={reducedMotion} parallax={parallax} />
       <DatabaseCylinder intensity={intensity} reducedMotion={reducedMotion} />
       <ServerCube intensity={intensity} reducedMotion={reducedMotion} />
@@ -56,7 +57,7 @@ const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medi
       ) : null}
 
       <Environment preset="city" />
-      <ContactShadows position={[0, -1.92, 0]} opacity={0.36} scale={8.5} blur={2.6} far={4.2} color="#263D91" />
+      {showBase ? <ContactShadows position={[0, -1.92, 0]} opacity={0.36} scale={8.5} blur={2.6} far={4.2} color="#263D91" /> : null}
       <EffectComposer multisampling={0}>
         <Bloom intensity={1.24} luminanceThreshold={0.2} luminanceSmoothing={0.66} mipmapBlur />
       </EffectComposer>
