@@ -13,6 +13,8 @@ import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
 import SurpriseMeShowcase from '../components/project/SurpriseMeShowcase';
 
+const odeSolverScreenshot = new URL('../assets/images/ODE Solver/ODE Solver.PNG', import.meta.url).href;
+
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -216,21 +218,26 @@ const ProjectDetailPage: React.FC = () => {
         <>
           <section className="section-shell ode-showcase-hero">
             <div className="ode-showcase-hero__inner">
-              <h1 className="ode-showcase-hero__title">
-                ODE <span>Solver</span>
-              </h1>
-              <p className="ode-showcase-hero__description">
-                {currentLanguage === 'zh' ? '一款强大的应用程序，使用各种数值方法求解常微分方程。适合数学、工程和科学领域的学生、研究人员和专业人士使用。' : currentLanguage === 'nl' ? 'Een krachtige applicatie voor het oplossen van gewone differentiaalvergelijkingen met verschillende numerieke methoden. Perfect voor studenten, onderzoekers en professionals in wiskunde, techniek en wetenschap.' : 'A powerful application for solving ordinary differential equations using various numerical methods. Perfect for students, researchers, and professionals in mathematics, engineering, and science.'}
-              </p>
-              <div className="ode-showcase-hero__actions">
-                <a href="#ode-download" className={`${neoButtonClass('primary')} ode-showcase-button ode-showcase-button--primary`}>
-                  <Download size={18} />
-                  {currentLanguage === 'zh' ? '立即下载' : currentLanguage === 'nl' ? 'Download nu' : 'Download Now'}
-                </a>
-                <a href={project.repoUrl ?? '#'} className={`${neoButtonClass('secondary')} ode-showcase-button`} target="_blank" rel="noreferrer">
-                  <GithubIcon size={18} />
-                  {currentLanguage === 'zh' ? '了解更多' : currentLanguage === 'nl' ? 'Meer informatie' : 'Learn More'}
-                </a>
+              <div className="ode-showcase-hero__content">
+                <h1 className="ode-showcase-hero__title">
+                  ODE <span>Solver</span>
+                </h1>
+                <p className="ode-showcase-hero__description">
+                  {currentLanguage === 'zh' ? '一款强大的应用程序，使用各种数值方法求解常微分方程。适合数学、工程和科学领域的学生、研究人员和专业人士使用。' : currentLanguage === 'nl' ? 'Een krachtige applicatie voor het oplossen van gewone differentiaalvergelijkingen met verschillende numerieke methoden. Perfect voor studenten, onderzoekers en professionals in wiskunde, techniek en wetenschap.' : 'A powerful application for solving ordinary differential equations using various numerical methods. Perfect for students, researchers, and professionals in mathematics, engineering, and science.'}
+                </p>
+                <div className="ode-showcase-hero__actions">
+                  <a href="#ode-download" className={`${neoButtonClass('primary')} ode-showcase-button ode-showcase-button--primary`}>
+                    <Download size={18} />
+                    {currentLanguage === 'zh' ? '立即下载' : currentLanguage === 'nl' ? 'Download nu' : 'Download Now'}
+                  </a>
+                  <a href={project.repoUrl ?? '#'} className={`${neoButtonClass('secondary')} ode-showcase-button`} target="_blank" rel="noreferrer">
+                    <GithubIcon size={18} />
+                    {currentLanguage === 'zh' ? '了解更多' : currentLanguage === 'nl' ? 'Meer informatie' : 'Learn More'}
+                  </a>
+                </div>
+              </div>
+              <div className="ode-showcase-hero__visual" aria-hidden="true">
+                <img src={odeSolverScreenshot} alt="ODE Solver Application" className="ode-showcase-hero__screenshot" />
               </div>
             </div>
           </section>
