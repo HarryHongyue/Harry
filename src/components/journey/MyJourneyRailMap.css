@@ -95,13 +95,6 @@
   filter: drop-shadow(0 0 7px rgba(30, 235, 255, 0.78));
 }
 
-.journey-station__halo {
-  fill: rgba(50, 222, 255, 0.08);
-  stroke: rgba(91, 107, 255, 0.32);
-  stroke-width: 2;
-  filter: drop-shadow(0 0 15px rgba(119, 90, 255, 0.62));
-}
-
 .journey-station__ring {
   fill: rgba(8, 19, 36, 0.98);
   stroke: #765fff;
@@ -116,11 +109,6 @@
 .journey-station.is-active .journey-station__ring {
   stroke: #1df4ff;
   filter: drop-shadow(0 0 12px rgba(29, 244, 255, 0.95));
-}
-
-.journey-station.is-active .journey-station__halo {
-  fill: rgba(29, 244, 255, 0.22);
-  stroke: rgba(29, 244, 255, 0.54);
 }
 
 .journey-train {

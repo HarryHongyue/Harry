@@ -171,7 +171,7 @@ const journeyMilestones: JourneyMilestone[] = [
     tech: ['AI Agents', 'Interaction', 'Full Stack', 'Platform Design'],
     icon: 'flag',
     card: { x: 350, y: 865, w: 740, h: 145 },
-    station: { x: 720, y: 828 },
+    station: { x: 230, y: 920 },
     pathProgress: 1,
   },
 ];
@@ -412,7 +412,6 @@ export const MyJourneyRailMap: React.FC = () => {
                     className={`journey-station ${isPassed ? 'is-passed' : ''} ${index === activeIndex ? 'is-active' : ''}`}
                     transform={`translate(${milestone.station.x} ${milestone.station.y})`}
                   >
-                    <circle r="17" className="journey-station__halo" />
                     <circle r="9" className="journey-station__ring" />
                     <circle r="4.5" className="journey-station__core" />
                   </g>
