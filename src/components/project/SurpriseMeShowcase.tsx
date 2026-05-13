@@ -43,13 +43,15 @@ const SurpriseMeShowcase: React.FC = () => {
     <>
       <section className="section-shell surprise-showcase-hero">
         <div className="surprise-showcase-hero__inner">
-          <h1 className="surprise-showcase-hero__title">Surprise<span>Me</span></h1>
-          <p className="surprise-showcase-hero__description">
-            {currentLanguage === 'zh' ? '一个简单的浏览器扩展，可为任何网页添加可自定义的彩色边框。非常适合截图、演示和区分不同环境。' : currentLanguage === 'nl' ? 'Een eenvoudige browserextensie die een aanpasbare gekleurde rand aan elke webpagina toevoegt.' : 'A simple browser extension that adds a customizable colored border to any webpage. Perfect for screenshots, presentations, and visual distinction between environments.'}
-          </p>
-          <div className="surprise-showcase-hero__actions">
-            <a href="#surpriseme-download" className={`${neoButtonClass('primary')} surprise-showcase-button`}><Download size={18} />{currentLanguage === 'zh' ? '开始使用' : currentLanguage === 'nl' ? 'Start nu' : 'Download'}</a>
-            <a href="https://github.com/HarryHongyue/SurpriseMe" className={`${neoButtonClass('secondary')} surprise-showcase-button`} target="_blank" rel="noreferrer"><GithubIcon size={18} />{currentLanguage === 'zh' ? '了解更多' : currentLanguage === 'nl' ? 'Meer informatie' : 'Learn More'}</a>
+          <div className="surprise-showcase-hero__content-wrapper">
+            <h1 className="surprise-showcase-hero__title">Surprise<span>Me</span></h1>
+            <p className="surprise-showcase-hero__description">
+              {currentLanguage === 'zh' ? '一个简单的浏览器扩展，可为任何网页添加可自定义的彩色边框。非常适合截图、演示和区分不同环境。' : currentLanguage === 'nl' ? 'Een eenvoudige browserextensie die een aanpasbare gekleurde rand aan elke webpagina toevoegt.' : 'A simple browser extension that adds a customizable colored border to any webpage. Perfect for screenshots, presentations, and visual distinction between environments.'}
+            </p>
+            <div className="surprise-showcase-hero__actions">
+              <a href="#surpriseme-download" className={`${neoButtonClass('primary')} surprise-showcase-button`}><Download size={18} />{currentLanguage === 'zh' ? '开始使用' : currentLanguage === 'nl' ? 'Start nu' : 'Download'}</a>
+              <a href="https://github.com/HarryHongyue/SurpriseMe" className={`${neoButtonClass('secondary')} surprise-showcase-button`} target="_blank" rel="noreferrer"><GithubIcon size={18} />{currentLanguage === 'zh' ? '了解更多' : currentLanguage === 'nl' ? 'Meer informatie' : 'Learn More'}</a>
+            </div>
           </div>
         </div>
       </section>
