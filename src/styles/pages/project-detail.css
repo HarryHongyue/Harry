@@ -588,3 +588,239 @@
     grid-template-columns: 1fr;
   }
 }
+
+.metrology-showcase-hero,
+.metrology-showcase-section {
+  display: grid;
+  width: min(calc(100vw - clamp(24px, 4vw, 72px)), var(--content-width));
+  gap: 24px;
+  padding: 38px 0;
+}
+
+.metrology-showcase-hero {
+  place-items: center;
+  min-height: 540px;
+  padding: 54px 0 64px;
+}
+
+.metrology-showcase-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(340px, 0.84fr) minmax(500px, 1.16fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  width: 100%;
+}
+
+.metrology-showcase-hero__content {
+  display: grid;
+  align-content: center;
+  gap: clamp(28px, 4.2vw, 52px);
+  min-height: 430px;
+  min-width: 0;
+  max-width: 650px;
+}
+
+.metrology-showcase-hero__title {
+  font-size: clamp(2.45rem, 4.8vw, 5.1rem);
+  line-height: 0.98;
+  font-weight: 800;
+}
+
+.metrology-showcase-hero__title span {
+  display: block;
+  margin-top: 0.08em;
+  font-size: 1em;
+}
+
+.metrology-showcase-hero__title span,
+.metrology-showcase-feature-card__icon,
+.metrology-showcase-privacy__heading svg {
+  color: #A4A6FF;
+  text-shadow: 0 0 22px rgba(164, 166, 255, 0.24);
+}
+
+.metrology-showcase-hero__description,
+.metrology-showcase-section__subtitle {
+  max-width: 640px;
+  font-size: clamp(1.08rem, 1.45vw, 1.42rem);
+  line-height: 1.72;
+  text-align: justify;
+}
+
+.metrology-showcase-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.metrology-showcase-button {
+  min-height: 52px;
+  padding-inline: 32px;
+}
+
+.metrology-showcase-hero__visual {
+  position: relative;
+  min-height: 470px;
+  min-width: 0;
+  perspective: 1400px;
+}
+
+.metrology-showcase-hero__screenshot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: min(90%, 720px);
+  border-radius: 6px;
+  object-fit: cover;
+  backface-visibility: hidden;
+  transform-origin: left center;
+  box-shadow:
+    24px 28px 48px rgba(38, 61, 145, 0.34),
+    -10px -10px 22px rgba(202, 206, 239, 0.14);
+  transition:
+    transform 460ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 460ms ease,
+    z-index 0ms linear 230ms;
+}
+
+.metrology-showcase-hero__screenshot--1 {
+  z-index: 3;
+  transform: translate(-53%, -48%) rotateY(-10deg) rotateZ(-2deg);
+}
+
+.metrology-showcase-hero__screenshot--2 {
+  z-index: 2;
+  transform: translate(-49%, -50%) rotateY(-8deg) rotateZ(1deg) scale(0.97);
+  filter: brightness(0.86);
+}
+
+.metrology-showcase-hero__screenshot--3 {
+  z-index: 1;
+  transform: translate(-45%, -52%) rotateY(-6deg) rotateZ(3deg) scale(0.94);
+  filter: brightness(0.74);
+}
+
+.metrology-showcase-hero__visual--active-1 .metrology-showcase-hero__screenshot--1,
+.metrology-showcase-hero__visual--active-2 .metrology-showcase-hero__screenshot--1 {
+  transform: translate(-88%, -48%) rotateY(-82deg) rotateZ(-5deg) scale(0.96);
+  filter: brightness(0.64);
+  opacity: 0.18;
+}
+
+.metrology-showcase-hero__visual--active-1 .metrology-showcase-hero__screenshot--2 {
+  z-index: 4;
+  transform: translate(-53%, -50%) rotateY(-8deg) rotateZ(0deg) scale(1);
+  filter: brightness(1);
+}
+
+.metrology-showcase-hero__visual--active-2 .metrology-showcase-hero__screenshot--2 {
+  transform: translate(-88%, -50%) rotateY(-82deg) rotateZ(-4deg) scale(0.96);
+  filter: brightness(0.64);
+  opacity: 0.18;
+}
+
+.metrology-showcase-hero__visual--active-2 .metrology-showcase-hero__screenshot--3 {
+  z-index: 5;
+  transform: translate(-53%, -50%) rotateY(-5deg) rotateZ(0deg) scale(1);
+  filter: brightness(1);
+}
+
+.metrology-showcase-section__title {
+  justify-self: center;
+  text-align: center;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.metrology-showcase-section__subtitle {
+  justify-self: center;
+  max-width: 760px;
+  text-align: center;
+}
+
+.metrology-showcase-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.metrology-showcase-feature-card {
+  display: grid;
+  gap: 14px;
+  padding: 28px;
+}
+
+.metrology-showcase-download-card {
+  display: grid;
+  gap: 32px;
+  width: min(100%, 1040px);
+  justify-self: center;
+  padding: 36px;
+  text-align: center;
+}
+
+.metrology-showcase-download-card__main {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.metrology-showcase-download-button {
+  min-height: 64px;
+  padding-inline: 40px;
+  font-size: 1.18rem;
+  font-weight: 800;
+}
+
+.metrology-showcase-privacy__heading {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.metrology-showcase-privacy-card {
+  display: grid;
+  gap: 28px;
+  width: 100%;
+  padding: 32px;
+}
+
+.metrology-showcase-privacy-note {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border-left: 4px solid #A4A6FF;
+  border-radius: 18px;
+  background: rgba(38, 61, 145, 0.38);
+}
+
+@media (max-width: 1100px) {
+  .metrology-showcase-hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .metrology-showcase-hero__visual {
+    order: -1;
+  }
+}
+
+@media (max-width: 960px) {
+  .metrology-showcase-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .metrology-showcase-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrology-showcase-hero__visual {
+    min-height: 320px;
+  }
+
+  .metrology-showcase-hero__screenshot {
+    width: min(92%, 420px);
+  }
+}

@@ -12,6 +12,7 @@ import ProjectLogo from '../components/common/ProjectLogo';
 import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
 import SurpriseMeShowcase from '../components/project/SurpriseMeShowcase';
+import MetrologyCertificateShowcase from '../components/project/MetrologyCertificateShowcase';
 
 const odeSolverScreenshot = new URL('../assets/images/ODE Solver/ODE Solver.PNG', import.meta.url).href;
 
@@ -45,6 +46,7 @@ const ProjectDetailPage: React.FC = () => {
   const isPdf = project.slug === 'pdf-reader';
   const isOde = project.slug === 'ode-all-in-one-solver';
   const isSurpriseMe = project.slug === 'surpriseme';
+  const isMetrologyCertificate = project.slug === 'metrology-certificate-management-system';
   const pdfArchitectureNodes = [
     { title: currentLanguage === 'zh' ? '前端' : currentLanguage === 'nl' ? 'Frontend' : 'Frontend', body: currentLanguage === 'zh' ? '上传、状态反馈和结果查看界面。' : currentLanguage === 'nl' ? 'Uploads, status en resultaatweergave.' : 'Uploads, status feedback, and results review.' },
     { title: 'API Gateway', body: currentLanguage === 'zh' ? '负责路由、边界控制和请求限制。' : currentLanguage === 'nl' ? 'Verzorgt routing, grenzen en request-limieten.' : 'Handles routing, boundary control, and request limits.' },
@@ -130,7 +132,7 @@ const ProjectDetailPage: React.FC = () => {
   return (
     <div className="neo-page" data-lang={currentLanguage}>
       <Breadcrumbs />
-      {!isOde && !isSurpriseMe ? (
+      {!isOde && !isSurpriseMe && !isMetrologyCertificate ? (
         <div className="section-shell">
           <div className={`neo-detail-hero ${isPdf ? 'is-pdf' : 'is-generic'}`}>
             <NeoCard className="neo-detail-card neo-detail-card--main">
@@ -336,7 +338,9 @@ const ProjectDetailPage: React.FC = () => {
 
       {isSurpriseMe ? <SurpriseMeShowcase /> : null}
 
-      {!isOde && !isSurpriseMe ? (
+      {isMetrologyCertificate ? <MetrologyCertificateShowcase /> : null}
+
+      {!isOde && !isSurpriseMe && !isMetrologyCertificate ? (
         <NeoSection title={currentLanguage === 'zh' ? '概览' : currentLanguage === 'nl' ? 'Overzicht' : 'Overview'}>
           <div className="neo-grid neo-grid--2">
             <NeoCard hoverable className="neo-content-card">
@@ -400,7 +404,7 @@ const ProjectDetailPage: React.FC = () => {
         </>
       ) : null}
 
-      {!isPdf && !isOde && !isSurpriseMe ? (
+      {!isPdf && !isOde && !isSurpriseMe && !isMetrologyCertificate ? (
         <NeoSection title={currentLanguage === 'zh' ? '架构与后续计划' : currentLanguage === 'nl' ? 'Architectuur en roadmap' : 'Architecture & Roadmap'}>
           <div className="neo-grid neo-grid--2">
             <NeoCard hoverable>
