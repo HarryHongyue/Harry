@@ -155,10 +155,16 @@
 }
 
 .neo-table-card__header h3 {
-  margin-bottom: 1px;
+  margin-bottom: 0;
 }
 
-.neo-table-card__header p {
+.neo-table-card__tagline-wrapper {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.neo-table-card__tagline-wrapper p {
   margin: 0;
   line-height: 1.35;
 }

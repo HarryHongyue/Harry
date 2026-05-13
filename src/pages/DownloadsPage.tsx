@@ -112,12 +112,12 @@ const DownloadsPage: React.FC = () => {
                 <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--compact" />
                 <div className="neo-project-card__header-content--centered">
                   <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
-                  <p>
-                    {pickText(currentLanguage, project.tagline)}
+                  <div className="neo-table-card__tagline-wrapper">
+                    <p>{pickText(currentLanguage, project.tagline)}</p>
                     {project.releaseAssets[0] ? (
                       <NeoBadge tone="success" className="neo-badge--inline">{project.releaseAssets[0].version}</NeoBadge>
                     ) : null}
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
