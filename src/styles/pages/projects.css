@@ -101,6 +101,11 @@
   --status-glow: rgba(48, 229, 154, 0.5);
 }
 
+.neo-status-pill--purple {
+  --status-color: #A4A6FF;
+  --status-glow: rgba(164, 166, 255, 0.5);
+}
+
 .neo-status-pill--yellow {
   --status-color: #ffb02e;
   --status-glow: rgba(255, 176, 46, 0.5);

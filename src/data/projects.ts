@@ -503,6 +503,7 @@ export const projects: Project[] = [
     websiteUrl: 'http://localhost:3000',
     techStackIds: ['react', 'typescript', 'vite', 'tailwind', 'framer-motion'],
     backendRequired: false,
+    backendType: 'light',
     downloadable: false,
     desktopApp: false,
     browserExtension: false,

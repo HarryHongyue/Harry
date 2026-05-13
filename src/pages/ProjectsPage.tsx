@@ -155,7 +155,27 @@ const ProjectsPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {visibleProjects.map((project) => {
+                {[...visibleProjects].sort((a, b) => {
+                  const priorityOrder: Record<string, number> = {
+                    'future-website-building-platform': 0,
+                    'harrys-hub': 1,
+                    'pdf-reader': 2,
+                    'aircargo-edi': 3,
+                    'electronic-product-specifications-analysis': 4,
+                  };
+
+                  const priorityA = priorityOrder[a.slug] ?? 999;
+                  const priorityB = priorityOrder[b.slug] ?? 999;
+
+                  if (priorityA !== priorityB) {
+                    return priorityA - priorityB;
+                  }
+
+                  const statusOrder = { 'active': 0, 'featured': 1, 'client-project': 2, 'school-project': 3, 'completed': 4 };
+                  const orderA = statusOrder[a.status as keyof typeof statusOrder] ?? 5;
+                  const orderB = statusOrder[b.status as keyof typeof statusOrder] ?? 5;
+                  return orderA - orderB;
+                }).map((project) => {
                   const statusTone = project.status === 'active' || project.status === 'featured' ? 'green' : project.status === 'client-project' || project.status === 'school-project' ? 'yellow' : 'blue';
                   return (
                     <tr key={project.slug}>
@@ -164,10 +184,17 @@ const ProjectsPage: React.FC = () => {
                       </td>
                       <td>{project.projectType.join(' / ')}</td>
                       <td>
-                        <span className={`neo-status-pill neo-status-pill--${project.backendRequired ? 'blue' : 'green'}`}>
-                          <i />
-                          {project.backendRequired ? (currentLanguage === 'zh' ? '需要' : currentLanguage === 'nl' ? 'Vereist' : 'Required') : currentLanguage === 'zh' ? '不需要' : currentLanguage === 'nl' ? 'Niet nodig' : 'Not Required'}
-                        </span>
+                        {project.backendType === 'light' ? (
+                          <span className="neo-status-pill neo-status-pill--purple">
+                            <i />
+                            {currentLanguage === 'zh' ? '轻量' : currentLanguage === 'nl' ? 'Lichtgewicht' : 'Light'}
+                          </span>
+                        ) : (
+                          <span className={`neo-status-pill neo-status-pill--${project.backendRequired ? 'blue' : 'green'}`}>
+                            <i />
+                            {project.backendRequired ? (currentLanguage === 'zh' ? '需要' : currentLanguage === 'nl' ? 'Vereist' : 'Required') : currentLanguage === 'zh' ? '不需要' : currentLanguage === 'nl' ? 'Niet nodig' : 'Not Required'}
+                          </span>
+                        )}
                       </td>
                       <td>{project.techStackIds.slice(0, 3).join(', ')}</td>
                       <td>

@@ -71,6 +71,7 @@ export interface Project {
   websiteUrl?: string;
   techStackIds: string[];
   backendRequired: boolean;
+  backendType?: 'light';
   downloadable: boolean;
   desktopApp: boolean;
   browserExtension: boolean;
