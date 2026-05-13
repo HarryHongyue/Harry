@@ -16,6 +16,13 @@ import MetrologyCertificateShowcase from '../components/project/MetrologyCertifi
 import PdfReaderShowcase from '../components/project/PdfReaderShowcase';
 import OdeSolverShowcase from '../components/project/OdeSolverShowcase';
 import AircargoEdiShowcase from '../components/project/AircargoEdiShowcase';
+import FutureWebsitePlatformShowcase from '../components/project/FutureWebsitePlatformShowcase';
+import OminigentShowcase from '../components/project/OminigentShowcase';
+import CryoCoreCoolingShowcase from '../components/project/CryoCoreCoolingShowcase';
+import SongYanShowcase from '../components/project/SongYanShowcase';
+import HarryPersonalShowcase from '../components/project/HarryPersonalShowcase';
+import HarrysHubShowcase from '../components/project/HarrysHubShowcase';
+import ElectronicProductSpecsShowcase from '../components/project/ElectronicProductSpecsShowcase';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -49,11 +56,19 @@ const ProjectDetailPage: React.FC = () => {
   const isAircargoEdi = project.slug === 'aircargo-edi';
   const isSurpriseMe = project.slug === 'surpriseme';
   const isMetrologyCertificate = project.slug === 'metrology-certificate-management-system';
+  const isFutureWebsitePlatform = project.slug === 'future-website-building-platform';
+  const isOminigent = project.slug === 'ominigent';
+  const isCryoCoreCooling = project.slug === 'cryocore-cooling';
+  const isSongYan = project.slug === 'song-yan';
+  const isHarryPersonal = project.slug === 'harry';
+  const isHarrysHub = project.slug === 'harrys-hub';
+  const isElectronicProductSpecs = project.slug === 'electronic-product-specifications-analysis';
+  const isWebsiteShowcase = isFutureWebsitePlatform || isOminigent || isCryoCoreCooling || isSongYan || isHarryPersonal || isHarrysHub || isElectronicProductSpecs;
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
       <Breadcrumbs />
-      {!isPdf && !isOde && !isAircargoEdi && !isSurpriseMe && !isMetrologyCertificate ? (
+      {!isWebsiteShowcase && !isPdf && !isOde && !isAircargoEdi && !isSurpriseMe && !isMetrologyCertificate ? (
         <div className="section-shell">
           <div className={`neo-detail-hero ${isPdf ? 'is-pdf' : 'is-generic'}`}>
             <NeoCard className="neo-detail-card neo-detail-card--main">
@@ -141,13 +156,27 @@ const ProjectDetailPage: React.FC = () => {
 
       {isAircargoEdi ? <AircargoEdiShowcase project={project} /> : null}
 
-      {isSurpriseMe ? <SurpriseMeShowcase /> : null}
+      {isSurpriseMe ? <SurpriseMeShowcase project={project} /> : null}
 
-      {isMetrologyCertificate ? <MetrologyCertificateShowcase /> : null}
+      {isMetrologyCertificate ? <MetrologyCertificateShowcase project={project} /> : null}
 
-      {isPdf ? <PdfReaderShowcase /> : null}
+      {isPdf ? <PdfReaderShowcase project={project} /> : null}
 
-      {!isPdf && !isOde && !isAircargoEdi && !isSurpriseMe && !isMetrologyCertificate ? (
+      {isFutureWebsitePlatform ? <FutureWebsitePlatformShowcase project={project} /> : null}
+
+      {isOminigent ? <OminigentShowcase project={project} /> : null}
+
+      {isCryoCoreCooling ? <CryoCoreCoolingShowcase project={project} /> : null}
+
+      {isSongYan ? <SongYanShowcase project={project} /> : null}
+
+      {isHarryPersonal ? <HarryPersonalShowcase project={project} /> : null}
+
+      {isHarrysHub ? <HarrysHubShowcase project={project} /> : null}
+
+      {isElectronicProductSpecs ? <ElectronicProductSpecsShowcase project={project} /> : null}
+
+      {!isWebsiteShowcase && !isPdf && !isOde && !isAircargoEdi && !isSurpriseMe && !isMetrologyCertificate ? (
         <NeoSection title={currentLanguage === 'zh' ? '概览' : currentLanguage === 'nl' ? 'Overzicht' : 'Overview'}>
           <div className="neo-grid neo-grid--2">
             <NeoCard hoverable className="neo-content-card">
@@ -170,7 +199,7 @@ const ProjectDetailPage: React.FC = () => {
         </NeoSection>
       ) : null}
 
-      {!isPdf && !isOde && !isAircargoEdi && !isSurpriseMe && !isMetrologyCertificate ? (
+      {!isWebsiteShowcase && !isPdf && !isOde && !isAircargoEdi && !isSurpriseMe && !isMetrologyCertificate ? (
         <NeoSection title={currentLanguage === 'zh' ? '架构与后续计划' : currentLanguage === 'nl' ? 'Architectuur en roadmap' : 'Architecture & Roadmap'}>
           <div className="neo-grid neo-grid--2">
             <NeoCard hoverable>

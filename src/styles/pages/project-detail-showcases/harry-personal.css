@@ -1,0 +1,218 @@
+.harrysite-website-hero {
+  display: grid;
+  place-items: center;
+  width: min(calc(100vw - clamp(24px, 4vw, 72px)), var(--content-width));
+  min-height: 520px;
+  padding: 54px 0 64px;
+}
+
+.harrysite-website-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.92fr) minmax(420px, 1.08fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  width: 100%;
+}
+
+.harrysite-website-hero__content {
+  display: grid;
+  align-content: center;
+  gap: clamp(22px, 3.2vw, 42px);
+  min-height: 430px;
+  max-width: 680px;
+}
+
+.harrysite-website-hero__title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.harrysite-website-hero__title span {
+  color: #A4A6FF;
+  text-shadow: 0 0 22px rgba(164, 166, 255, 0.24);
+}
+
+.harrysite-website-hero__description {
+  font-size: clamp(1.1rem, 1.45vw, 1.42rem);
+  line-height: 1.72;
+  text-align: justify;
+}
+
+.harrysite-website-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.harrysite-website-button {
+  min-height: 52px;
+  padding-inline: 32px;
+}
+
+.harrysite-website-hero__visual {
+  display: grid;
+  justify-items: end;
+  perspective: 1200px;
+  padding-right: clamp(12px, 2vw, 28px);
+}
+
+.harrysite-website-browser-card {
+  display: grid;
+  gap: 24px;
+  width: min(88%, 620px);
+  min-height: 430px;
+  padding: 28px;
+  transform: rotateY(-13deg) rotateX(3deg) translateX(-20px);
+  transform-origin: left center;
+  box-shadow: 24px 28px 48px rgba(38, 61, 145, 0.32), -10px -10px 22px rgba(202, 206, 239, 0.12);
+}
+
+.harrysite-website-browser-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.harrysite-website-browser-card__bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent-teal);
+}
+
+.harrysite-website-browser-card__bar strong {
+  margin-left: auto;
+  font-size: 0.88rem;
+}
+
+.harrysite-website-browser-card__hero {
+  display: grid;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(38, 61, 145, 0.28);
+}
+
+.harrysite-website-browser-card__hero svg {
+  color: var(--accent-teal);
+}
+
+.harrysite-website-browser-card__hero h3 {
+  font-size: clamp(1.6rem, 2.4vw, 2.6rem);
+}
+
+.harrysite-website-browser-card__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.harrysite-website-browser-card__grid div,
+.harrysite-website-focus-card,
+.harrysite-website-feature-card {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+}
+
+.harrysite-website-browser-card__grid div {
+  border-radius: 18px;
+  background: rgba(8, 13, 34, 0.34);
+}
+
+.harrysite-website-browser-card__grid svg,
+.harrysite-website-focus-card svg {
+  color: var(--accent-teal);
+}
+
+.harrysite-website-section {
+  display: grid;
+  width: min(calc(100vw - clamp(24px, 4vw, 72px)), var(--content-width));
+  gap: 24px;
+  padding: 38px 0;
+}
+
+.harrysite-website-section__title {
+  justify-self: center;
+  text-align: center;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.harrysite-website-section__subtitle {
+  justify-self: center;
+  max-width: 780px;
+  text-align: center;
+  font-size: 1.12rem;
+}
+
+.harrysite-website-focus-grid,
+.harrysite-website-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.harrysite-website-feature-card h3 {
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.harrysite-website-tech-card {
+  display: grid;
+  gap: 28px;
+  padding: 34px;
+}
+
+.harrysite-website-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.harrysite-website-tech-list span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--accent-teal);
+  background: rgba(38, 61, 145, 0.32);
+}
+
+.harrysite-website-roadmap {
+  display: grid;
+  gap: 14px;
+}
+
+.harrysite-website-roadmap ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1100px) {
+  .harrysite-website-hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .harrysite-website-hero__visual {
+    justify-items: center;
+    order: -1;
+  }
+}
+
+@media (max-width: 960px) {
+  .harrysite-website-focus-grid,
+  .harrysite-website-feature-grid,
+  .harrysite-website-browser-card__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .harrysite-website-browser-card {
+    width: min(92%, 420px);
+    transform: rotateY(-8deg) rotateX(2deg);
+  }
+}

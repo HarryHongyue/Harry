@@ -33,7 +33,7 @@ const HLogoMesh: React.FC<HLogoMeshProps> = ({ logoText = 'H', intensity = 'medi
     const elapsed = clock.getElapsedTime();
     const pulse = 0.78 + Math.sin(elapsed * 1.8) * 0.18;
 
-    group.current.position.y = 0.68 + Math.sin(elapsed * 0.8) * 0.08 * accent.motion + parallax.current.y * -0.08;
+    group.current.position.y = 0.5 + Math.sin(elapsed * 0.8) * 0.06 * accent.motion + parallax.current.y * -0.08;
     group.current.position.x = parallax.current.x * 0.16;
     group.current.rotation.x = -0.08 + Math.sin(elapsed * 0.55) * 0.02 + parallax.current.y * 0.08;
     group.current.rotation.y = Math.sin(elapsed * 0.48) * 0.05 + parallax.current.x * 0.12;
@@ -41,10 +41,10 @@ const HLogoMesh: React.FC<HLogoMeshProps> = ({ logoText = 'H', intensity = 'medi
   });
 
   return (
-    <group ref={group} position={[0, 0.68, 0]} castShadow>
-      <RoundedBox args={[0.55, 2.65, 0.58]} radius={0.16} smoothness={14} position={[-0.55, 0.28, 0]} material={material} />
-      <RoundedBox args={[0.55, 2.65, 0.58]} radius={0.16} smoothness={14} position={[0.55, 0.28, 0]} material={material} />
-      <RoundedBox args={[1.25, 0.52, 0.58]} radius={0.15} smoothness={14} position={[0, 0.12, 0]} material={material} />
+    <group ref={group} position={[0, 0.5, 0]} scale={[0.82, 0.82, 0.82]} castShadow>
+      <RoundedBox args={[0.5, 2.34, 0.5]} radius={0.15} smoothness={16} position={[-0.5, 0.28, 0]} material={material} />
+      <RoundedBox args={[0.5, 2.34, 0.5]} radius={0.15} smoothness={16} position={[0.5, 0.28, 0]} material={material} />
+      <RoundedBox args={[1.14, 0.46, 0.5]} radius={0.14} smoothness={16} position={[0, 0.12, 0]} material={material} />
       <pointLight color={HERO3D_COLORS.teal} intensity={1.8 * accent.glow} distance={4.6} position={[0, 0.6, 1.4]} />
       <mesh position={[0, -1.9, 0.43]}>
         <ringGeometry args={[1.15, 1.21, 96]} />

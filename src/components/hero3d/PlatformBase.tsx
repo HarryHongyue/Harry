@@ -9,7 +9,7 @@ interface PlatformBaseProps {
   reducedMotion?: boolean;
 }
 
-const ledPositions = [-1.62, -1.3, -1.02, 1.18, 1.48, 1.74];
+const ledPositions = [-1.64, -1.34, -1.04, 1.02, 1.32, 1.62];
 
 const PlatformBase: React.FC<PlatformBaseProps> = ({ intensity = 'medium', reducedMotion = false }) => {
   const ring = useRef<Group>(null);
@@ -17,33 +17,35 @@ const PlatformBase: React.FC<PlatformBaseProps> = ({ intensity = 'medium', reduc
   const bottomMaterial = useMemo(
     () =>
       new MeshStandardMaterial({
-        color: '#111827',
-        roughness: 0.32,
-        metalness: 0.46,
+        color: '#4D57B0',
+        emissive: '#263D91',
+        emissiveIntensity: 0.05 * accent.glow,
+        roughness: 0.34,
+        metalness: 0.42,
       }),
     [],
   );
   const middleMaterial = useMemo(
     () =>
       new MeshStandardMaterial({
-        color: '#18243a',
-        emissive: '#1a3f72',
-        emissiveIntensity: 0.18 * accent.glow,
+        color: '#7A80E2',
+        emissive: '#525EB9',
+        emissiveIntensity: 0.12 * accent.glow,
         roughness: 0.3,
-        metalness: 0.48,
+        metalness: 0.38,
       }),
     [accent.glow],
   );
   const glassMaterial = useMemo(
     () =>
       new MeshStandardMaterial({
-        color: '#0e2240',
-        emissive: '#123c7c',
-        emissiveIntensity: 0.22 * accent.glow,
-        roughness: 0.18,
-        metalness: 0.22,
+        color: '#CACEEF',
+        emissive: '#A4A6FF',
+        emissiveIntensity: 0.08 * accent.glow,
+        roughness: 0.2,
+        metalness: 0.18,
         transparent: true,
-        opacity: 0.76,
+        opacity: 0.22,
       }),
     [accent.glow],
   );
@@ -55,15 +57,19 @@ const PlatformBase: React.FC<PlatformBaseProps> = ({ intensity = 'medium', reduc
   });
 
   return (
-    <group position={[0, -1.15, 0]} receiveShadow>
-      <RoundedBox args={[6.2, 0.34, 4.05]} radius={0.38} smoothness={18} position={[0, -0.55, 0]} material={bottomMaterial} receiveShadow castShadow />
-      <RoundedBox args={[5.65, 0.38, 3.55]} radius={0.34} smoothness={18} position={[0, -0.24, 0]} material={middleMaterial} receiveShadow castShadow />
-      <RoundedBox args={[4.68, 0.24, 2.72]} radius={0.26} smoothness={18} position={[0, 0.1, 0.02]} material={glassMaterial} receiveShadow castShadow />
+    <group position={[0, -1.18, 0]} receiveShadow>
+      <RoundedBox args={[5.35, 0.3, 3.36]} radius={0.34} smoothness={30} position={[0, -0.45, 0]} material={bottomMaterial} receiveShadow castShadow />
+      <RoundedBox args={[5.08, 0.18, 3.1]} radius={0.28} smoothness={30} position={[0, -0.22, 0]} material={middleMaterial} receiveShadow castShadow />
+      <RoundedBox args={[4.54, 0.055, 2.62]} radius={0.22} smoothness={24} position={[0, -0.09, 0.02]} material={glassMaterial} receiveShadow castShadow />
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0.24, 0.02]}>
-        <ringGeometry args={[2.34, 2.42, 128]} />
-        <meshBasicMaterial color={HERO3D_COLORS.blue} transparent opacity={0.56 * accent.glow} />
+        <ringGeometry args={[1.86, 1.94, 144]} />
+        <meshBasicMaterial color={HERO3D_COLORS.blue} transparent opacity={0.38 * accent.glow} />
       </mesh>
-      <group position={[0, -0.03, 1.86]}>
+      <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0.27, 0.02]}>
+        <torusGeometry args={[1.54, 0.012, 10, 144]} />
+        <meshBasicMaterial color="#CACEEF" transparent opacity={0.28 * accent.glow} />
+      </mesh>
+      <group position={[0, -0.12, 1.54]}>
         <mesh position={[-1.35, 0, 0]}>
           <boxGeometry args={[0.74, 0.045, 0.028]} />
           <meshStandardMaterial color={HERO3D_COLORS.cyan} emissive={HERO3D_COLORS.cyan} emissiveIntensity={1.1 * accent.glow} />
@@ -74,22 +80,15 @@ const PlatformBase: React.FC<PlatformBaseProps> = ({ intensity = 'medium', reduc
         </mesh>
       </group>
 
-      <group ref={ring} position={[0, 0.29, 0]}>
-        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-          <ringGeometry args={[2.42, 2.48, 128]} />
-          <meshBasicMaterial color={HERO3D_COLORS.blue} transparent opacity={0.35 * accent.glow} />
+      <group ref={ring} position={[0, -0.03, 0]}>
+        <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.06, 0]}>
+          <ringGeometry args={[1.74, 1.8, 128]} />
+          <meshBasicMaterial color={HERO3D_COLORS.blue} transparent opacity={0.24 * accent.glow} />
         </mesh>
-        <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[2.08, 2.12, 128]} />
-          <meshBasicMaterial color={HERO3D_COLORS.cyan} transparent opacity={0.3 * accent.glow} />
-        </mesh>
-      </group>
-
-      <group position={[0, -0.17, 1.52]}>
         {ledPositions.map((x, index) => (
-          <mesh key={x} position={[x, 0, 0]}>
-            <sphereGeometry args={[index % 3 === 0 ? 0.075 : 0.052, 18, 18]} />
-            <meshStandardMaterial color={index > 2 ? HERO3D_COLORS.teal : '#A4A6FF'} emissive={index > 2 ? HERO3D_COLORS.teal : HERO3D_COLORS.blue} emissiveIntensity={(index > 2 ? 1.25 : 0.7) * accent.glow} />
+          <mesh key={x} position={[x, -0.02, -1.58]}>
+            <boxGeometry args={[0.1, 0.032, 0.028]} />
+            <meshStandardMaterial color={index % 2 ? HERO3D_COLORS.cyan : HERO3D_COLORS.blue} emissive={index % 2 ? HERO3D_COLORS.cyan : HERO3D_COLORS.blue} emissiveIntensity={(0.8 + index * 0.08) * accent.glow} />
           </mesh>
         ))}
       </group>

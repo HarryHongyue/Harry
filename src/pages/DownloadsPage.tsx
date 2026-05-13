@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Download, Globe2 } from 'lucide-react';
+import { Download, Puzzle } from 'lucide-react';
+import { FaApple, FaGithub, FaLinux, FaWindows } from 'react-icons/fa';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
 import NeoSection from '../components/ui/NeoSection';
@@ -14,6 +15,25 @@ import DownloadHero3DScene from '../components/hero3d/DownloadHero3DScene';
 import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
 
+const getReleaseAssetIcon = (row: ProjectReleaseAsset) => {
+  const text = `${row.label.en} ${row.platform.en}`.toLowerCase();
+
+  if (text.includes('windows')) {
+    return <FaWindows aria-hidden="true" />;
+  }
+  if (text.includes('macos') || text.includes('mac os')) {
+    return <FaApple aria-hidden="true" />;
+  }
+  if (text.includes('linux')) {
+    return <FaLinux aria-hidden="true" />;
+  }
+  if (text.includes('browser') || text.includes('crx') || text.includes('plugin') || text.includes('extension')) {
+    return <Puzzle size={18} aria-hidden="true" />;
+  }
+
+  return <Download size={18} aria-hidden="true" />;
+};
+
 const DownloadsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
 
@@ -21,7 +41,12 @@ const DownloadsPage: React.FC = () => {
     {
       key: 'label',
       header: currentLanguage === 'zh' ? '名称' : currentLanguage === 'nl' ? 'Naam' : 'Name',
-      render: (row: ProjectReleaseAsset) => pickText(currentLanguage, row.label),
+      render: (row: ProjectReleaseAsset) => (
+        <span className="neo-download-asset-name">
+          <span className="neo-download-asset-icon">{getReleaseAssetIcon(row)}</span>
+          {pickText(currentLanguage, row.label)}
+        </span>
+      ),
     },
     {
       key: 'version',
@@ -68,19 +93,15 @@ const DownloadsPage: React.FC = () => {
             </div>
             <p>{pickText(currentLanguage, uiText.downloads.intro)}</p>
             <div className="neo-inline-actions">
-              <a href="https://github.com/HarryHongyue" target="_blank" rel="noreferrer" className={neoButtonClass('secondary')}>
-                <Globe2 size={18} />
+              <a href="https://github.com/HarryHongyue" target="_blank" rel="noreferrer" className={neoButtonClass('primary')}>
+                <FaGithub size={18} />
                 {pickText(currentLanguage, uiText.common.githubReleases)}
-              </a>
-              <a href="https://omnigent.nl" target="_blank" rel="noreferrer" className={neoButtonClass('primary')}>
-                {pickText(currentLanguage, uiText.common.officialMirrors)}
-                <ArrowRight size={18} />
               </a>
             </div>
             <NeoBadge tone="teal">{pickText(currentLanguage, uiText.common.verifyChecksum)}</NeoBadge>
           </div>
 
-          <DownloadHero3DScene intensity="high" />
+          <DownloadHero3DScene className="hero-3d-shell--downloads-integrated" intensity="high" showCircuit={false} />
         </section>
       </div>
 

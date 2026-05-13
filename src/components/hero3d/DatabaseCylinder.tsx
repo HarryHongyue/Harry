@@ -18,7 +18,7 @@ const DatabaseCylinder: React.FC<DatabaseCylinderProps> = ({ intensity = 'medium
   });
 
   return (
-    <group ref={group} position={[2.92, -0.86, 0.34]} rotation={[0, -0.22, 0]} scale={[0.92, 0.72, 0.92]}>
+    <group ref={group} position={[2.34, -0.84, 0.28]} rotation={[0, -0.22, 0]} scale={[0.72, 0.58, 0.72]}>
       {[0, 0.28, 0.56, 0.84].map((y, index) => (
         <group key={y} position={[0, y, 0]}>
           <mesh castShadow receiveShadow>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Download, Globe2, Palette, Puzzle, ShieldCheck } from 'lucide-react';
 import { FaChrome, FaSafari, FaFirefox, FaEdge } from 'react-icons/fa';
 import { SiOpera, SiBrave, SiVivaldi } from 'react-icons/si';
+import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -22,8 +23,15 @@ const browserLinks = [
   { label: 'Arc', href: 'https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg', tone: '#A4A6FF', icon: <img src="/project-assets/arc-logo.png" alt="Arc" style={{ width: 32, height: 32 }} /> },
 ];
 
-const SurpriseMeShowcase: React.FC = () => {
+interface SurpriseMeShowcaseProps {
+  project: Project;
+}
+
+const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
   const { currentLanguage } = useLanguage();
+  const latestRelease = project.releaseAssets[0];
+  const version = latestRelease?.version ?? 'v1.0.0';
+  const releaseDate = latestRelease?.releaseDate ?? '2026-05-11';
   const features = [
     { title: currentLanguage === 'zh' ? '自定义' : currentLanguage === 'nl' ? 'Aanpassing' : 'Customization', body: currentLanguage === 'zh' ? '从多种颜色中选择或创建自己的自定义颜色。' : currentLanguage === 'nl' ? 'Kies uit verschillende kleuren of maak je eigen aangepaste kleur.' : 'Choose from a variety of colors or create your own custom color.', icon: <Palette size={22} /> },
     { title: currentLanguage === 'zh' ? '简单易用' : currentLanguage === 'nl' ? 'Eenvoud' : 'Simplicity', body: currentLanguage === 'zh' ? '一键激活和停用。没有复杂的设置。' : currentLanguage === 'nl' ? 'Activeren en deactiveren met één klik. Geen ingewikkelde instellingen.' : 'One-click activation and deactivation. No complicated settings.', icon: <Puzzle size={22} /> },
@@ -36,7 +44,7 @@ const SurpriseMeShowcase: React.FC = () => {
     currentLanguage === 'zh' ? '适用于 Chrome、Firefox、Safari 等主流浏览器。' : currentLanguage === 'nl' ? 'Beschikbaar voor Chrome, Firefox, Safari en andere populaire browsers.' : 'Available for Chrome, Firefox, Safari, and other popular browsers.',
   ];
   const versionHistory = [
-    { version: 'v1.0.0', date: '2025-08-08', changes: versionChanges },
+    { version, date: releaseDate, changes: versionChanges },
   ];
 
   return (
@@ -74,7 +82,7 @@ const SurpriseMeShowcase: React.FC = () => {
         <p className="surprise-showcase-section__subtitle">{currentLanguage === 'zh' ? '立即开始使用 SurpriseMe！只需几秒钟即可安装，适用于 Chrome 浏览器。' : currentLanguage === 'nl' ? 'Begin met SurpriseMe in slechts enkele klikken. Beschikbaar voor Chrome browser.' : 'Get started with SurpriseMe in just a few clicks. Available for Chrome browser.'}</p>
         <NeoCard className="surprise-showcase-download-card">
           <div className="surprise-showcase-download-main">
-            <div><h3>{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? '版本 v1.0.0 - 主要版本' : currentLanguage === 'nl' ? 'Versie v1.0.0 - Primaire Release' : 'Version v1.0.0 - Primary Release'}</p></div>
+            <div><h3>{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? `版本 ${version} - 主要版本` : currentLanguage === 'nl' ? `Versie ${version} - Primaire Release` : `Version ${version} - Primary Release`}</p></div>
             <a href="https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg" className={`${neoButtonClass('primary')} surprise-showcase-download-button`} target="_blank" rel="noreferrer"><FaChrome size={20} />{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</a>
           </div>
           <div className="surprise-showcase-browser-panel">
@@ -102,7 +110,7 @@ const SurpriseMeShowcase: React.FC = () => {
         <h2 className="surprise-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2>
         <NeoCard className="surprise-showcase-updates-card">
           <div className="surprise-showcase-updates-card__current">
-            <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>v1.0.0</span></h3>
+            <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{version}</span></h3>
           </div>
           <div className="surprise-showcase-version-list">
             {versionHistory.map((version, index) => (

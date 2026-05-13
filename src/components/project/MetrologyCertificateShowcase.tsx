@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Database, Download, FileSearch, FolderOpen, ShieldCheck } from 'lucide-react';
+import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -16,9 +17,16 @@ const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   </svg>
 );
 
-const MetrologyCertificateShowcase: React.FC = () => {
+interface MetrologyCertificateShowcaseProps {
+  project: Project;
+}
+
+const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> = ({ project }) => {
   const { currentLanguage } = useLanguage();
   const [activeScreenshot, setActiveScreenshot] = useState(0);
+  const latestRelease = project.releaseAssets[0];
+  const version = latestRelease?.version ?? 'v1.0.0';
+  const releaseDate = latestRelease?.releaseDate ?? '2026-05-11';
   const features = [
     {
       title: currentLanguage === 'zh' ? '证书记录管理' : currentLanguage === 'nl' ? 'Certificaatbeheer' : 'Certificate Record Management',
@@ -43,7 +51,7 @@ const MetrologyCertificateShowcase: React.FC = () => {
     currentLanguage === 'zh' ? '提供桌面安装包交付，支持Windows系统。' : currentLanguage === 'nl' ? 'Desktop-installatiepakket beschikbaar voor Windows.' : 'Desktop installer package available for Windows.',
   ];
   const versionHistory = [
-    { version: 'v1.0.0', date: '2025-03-15', changes: versionChanges },
+    { version, date: releaseDate, changes: versionChanges },
   ];
   const handleScreenshotMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -99,7 +107,7 @@ const MetrologyCertificateShowcase: React.FC = () => {
               <Download size={24} />
               {currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows'}
             </a>
-            <p>{currentLanguage === 'zh' ? '版本 v1.0.0 | 本地桌面版' : currentLanguage === 'nl' ? 'Versie v1.0.0 | Lokale desktopversie' : 'Version v1.0.0 | Local Desktop Edition'}</p>
+            <p>{currentLanguage === 'zh' ? `版本 ${version} | 本地桌面版` : currentLanguage === 'nl' ? `Versie ${version} | Lokale desktopversie` : `Version ${version} | Local Desktop Edition`}</p>
           </div>
         </NeoCard>
       </section>
@@ -108,7 +116,7 @@ const MetrologyCertificateShowcase: React.FC = () => {
         <h2 className="metrology-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2>
         <NeoCard className="metrology-showcase-updates-card">
           <div className="metrology-showcase-updates-card__current">
-            <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>v1.0.0</span></h3>
+            <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{version}</span></h3>
           </div>
           <div className="metrology-showcase-version-list">
             {versionHistory.map((version, index) => (

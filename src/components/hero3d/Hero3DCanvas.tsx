@@ -1,6 +1,6 @@
 import React, { Suspense, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Environment, OrbitControls } from '@react-three/drei';
+import { ContactShadows, Environment, OrbitControls } from '@react-three/drei';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import { Group } from 'three';
 import HLogoMesh from './HLogoMesh';
@@ -33,12 +33,13 @@ const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medi
   });
 
   return (
-    <group ref={root} position={[-0.18, 0.04, 0]}>
-      <ambientLight intensity={0.4} />
-      <directionalLight color="#d9f7ff" intensity={1.15} position={[-4, 6, 5]} castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} />
-      <pointLight color={HERO3D_COLORS.cyan} intensity={2.2} distance={6} position={[0, 1.4, 2.4]} />
-      <pointLight color={HERO3D_COLORS.blue} intensity={1.35} distance={6} position={[2.6, -0.55, 1.7]} />
-      <rectAreaLight color={HERO3D_COLORS.cyan} intensity={1.2} width={4} height={2.5} position={[-2.5, 3.2, 2.2]} rotation={[-0.6, -0.35, 0.2]} />
+    <group ref={root} position={[0.02, -0.08, 0]} scale={[0.92, 0.92, 0.92]}>
+      <ambientLight intensity={0.52} />
+      <directionalLight color="#eef2ff" intensity={1.75} position={[-4.8, 7.2, 5.6]} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />
+      <pointLight color={HERO3D_COLORS.cyan} intensity={2.8} distance={7.2} position={[0, 1.7, 2.6]} />
+      <pointLight color={HERO3D_COLORS.blue} intensity={1.9} distance={7} position={[2.8, -0.45, 1.9]} />
+      <pointLight color="#CACEEF" intensity={1.15} distance={5.4} position={[-2.7, 1.1, 1.6]} />
+      <rectAreaLight color={HERO3D_COLORS.cyan} intensity={1.65} width={5.4} height={3.2} position={[-2.8, 3.5, 2.8]} rotation={[-0.62, -0.38, 0.2]} />
 
       <CircuitLines reducedMotion={reducedMotion} />
       <PlatformBase intensity={intensity} reducedMotion={reducedMotion} />
@@ -55,8 +56,9 @@ const SceneContent: React.FC<SceneContentProps> = ({ logoText, intensity = 'medi
       ) : null}
 
       <Environment preset="city" />
+      <ContactShadows position={[0, -1.92, 0]} opacity={0.36} scale={8.5} blur={2.6} far={4.2} color="#263D91" />
       <EffectComposer multisampling={0}>
-        <Bloom intensity={1.05} luminanceThreshold={0.22} luminanceSmoothing={0.62} mipmapBlur />
+        <Bloom intensity={1.24} luminanceThreshold={0.2} luminanceSmoothing={0.66} mipmapBlur />
       </EffectComposer>
       <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
     </group>
@@ -68,8 +70,8 @@ interface Hero3DCanvasProps extends SceneContentProps {}
 const Hero3DCanvas: React.FC<Hero3DCanvasProps> = (props) => (
   <Canvas
     className="hero-3d-canvas"
-    camera={{ position: [6, 5, 8], fov: 35 }}
-    dpr={[1, 1.6]}
+    camera={{ position: [6.4, 5.2, 8.1], fov: 32 }}
+    dpr={[1.5, 2.25]}
     gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
     shadows
   >

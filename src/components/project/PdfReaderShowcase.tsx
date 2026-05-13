@@ -1,5 +1,6 @@
 import React from 'react';
 import { Download, FileSearch, FileText, Globe, Layers, ScanText, ShieldCheck, Table2 } from 'lucide-react';
+import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -12,7 +13,11 @@ const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   </svg>
 );
 
-const PdfReaderShowcase: React.FC = () => {
+interface PdfReaderShowcaseProps {
+  project: Project;
+}
+
+const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
   const { currentLanguage } = useLanguage();
   const features = [
     { title: currentLanguage === 'zh' ? 'OCR 文档识别' : currentLanguage === 'nl' ? 'OCR-documentherkenning' : 'OCR Document Reading', body: currentLanguage === 'zh' ? '读取扫描版 PDF，把图片中的文字转换成可复制、可处理的结构化内容。' : currentLanguage === 'nl' ? 'Leest gescande PDF-bestanden en zet tekst in afbeeldingen om naar bruikbare gestructureerde inhoud.' : 'Reads scanned PDFs and turns text inside images into copyable, structured content.', icon: <ScanText size={22} /> },
@@ -39,8 +44,9 @@ const PdfReaderShowcase: React.FC = () => {
     { title: currentLanguage === 'zh' ? '临时处理' : currentLanguage === 'nl' ? 'Tijdelijke verwerking' : 'Temporary Processing', body: currentLanguage === 'zh' ? '解析产物和临时文件应围绕任务生命周期进行清理。' : currentLanguage === 'nl' ? 'Afgeleide uitvoer en tijdelijke bestanden horen bij de taaklevenscyclus te worden opgeschoond.' : 'Derived output and temporary files should be cleaned around the job lifecycle.' },
     { title: currentLanguage === 'zh' ? '私有 API' : currentLanguage === 'nl' ? 'Private API' : 'Private API', body: currentLanguage === 'zh' ? '较重的 OCR 与解析能力应留在受控 API 边界之后。' : currentLanguage === 'nl' ? 'Zwaardere OCR- en parsinglogica blijft achter gecontroleerde API-grenzen.' : 'Heavier OCR and parsing logic stays behind controlled API boundaries.' },
   ];
-  const version = 'v1.2.3';
-  const releaseDate = '2026-03-22';
+  const latestRelease = project.releaseAssets[0];
+  const version = latestRelease?.version ?? 'v1.2.3';
+  const releaseDate = latestRelease?.releaseDate ?? '2026-05-11';
 
   return (
     <>

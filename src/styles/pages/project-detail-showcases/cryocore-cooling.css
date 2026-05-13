@@ -1,0 +1,218 @@
+.cryocore-website-hero {
+  display: grid;
+  place-items: center;
+  width: min(calc(100vw - clamp(24px, 4vw, 72px)), var(--content-width));
+  min-height: 520px;
+  padding: 54px 0 64px;
+}
+
+.cryocore-website-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.92fr) minmax(420px, 1.08fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  width: 100%;
+}
+
+.cryocore-website-hero__content {
+  display: grid;
+  align-content: center;
+  gap: clamp(22px, 3.2vw, 42px);
+  min-height: 430px;
+  max-width: 680px;
+}
+
+.cryocore-website-hero__title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.cryocore-website-hero__title span {
+  color: #A4A6FF;
+  text-shadow: 0 0 22px rgba(164, 166, 255, 0.24);
+}
+
+.cryocore-website-hero__description {
+  font-size: clamp(1.1rem, 1.45vw, 1.42rem);
+  line-height: 1.72;
+  text-align: justify;
+}
+
+.cryocore-website-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cryocore-website-button {
+  min-height: 52px;
+  padding-inline: 32px;
+}
+
+.cryocore-website-hero__visual {
+  display: grid;
+  justify-items: end;
+  perspective: 1200px;
+  padding-right: clamp(12px, 2vw, 28px);
+}
+
+.cryocore-website-browser-card {
+  display: grid;
+  gap: 24px;
+  width: min(88%, 620px);
+  min-height: 430px;
+  padding: 28px;
+  transform: rotateY(-13deg) rotateX(3deg) translateX(-20px);
+  transform-origin: left center;
+  box-shadow: 24px 28px 48px rgba(38, 61, 145, 0.32), -10px -10px 22px rgba(202, 206, 239, 0.12);
+}
+
+.cryocore-website-browser-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.cryocore-website-browser-card__bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent-teal);
+}
+
+.cryocore-website-browser-card__bar strong {
+  margin-left: auto;
+  font-size: 0.88rem;
+}
+
+.cryocore-website-browser-card__hero {
+  display: grid;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 24px;
+  background: rgba(38, 61, 145, 0.28);
+}
+
+.cryocore-website-browser-card__hero svg {
+  color: var(--accent-teal);
+}
+
+.cryocore-website-browser-card__hero h3 {
+  font-size: clamp(1.6rem, 2.4vw, 2.6rem);
+}
+
+.cryocore-website-browser-card__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.cryocore-website-browser-card__grid div,
+.cryocore-website-focus-card,
+.cryocore-website-feature-card {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+}
+
+.cryocore-website-browser-card__grid div {
+  border-radius: 18px;
+  background: rgba(8, 13, 34, 0.34);
+}
+
+.cryocore-website-browser-card__grid svg,
+.cryocore-website-focus-card svg {
+  color: var(--accent-teal);
+}
+
+.cryocore-website-section {
+  display: grid;
+  width: min(calc(100vw - clamp(24px, 4vw, 72px)), var(--content-width));
+  gap: 24px;
+  padding: 38px 0;
+}
+
+.cryocore-website-section__title {
+  justify-self: center;
+  text-align: center;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.cryocore-website-section__subtitle {
+  justify-self: center;
+  max-width: 780px;
+  text-align: center;
+  font-size: 1.12rem;
+}
+
+.cryocore-website-focus-grid,
+.cryocore-website-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.cryocore-website-feature-card h3 {
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.cryocore-website-tech-card {
+  display: grid;
+  gap: 28px;
+  padding: 34px;
+}
+
+.cryocore-website-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cryocore-website-tech-list span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--accent-teal);
+  background: rgba(38, 61, 145, 0.32);
+}
+
+.cryocore-website-roadmap {
+  display: grid;
+  gap: 14px;
+}
+
+.cryocore-website-roadmap ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 22px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1100px) {
+  .cryocore-website-hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .cryocore-website-hero__visual {
+    justify-items: center;
+    order: -1;
+  }
+}
+
+@media (max-width: 960px) {
+  .cryocore-website-focus-grid,
+  .cryocore-website-feature-grid,
+  .cryocore-website-browser-card__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .cryocore-website-browser-card {
+    width: min(92%, 420px);
+    transform: rotateY(-8deg) rotateX(2deg);
+  }
+}

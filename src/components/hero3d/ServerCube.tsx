@@ -19,8 +19,8 @@ const ServerCube: React.FC<ServerCubeProps> = ({ intensity = 'medium', reducedMo
   });
 
   return (
-    <group ref={group} position={[-3.05, -0.84, 1.08]} rotation={[0.04, 0.48, 0]}>
-      <RoundedBox args={[0.82, 0.82, 0.82]} radius={0.12} smoothness={8} castShadow receiveShadow>
+    <group ref={group} position={[-2.45, -0.78, 0.94]} rotation={[0.04, 0.48, 0]} scale={[0.76, 0.76, 0.76]}>
+      <RoundedBox args={[0.82, 0.82, 0.82]} radius={0.12} smoothness={10} castShadow receiveShadow>
         <meshStandardMaterial color="#111a2b" roughness={0.4} metalness={0.32} emissive="#061a2d" emissiveIntensity={0.1 * accent.glow} />
       </RoundedBox>
       <mesh position={[0, 0.06, 0.421]}>
