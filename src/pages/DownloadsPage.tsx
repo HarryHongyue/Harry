@@ -90,7 +90,7 @@ const DownloadsPage: React.FC = () => {
             <div className="neo-table-card__header">
               <div className="neo-project-card__header">
                 <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--compact" />
-                <div>
+                <div className="neo-project-card__header-content--centered">
                   <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
                   <p>{pickText(currentLanguage, project.tagline)}</p>
                 </div>

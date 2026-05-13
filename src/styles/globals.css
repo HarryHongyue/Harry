@@ -1168,6 +1168,10 @@ select.neo-input option:hover {
   gap: 16px;
 }
 
+.neo-project-card__header-content--centered {
+  padding-top: 6px;
+}
+
 .neo-project-card__header--hero {
   align-items: flex-start;
 }
