@@ -416,25 +416,6 @@ const ProjectDetailPage: React.FC = () => {
         </NeoSection>
       ) : null}
 
-      {!isOde ? (
-        <div className="section-shell">
-          <NeoCard variant="glowing" className="neo-home-cta">
-            <div>
-              <h3>{currentLanguage === 'zh' ? '继续浏览更多项目' : currentLanguage === 'nl' ? 'Bekijk meer projecten' : 'Continue Through More Projects'}</h3>
-              <p>{currentLanguage === 'zh' ? '这个页面只是入口。完整项目目录、下载资源和其他案例页都在同一个系统里。' : currentLanguage === 'nl' ? 'Deze pagina is slechts één ingang. De volledige projectcatalogus, downloads en andere case pages leven in hetzelfde systeem.' : 'This page is one entry point inside the same system as the full project catalog, downloads, and other case pages.'}</p>
-            </div>
-            <div className="neo-inline-actions">
-              <Link to="/projects" className={neoButtonClass('secondary')}>
-                {pickText(currentLanguage, uiText.common.projectOverview)}
-              </Link>
-              <Link to="/downloads" className={neoButtonClass('primary')}>
-                {pickText(currentLanguage, uiText.nav.downloads)}
-                <ArrowRight size={18} />
-              </Link>
-            </div>
-          </NeoCard>
-        </div>
-      ) : null}
     </div>
   );
 };

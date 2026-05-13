@@ -27,7 +27,7 @@ const SurpriseMeShowcase: React.FC = () => {
   const features = [
     { title: currentLanguage === 'zh' ? '自定义' : currentLanguage === 'nl' ? 'Aanpassing' : 'Customization', body: currentLanguage === 'zh' ? '从多种颜色中选择或创建自己的自定义颜色。' : currentLanguage === 'nl' ? 'Kies uit verschillende kleuren of maak je eigen aangepaste kleur.' : 'Choose from a variety of colors or create your own custom color.', icon: <Palette size={22} /> },
     { title: currentLanguage === 'zh' ? '简单易用' : currentLanguage === 'nl' ? 'Eenvoud' : 'Simplicity', body: currentLanguage === 'zh' ? '一键激活和停用。没有复杂的设置。' : currentLanguage === 'nl' ? 'Activeren en deactiveren met één klik. Geen ingewikkelde instellingen.' : 'One-click activation and deactivation. No complicated settings.', icon: <Puzzle size={22} /> },
-    { title: currentLanguage === 'zh' ? '跨浏览器' : currentLanguage === 'nl' ? 'Cross-browser' : 'Cross-Browser', body: currentLanguage === 'zh' ? '适用于 Chrome、Firefox 和 Safari 浏览器。' : currentLanguage === 'nl' ? 'Beschikbaar voor Chrome-, Firefox- en Safari-browsers.' : 'Available for Chrome, Firefox, and Safari browsers.', icon: <Globe2 size={22} /> },
+    { title: currentLanguage === 'zh' ? '跨浏览器' : currentLanguage === 'nl' ? 'Cross-browser' : 'Cross-Browser', body: currentLanguage === 'zh' ? '适用于 Chrome、Firefox 和 Safari 浏览器。' : currentLanguage === 'nl' ? 'Beschikbaar voor Chrome-, Firefox- en Safari-browsers.' : 'Available for Chrome, Firefox, and Safari browsers.', icon: <FaChrome size={22} /> },
   ];
 
   return (
@@ -39,7 +39,7 @@ const SurpriseMeShowcase: React.FC = () => {
             {currentLanguage === 'zh' ? '一个简单的浏览器扩展，可为任何网页添加可自定义的彩色边框。非常适合截图、演示和区分不同环境。' : currentLanguage === 'nl' ? 'Een eenvoudige browserextensie die een aanpasbare gekleurde rand aan elke webpagina toevoegt.' : 'A simple browser extension that adds a customizable colored border to any webpage. Perfect for screenshots, presentations, and visual distinction between environments.'}
           </p>
           <div className="surprise-showcase-hero__actions">
-            <a href="#surpriseme-download" className={`${neoButtonClass('primary')} surprise-showcase-button`}><Download size={18} />{currentLanguage === 'zh' ? '开始使用' : 'Download'}</a>
+            <a href="#surpriseme-download" className={`${neoButtonClass('primary')} surprise-showcase-button`}><Download size={18} />{currentLanguage === 'zh' ? '开始使用' : currentLanguage === 'nl' ? 'Start nu' : 'Download'}</a>
             <a href="https://github.com/HarryHongyue/SurpriseMe" className={`${neoButtonClass('secondary')} surprise-showcase-button`} target="_blank" rel="noreferrer"><GithubIcon size={18} />{currentLanguage === 'zh' ? '了解更多' : currentLanguage === 'nl' ? 'Meer informatie' : 'Learn More'}</a>
           </div>
         </div>
@@ -59,15 +59,15 @@ const SurpriseMeShowcase: React.FC = () => {
       </section>
 
       <section id="surpriseme-download" className="section-shell surprise-showcase-section">
-        <h2 className="surprise-showcase-section__title">{currentLanguage === 'zh' ? '下载' : 'Download'}</h2>
-        <p className="surprise-showcase-section__subtitle">{currentLanguage === 'zh' ? '立即开始使用 SurpriseMe！只需几秒钟即可安装，适用于 Chrome 浏览器。' : 'Get started with SurpriseMe in just a few clicks. Available for Chrome browser.'}</p>
+        <h2 className="surprise-showcase-section__title">{currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download'}</h2>
+        <p className="surprise-showcase-section__subtitle">{currentLanguage === 'zh' ? '立即开始使用 SurpriseMe！只需几秒钟即可安装，适用于 Chrome 浏览器。' : currentLanguage === 'nl' ? 'Begin met SurpriseMe in slechts enkele klikken. Beschikbaar voor Chrome browser.' : 'Get started with SurpriseMe in just a few clicks. Available for Chrome browser.'}</p>
         <NeoCard className="surprise-showcase-download-card">
           <div className="surprise-showcase-download-main">
-            <div><h3>Add to Chrome</h3><p>{currentLanguage === 'zh' ? '版本 1.0.0 - 主要版本' : 'Version 1.0.0 - Primary Release'}</p></div>
-            <a href="https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg" className={`${neoButtonClass('primary')} surprise-showcase-download-button`} target="_blank" rel="noreferrer"><Globe2 size={20} />Add to Chrome</a>
+            <div><h3>{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? '版本 1.0.0 - 主要版本' : currentLanguage === 'nl' ? 'Versie 1.0.0 - Primaire Release' : 'Version 1.0.0 - Primary Release'}</p></div>
+            <a href="https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg" className={`${neoButtonClass('primary')} surprise-showcase-download-button`} target="_blank" rel="noreferrer"><FaChrome size={20} />{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</a>
           </div>
           <div className="surprise-showcase-browser-panel">
-            <h4>{currentLanguage === 'zh' ? '可用于其他浏览器' : 'Available on Other Browsers'}</h4>
+            <h4>{currentLanguage === 'zh' ? '可用于其他浏览器' : currentLanguage === 'nl' ? 'Beschikbaar voor andere browsers' : 'Available on Other Browsers'}</h4>
             <div className="surprise-showcase-browser-grid">
               {browserLinks.map((browser) => (
                 <a key={browser.label} href={browser.href} className="surprise-showcase-browser-button" target="_blank" rel="noreferrer">
@@ -78,19 +78,19 @@ const SurpriseMeShowcase: React.FC = () => {
             </div>
           </div>
           <div className="surprise-showcase-manual-panel">
-            <p>{currentLanguage === 'zh' ? '或直接下载扩展文件进行手动安装：' : 'Or download the extension files directly for manual installation:'}</p>
+            <p>{currentLanguage === 'zh' ? '或直接下载扩展文件进行手动安装：' : currentLanguage === 'nl' ? 'Of download de extensiebestanden direct voor handmatige installatie:' : 'Or download the extension files directly for manual installation:'}</p>
             <div className="surprise-showcase-manual-actions">
-              <a href="/SurpriseMe.crx" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .crx 文件' : 'Download .crx file'}</a>
-              <a href="/SurpriseMe.zip" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .zip 文件' : 'Download .zip file'}</a>
+              <a href="/SurpriseMe.crx" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .crx 文件' : currentLanguage === 'nl' ? 'Download .crx bestand' : 'Download .crx file'}</a>
+              <a href="/SurpriseMe.zip" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .zip 文件' : currentLanguage === 'nl' ? 'Download .zip bestand' : 'Download .zip file'}</a>
             </div>
           </div>
         </NeoCard>
       </section>
 
       <section className="section-shell surprise-showcase-section surprise-showcase-privacy">
-        <div className="surprise-showcase-privacy__heading"><ShieldCheck size={46} /><h2 className="surprise-showcase-section__title">{currentLanguage === 'zh' ? '隐私政策' : 'Privacy Policy'}</h2><p>{currentLanguage === 'zh' ? '您的隐私对我们很重要。以下是 SurpriseMe 如何处理您的数据。' : 'Your privacy is important to us. Here is how SurpriseMe handles your data.'}</p></div>
+        <div className="surprise-showcase-privacy__heading"><ShieldCheck size={46} /><h2 className="surprise-showcase-section__title">{currentLanguage === 'zh' ? '隐私政策' : currentLanguage === 'nl' ? 'Privacybeleid' : 'Privacy Policy'}</h2><p>{currentLanguage === 'zh' ? '您的隐私对我们很重要。以下是 SurpriseMe 如何处理您的数据。' : currentLanguage === 'nl' ? 'Uw privacy is belangrijk voor ons. Zo gaat SurpriseMe met uw gegevens om.' : 'Your privacy is important to us. Here is how SurpriseMe handles your data.'}</p></div>
         <NeoCard variant="inset" className="surprise-showcase-privacy-card">
-          <div className="surprise-showcase-privacy-note"><p><strong>{currentLanguage === 'zh' ? '此扩展（SurpriseMe）不收集、存储、共享或上传任何个人信息、敏感数据或浏览历史记录。' : 'This extension (SurpriseMe) does not collect, store, share, or upload any personal information, sensitive data, or browsing history.'}</strong></p><p>{currentLanguage === 'zh' ? '所有设置和数据都保存在您的浏览器本地，仅用于扩展的个性化设置。' : 'All settings and data are kept locally in your browser and used only for personalization of the extension.'}</p><a href="mailto:HarryHongyue@outlook.com">HarryHongyue@outlook.com</a></div>
+          <div className="surprise-showcase-privacy-note"><p><strong>{currentLanguage === 'zh' ? '此扩展（SurpriseMe）不收集、存储、共享或上传任何个人信息、敏感数据或浏览历史记录。' : currentLanguage === 'nl' ? 'Deze extensie (SurpriseMe) verzamelt, bewaart, deelt of uploadt geen persoonlijke informatie, gevoelige data of browsegeschiedenis.' : 'This extension (SurpriseMe) does not collect, store, share, or upload any personal information, sensitive data, or browsing history.'}</strong></p><p>{currentLanguage === 'zh' ? '所有设置和数据都保存在您的浏览器本地，仅用于扩展的个性化设置。' : currentLanguage === 'nl' ? 'Alle instellingen en gegevens blijven lokaal op uw browser en worden alleen gebruikt voor personalisatie van de extensie.' : 'All settings and data are kept locally in your browser and used only for personalization of the extension.'}</p><p>{currentLanguage === 'zh' ? '最后更新: 2026/5/13' : currentLanguage === 'nl' ? 'Laatst bijgewerkt: 2026/5/13' : 'Last updated: 2026/5/13'}</p></div>
         </NeoCard>
       </section>
     </>

@@ -408,6 +408,12 @@
   text-align: justify;
 }
 
+.surprise-showcase-section__subtitle {
+  justify-self: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
 .surprise-showcase-hero__actions,
 .surprise-showcase-manual-actions {
   display: flex;
