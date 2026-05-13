@@ -1,0 +1,113 @@
+.neo-projects-hero-section .neo-section__header {
+  max-width: none;
+}
+
+.neo-projects-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  gap: 18px;
+  align-items: end;
+}
+
+.neo-projects-toolbar .neo-search-shell {
+  max-width: none;
+  justify-self: stretch;
+}
+
+.neo-project-overview-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.neo-project-overview-card__title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.neo-project-overview-card__title svg {
+  color: var(--accent-teal);
+  filter: drop-shadow(0 0 12px rgba(202, 206, 239, 0.28));
+}
+
+.neo-project-overview-card__title h2 {
+  font-size: clamp(1.8rem, 2.4vw, 2.8rem);
+}
+
+.neo-project-overview-card__title span {
+  color: var(--accent-teal);
+}
+
+.neo-project-overview-table {
+  overflow-x: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(202, 206, 239, 0.18);
+  background: linear-gradient(180deg, rgba(38, 61, 145, 0.58), rgba(38, 61, 145, 0.72));
+  box-shadow:
+    inset 10px 10px 24px rgba(38, 61, 145, 0.42),
+    inset -8px -8px 18px rgba(164, 166, 255, 0.10),
+    0 1px 0 rgba(202, 206, 239, 0.10);
+}
+
+.neo-project-overview-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.neo-project-overview-table th,
+.neo-project-overview-table td {
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(202, 206, 239, 0.14);
+  text-align: left;
+}
+
+.neo-project-overview-table th {
+  color: var(--text-secondary);
+  background: rgba(164, 166, 255, 0.10);
+}
+
+.neo-project-overview-table td {
+  color: var(--text-secondary);
+}
+
+.neo-project-overview-table td strong {
+  color: var(--text-primary);
+}
+
+.neo-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+}
+
+.neo-status-pill i {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--status-color, var(--accent-blue));
+  box-shadow: 0 0 14px var(--status-glow, rgba(122, 128, 226, 0.42));
+}
+
+.neo-status-pill--green {
+  --status-color: #30e59a;
+  --status-glow: rgba(48, 229, 154, 0.5);
+}
+
+.neo-status-pill--yellow {
+  --status-color: #ffb02e;
+  --status-glow: rgba(255, 176, 46, 0.5);
+}
+
+.neo-status-pill--blue {
+  --status-color: #4b8dff;
+  --status-glow: rgba(75, 141, 255, 0.5);
+}
+

@@ -1,0 +1,47 @@
+.neo-info-card {
+  display: grid;
+  gap: 12px;
+}
+
+.neo-info-card__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+}
+
+.neo-home-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.neo-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.neo-list--spaced {
+  gap: 14px;
+}
+
+.neo-list li {
+  display: flex;
+  gap: 12px;
+  color: var(--text-secondary);
+}
+
+.neo-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-cyan), var(--accent-violet));
+  box-shadow: 0 0 12px rgba(164, 166, 255, 0.28);
+}

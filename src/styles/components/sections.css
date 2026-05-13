@@ -1,0 +1,78 @@
+.section-shell {
+  width: min(calc(100vw - clamp(24px, 4vw, 72px)), var(--content-width));
+  margin: 0 auto;
+}
+
+.neo-page {
+  display: grid;
+  gap: 28px;
+  padding: 24px 0 64px;
+}
+
+.neo-section {
+  display: grid;
+  gap: 18px;
+}
+
+.neo-section--journey {
+  margin-top: 32px;
+}
+
+.neo-section__header {
+  display: grid;
+  gap: 10px;
+  max-width: 980px;
+}
+
+.neo-section__header--with-actions {
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  max-width: none;
+}
+
+.neo-section__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: start;
+}
+
+.neo-section__eyebrow {
+  width: fit-content;
+}
+
+.neo-section__title,
+h1,
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 4.8vw, 4.6rem);
+  line-height: 0.98;
+  color: var(--text-primary);
+  text-shadow: 0 0 18px rgba(164, 166, 255, 0.16);
+}
+
+h2,
+.neo-section__title {
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  line-height: 1.08;
+}
+
+.neo-section__description {
+  margin-top: 2px;
+}
+
+h3 {
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.72;
+}
+

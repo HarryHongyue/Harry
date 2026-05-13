@@ -1,0 +1,393 @@
+.project-mini-mockup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-pdf-reader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(4, 10, 22, 0.9);
+}
+
+.mockup-pdf-reader__toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(120, 180, 255, 0.1);
+}
+
+.mockup-pdf-reader__toolbar-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: rgba(120, 180, 255, 0.2);
+}
+
+.mockup-pdf-reader__content {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+}
+
+.mockup-pdf-reader__sidebar {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-pdf-reader__sidebar-item {
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(120, 180, 255, 0.15);
+}
+
+.mockup-pdf-reader__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.mockup-pdf-reader__pdf-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(120, 180, 255, 0.6);
+}
+
+.mockup-pdf-reader__pdf-sub {
+  font-size: 1rem;
+  color: rgba(120, 180, 255, 0.4);
+}
+
+.mockup-pdf-reader__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 80%;
+}
+
+.mockup-pdf-reader__line {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(120, 180, 255, 0.1);
+}
+
+.mockup-pdf-reader__recent {
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-pdf-reader__recent-item {
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(120, 180, 255, 0.1);
+}
+
+.mockup-aircargo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(4, 10, 22, 0.9);
+}
+
+.mockup-aircargo__sidebar {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-aircargo__sidebar-item {
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(120, 180, 255, 0.15);
+}
+
+.mockup-aircargo__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mockup-aircargo__cards {
+  display: flex;
+  gap: 8px;
+}
+
+.mockup-aircargo__card {
+  flex: 1;
+  height: 40px;
+  border-radius: 6px;
+  background: rgba(120, 180, 255, 0.1);
+}
+
+.mockup-aircargo__chart {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-aircargo__chart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mockup-aircargo__stats {
+  display: flex;
+  gap: 8px;
+}
+
+.mockup-aircargo__stat {
+  flex: 1;
+  height: 24px;
+  border-radius: 4px;
+  background: rgba(120, 180, 255, 0.1);
+}
+
+.mockup-ode {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(4, 10, 22, 0.9);
+}
+
+.mockup-ode__sidebar {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-ode__sidebar-item {
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(120, 180, 255, 0.15);
+}
+
+.mockup-ode__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mockup-ode__header {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(120, 180, 255, 0.6);
+}
+
+.mockup-ode__surface {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-ode__surface-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mockup-ode__controls {
+  display: flex;
+  gap: 8px;
+}
+
+.mockup-ode__control {
+  flex: 1;
+  height: 24px;
+  border-radius: 4px;
+  background: rgba(120, 180, 255, 0.1);
+}
+
+.mockup-surpriseme {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(4, 10, 22, 0.9);
+}
+
+.mockup-surpriseme__wheel {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.2);
+  border: 2px solid rgba(168, 85, 247, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockup-surpriseme__wheel-inner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mockup-surpriseme__wheel-segment {
+  flex: 1;
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 2px;
+}
+
+.mockup-surpriseme__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.mockup-surpriseme__button {
+  width: 40px;
+  height: 24px;
+  border-radius: 4px;
+  background: rgba(168, 85, 247, 0.2);
+}
+
+.mockup-surpriseme__tags {
+  display: flex;
+  gap: 8px;
+}
+
+.mockup-surpriseme__tag {
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(168, 85, 247, 0.15);
+  padding: 0 12px;
+}
+
+.mockup-harry {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(4, 10, 22, 0.9);
+}
+
+.mockup-harry__left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-harry__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(120, 180, 255, 0.6);
+}
+
+.mockup-harry__subtitle {
+  font-size: 0.8rem;
+  color: rgba(120, 180, 255, 0.4);
+}
+
+.mockup-harry__button {
+  width: 80px;
+  height: 24px;
+  border-radius: 4px;
+  background: rgba(120, 180, 255, 0.2);
+}
+
+.mockup-harry__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-harry__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-harry__card {
+  height: 30px;
+  border-radius: 6px;
+  background: rgba(120, 180, 255, 0.1);
+}
+
+.mockup-future {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(4, 10, 22, 0.9);
+}
+
+.mockup-future__sidebar {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-future__sidebar-item {
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(120, 180, 255, 0.15);
+}
+
+.mockup-future__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mockup-future__header {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(120, 180, 255, 0.6);
+}
+
+.mockup-future__subheader {
+  font-size: 0.8rem;
+  color: rgba(120, 180, 255, 0.4);
+}
+
+.mockup-future__projects {
+  display: flex;
+  gap: 8px;
+}
+
+.mockup-future__project {
+  flex: 1;
+  height: 32px;
+  border-radius: 4px;
+  background: rgba(120, 180, 255, 0.1);
+}
+
+.mockup-future__button {
+  width: 100px;
+  height: 28px;
+  border-radius: 4px;
+  background: rgba(120, 180, 255, 0.2);
+}

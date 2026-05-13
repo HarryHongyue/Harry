@@ -1,0 +1,124 @@
+.neo-contact-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.neo-contact-card {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}
+
+.neo-contact-row {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.35fr 1fr;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+}
+
+.neo-contact-row--swapped {
+  grid-template-columns: 0.95fr 1.3fr;
+}
+
+.neo-form,
+.neo-info-stack > .neo-card,
+.neo-info-stack > .neo-card-inset {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+}
+
+.neo-form {
+  display: grid;
+  gap: 18px;
+}
+
+.neo-form__grid {
+  display: grid;
+  gap: 16px;
+}
+
+.neo-form__grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.neo-info-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.neo-contact-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.neo-contact-link-block {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 18px 12px;
+  text-align: center;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.14), rgba(82, 94, 185, 0.26) 45%, rgba(38, 61, 145, 0.46));
+  box-shadow:
+    10px 10px 24px rgba(38, 61, 145, 0.30),
+    -5px -5px 14px rgba(202, 206, 239, 0.07),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.18);
+  overflow: hidden;
+}
+
+.neo-contact-link-block:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(202, 206, 239, 0.34);
+  box-shadow: var(--shadow-raised), var(--glow-violet);
+}
+
+.neo-contact-link-block__icon {
+  color: var(--accent-cyan);
+}
+
+.neo-search-shell {
+  max-width: 520px;
+}
+
+.neo-search-shell--icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(38, 61, 145, 0.58), rgba(38, 61, 145, 0.72));
+  box-shadow: var(--shadow-inset);
+  color: var(--text-muted);
+}
+
+.neo-search-shell--icon .neo-input {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 6px 0;
+}
+
+.neo-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.neo-filter-chip {
+  cursor: pointer;
+}
+
+.neo-filter-chip.is-active {
+  color: var(--text-primary);
+  border-color: rgba(202, 206, 239, 0.34);
+  box-shadow: var(--shadow-inset), var(--glow-cyan);
+}
+

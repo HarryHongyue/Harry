@@ -1,0 +1,163 @@
+.neo-chip-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.neo-content-card {
+  display: grid;
+  gap: 12px;
+}
+
+.neo-tech-card {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+}
+
+.neo-architecture-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.neo-architecture-node {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.16), rgba(122, 128, 226, 0.20) 42%, rgba(38, 61, 145, 0.38));
+  box-shadow: var(--shadow-raised);
+}
+
+.neo-architecture-node--pulse {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+.neo-download-groups {
+  display: grid;
+  gap: 20px;
+}
+
+.neo-table-card {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+}
+
+.neo-table-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.neo-download-title-row {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.neo-download-title-row .neo-badge {
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow:
+    inset 4px 4px 10px rgba(38, 61, 145, 0.22),
+    inset -3px -3px 8px rgba(164, 166, 255, 0.08),
+    0 0 14px rgba(164, 166, 255, 0.14);
+}
+
+.neo-download-detail-link {
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  white-space: nowrap;
+}
+
+.neo-platform-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.neo-platform-name__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  color: var(--accent-cyan);
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.22), rgba(82, 94, 185, 0.34) 45%, rgba(38, 61, 145, 0.52));
+  box-shadow:
+    8px 8px 18px rgba(38, 61, 145, 0.28),
+    -4px -4px 12px rgba(202, 206, 239, 0.08),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.24),
+    0 0 16px rgba(164, 166, 255, 0.14);
+}
+
+.neo-table {
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.12), rgba(82, 94, 185, 0.28), rgba(38, 61, 145, 0.46));
+  box-shadow: var(--shadow-raised);
+}
+
+.neo-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.neo-table th,
+.neo-table td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(202, 206, 239, 0.14);
+}
+
+.neo-table th {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(38, 61, 145, 0.34);
+  border-bottom: 1px solid rgba(164, 166, 255, 0.18);
+}
+
+.neo-table td {
+  color: var(--text-primary);
+  font-size: 0.92rem;
+}
+
+.neo-table tbody tr {
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.neo-table tbody tr:hover {
+  transform: translateY(-1px);
+  background: rgba(164, 166, 255, 0.08);
+}
+
+.neo-table tbody tr:hover td {
+  color: var(--text-primary);
+}
+
+.neo-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.neo-download-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+

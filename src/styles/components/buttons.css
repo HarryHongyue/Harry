@@ -1,0 +1,93 @@
+.neo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.neo-button::before,
+.neo-project-card--spotlight::before,
+.neo-contact-link-block::before,
+.neo-table-card--rich::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(164, 166, 255, 0.16), transparent 34%, rgba(122, 128, 226, 0.14));
+  opacity: 0;
+  transition: opacity 180ms ease;
+  pointer-events: none;
+}
+
+.neo-button:hover::before,
+.neo-project-card--spotlight:hover::before,
+.neo-contact-link-block:hover::before,
+.neo-table-card--rich:hover::before {
+  opacity: 1;
+}
+
+.neo-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(202, 206, 239, 0.34);
+  box-shadow:
+    12px 12px 28px rgba(38, 61, 145, 0.38),
+    -6px -6px 18px rgba(202, 206, 239, 0.14),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.46),
+    0 0 34px rgba(164, 166, 255, 0.34);
+}
+
+.neo-button:active {
+  transform: scale(0.98);
+  box-shadow:
+    inset 8px 8px 18px rgba(38, 61, 145, 0.34),
+    inset -5px -5px 12px rgba(164, 166, 255, 0.10);
+}
+
+.neo-button-primary {
+  background: linear-gradient(135deg, #A4A6FF 0%, #7A80E2 48%, #525EB9 100%);
+  color: #CACEEF;
+  border-color: rgba(202, 206, 239, 0.42);
+  box-shadow:
+    10px 10px 24px rgba(38, 61, 145, 0.34),
+    -5px -5px 16px rgba(202, 206, 239, 0.12),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.38),
+    inset -1px -1px 1px rgba(38, 61, 145, 0.18),
+    0 0 16px rgba(164, 166, 255, 0.12);
+}
+
+.neo-button-secondary {
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.12), rgba(82, 94, 185, 0.24));
+  border-color: rgba(202, 206, 239, 0.22);
+  box-shadow:
+    8px 8px 18px rgba(38, 61, 145, 0.24),
+    -4px -4px 12px rgba(202, 206, 239, 0.06),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.16);
+}
+
+.neo-button-ghost {
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.10), rgba(82, 94, 185, 0.18));
+  border-color: rgba(202, 206, 239, 0.20);
+  box-shadow:
+    8px 8px 18px rgba(38, 61, 145, 0.22),
+    -4px -4px 12px rgba(202, 206, 239, 0.05),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.14);
+}
+
+.neo-button-danger {
+  background: linear-gradient(145deg, rgba(122, 128, 226, 0.46), rgba(38, 61, 145, 0.62));
+  border-color: rgba(202, 206, 239, 0.26);
+}
+
+.neo-button__icon {
+  display: inline-flex;
+  align-items: center;
+}

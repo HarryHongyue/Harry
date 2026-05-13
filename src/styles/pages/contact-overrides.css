@@ -1,0 +1,70 @@
+.neo-contact-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.neo-hero--contact .neo-hero__copy {
+  align-content: stretch;
+  grid-template-rows: auto auto auto 1fr auto;
+  padding-top: 0;
+  padding-bottom: 12px;
+  max-width: min(100%, 620px);
+}
+
+.neo-hero--contact .neo-hero-title--contact {
+  max-width: 11ch;
+  white-space: normal;
+}
+
+.neo-hero--contact .neo-hero__subtitle,
+.neo-hero--contact .neo-hero__copy > p {
+  max-width: 56ch;
+}
+
+.neo-hero--contact .neo-chip-row {
+  align-self: end;
+}
+
+.neo-expectation-card .neo-info-card__title {
+  margin-bottom: 18px;
+}
+
+.neo-contact-channels-card {
+  display: grid;
+  gap: 16px;
+}
+
+.neo-contact-channels-card .neo-info-card__title {
+  margin-bottom: 6px;
+}
+
+.neo-contact-email-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.neo-contact-actions-grid {
+  margin-top: 6px;
+}
+
+.neo-contact-link-block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  min-height: 76px;
+  padding: 14px 24px;
+  text-align: left;
+}
+
+.neo-contact-link-block__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+}

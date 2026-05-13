@@ -1,0 +1,99 @@
+.neo-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 0.95fr);
+  gap: 24px;
+}
+
+.neo-detail-card {
+  display: grid;
+  gap: 18px;
+}
+
+.neo-detail-card__tagline {
+  color: var(--text-primary);
+  font-size: 1.08rem;
+}
+
+.neo-reference-panel {
+  position: relative;
+  min-height: 440px;
+  padding: 22px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.neo-reference-panel--pdf {
+  background:
+    radial-gradient(circle at 44% 22%, rgba(122, 128, 226, 0.18), transparent 18%),
+    radial-gradient(circle at 70% 66%, rgba(164, 166, 255, 0.16), transparent 20%),
+    linear-gradient(180deg, rgba(82, 94, 185, 0.50), rgba(38, 61, 145, 0.82));
+}
+
+.neo-reference-panel--ode {
+  background:
+    radial-gradient(circle at 36% 24%, rgba(164, 166, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 76% 58%, rgba(122, 128, 226, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(82, 94, 185, 0.50), rgba(38, 61, 145, 0.82));
+}
+
+.neo-reference-panel__screen {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  height: 100%;
+  padding: 26px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(38, 61, 145, 0.58), rgba(38, 61, 145, 0.72));
+  box-shadow: var(--shadow-inset);
+}
+
+.neo-reference-panel__logo {
+  width: 112px;
+  height: 112px;
+}
+
+.neo-reference-panel__logo--pdf {
+  filter: drop-shadow(0 0 18px rgba(164, 166, 255, 0.28));
+}
+
+.neo-reference-panel__meta {
+  display: grid;
+  gap: 8px;
+}
+
+.neo-reference-panel__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.neo-reference-panel__chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(202, 206, 239, 0.16);
+  background: linear-gradient(145deg, rgba(38, 61, 145, 0.26), rgba(122, 128, 226, 0.14));
+  box-shadow:
+    inset 4px 4px 10px rgba(38, 61, 145, 0.18),
+    inset -3px -3px 8px rgba(164, 166, 255, 0.08);
+  color: #CACEEF;
+}
+
+.neo-reference-panel__bars {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: end;
+  gap: 10px;
+}
+
+.neo-reference-panel__bars span {
+  border-radius: 12px 12px 6px 6px;
+  background: linear-gradient(180deg, rgba(164, 166, 255, 0.92), rgba(122, 128, 226, 0.54));
+  box-shadow: 0 0 18px rgba(164, 166, 255, 0.18);
+}
+
