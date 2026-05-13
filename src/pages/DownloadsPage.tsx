@@ -92,10 +92,14 @@ const DownloadsPage: React.FC = () => {
                 <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--compact" />
                 <div className="neo-project-card__header-content--centered">
                   <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
-                  <p>{pickText(currentLanguage, project.tagline)}</p>
+                  <p>
+                    {pickText(currentLanguage, project.tagline)}
+                    {project.releaseAssets[0] ? (
+                      <NeoBadge tone="cyan" className="neo-badge--inline">{project.releaseAssets[0].version}</NeoBadge>
+                    ) : null}
+                  </p>
                 </div>
               </div>
-              {project.releaseAssets[0] ? <NeoBadge tone="teal">{project.releaseAssets[0].version}</NeoBadge> : null}
             </div>
             <NeoTable<ProjectReleaseAsset> rowKey={(row) => `${row.label.en}-${row.version}`} rows={project.releaseAssets} columns={columns} />
           </div>
