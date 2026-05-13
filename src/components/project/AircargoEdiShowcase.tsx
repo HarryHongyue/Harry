@@ -58,35 +58,49 @@ const AircargoEdiShowcase: React.FC<AircargoEdiShowcaseProps> = ({ project }) =>
             </div>
           </div>
           <div className="aircargo-showcase-hero__visual" aria-hidden="true">
-            <NeoCard className="aircargo-showcase-visual-card">
-              <div className="aircargo-showcase-visual-card__header"><span>AWB 160-12345675</span><PlaneTakeoff size={24} /></div>
-              <div className="aircargo-showcase-awb-content">
-                <div className="aircargo-showcase-awb-section">
-                  <div className="aircargo-showcase-awb-label">ROUTE</div>
-                  <div className="aircargo-showcase-awb-value">AMS → PVG → HKG</div>
+            <div className="aircargo-showcase-conversion">
+              <div className="aircargo-showcase-source-file">
+                <div className="aircargo-showcase-file-icon">
+                  <FileText size={48} />
                 </div>
-                <div className="aircargo-showcase-awb-section">
-                  <div className="aircargo-showcase-awb-label">SHIPPER</div>
-                  <div className="aircargo-showcase-awb-value">EXAMPLE COMPANY LTD</div>
-                </div>
-                <div className="aircargo-showcase-awb-section">
-                  <div className="aircargo-showcase-awb-label">CONSIGNEE</div>
-                  <div className="aircargo-showcase-awb-value">EXAMPLE LOGISTICS INC</div>
-                </div>
-                <div className="aircargo-showcase-awb-section">
-                  <div className="aircargo-showcase-awb-label">PIECES/WEIGHT</div>
-                  <div className="aircargo-showcase-awb-value">3 PCS / 1250.5 KG</div>
-                </div>
-                <div className="aircargo-showcase-awb-section">
-                  <div className="aircargo-showcase-awb-label">GOODS DESCRIPTION</div>
-                  <div className="aircargo-showcase-awb-value">ELECTRONIC COMPONENTS</div>
-                </div>
-                <div className="aircargo-showcase-awb-section">
-                  <div className="aircargo-showcase-awb-label">CHARGEABLE WEIGHT</div>
-                  <div className="aircargo-showcase-awb-value">1250.5 KG</div>
+                <div className="aircargo-showcase-file-info">
+                  <div className="aircargo-showcase-file-name">awb_160-12345675.pdf</div>
+                  <div className="aircargo-showcase-file-size">2.4 MB</div>
                 </div>
               </div>
-            </NeoCard>
+              <div className="aircargo-showcase-conversion-arrow">
+                <Route size={32} />
+              </div>
+              <NeoCard className="aircargo-showcase-visual-card aircargo-showcase-visual-card--small">
+                <div className="aircargo-showcase-visual-card__header"><span>AWB 160-12345675</span><PlaneTakeoff size={20} /></div>
+                <div className="aircargo-showcase-awb-content">
+                  <div className="aircargo-showcase-awb-section">
+                    <div className="aircargo-showcase-awb-label">ROUTE</div>
+                    <div className="aircargo-showcase-awb-value">AMS → PVG → HKG</div>
+                  </div>
+                  <div className="aircargo-showcase-awb-section">
+                    <div className="aircargo-showcase-awb-label">SHIPPER</div>
+                    <div className="aircargo-showcase-awb-value">EXAMPLE COMPANY LTD</div>
+                  </div>
+                  <div className="aircargo-showcase-awb-section">
+                    <div className="aircargo-showcase-awb-label">CONSIGNEE</div>
+                    <div className="aircargo-showcase-awb-value">EXAMPLE LOGISTICS INC</div>
+                  </div>
+                  <div className="aircargo-showcase-awb-section">
+                    <div className="aircargo-showcase-awb-label">PIECES/WEIGHT</div>
+                    <div className="aircargo-showcase-awb-value">3 PCS / 1250.5 KG</div>
+                  </div>
+                  <div className="aircargo-showcase-awb-section">
+                    <div className="aircargo-showcase-awb-label">GOODS DESCRIPTION</div>
+                    <div className="aircargo-showcase-awb-value">ELECTRONIC COMPONENTS</div>
+                  </div>
+                  <div className="aircargo-showcase-awb-section">
+                    <div className="aircargo-showcase-awb-label">CHARGEABLE WEIGHT</div>
+                    <div className="aircargo-showcase-awb-value">1250.5 KG</div>
+                  </div>
+                </div>
+              </NeoCard>
+            </div>
           </div>
         </div>
       </section>

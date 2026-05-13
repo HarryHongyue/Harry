@@ -52,7 +52,73 @@
   justify-items: end;
   min-width: 0;
   perspective: 1200px;
-  padding-right: clamp(12px, 2vw, 28px);
+
+}
+
+.aircargo-showcase-conversion {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 18px;
+  width: min(100%, 780px);
+  transform-style: preserve-3d;
+  perspective: 1500px;
+  margin-right: clamp(24px, 4vw, 72px);
+}
+
+.aircargo-showcase-source-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(8, 13, 34, 0.45);
+  border: 2px solid rgba(164, 166, 255, 0.15);
+  min-width: 120px;
+  transform: rotateY(15deg) translateZ(-30px) translateX(30px);
+  box-shadow: -8px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.aircargo-showcase-file-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  color: #A4A6FF;
+  background: rgba(164, 166, 255, 0.08);
+}
+
+.aircargo-showcase-file-info {
+  display: grid;
+  gap: 4px;
+  text-align: center;
+}
+
+.aircargo-showcase-file-name {
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.aircargo-showcase-file-size {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
+
+.aircargo-showcase-conversion-arrow {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  color: #A4A6FF;
+  background: rgba(164, 166, 255, 0.12);
+  border: 2px solid rgba(164, 166, 255, 0.2);
+  transform: translateZ(-60px) translateX(15px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
 }
 
 .aircargo-showcase-visual-card {
@@ -68,6 +134,16 @@
     -10px -10px 22px rgba(164, 166, 255, 0.12);
 }
 
+.aircargo-showcase-visual-card--small {
+  gap: 18px;
+  width: min(100%, 500px);
+  min-height: 400px;
+  padding: 28px;
+  transform: rotateY(-10deg) translateZ(-15px) translateX(20px);
+  box-shadow:
+    20px 24px 40px rgba(38, 61, 145, 0.35);
+}
+
 .aircargo-showcase-visual-card__header {
   display: flex;
   align-items: center;
@@ -80,16 +156,16 @@
 
 .aircargo-showcase-awb-content {
   display: grid;
-  gap: 12px;
-  padding-top: 16px;
+  gap: 10px;
+  padding-top: 14px;
 }
 
 .aircargo-showcase-awb-section {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 12px 16px;
-  border-radius: 12px;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
   background: rgba(8, 13, 34, 0.35);
   border: 1px solid rgba(164, 166, 255, 0.1);
 }
@@ -97,16 +173,25 @@
 .aircargo-showcase-awb-label {
   flex-shrink: 0;
   color: #A4A6FF;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  min-width: 140px;
+  min-width: 120px;
   letter-spacing: 0.05em;
 }
 
 .aircargo-showcase-awb-value {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
+}
+
+.aircargo-showcase-visual-card--small .aircargo-showcase-awb-label {
+  font-size: 0.65rem;
+  min-width: 110px;
+}
+
+.aircargo-showcase-visual-card--small .aircargo-showcase-awb-value {
+  font-size: 0.8rem;
 }
 
 .aircargo-showcase-button {
