@@ -21,7 +21,7 @@ export type ProjectCategory =
   | 'scientific-computing'
   | 'architecture-reference';
 
-export type ProjectStatus = 'featured' | 'active' | 'planned' | 'school-project' | 'client-project';
+export type ProjectStatus = 'featured' | 'active' | 'completed' | 'planned' | 'school-project' | 'client-project';
 
 export type ProjectType =
   | 'portfolio'
