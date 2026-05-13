@@ -3,6 +3,7 @@ import { Code2, Mail, MessageCircleMore, Rocket, Users } from 'lucide-react';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
 import NeoInput from '../components/ui/NeoInput';
+import NeoSelect from '../components/ui/NeoSelect';
 import { useLanguage } from '../contexts/LanguageContext';
 import { pickText, uiText } from '../data/siteContent';
 import NeoButton from '../components/ui/NeoButton';
@@ -164,17 +165,11 @@ const ContactPage: React.FC = () => {
             <NeoInput label="Email Address" placeholder={currentLanguage === 'zh' ? '输入你的邮箱地址' : currentLanguage === 'nl' ? 'Vul je e-mailadres in' : 'Enter your email address'} />
           </div>
           <div className="neo-form__grid neo-form__grid--2">
-            <label className="neo-field">
-              <span className="neo-field__label">{currentLanguage === 'zh' ? '项目类型' : currentLanguage === 'nl' ? 'Projecttype' : 'Project Type'}</span>
-              <select className="neo-input" defaultValue="">
-                <option value="" disabled>
-                  {currentLanguage === 'zh' ? '选择项目类型' : currentLanguage === 'nl' ? 'Kies een projecttype' : 'Select project type'}
-                </option>
-                {interestList.map((item) => (
-                  <option key={item}>{item}</option>
-                ))}
-              </select>
-            </label>
+            <NeoSelect
+              label={currentLanguage === 'zh' ? '项目类型' : currentLanguage === 'nl' ? 'Projecttype' : 'Project Type'}
+              placeholder={currentLanguage === 'zh' ? '选择项目类型' : currentLanguage === 'nl' ? 'Kies een projecttype' : 'Select project type'}
+              options={interestList}
+            />
             <NeoInput label={currentLanguage === 'zh' ? '最佳联系邮箱' : currentLanguage === 'nl' ? 'Beste contactmail' : 'Best Contact Email'} value={CONTACT_EMAIL} readOnly />
           </div>
           <label className="neo-field">
