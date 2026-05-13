@@ -1,6 +1,7 @@
 .journey-section {
   position: relative;
-  width: 100%;
+  width: min(calc(100vw - clamp(24px, 4vw, 72px)), var(--content-width, 1880px));
+  margin: 0 auto;
   padding: 0;
   overflow: visible;
 }
