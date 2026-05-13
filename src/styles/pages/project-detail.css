@@ -107,7 +107,7 @@
 
 .ode-showcase-hero__inner {
   display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.14fr);
+  grid-template-columns: minmax(360px, 0.92fr) minmax(420px, 1.08fr);
   align-items: center;
   gap: clamp(32px, 5vw, 72px);
   width: 100%;
@@ -115,8 +115,11 @@
 
 .ode-showcase-hero__content {
   display: grid;
-  gap: 24px;
+  align-content: center;
+  gap: clamp(28px, 4.2vw, 52px);
+  min-height: 430px;
   min-width: 0;
+  max-width: 640px;
 }
 
 .ode-showcase-hero__title {
@@ -131,9 +134,9 @@
 }
 
 .ode-showcase-hero__description {
-  max-width: 780px;
+  max-width: 620px;
   font-size: clamp(1.12rem, 1.6vw, 1.55rem);
-  line-height: 1.55;
+  line-height: 1.72;
   text-align: justify;
 }
 
@@ -145,14 +148,15 @@
 
 .ode-showcase-hero__visual {
   display: grid;
-  justify-items: center;
+  justify-items: end;
   min-width: 0;
   perspective: 1200px;
+  padding-right: clamp(12px, 2vw, 28px);
 }
 
 .ode-showcase-hero__screenshot {
   display: block;
-  width: min(100%, 720px);
+  width: min(96%, 700px);
   border-radius: 12px;
   transform: rotateY(-14deg) rotateX(3deg) translateX(-12px);
   transform-origin: left center;
