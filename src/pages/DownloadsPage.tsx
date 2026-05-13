@@ -98,7 +98,6 @@ const DownloadsPage: React.FC = () => {
                 {pickText(currentLanguage, uiText.common.githubReleases)}
               </a>
             </div>
-            <NeoBadge tone="teal">{pickText(currentLanguage, uiText.common.verifyChecksum)}</NeoBadge>
           </div>
 
           <DownloadHero3DScene className="hero-3d-shell--downloads-integrated" intensity="high" showCircuit={false} />
