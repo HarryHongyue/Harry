@@ -40,8 +40,8 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
     currentLanguage === 'zh' ? '支持将结果导出为 CSV 和 PNG 等格式。' : currentLanguage === 'nl' ? 'Export van resultaten naar CSV, PNG en vergelijkbare formaten.' : 'Export results to CSV, PNG, and similar formats.',
   ];
   const versionHistory = [
-    { version: '1.0.0', date: project.releaseAssets[0]?.releaseDate ?? '2025-07-05', changes: versionChanges },
-    { version: '0.9.0', date: '2025-06-20', changes: [currentLanguage === 'zh' ? '用于测试的 Beta 版本发布。' : currentLanguage === 'nl' ? 'Bètarelease voor testen.' : 'Beta release for testing.', currentLanguage === 'zh' ? '提供基础 ODE 求解能力。' : currentLanguage === 'nl' ? 'Basisfunctionaliteit voor ODE-oplossing.' : 'Basic ODE solving capabilities.', currentLanguage === 'zh' ? '提供用于方程输入的简单界面。' : currentLanguage === 'nl' ? 'Eenvoudige UI voor vergelijkingsinvoer.' : 'Simple UI for equation input.'] },
+    { version: 'v1.0.0', date: project.releaseAssets[0]?.releaseDate ?? '2025-07-05', changes: versionChanges },
+    { version: 'v0.9.0', date: '2025-06-20', changes: [currentLanguage === 'zh' ? '用于测试的 Beta 版本发布。' : currentLanguage === 'nl' ? 'Bètarelease voor testen.' : 'Beta release for testing.', currentLanguage === 'zh' ? '提供基础 ODE 求解能力。' : currentLanguage === 'nl' ? 'Basisfunctionaliteit voor ODE-oplossing.' : 'Basic ODE solving capabilities.', currentLanguage === 'zh' ? '提供用于方程输入的简单界面。' : currentLanguage === 'nl' ? 'Eenvoudige UI voor vergelijkingsinvoer.' : 'Simple UI for equation input.'] },
   ];
   const privacyItems = [
     { title: currentLanguage === 'zh' ? '无数据收集' : currentLanguage === 'nl' ? 'Geen dataverzameling' : 'No Data Collection', body: currentLanguage === 'zh' ? '不收集个人信息、敏感数据或使用历史。' : currentLanguage === 'nl' ? 'Verzamelt geen persoonlijke informatie, gevoelige data of gebruiksgeschiedenis.' : 'No personal information, sensitive data, or usage history is collected.' },

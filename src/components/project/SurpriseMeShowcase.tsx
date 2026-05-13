@@ -29,6 +29,15 @@ const SurpriseMeShowcase: React.FC = () => {
     { title: currentLanguage === 'zh' ? '简单易用' : currentLanguage === 'nl' ? 'Eenvoud' : 'Simplicity', body: currentLanguage === 'zh' ? '一键激活和停用。没有复杂的设置。' : currentLanguage === 'nl' ? 'Activeren en deactiveren met één klik. Geen ingewikkelde instellingen.' : 'One-click activation and deactivation. No complicated settings.', icon: <Puzzle size={22} /> },
     { title: currentLanguage === 'zh' ? '跨浏览器' : currentLanguage === 'nl' ? 'Cross-browser' : 'Cross-Browser', body: currentLanguage === 'zh' ? '适用于 Chrome、Firefox 和 Safari 浏览器。' : currentLanguage === 'nl' ? 'Beschikbaar voor Chrome-, Firefox- en Safari-browsers.' : 'Available for Chrome, Firefox, and Safari browsers.', icon: <FaChrome size={22} /> },
   ];
+  const versionChanges = [
+    currentLanguage === 'zh' ? 'SurpriseMe 浏览器扩展初始版本发布。' : currentLanguage === 'nl' ? 'Eerste release van de SurpriseMe browserextensie.' : 'Initial release of the SurpriseMe browser extension.',
+    currentLanguage === 'zh' ? '支持为任何网页添加可自定义的彩色边框。' : currentLanguage === 'nl' ? 'Ondersteuning voor het toevoegen van aanpasbare gekleurde randen aan elke webpagina.' : 'Support for adding customizable colored borders to any webpage.',
+    currentLanguage === 'zh' ? '支持多种颜色选择和自定义颜色创建。' : currentLanguage === 'nl' ? 'Ondersteuning voor verschillende kleurenkeuzes en aangepaste kleurencreatie.' : 'Support for multiple color choices and custom color creation.',
+    currentLanguage === 'zh' ? '适用于 Chrome、Firefox、Safari 等主流浏览器。' : currentLanguage === 'nl' ? 'Beschikbaar voor Chrome, Firefox, Safari en andere populaire browsers.' : 'Available for Chrome, Firefox, Safari, and other popular browsers.',
+  ];
+  const versionHistory = [
+    { version: 'v1.0.0', date: '2025-08-08', changes: versionChanges },
+  ];
 
   return (
     <>
@@ -63,7 +72,7 @@ const SurpriseMeShowcase: React.FC = () => {
         <p className="surprise-showcase-section__subtitle">{currentLanguage === 'zh' ? '立即开始使用 SurpriseMe！只需几秒钟即可安装，适用于 Chrome 浏览器。' : currentLanguage === 'nl' ? 'Begin met SurpriseMe in slechts enkele klikken. Beschikbaar voor Chrome browser.' : 'Get started with SurpriseMe in just a few clicks. Available for Chrome browser.'}</p>
         <NeoCard className="surprise-showcase-download-card">
           <div className="surprise-showcase-download-main">
-            <div><h3>{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? '版本 1.0.0 - 主要版本' : currentLanguage === 'nl' ? 'Versie 1.0.0 - Primaire Release' : 'Version 1.0.0 - Primary Release'}</p></div>
+            <div><h3>{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? '版本 v1.0.0 - 主要版本' : currentLanguage === 'nl' ? 'Versie v1.0.0 - Primaire Release' : 'Version v1.0.0 - Primary Release'}</p></div>
             <a href="https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg" className={`${neoButtonClass('primary')} surprise-showcase-download-button`} target="_blank" rel="noreferrer"><FaChrome size={20} />{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</a>
           </div>
           <div className="surprise-showcase-browser-panel">
@@ -83,6 +92,28 @@ const SurpriseMeShowcase: React.FC = () => {
               <a href="/SurpriseMe.crx" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .crx 文件' : currentLanguage === 'nl' ? 'Download .crx bestand' : 'Download .crx file'}</a>
               <a href="/SurpriseMe.zip" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .zip 文件' : currentLanguage === 'nl' ? 'Download .zip bestand' : 'Download .zip file'}</a>
             </div>
+          </div>
+        </NeoCard>
+      </section>
+
+      <section className="section-shell surprise-showcase-section">
+        <h2 className="surprise-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2>
+        <NeoCard className="surprise-showcase-updates-card">
+          <div className="surprise-showcase-updates-card__current">
+            <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>v1.0.0</span></h3>
+          </div>
+          <div className="surprise-showcase-version-list">
+            {versionHistory.map((version, index) => (
+              <div key={version.version} className={`surprise-showcase-version ${index !== 0 ? 'surprise-showcase-version--divided' : ''}`}>
+                <div className="surprise-showcase-version__header">
+                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
+                  <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
+                </div>
+                <ul className="surprise-showcase-version__changes">
+                  {version.changes.map((change) => <li key={change}>{change}</li>)}
+                </ul>
+              </div>
+            ))}
           </div>
         </NeoCard>
       </section>
