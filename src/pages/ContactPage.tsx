@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code2, Mail, MessageCircleMore, Rocket, Users } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
 import NeoInput from '../components/ui/NeoInput';
@@ -18,7 +19,7 @@ const ContactPage: React.FC = () => {
 
   const cards = [
     {
-      icon: <Code2 size={24} />,
+      icon: <FaGithub size={24} />,
       title: 'GitHub',
       body: 'client/private-example-repo',
       detail:
