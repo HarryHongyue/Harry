@@ -4,6 +4,7 @@ import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
+import ProjectTechStackCards from './ProjectTechStackCards';
 
 const certificateScreenshots = [
   new URL('../../assets/images/计量证书管理系统/证书1.PNG', import.meta.url).href,
@@ -131,6 +132,13 @@ const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> 
               </div>
             ))}
           </div>
+        </NeoCard>
+      </section>
+
+      <section className="section-shell metrology-showcase-section">
+        <h2 className="metrology-showcase-section__title">{currentLanguage === 'zh' ? '技术栈' : currentLanguage === 'nl' ? 'Tech Stack' : 'Tech Stack'}</h2>
+        <NeoCard className="metrology-showcase-tech-card">
+          <ProjectTechStackCards techStackIds={project.techStackIds} locale={currentLanguage} />
         </NeoCard>
       </section>
 

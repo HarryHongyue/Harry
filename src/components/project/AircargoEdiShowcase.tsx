@@ -5,6 +5,7 @@ import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { pickText } from '../../data/siteContent';
+import ProjectTechStackCards from './ProjectTechStackCards';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -117,6 +118,13 @@ const AircargoEdiShowcase: React.FC<AircargoEdiShowcaseProps> = ({ project }) =>
       </section>
 
       <section className="section-shell aircargo-showcase-section"><h2 className="aircargo-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2><NeoCard className="aircargo-showcase-updates-card"><div className="aircargo-showcase-updates-card__current"><h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{primaryAsset?.version ?? 'v0.9.0'}</span></h3></div><div className="aircargo-showcase-version-list"><div className="aircargo-showcase-version"><div className="aircargo-showcase-version__header"><h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {primaryAsset?.version ?? 'v0.9.0'}</h4><span>{currentLanguage === 'zh' ? `发布日期 ${primaryAsset?.releaseDate ?? '2026-05-11'}` : currentLanguage === 'nl' ? `Uitgebracht op ${primaryAsset?.releaseDate ?? '2026-05-11'}` : `Released on ${primaryAsset?.releaseDate ?? '2026-05-11'}`}</span></div><ul className="aircargo-showcase-version__changes">{versionChanges.map((change) => <li key={change}>{change}</li>)}</ul></div></div></NeoCard></section>
+
+      <section className="section-shell aircargo-showcase-section">
+        <h2 className="aircargo-showcase-section__title">{currentLanguage === 'zh' ? '技术栈' : currentLanguage === 'nl' ? 'Tech Stack' : 'Tech Stack'}</h2>
+        <NeoCard className="aircargo-showcase-tech-card">
+          <ProjectTechStackCards techStackIds={project.techStackIds} locale={currentLanguage} />
+        </NeoCard>
+      </section>
 
       <section className="section-shell aircargo-showcase-section aircargo-showcase-privacy"><div className="aircargo-showcase-privacy__heading"><ShieldCheck size={46} /><h2 className="aircargo-showcase-section__title">{currentLanguage === 'zh' ? '安全与隐私' : currentLanguage === 'nl' ? 'Security en privacy' : 'Security & Privacy'}</h2><p>{currentLanguage === 'zh' ? '空运报文系统处理的是业务单据和客户流程，因此边界设计必须比普通展示页面更严格。' : currentLanguage === 'nl' ? 'Aircargo EDI verwerkt zakelijke documenten en klantprocessen, dus de grenzen moeten strenger zijn dan bij een gewone showcase.' : 'Aircargo EDI handles business documents and customer workflows, so its boundaries must be stricter than a normal showcase page.'}</p></div><NeoCard variant="inset" className="aircargo-showcase-privacy-card"><div className="aircargo-showcase-privacy-grid">{privacyItems.map((item) => <div key={item.title} className="aircargo-showcase-privacy-item"><ShieldCheck size={30} /><h3>{item.title}</h3><p>{item.body}</p></div>)}</div><div className="aircargo-showcase-privacy-note"><p><strong>{currentLanguage === 'zh' ? '私有货运流程、客户映射和报文规则不应公开暴露。' : currentLanguage === 'nl' ? 'Private cargoworkflows, klantmappings en berichtregels mogen niet publiek worden blootgesteld.' : 'Private cargo workflows, customer mappings, and message rules should not be publicly exposed.'}</strong></p><p>{currentLanguage === 'zh' ? '输入单据会被视作不可信资料，必须先经过解析、校验和边界控制，再进入报文生成阶段。' : currentLanguage === 'nl' ? 'Invoerdocumenten worden als onbetrouwbare data behandeld en moeten eerst parsing, validatie en grenscontrole doorlopen.' : 'Input documents are treated as untrusted data and must pass parsing, validation, and boundary control before message generation.'}</p><p>{currentLanguage === 'zh' ? '最后更新' : currentLanguage === 'nl' ? 'Laatst bijgewerkt' : 'Last updated'}: 2026/5/13</p></div></NeoCard></section>
     </>

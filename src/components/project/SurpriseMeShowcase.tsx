@@ -6,6 +6,7 @@ import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
+import ProjectTechStackCards from './ProjectTechStackCards';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -125,6 +126,13 @@ const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
               </div>
             ))}
           </div>
+        </NeoCard>
+      </section>
+
+      <section className="section-shell surprise-showcase-section">
+        <h2 className="surprise-showcase-section__title">{currentLanguage === 'zh' ? '技术栈' : currentLanguage === 'nl' ? 'Tech Stack' : 'Tech Stack'}</h2>
+        <NeoCard className="surprise-showcase-tech-card">
+          <ProjectTechStackCards techStackIds={project.techStackIds} locale={currentLanguage} />
         </NeoCard>
       </section>
 

@@ -4,6 +4,7 @@ import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
+import ProjectTechStackCards from './ProjectTechStackCards';
 
 const pdfReaderScreenshot = new URL('../../assets/images/PDF Reader/PDF reader.PNG', import.meta.url).href;
 
@@ -121,6 +122,13 @@ const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
               </ul>
             </div>
           </div>
+        </NeoCard>
+      </section>
+
+      <section className="section-shell pdf-showcase-section">
+        <h2 className="pdf-showcase-section__title">{currentLanguage === 'zh' ? '技术栈' : currentLanguage === 'nl' ? 'Tech Stack' : 'Tech Stack'}</h2>
+        <NeoCard className="pdf-showcase-tech-card">
+          <ProjectTechStackCards techStackIds={project.techStackIds} locale={currentLanguage} />
         </NeoCard>
       </section>
 
