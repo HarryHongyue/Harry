@@ -27,7 +27,6 @@ const HomePage: React.FC = () => {
             <h1 className="neo-hero-title">{pickText(currentLanguage, uiText.home.title)}</h1>
             <div className="neo-hero__subtitle">
               <strong>{currentLanguage === 'zh' ? '一个愿景。多个项目。统一生态。' : currentLanguage === 'nl' ? 'Eén visie. Meerdere projecten. Eén ecosysteem.' : uiText.home.subtitleEn}</strong>
-              <span>{currentLanguage === 'en' ? '一个愿景 多重项目 统一生态' : uiText.home.subtitleEn}</span>
             </div>
             <p>{pickText(currentLanguage, uiText.home.body)}</p>
             <div className="neo-hero__actions">

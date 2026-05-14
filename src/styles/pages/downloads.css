@@ -6,7 +6,7 @@
 
 .neo-hero--downloads {
   position: relative;
-  min-height: clamp(540px, 38vw, 660px);
+  min-height: clamp(500px, 35vw, 620px);
   grid-template-columns: minmax(0, 0.92fr) minmax(500px, 1.08fr);
   gap: 10px;
   background:
@@ -20,43 +20,70 @@
 }
 
 .neo-hero--downloads .neo-hero__copy {
+  display: grid;
+  grid-template-rows: auto auto minmax(96px, auto) auto;
+  align-content: space-between;
+  row-gap: clamp(20px, 2.1vw, 36px);
   z-index: 4;
-  max-width: 620px;
+  width: min(100%, 640px);
+  max-width: 640px;
+  min-height: clamp(390px, 29vw, 500px);
+  padding-block: clamp(10px, 1.2vw, 22px);
 }
 
-.neo-hero--downloads .hero-3d-shell {
+.neo-hero--downloads .neo-hero-title {
+  max-width: 11.5em;
+  margin: 0;
+  line-height: 0.98;
+}
+
+.neo-hero--downloads .neo-hero__subtitle {
+  max-width: 560px;
+  margin: 0;
+  gap: 0;
+}
+
+.neo-hero--downloads .neo-hero__subtitle strong {
+  line-height: 1.18;
+}
+
+.neo-hero--downloads .neo-hero__subtitle span {
+  line-height: 1.35;
+}
+
+.neo-hero--downloads .neo-hero__copy > p {
+  max-width: 590px;
+  margin: 0;
+  line-height: 1.68;
+  align-self: center;
+}
+
+.neo-hero--downloads .neo-inline-actions {
+  margin-top: 0;
+  align-self: end;
+}
+
+.neo-download-hero-visual {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  right: -8%;
+  bottom: 0;
+  width: min(65%, 920px);
   height: 100%;
-  min-height: 0;
-  overflow: visible;
-  border: 0 !important;
-  border-radius: 0;
-  background: transparent !important;
-  box-shadow: none !important;
-  filter: none !important;
-  animation: none;
-  isolation: auto;
   pointer-events: none;
   z-index: 2;
+  overflow: visible;
+  opacity: 0.9;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.15) 8%, rgba(0, 0, 0, 0.45) 16%, rgba(0, 0, 0, 0.72) 24%, black 100%);
 }
 
-.neo-hero--downloads .hero-3d-shell::after {
-  display: none;
-}
-
-.neo-hero--downloads .hero-3d-panel {
-  display: none;
-}
-
-.neo-hero--downloads .glow-orb {
-  display: none;
-}
-
-.neo-hero--downloads .hero-3d-canvas {
-  inset: -12% -20% -10% 18%;
-  transform: translate3d(calc(62px + (var(--hero-parallax-x, 0) * -10px)), calc((var(--hero-parallax-y, 0) * -7px)), 0);
+.neo-download-hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  mix-blend-mode: screen;
+  filter: saturate(0.92) contrast(0.96) brightness(1.02);
 }
 
 .neo-content-card {

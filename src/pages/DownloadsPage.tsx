@@ -11,9 +11,9 @@ import { pickText, uiText } from '../data/siteContent';
 import type { ProjectReleaseAsset } from '../types/project';
 import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
-import DownloadHero3DScene from '../components/hero3d/DownloadHero3DScene';
 import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
+import downloadsHeroBackground from '../assets/images/Backgrounds/下载hero部分背景图.png';
 
 const getReleaseAssetIcon = (row: ProjectReleaseAsset) => {
   const text = `${row.label.en} ${row.platform.en}`.toLowerCase();
@@ -36,6 +36,9 @@ const getReleaseAssetIcon = (row: ProjectReleaseAsset) => {
 
 const DownloadsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
+  const downloadsSubtitle = {
+    primary: currentLanguage === 'zh' ? '一个愿景。多个项目。统一生态。' : currentLanguage === 'nl' ? 'Eén visie. Meerdere projecten. Eén ecosysteem.' : uiText.home.subtitleEn,
+  };
 
   const columns = [
     {
@@ -83,8 +86,7 @@ const DownloadsPage: React.FC = () => {
           <div className="neo-hero__copy">
             <h1 className="neo-hero-title">{pickText(currentLanguage, uiText.downloads.title)}</h1>
             <div className="neo-hero__subtitle">
-              <strong>{uiText.home.subtitleEn}</strong>
-              <span>{currentLanguage === 'zh' ? uiText.home.subtitleZh : currentLanguage === 'nl' ? uiText.home.subtitleNl : uiText.home.subtitleZh}</span>
+              <strong>{downloadsSubtitle.primary}</strong>
             </div>
             <p>{pickText(currentLanguage, uiText.downloads.intro)}</p>
             <div className="neo-inline-actions">
@@ -95,7 +97,9 @@ const DownloadsPage: React.FC = () => {
             </div>
           </div>
 
-          <DownloadHero3DScene className="hero-3d-shell--downloads-integrated" intensity="high" showCircuit={false} showBase />
+          <div className="neo-download-hero-visual" aria-hidden="true">
+            <img src={downloadsHeroBackground} alt="" />
+          </div>
         </section>
       </div>
 

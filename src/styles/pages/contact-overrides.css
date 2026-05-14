@@ -2,11 +2,18 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.neo-hero--contact {
+  position: relative;
+  overflow: hidden;
+}
+
 .neo-hero--contact .neo-hero__copy {
-  align-content: stretch;
-  grid-template-rows: auto auto auto 1fr auto;
+  grid-template-rows: auto auto minmax(96px, auto) auto;
+  align-content: space-between;
+  row-gap: clamp(20px, 2.1vw, 36px);
   padding-top: 0;
   padding-bottom: 12px;
+  min-height: clamp(390px, 29vw, 500px);
   max-width: min(100%, 620px);
 }
 
@@ -20,8 +27,46 @@
   max-width: 56ch;
 }
 
+.neo-hero--contact .neo-hero__subtitle {
+  margin: 0;
+  gap: 0;
+}
+
+.neo-hero--contact .neo-hero__subtitle strong {
+  line-height: 1.18;
+}
+
+.neo-hero--contact .neo-hero__copy > p {
+  margin: 0;
+  line-height: 1.68;
+  align-self: center;
+}
+
 .neo-hero--contact .neo-chip-row {
   align-self: end;
+}
+
+.neo-contact-hero-visual {
+  position: absolute;
+  top: 0;
+  right: -11%;
+  bottom: 0;
+  width: min(65%, 920px);
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+  opacity: 0.9;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.15) 8%, rgba(0, 0, 0, 0.45) 16%, rgba(0, 0, 0, 0.72) 24%, black 100%);
+}
+
+.neo-contact-hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  mix-blend-mode: screen;
+  filter: saturate(0.92) contrast(0.96) brightness(1.02);
 }
 
 .neo-expectation-card .neo-info-card__title {

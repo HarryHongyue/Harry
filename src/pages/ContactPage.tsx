@@ -7,9 +7,9 @@ import NeoSelect from '../components/ui/NeoSelect';
 import { useLanguage } from '../contexts/LanguageContext';
 import { pickText, uiText } from '../data/siteContent';
 import NeoButton from '../components/ui/NeoButton';
-import InteractiveHeroScene from '../components/common/InteractiveHeroScene';
 import SocialLogo from '../components/common/SocialLogo';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
+import contactHeroBackground from '../assets/images/Backgrounds/联系hero部分背景图.png';
 
 const CONTACT_EMAIL = 'HarryHongyue@omnigent.nl';
 
@@ -87,8 +87,7 @@ const ContactPage: React.FC = () => {
           <div className="neo-hero__copy">
             <h1 className="neo-hero-title neo-hero-title--contact">{pickText(currentLanguage, uiText.contact.title)}</h1>
             <div className="neo-hero__subtitle">
-              <strong>{uiText.home.subtitleEn}</strong>
-              <span>{currentLanguage === 'zh' ? uiText.home.subtitleZh : currentLanguage === 'nl' ? uiText.home.subtitleNl : uiText.home.subtitleZh}</span>
+              <strong>{currentLanguage === 'zh' ? '一个愿景。多个项目。统一生态。' : currentLanguage === 'nl' ? 'Eén visie. Meerdere projecten. Eén ecosysteem.' : uiText.home.subtitleEn}</strong>
             </div>
             <p>{pickText(currentLanguage, uiText.contact.intro)}</p>
             <div className="neo-chip-row">
@@ -100,7 +99,9 @@ const ContactPage: React.FC = () => {
             </div>
           </div>
 
-          <InteractiveHeroScene variant="contact" />
+          <div className="neo-contact-hero-visual" aria-hidden="true">
+            <img src={contactHeroBackground} alt="" />
+          </div>
         </section>
       </div>
 
