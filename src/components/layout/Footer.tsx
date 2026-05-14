@@ -24,28 +24,30 @@ const Footer: React.FC = () => {
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>© 2026 Harry. All rights reserved.</p>
         </div>
 
-        <div>
-          <h4>{pickText(currentLanguage, uiText.nav.projects)}</h4>
-          <div className="neo-footer__links">
-            <Link to="/">{pickText(currentLanguage, uiText.nav.home)}</Link>
-            <Link to="/projects">{pickText(currentLanguage, uiText.nav.projects)}</Link>
-            <Link to="/downloads">{pickText(currentLanguage, uiText.nav.downloads)}</Link>
-            <Link to="/contact">{pickText(currentLanguage, uiText.nav.contact)}</Link>
+        <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
+          <div style={{ width: 'fit-content' }}>
+            <h4>{pickText(currentLanguage, uiText.nav.projects)}</h4>
+            <div className="neo-footer__links">
+              <Link to="/">{pickText(currentLanguage, uiText.nav.home)}</Link>
+              <Link to="/projects">{pickText(currentLanguage, uiText.nav.projects)}</Link>
+              <Link to="/downloads">{pickText(currentLanguage, uiText.nav.downloads)}</Link>
+              <Link to="/contact">{pickText(currentLanguage, uiText.nav.contact)}</Link>
+            </div>
+          </div>
+
+          <div style={{ width: 'fit-content' }}>
+            <h4>{pickText(currentLanguage, uiText.common.documentation)}</h4>
+            <div className="neo-footer__links">
+              <Link to="/projects/harry">{currentLanguage === 'zh' ? '主站项目页' : currentLanguage === 'nl' ? 'Hoofdsite-project' : 'Main Site Case Study'}</Link>
+              <Link to="/projects/harrys-hub">{currentLanguage === 'zh' ? '资源站项目页' : currentLanguage === 'nl' ? 'Resourcehub-project' : 'Resource Hub Case Study'}</Link>
+              <Link to="/projects/future-website-building-platform">{currentLanguage === 'zh' ? '平台架构页' : currentLanguage === 'nl' ? 'Platformarchitectuur' : 'Platform Architecture'}</Link>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h4>{pickText(currentLanguage, uiText.common.documentation)}</h4>
-          <div className="neo-footer__links">
-            <Link to="/projects/harry">{currentLanguage === 'zh' ? '主站项目页' : currentLanguage === 'nl' ? 'Hoofdsite-project' : 'Main Site Case Study'}</Link>
-            <Link to="/projects/harrys-hub">{currentLanguage === 'zh' ? '资源站项目页' : currentLanguage === 'nl' ? 'Resourcehub-project' : 'Resource Hub Case Study'}</Link>
-            <Link to="/projects/future-website-building-platform">{currentLanguage === 'zh' ? '平台架构页' : currentLanguage === 'nl' ? 'Platformarchitectuur' : 'Platform Architecture'}</Link>
-          </div>
-        </div>
-
-        <div>
+        <div style={{ width: 'fit-content', minWidth: '200px' }}>
           <h4>{pickText(currentLanguage, uiText.nav.contact)}</h4>
-          <div className="neo-footer__links">
+          <div className="neo-footer__links" style={{ whiteSpace: 'nowrap' }}>
             <a href="mailto:HarryHongyue@omnigent.nl">HarryHongyue@omnigent.nl</a>
             <a href="https://omnigent.nl" target="_blank" rel="noreferrer">omnigent.nl</a>
             <span>{currentLanguage === 'zh' ? '全球 / 远程合作' : currentLanguage === 'nl' ? 'Global / remote' : 'Global / Remote'}</span>
@@ -53,7 +55,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div>
-          <h4>{currentLanguage === 'zh' ? '联系渠道' : currentLanguage === 'nl' ? 'Kanalen' : 'Channels'}</h4>
+          <h4>{currentLanguage === 'zh' ? '联系我' : currentLanguage === 'nl' ? 'Vind mij' : 'Find me'}</h4>
           <div className="neo-footer__socials">
             <a className="neo-circle-link" href="mailto:HarryHongyue@omnigent.nl" aria-label="Email">
               <SocialLogo name="email" size={20} />

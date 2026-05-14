@@ -93,7 +93,7 @@ sudo apt upgrade -y
 安装常用工具：
 
 ```bash
-sudo apt install -y git curl wget nano unzip tree
+sudo apt install -y git curl wget nano unzip
 ```
 
 ---
@@ -165,7 +165,13 @@ sudo chmod -R 755 /opt/harry-site
 查看目录：
 
 ```bash
-tree /opt/harry-site
+ls -la /opt/harry-site
+```
+
+或者使用find查看完整结构：
+
+```bash
+find /opt/harry-site -type d | sort
 ```
 
 预期结构：
@@ -180,7 +186,45 @@ tree /opt/harry-site
         └── releases
 ```
 
-如果采用 Docker 一键部署模式，可以只保留 `compose.yml`、反向代理配置和 release/downloads 挂载目录。此时 Harry 容器会在镜像构建阶段运行 `npm run build`，再由 Nginx 在容器内托管 `dist`。
+如果采用 Docker 一键部署模式，目录结构可以简化：
+
+```bash
+sudo mkdir -p /opt/harry-site/downloads
+sudo mkdir -p /opt/harry-site/releases
+sudo mkdir -p /opt/harry-site/services
+```
+
+设置权限：
+
+```bash
+sudo chown -R ubuntu:ubuntu /opt/harry-site
+sudo chmod -R 755 /opt/harry-site
+```
+
+查看目录：
+
+```bash
+ls -la /opt/harry-site
+```
+
+或者使用find查看完整结构：
+
+```bash
+find /opt/harry-site -type d | sort
+```
+
+预期结构：
+
+```text
+/opt/harry-site
+├── downloads
+├── releases
+└── services
+```
+
+**Docker 一键部署说明**：
+
+此时 Harry 容器会在镜像构建阶段运行 `npm run build`，再由 Nginx 在容器内托管 `dist`。不需要手动上传静态文件。
 
 本地或服务器运行：
 
@@ -204,7 +248,9 @@ http://localhost:8080
 sudo cp /etc/caddy/Caddyfile /etc/caddy/Caddyfile.backup.$(date +%Y%m%d%H%M%S)
 ```
 
-### 7.2 写入新的 Caddyfile
+### 7.2 写入新的 Caddyfile（静态文件上传模式）
+
+如果采用静态文件上传模式，使用以下配置：
 
 直接复制下面整段命令到服务器终端执行：
 
@@ -243,7 +289,49 @@ www.harryhongyue.com {
 CADDY
 ```
 
-### 7.3 验证配置
+### 7.3 写入新的 Caddyfile（Docker 一键部署模式）
+
+如果采用 Docker 一键部署模式，使用以下配置：
+
+直接复制下面整段命令到服务器终端执行：
+
+```bash
+sudo tee /etc/caddy/Caddyfile > /dev/null <<'CADDY'
+harryhongyue.com {
+    reverse_proxy 127.0.0.1:8080
+
+    handle_path /downloads/* {
+        root * /opt/harry-site/downloads
+        file_server
+    }
+
+    handle_path /releases/* {
+        root * /opt/harry-site/releases
+        file_server
+    }
+
+    handle_path /api/pdf-reader/* {
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    handle_path /api/aircargo-edi/* {
+        reverse_proxy 127.0.0.1:8001
+    }
+
+    header {
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy strict-origin-when-cross-origin
+    }
+}
+
+www.harryhongyue.com {
+    redir https://harryhongyue.com{uri}
+}
+CADDY
+```
+
+### 7.4 验证配置
 
 ```bash
 sudo caddy validate --config /etc/caddy/Caddyfile
@@ -264,37 +352,124 @@ sudo journalctl -u caddy -n 80
 
 ---
 
-## 8. 本地构建 Harry 项目
+## 8. Docker 镜像部署（推荐）
+
+Docker 镜像部署是真正的容器化部署方式。在本地构建 Docker 镜像，推送到 Docker Hub，然后服务器拉取镜像运行。
+
+### 8.1 准备 .dockerignore 文件
+
+确保项目根目录有 `.dockerignore` 文件，排除不必要的文件：
+
+```text
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+docs/
+*.md
+
+# Keys and secrets
+Keys/
+*.key
+*.pem
+```
+
+### 8.2 本地构建 Docker 镜像
 
 在你本地 Windows PowerShell 中执行：
 
 ```powershell
 cd G:\GitHubPersonal\Harry
-npm install
-npm run build
+
+# 构建 Docker 镜像
+docker build -t harryhongyue/harry-web:latest .
+
+# 查看构建的镜像
+docker images
 ```
 
-构建成功后，本地会生成：
-
-```text
-G:\GitHubPersonal\Harry\dist
-```
-
-这个 `dist` 目录就是需要上传到服务器的网站文件。
-
----
-
-## 9. 上传网站文件到服务器
-
-在本地 Windows PowerShell 中执行：
+### 8.3 登录 Docker Hub
 
 ```powershell
-scp -r -i "G:\GitHubPersonal\Harry\Keys\HarryHongyue private ssh-key-2026-05-10.key" "G:\GitHubPersonal\Harry\dist\." ubuntu@150.136.248.233:/opt/harry-site/sites/main/current/
+# 登录 Docker Hub
+docker login
+```
+
+输入你的 Docker Hub 用户名和密码。
+
+### 8.4 推送镜像到 Docker Hub
+
+```powershell
+# 推送镜像到 Docker Hub
+docker push harryhongyue/harry-web:latest
+```
+
+### 8.5 在服务器上拉取并运行镜像
+
+连接服务器后执行：
+
+```bash
+# 登录 Docker Hub
+docker login
+```
+
+输入你的 Docker Hub 用户名和密码。
+
+```bash
+# 拉取镜像
+docker pull harryhongyue/harry-web:latest
+
+# 停止旧容器（如果存在）
+docker stop harry-web 2>/dev/null || true
+docker rm harry-web 2>/dev/null || true
+
+# 运行新容器
+docker run -d --name harry-web --restart unless-stopped -p 127.0.0.1:8080:80 harryhongyue/harry-web:latest
+
+# 查看容器状态
+docker ps
+
+# 查看容器日志
+docker logs harry-web
+```
+
+### 8.6 验证 Docker 容器
+
+```bash
+# 检查容器是否运行
+docker ps
+
+# 测试容器内部访问
+curl http://localhost:8080
 ```
 
 ---
 
-## 10. 验证网站
+## 9. 验证网站
 
 在浏览器打开：
 
@@ -314,7 +489,7 @@ https://www.harryhongyue.com
 
 ---
 
-## 11. React 路由说明
+## 10. React 路由说明
 
 当前推荐使用单域名多路由模式：
 
@@ -327,74 +502,99 @@ https://harryhongyue.com/projects/surpriseme
 https://harryhongyue.com/downloads
 ```
 
-Caddyfile 中的这两行很重要：
-
-```caddyfile
-try_files {path} /index.html
-file_server
-```
-
-它们的作用是：当用户直接访问 `/projects/pdf-reader` 时，Caddy 会把请求交给 React 前端处理，而不是返回 404。
+在 Docker 镜像部署模式下，React 路由由容器内的 Nginx 处理，Nginx 配置文件已经包含了 SPA 路由回退配置。Caddy 只需要反向代理到容器的 8080 端口即可。
 
 ---
 
-## 12. Docker 是否必须使用
+## 11. Docker 镜像部署说明
 
-当前 Harry 主站点不需要 Docker。
+当前 Harry 主站点采用 Docker 镜像部署方式：
+
+**Docker 镜像部署（推荐）**
+- 本地构建 Docker 镜像
+- 推送到 Docker Hub
+- 服务器拉取镜像运行
+- 源代码安全性高，服务器上只有编译后的镜像
+- 更新快速简单，只需要推送新镜像
 
 推荐规则：
 
-- 静态前端：不需要 Docker。
-- React/Vite 网站：本地构建后上传 `dist`。
-- FastAPI / Node.js / Python 后端：可以使用 Docker。
-- PDF Reader 后端：适合 Docker。
-- Aircargo EDI 后端：适合 Docker。
-
-所以你已经安装 Docker 没问题，但现在部署 Harry 主站点时可以先不用它。
+- React/Vite 网站：推荐 Docker 镜像部署
+- FastAPI / Node.js / Python 后端：推荐使用 Docker
+- PDF Reader 后端：适合 Docker
+- Aircargo EDI 后端：适合 Docker
 
 ---
 
-## 13. 可选：部署后端 API
+## 12. 可选：部署后端 API
 
-如果以后要把 PDF Reader 后端部署到这台服务器，可以使用：
+如果以后要把 PDF Reader 后端部署到这台服务器，推荐使用 Docker 镜像部署方式：
 
 ```bash
-cd /opt/harry-site/services
-git clone https://github.com/HarryHongyue/PDF-Reader.git pdf-reader-api
-cd pdf-reader-api/backend
-docker build -t pdf-reader-api .
-docker run -d --name pdf-reader-api --restart unless-stopped -p 127.0.0.1:8000:8000 pdf-reader-api
+# 在本地构建 PDF Reader 后端镜像
+cd G:\GitHubPersonal\PDF-Reader\backend
+docker build -t harryhongyue/pdf-reader-api:latest .
+docker push harryhongyue/pdf-reader-api:latest
+
+# 在服务器上拉取并运行
+docker pull harryhongyue/pdf-reader-api:latest
+docker stop pdf-reader-api 2>/dev/null || true
+docker rm pdf-reader-api 2>/dev/null || true
+docker run -d --name pdf-reader-api --restart unless-stopped -p 127.0.0.1:8000:8000 harryhongyue/pdf-reader-api:latest
 ```
 
 如果以后要部署 Aircargo EDI 后端，可以使用：
 
 ```bash
-cd /opt/harry-site/services
-git clone https://github.com/HarryHongyue/Aircargo-EDI.git aircargo-edi-api
-cd aircargo-edi-api
-docker build -t aircargo-edi-api .
-docker run -d --name aircargo-edi-api --restart unless-stopped -p 127.0.0.1:8001:8000 aircargo-edi-api
+# 在本地构建 Aircargo EDI 后端镜像
+cd G:\GitHubPersonal\Aircargo-EDI
+docker build -t harryhongyue/aircargo-edi-api:latest .
+docker push harryhongyue/aircargo-edi-api:latest
+
+# 在服务器上拉取并运行
+docker pull harryhongyue/aircargo-edi-api:latest
+docker stop aircargo-edi-api 2>/dev/null || true
+docker rm aircargo-edi-api 2>/dev/null || true
+docker run -d --name aircargo-edi-api --restart unless-stopped -p 127.0.0.1:8001:8000 harryhongyue/aircargo-edi-api:latest
 ```
 
 注意：后端端口绑定到 `127.0.0.1`，不要直接暴露到公网。
 
 ---
 
-## 14. 后续更新网站
+## 13. 后续更新网站
 
 以后每次更新网站，只需要在本地执行：
 
 ```powershell
 cd G:\GitHubPersonal\Harry
-npm run build
-scp -r -i "G:\GitHubPersonal\Harry\Keys\HarryHongyue private ssh-key-2026-05-10.key" "G:\GitHubPersonal\Harry\dist\." ubuntu@150.136.248.233:/opt/harry-site/sites/main/current/
+
+# 重新构建镜像
+docker build -t harryhongyue/harry-web:latest .
+
+# 推送新镜像
+docker push harryhongyue/harry-web:latest
 ```
 
-一般不需要重启 Caddy。
+然后在服务器上执行：
+
+```bash
+# 拉取新镜像
+docker pull harryhongyue/harry-web:latest
+
+# 停止旧容器
+docker stop harry-web
+docker rm harry-web
+
+# 运行新容器
+docker run -d --name harry-web --restart unless-stopped -p 127.0.0.1:8080:80 harryhongyue/harry-web:latest
+```
 
 ---
 
 ## 15. 常用检查命令
+
+### 15.1 Caddy 相关
 
 检查 Caddy 状态：
 
@@ -414,11 +614,41 @@ sudo journalctl -u caddy -f
 sudo ss -tlnp | grep -E ':(80|443)'
 ```
 
-查看网站目录：
+### 14.2 Docker 相关
+
+检查 Docker 状态：
 
 ```bash
-ls -la /opt/harry-site/sites/main/current
+sudo systemctl status docker
 ```
+
+查看运行中的容器：
+
+```bash
+docker ps
+```
+
+查看容器日志：
+
+```bash
+docker logs harry-web
+```
+
+查看容器资源使用：
+
+```bash
+docker stats
+```
+
+### 14.3 网站目录
+
+查看目录结构：
+
+```bash
+find /opt/harry-site -type d | sort
+```
+
+### 14.4 系统资源
 
 查看磁盘空间：
 
@@ -434,9 +664,9 @@ free -h
 
 ---
 
-## 16. 常见问题
+## 15. 常见问题
 
-### 16.1 Caddy 无法申请 HTTPS 证书
+### 15.1 Caddy 无法申请 HTTPS 证书
 
 通常原因：
 
@@ -451,62 +681,114 @@ nslookup harryhongyue.com
 nslookup www.harryhongyue.com
 ```
 
-### 16.2 网站打开是 Caddy 默认页
+### 15.2 Docker 镜像构建失败
 
-说明 Caddyfile 没有正确覆盖，或者 root 目录没有指向：
+可能原因：
 
-```text
-/opt/harry-site/sites/main/current
-```
+- .dockerignore 文件配置错误
+- Dockerfile 配置错误
+- 网络问题导致无法拉取基础镜像
 
-重新执行第 7 步。
-
-### 16.3 直接打开项目路由返回 404
-
-确认 Caddyfile 中有：
-
-```caddyfile
-try_files {path} /index.html
-```
-
-然后执行：
+解决方法：
 
 ```bash
-sudo caddy validate --config /etc/caddy/Caddyfile
-sudo systemctl reload caddy
+# 检查 .dockerignore 文件
+cat .dockerignore
+
+# 清理 Docker 缓存
+docker system prune -a
+
+# 重新构建
+docker build -t harryhongyue/harry-web:latest .
 ```
 
-### 16.4 上传后页面没有变化
+### 15.3 Docker Hub 推送失败
+
+可能原因：
+
+- Docker Hub 登录失败
+- 镜像名称错误
+- 网络问题
+
+解决方法：
+
+```bash
+# 重新登录
+docker login
+
+# 检查镜像名称
+docker images
+
+# 重新推送
+docker push harryhongyue/harry-web:latest
+```
+
+### 15.4 容器无法启动
+
+可能原因：
+
+- 端口冲突
+- 镜像拉取失败
+- 容器配置错误
+
+解决方法：
+
+```bash
+# 查看容器日志
+docker logs harry-web
+
+# 检查端口占用
+sudo ss -tlnp | grep 8080
+
+# 停止并删除旧容器
+docker stop harry-web
+docker rm harry-web
+
+# 重新运行
+docker run -d --name harry-web --restart unless-stopped -p 127.0.0.1:8080:80 harryhongyue/harry-web:latest
+```
+
+### 15.5 更新后页面没有变化
 
 可以尝试：
 
 - 浏览器强制刷新。
 - 清理浏览器缓存。
-- 确认上传到的是 `/opt/harry-site/sites/main/current/`。
-- 检查 `index.html` 修改时间。
+- 确认服务器上拉取了新镜像。
+- 检查容器是否使用了新镜像。
 
 ```bash
-ls -la /opt/harry-site/sites/main/current/index.html
+# 查看容器使用的镜像
+docker inspect harry-web | grep Image
+
+# 查看本地镜像
+docker images harryhongyue/harry-web
 ```
 
 ---
 
-## 17. 当前推荐执行顺序
+## 16. 当前推荐执行顺序
 
-如果你现在已经完成到第四步，接下来建议按这个顺序做：
+如果你现在已经完成到第五步（Caddy已安装并启动），接下来建议按这个顺序做：
 
 1. 执行第 6 步，确认目录结构存在。
-2. 执行第 7 步，写入干净的 Caddyfile。
-3. 在本地执行第 8 步，构建项目。
-4. 在本地执行第 9 步，上传 `dist`。
-5. 执行第 10 步，浏览器访问网站验证。
+2. 执行第 7.3 步，写入 Docker 镜像部署模式的 Caddyfile。
+3. 在本地执行第 8.2 步，构建 Docker 镜像。
+4. 在本地执行第 8.3 步，登录 Docker Hub。
+5. 在本地执行第 8.4 步，推送镜像到 Docker Hub。
+6. 在服务器上执行第 8.5 步，拉取并运行镜像。
+7. 执行第 8.6 步，验证 Docker 容器。
+8. 执行第 9 步，浏览器访问网站验证。
 
 ---
 
-## 18. 关键结论
+## 17. 关键结论
 
-- Harry 主站点不用 Docker。
-- 当前最简单稳定的部署方式是：本地构建 `dist`，上传到服务器。
+- Harry 主站点采用 Docker 镜像部署方式。
+- 本地构建 Docker 镜像，推送到 Docker Hub，服务器拉取镜像运行。
+- 源代码安全性高，服务器上只有编译后的镜像。
+- 更新快速简单，只需要推送新镜像。
 - 一个域名可以承载多个项目页面。
 - 多个项目页面应该通过 React Router 的 `/projects/:slug` 实现。
-- 后端 API 以后再用 Docker 部署即可。
+- 后端 API 推荐使用 Docker 镜像部署。
+- React 路由由容器内的 Nginx 处理，Caddy 只需要反向代理。

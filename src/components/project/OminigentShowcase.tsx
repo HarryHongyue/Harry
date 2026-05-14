@@ -30,7 +30,7 @@ const OminigentShowcase: React.FC<OminigentShowcaseProps> = ({ project }) => {
       <section className="section-shell ominigent-website-hero">
         <div className="ominigent-website-hero__inner">
           <div className="ominigent-website-hero__content">
-            <h1 className="ominigent-website-hero__title">Ominigent <span>Solutions</span></h1>
+            <h1 className="ominigent-website-hero__title">Omini<span>gent</span></h1>
             <p className="ominigent-website-hero__description">{pickText(currentLanguage, project.longDescription)}</p>
             <div className="ominigent-website-hero__actions">
               <a href={visitUrl} className={`${neoButtonClass('primary')} ominigent-website-button`} target="_blank" rel="noreferrer"><ExternalLink size={18} />{currentLanguage === 'zh' ? '访问网站' : currentLanguage === 'nl' ? 'Website bezoeken' : 'Visit Website'}</a>
