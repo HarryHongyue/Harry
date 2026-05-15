@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, Globe2, Palette, Puzzle, ShieldCheck } from 'lucide-react';
 import { FaChrome, FaSafari, FaFirefox, FaEdge } from 'react-icons/fa';
 import { SiOpera, SiBrave, SiVivaldi } from 'react-icons/si';
@@ -7,6 +7,7 @@ import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
+import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -30,22 +31,23 @@ interface SurpriseMeShowcaseProps {
 
 const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
   const { currentLanguage } = useLanguage();
-  const latestRelease = project.releaseAssets[0];
-  const version = latestRelease?.version ?? 'v1.0.0';
-  const releaseDate = latestRelease?.releaseDate ?? '2026-05-11';
+  const [versionHistory, setVersionHistory] = useState<any[]>([]);
+  const [latestVersion, setLatestVersion] = useState('');
+  const [latestReleaseDate, setLatestReleaseDate] = useState('');
+
+  useEffect(() => {
+    fetchReleaseManifest().then(manifest => {
+      setVersionHistory(getProjectVersionHistory(manifest, 'surpriseme'));
+      setLatestVersion(getLatestVersion(manifest, 'surpriseme'));
+      setLatestReleaseDate(getLatestReleaseDate(manifest, 'surpriseme'));
+    });
+  }, []);
+  const version = latestVersion || project.releaseAssets[0]?.version || 'v1.0.0';
+  const releaseDate = latestReleaseDate || project.releaseAssets[0]?.releaseDate || '2026-05-11';
   const features = [
     { title: currentLanguage === 'zh' ? '自定义' : currentLanguage === 'nl' ? 'Aanpassing' : 'Customization', body: currentLanguage === 'zh' ? '从多种颜色中选择或创建自己的自定义颜色。' : currentLanguage === 'nl' ? 'Kies uit verschillende kleuren of maak je eigen aangepaste kleur.' : 'Choose from a variety of colors or create your own custom color.', icon: <Palette size={22} /> },
     { title: currentLanguage === 'zh' ? '简单易用' : currentLanguage === 'nl' ? 'Eenvoud' : 'Simplicity', body: currentLanguage === 'zh' ? '一键激活和停用。没有复杂的设置。' : currentLanguage === 'nl' ? 'Activeren en deactiveren met één klik. Geen ingewikkelde instellingen.' : 'One-click activation and deactivation. No complicated settings.', icon: <Puzzle size={22} /> },
     { title: currentLanguage === 'zh' ? '跨浏览器' : currentLanguage === 'nl' ? 'Cross-browser' : 'Cross-Browser', body: currentLanguage === 'zh' ? '适用于 Chrome、Firefox 和 Safari 浏览器。' : currentLanguage === 'nl' ? 'Beschikbaar voor Chrome-, Firefox- en Safari-browsers.' : 'Available for Chrome, Firefox, and Safari browsers.', icon: <FaChrome size={22} /> },
-  ];
-  const versionChanges = [
-    currentLanguage === 'zh' ? 'SurpriseMe 浏览器扩展初始版本发布。' : currentLanguage === 'nl' ? 'Eerste release van de SurpriseMe browserextensie.' : 'Initial release of the SurpriseMe browser extension.',
-    currentLanguage === 'zh' ? '支持为任何网页添加可自定义的彩色边框。' : currentLanguage === 'nl' ? 'Ondersteuning voor het toevoegen van aanpasbare gekleurde randen aan elke webpagina.' : 'Support for adding customizable colored borders to any webpage.',
-    currentLanguage === 'zh' ? '支持多种颜色选择和自定义颜色创建。' : currentLanguage === 'nl' ? 'Ondersteuning voor verschillende kleurenkeuzes en aangepaste kleurencreatie.' : 'Support for multiple color choices and custom color creation.',
-    currentLanguage === 'zh' ? '适用于 Chrome、Firefox、Safari 等主流浏览器。' : currentLanguage === 'nl' ? 'Beschikbaar voor Chrome, Firefox, Safari en andere populaire browsers.' : 'Available for Chrome, Firefox, Safari, and other popular browsers.',
-  ];
-  const versionHistory = [
-    { version, date: releaseDate, changes: versionChanges },
   ];
 
   return (
@@ -114,14 +116,14 @@ const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
             <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{version}</span></h3>
           </div>
           <div className="surprise-showcase-version-list">
-            {versionHistory.map((version, index) => (
+            {versionHistory.map((version: any, index: number) => (
               <div key={version.version} className={`surprise-showcase-version ${index !== 0 ? 'surprise-showcase-version--divided' : ''}`}>
                 <div className="surprise-showcase-version__header">
                   <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
                   <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
                 </div>
                 <ul className="surprise-showcase-version__changes">
-                  {version.changes.map((change) => <li key={change}>{change}</li>)}
+                  {version.changes.map((change: string) => <li key={change}>{change}</li>)}
                 </ul>
               </div>
             ))}

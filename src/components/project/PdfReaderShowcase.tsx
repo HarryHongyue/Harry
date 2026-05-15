@@ -1,10 +1,11 @@
-import React from 'react';
-import { Download, FileSearch, FileText, Globe, Layers, ScanText, ShieldCheck, Table2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { BookOpen, Download, FileSearch, FileText, Globe, Layers, Lock, Scan, ScanText, ShieldCheck, Table2 } from 'lucide-react';
 import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
+import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
 
 const pdfReaderScreenshot = new URL('../../assets/images/PDF Reader/PDF reader.PNG', import.meta.url).href;
 
@@ -20,6 +21,17 @@ interface PdfReaderShowcaseProps {
 
 const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
   const { currentLanguage } = useLanguage();
+  const [versionHistory, setVersionHistory] = useState<any[]>([]);
+  const [latestVersion, setLatestVersion] = useState('');
+  const [latestReleaseDate, setLatestReleaseDate] = useState('');
+
+  useEffect(() => {
+    fetchReleaseManifest().then(manifest => {
+      setVersionHistory(getProjectVersionHistory(manifest, 'pdf-reader'));
+      setLatestVersion(getLatestVersion(manifest, 'pdf-reader'));
+      setLatestReleaseDate(getLatestReleaseDate(manifest, 'pdf-reader'));
+    });
+  }, []);
   const features = [
     { title: currentLanguage === 'zh' ? 'OCR 文档识别' : currentLanguage === 'nl' ? 'OCR-documentherkenning' : 'OCR Document Reading', body: currentLanguage === 'zh' ? '读取扫描版 PDF，把图片中的文字转换成可复制、可处理的结构化内容。' : currentLanguage === 'nl' ? 'Leest gescande PDF-bestanden en zet tekst in afbeeldingen om naar bruikbare gestructureerde inhoud.' : 'Reads scanned PDFs and turns text inside images into copyable, structured content.', icon: <ScanText size={22} /> },
     { title: currentLanguage === 'zh' ? '文本与表格提取' : currentLanguage === 'nl' ? 'Tekst- en tabel-extractie' : 'Text and Table Extraction', body: currentLanguage === 'zh' ? '从结构化 PDF 中提取文本、表格和业务字段，减少重复复制粘贴。' : currentLanguage === 'nl' ? 'Extraheert tekst, tabellen en bedrijfsvelden uit gestructureerde PDF-documenten.' : 'Extracts text, tables, and business fields from structured PDFs to reduce repetitive copy-paste work.', icon: <Table2 size={22} /> },
@@ -34,20 +46,13 @@ const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
     currentLanguage === 'zh' ? '上传 PDF 并选择解析模式' : currentLanguage === 'nl' ? 'Upload een PDF en kies een extractiemodus' : 'Upload a PDF and choose an extraction mode',
     currentLanguage === 'zh' ? '查看、复制或导出结果' : currentLanguage === 'nl' ? 'Bekijk, kopieer of exporteer resultaten' : 'Review, copy, or export results',
   ];
-  const versionChanges = [
-    currentLanguage === 'zh' ? 'PDF Reader 项目页面重构为专属展示页面。' : currentLanguage === 'nl' ? 'PDF Reader-projectpagina is omgezet naar een speciale productpresentatie.' : 'PDF Reader project page rebuilt as a dedicated product showcase.',
-    currentLanguage === 'zh' ? '突出 OCR、文本表格提取和坐标感知解析能力。' : currentLanguage === 'nl' ? 'Legt nadruk op OCR, tekst-/tabelextractie en coördinaatbewuste parsing.' : 'Highlights OCR, text/table extraction, and coordinate-aware parsing.',
-    currentLanguage === 'zh' ? '提供 Windows 与 macOS 安装入口。' : currentLanguage === 'nl' ? 'Biedt Windows- en macOS-downloadpaden.' : 'Provides Windows and macOS download paths.',
-    currentLanguage === 'zh' ? '强化隐私、临时文件和 API 边界说明。' : currentLanguage === 'nl' ? 'Verduidelijkt privacy, tijdelijke bestanden en API-grenzen.' : 'Clarifies privacy, temporary files, and API boundary behavior.',
-  ];
   const privacyItems = [
     { title: currentLanguage === 'zh' ? '文件校验' : currentLanguage === 'nl' ? 'Bestandsvalidatie' : 'File Validation', body: currentLanguage === 'zh' ? 'PDF 进入识别流程前应经过类型、大小和模式校验。' : currentLanguage === 'nl' ? 'PDF-bestanden worden gevalideerd op type, grootte en modus voordat extractie start.' : 'PDFs should be validated by type, size, and mode before processing begins.' },
     { title: currentLanguage === 'zh' ? '临时处理' : currentLanguage === 'nl' ? 'Tijdelijke verwerking' : 'Temporary Processing', body: currentLanguage === 'zh' ? '解析产物和临时文件应围绕任务生命周期进行清理。' : currentLanguage === 'nl' ? 'Afgeleide uitvoer en tijdelijke bestanden horen bij de taaklevenscyclus te worden opgeschoond.' : 'Derived output and temporary files should be cleaned around the job lifecycle.' },
     { title: currentLanguage === 'zh' ? '私有 API' : currentLanguage === 'nl' ? 'Private API' : 'Private API', body: currentLanguage === 'zh' ? '较重的 OCR 与解析能力应留在受控 API 边界之后。' : currentLanguage === 'nl' ? 'Zwaardere OCR- en parsinglogica blijft achter gecontroleerde API-grenzen.' : 'Heavier OCR and parsing logic stays behind controlled API boundaries.' },
   ];
-  const latestRelease = project.releaseAssets[0];
-  const version = latestRelease?.version ?? 'v1.2.3';
-  const releaseDate = latestRelease?.releaseDate ?? '2026-05-11';
+  const version = latestVersion || project.releaseAssets[0]?.version || 'v1.2.3';
+  const releaseDate = latestReleaseDate || project.releaseAssets[0]?.releaseDate || '2026-05-11';
 
   return (
     <>
@@ -118,7 +123,7 @@ const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
                 <span>{currentLanguage === 'zh' ? `发布日期 ${releaseDate}` : currentLanguage === 'nl' ? `Uitgebracht op ${releaseDate}` : `Released on ${releaseDate}`}</span>
               </div>
               <ul className="pdf-showcase-version__changes">
-                {versionChanges.map((change) => <li key={change}>{change}</li>)}
+                {versionHistory[0]?.changes.map((change: string) => <li key={change}>{change}</li>)}
               </ul>
             </div>
           </div>

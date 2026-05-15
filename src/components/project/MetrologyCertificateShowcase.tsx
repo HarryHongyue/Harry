@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Database, Download, FileSearch, FolderOpen, ShieldCheck } from 'lucide-react';
 import type { Project } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
+import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
 
 const certificateScreenshots = [
   new URL('../../assets/images/计量证书管理系统/证书1.PNG', import.meta.url).href,
@@ -25,9 +26,20 @@ interface MetrologyCertificateShowcaseProps {
 const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> = ({ project }) => {
   const { currentLanguage } = useLanguage();
   const [activeScreenshot, setActiveScreenshot] = useState(0);
-  const latestRelease = project.releaseAssets[0];
-  const version = latestRelease?.version ?? 'v1.0.0';
-  const releaseDate = latestRelease?.releaseDate ?? '2026-05-11';
+  const [versionHistory, setVersionHistory] = useState<any[]>([]);
+  const [latestVersion, setLatestVersion] = useState('');
+  const [latestReleaseDate, setLatestReleaseDate] = useState('');
+
+  useEffect(() => {
+    fetchReleaseManifest().then(manifest => {
+      setVersionHistory(getProjectVersionHistory(manifest, 'metrology-certificate'));
+      setLatestVersion(getLatestVersion(manifest, 'metrology-certificate'));
+      setLatestReleaseDate(getLatestReleaseDate(manifest, 'metrology-certificate'));
+    });
+  }, []);
+
+  const version = latestVersion || project.releaseAssets[0]?.version || 'v1.0.0';
+  const releaseDate = latestReleaseDate || project.releaseAssets[0]?.releaseDate || '2026-05-11';
   const features = [
     {
       title: currentLanguage === 'zh' ? '证书记录管理' : currentLanguage === 'nl' ? 'Certificaatbeheer' : 'Certificate Record Management',
@@ -51,7 +63,7 @@ const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> 
     currentLanguage === 'zh' ? '支持证书附件的本地存储和管理。' : currentLanguage === 'nl' ? 'Ondersteuning voor lokale opslag en beheer van certificaatbijlagen.' : 'Support for local storage and management of certificate attachments.',
     currentLanguage === 'zh' ? '提供桌面安装包交付，支持Windows系统。' : currentLanguage === 'nl' ? 'Desktop-installatiepakket beschikbaar voor Windows.' : 'Desktop installer package available for Windows.',
   ];
-  const versionHistory = [
+  const defaultVersionHistory = [
     { version, date: releaseDate, changes: versionChanges },
   ];
   const handleScreenshotMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -120,14 +132,14 @@ const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> 
             <h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{version}</span></h3>
           </div>
           <div className="metrology-showcase-version-list">
-            {versionHistory.map((version, index) => (
+            {(versionHistory.length > 0 ? versionHistory : defaultVersionHistory).map((version: any, index: number) => (
               <div key={version.version} className={`metrology-showcase-version ${index !== 0 ? 'metrology-showcase-version--divided' : ''}`}>
                 <div className="metrology-showcase-version__header">
                   <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
                   <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
                 </div>
                 <ul className="metrology-showcase-version__changes">
-                  {version.changes.map((change) => <li key={change}>{change}</li>)}
+                  {version.changes.map((change: string) => <li key={change}>{change}</li>)}
                 </ul>
               </div>
             ))}

@@ -1,4 +1,5 @@
 import type { LocalizedText, Project, ProjectCategory, ProjectReleaseAsset, ProjectStatus } from '../types/project';
+import { fetchReleaseManifest, getProjectAssets } from '../utils/releaseManifest';
 
 const l = (en: string, zh: string, nl: string): LocalizedText => ({ en, zh, nl });
 
@@ -62,7 +63,7 @@ export const projects: Project[] = [
     category: ['saas-platform', 'architecture-reference'],
     status: 'featured',
     projectType: ['saas-concept', 'website'],
-    logo: '/project-assets/harry-logo.png',
+    logo: '/project-assets/fwbp-logo.png',
     repoPath: 'G:\\GitHubPersonal\\Future-Website-Building-Platform',
     techStackIds: ['react', 'typescript', 'fastapi', 'nodejs', 'postgresql', 'docker', 'caddy'],
     backendRequired: true,
@@ -890,5 +891,26 @@ export const projectFilters: Array<{ key: 'all' | ProjectCategory; label: Locali
   { key: 'browser-extension', label: l('Browser Extension', '浏览器扩展', 'Browserextensie') },
   { key: 'architecture-reference', label: l('Architecture Reference', '架构参考', 'Architectuurreferentie') },
 ];
+
+// Initialize release assets from manifest
+let manifestInitialized = false;
+
+export async function initializeReleaseAssets() {
+  if (manifestInitialized) return;
+
+  try {
+    const manifest = await fetchReleaseManifest();
+    
+    projects.forEach(project => {
+      if (project.slug && project.downloadable) {
+        project.releaseAssets = getProjectAssets(manifest, project.slug);
+      }
+    });
+    
+    manifestInitialized = true;
+  } catch (error) {
+    console.error('Failed to initialize release assets:', error);
+  }
+}
 
 export const downloadsProjects = filteredProjects.filter((project) => project.releaseAssets.length > 0);

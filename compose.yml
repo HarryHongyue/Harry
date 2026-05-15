@@ -11,6 +11,8 @@ services:
     volumes:
       - ./public/releases:/usr/share/nginx/html/releases:ro
       - ./public/downloads:/usr/share/nginx/html/downloads:ro
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   pdf-reader-api:
     image: ghcr.io/harryhongyue/pdf-reader-api:latest
@@ -20,6 +22,8 @@ services:
       - backends
     expose:
       - "8000"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   aircargo-edi-api:
     image: ghcr.io/harryhongyue/aircargo-edi-api:latest
@@ -27,5 +31,19 @@ services:
     restart: unless-stopped
     profiles:
       - backends
+    expose:
+      - "8000"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=300
+      - WATCHTOWER_LABEL_ENABLE=true
+    restart: unless-stopped
     expose:
       - "8000"

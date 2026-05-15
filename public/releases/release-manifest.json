@@ -1,0 +1,148 @@
+{
+  "lastUpdated": "2026-05-14T00:00:00Z",
+  "projects": {
+    "ode-solver": {
+      "slug": "ode-solver",
+      "latestVersion": "v1.0.0",
+      "releaseDate": "2025-07-05",
+      "assets": [
+        {
+          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
+          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
+          "version": "v1.0.0",
+          "size": "126.8 MB",
+          "href": "https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v1.0.0/ODE-Solver-Setup.exe",
+          "sha256": "3f2b7e5c90f0b62d4a6df1e8bc9d2f7b441e3b9d52cfab8e01c7ddda7f1d53f2"
+        }
+      ],
+      "versionHistory": [
+        {
+          "version": "v1.0.0",
+          "date": "2025-07-05",
+          "changes": [
+            "ODE Solver 初始版本发布",
+            "支持 Euler、Runge-Kutta 等求解方法",
+            "提供解曲线的交互式可视化",
+            "支持将结果导出为 CSV 和 PNG 等格式"
+          ]
+        }
+      ]
+    },
+    "pdf-reader": {
+      "slug": "pdf-reader",
+      "latestVersion": "v1.2.3",
+      "releaseDate": "2026-05-11",
+      "assets": [
+        {
+          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
+          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
+          "version": "v1.2.3",
+          "size": "148 MB",
+          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Setup.exe",
+          "sha256": "a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2"
+        },
+        {
+          "label": {"en": "macOS Installer", "zh": "macOS 安装程序", "nl": "macOS-installer"},
+          "platform": {"en": "macOS Universal", "zh": "macOS 通用版", "nl": "macOS universal"},
+          "version": "v1.2.3",
+          "size": "142 MB",
+          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Setup.dmg",
+          "sha256": "45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e"
+        }
+      ],
+      "versionHistory": [
+        {
+          "version": "v1.2.3",
+          "date": "2026-05-11",
+          "changes": [
+            "PDF Reader 项目页面重构为专属展示页面",
+            "突出 OCR、文本表格提取和坐标感知解析能力",
+            "提供 Windows 与 macOS 安装入口",
+            "强化隐私、临时文件和 API 边界说明"
+          ]
+        }
+      ]
+    },
+    "surpriseme": {
+      "slug": "surpriseme",
+      "latestVersion": "v1.0.0",
+      "releaseDate": "2026-05-11",
+      "assets": [
+        {
+          "label": {"en": "Chrome Extension", "zh": "Chrome 扩展", "nl": "Chrome-extensie"},
+          "platform": {"en": "Chrome/Edge/Brave/Vivaldi", "zh": "Chrome/Edge/Brave/Vivaldi", "nl": "Chrome/Edge/Brave/Vivaldi"},
+          "version": "v1.0.0",
+          "size": "19 KB",
+          "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.0.0/SurpriseMe.zip",
+          "sha256": "abc123def4567890123456789012345678901234567890123456789012345678"
+        }
+      ],
+      "versionHistory": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-05-11",
+          "changes": [
+            "SurpriseMe 浏览器扩展初始版本发布",
+            "支持为任何网页添加可自定义的彩色边框",
+            "支持多种颜色选择和自定义颜色创建",
+            "适用于 Chrome、Firefox、Safari 等主流浏览器"
+          ]
+        }
+      ]
+    },
+    "aircargo-edi": {
+      "slug": "aircargo-edi",
+      "latestVersion": "v1.0.0",
+      "releaseDate": "2026-05-14",
+      "assets": [
+        {
+          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
+          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
+          "version": "v1.0.0",
+          "size": "120 MB",
+          "href": "https://github.com/HarryHongyue/Aircargo-EDI/releases/download/v1.0.0/Aircargo-EDI-Setup.exe",
+          "sha256": "def4567890123456789012345678901234567890123456789012345678901234"
+        }
+      ],
+      "versionHistory": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-05-14",
+          "changes": [
+            "Aircargo EDI 初始版本发布",
+            "支持 PDF 解析和 AWB/HAWB 数据提取",
+            "支持 Cargo-IMP FWB/FHL 生成",
+            "提供桌面应用和在线 API"
+          ]
+        }
+      ]
+    },
+    "metrology-certificate": {
+      "slug": "metrology-certificate",
+      "latestVersion": "v1.0.0",
+      "releaseDate": "2026-05-14",
+      "assets": [
+        {
+          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
+          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
+          "version": "v1.0.0",
+          "size": "45 MB",
+          "href": "https://github.com/HarryHongyue/计量证书管理系统/releases/download/v1.0.0/MetrologyCertificateManager-1.0.2.exe",
+          "sha256": "abc123def4567890123456789012345678901234567890123456789012345678"
+        }
+      ],
+      "versionHistory": [
+        {
+          "version": "v1.0.0",
+          "date": "2026-05-14",
+          "changes": [
+            "计量证书管理系统初始版本发布",
+            "支持证书的新增、编辑、查询和维护功能",
+            "支持证书附件的本地存储和管理",
+            "提供桌面安装包交付，支持 Windows 系统"
+          ]
+        }
+      ]
+    }
+  }
+}
