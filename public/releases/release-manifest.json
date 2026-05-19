@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-19T16:25:55.8154831+00:00",
+  "lastUpdated": "2026-05-19T16:29:16.0821820+00:00",
   "projects": {
     "ode-solver": {
       "slug": "ode-solver",
@@ -99,22 +99,27 @@
       "assets": [
         {
           "label": {
-            "en": "Browser Extensions",
+            "zh": "浏览器扩展",
             "nl": "Browser-extensies",
-            "zh": "浏览器扩展"
+            "en": "Browser Extensions"
           },
-          "platform": {
-            "en": "Chrome/Edge/Brave/Vivaldi/Firefox",
-            "nl": "Chrome/Edge/Brave/Vivaldi/Firefox",
-            "zh": "Chrome/Edge/Brave/Vivaldi/Firefox"
-          },
-          "sha256": "02f9d02d78372eee3c9aaa52def25ac11b46fa18e55e622943e48059f921225c",
+          "version": "v1.0.0",
           "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.0.0/SurpriseMe-1.0.0.zip",
           "size": "41.2 KB",
-          "version": "v1.0.0"
+          "platform": {
+            "zh": "Chrome/Edge/Brave/Vivaldi/Firefox",
+            "nl": "Chrome/Edge/Brave/Vivaldi/Firefox",
+            "en": "Chrome/Edge/Brave/Vivaldi/Firefox"
+          },
+          "sha256": "2653a6bc7cca190b9f334f6c5d2d9a6ac75db420a93fbc9aa2098d95705e1806"
         }
       ],
       "versionHistory": [
+        {
+          "changes": "Automated release",
+          "date": "2026-05-19",
+          "version": "v1.0.0"
+        },
         {
           "version": "v1.0.0",
           "changes": "Automated release",
