@@ -3,6 +3,7 @@ name: Auto Rebuild on Release Update
 on:
   repository_dispatch:
     types: [release-update]
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
