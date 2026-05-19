@@ -46,6 +46,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /opt/harry
-            docker-compose pull
-            docker-compose up -d
+            cd /opt/harry-site
+            docker compose pull
+            docker compose up -d
