@@ -374,11 +374,7 @@ export const projects: Project[] = [
     desktopApp: true,
     browserExtension: false,
     webVersion: true,
-    releaseAssets: [
-      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.0.0', '126.8 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', '3f2b7e5c90f0b62d4a6df1e8bc9d2f7b441e3b9d52cfab8e01c7ddda7f1d53f2', '2025-07-05'),
-      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS ARM64', 'macOS ARM64', 'macOS ARM64'), 'v1.0.0', '124.8 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', 'ccad1207e3c4432f11f98e87ab7c16da229983db3d7f8f3f3b86f938f2d6bb15', '2025-07-05'),
-      asset(l('Linux Installer', 'Linux 安装程序', 'Linux-installer'), l('Linux 64-bit', 'Linux 64 位', 'Linux 64-bit'), 'v1.0.0', '122.3 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases', 'ae7b236bc4177f0a84ab38fbc12a67d7dd1fe44322e4a88f169bc92834f55a12', '2025-07-05'),
-    ],
+    releaseAssets: [],
     securityNotes: [
       l('Desktop installers should be distributed through trusted release channels and verified checksums.', '桌面安装包应当通过可信发布渠道分发，并附带可校验的哈希值。', 'Desktop-installers moeten via vertrouwde releasekanalen worden verspreid met verifieerbare checksums.'),
       l('Release notes should make platform support and package provenance explicit.', '发布说明应明确平台支持范围和安装包来源。', 'Release notes moeten platformondersteuning en package-herkomst expliciet maken.'),

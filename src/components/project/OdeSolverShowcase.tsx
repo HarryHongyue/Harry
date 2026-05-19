@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, ChartLine, Download, GitCompareArrows, ShieldCheck } from 'lucide-react';
-import type { Project } from '../../types/project';
+import type { Project, ProjectReleaseAsset } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
-import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
+import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate, getProjectAssets } from '../../utils/releaseManifest';
 
 const odeSolverScreenshot = new URL('../../assets/images/ODE Solver/ODE Solver.PNG', import.meta.url).href;
 
@@ -24,14 +24,28 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
   const [versionHistory, setVersionHistory] = useState<any[]>([]);
   const [latestVersion, setLatestVersion] = useState('');
   const [latestReleaseDate, setLatestReleaseDate] = useState('');
+  const [releaseAssets, setReleaseAssets] = useState<ProjectReleaseAsset[]>([]);
 
   useEffect(() => {
     fetchReleaseManifest().then(manifest => {
       setVersionHistory(getProjectVersionHistory(manifest, 'ode-solver'));
       setLatestVersion(getLatestVersion(manifest, 'ode-solver'));
       setLatestReleaseDate(getLatestReleaseDate(manifest, 'ode-solver'));
+      setReleaseAssets(getProjectAssets(manifest, 'ode-solver'));
     });
   }, []);
+
+  const localize = (text: { en: string; zh: string; nl: string }) => {
+    if (!text) return '';
+    if (currentLanguage === 'zh') return text.zh;
+    if (currentLanguage === 'nl') return text.nl;
+    return text.en;
+  };
+
+  const primaryAsset = releaseAssets[0];
+  const downloadHref = primaryAsset?.href ?? project.downloadUrl ?? project.repoUrl ?? '#';
+  const downloadLabel = primaryAsset ? `${localize(primaryAsset.label)} · ${primaryAsset.version}` : currentLanguage === 'zh' ? '立即下载' : currentLanguage === 'nl' ? 'Download nu' : 'Download Now';
+
   const featureHighlights = [
     { title: currentLanguage === 'zh' ? '自定义方程输入' : currentLanguage === 'nl' ? 'Aangepaste vergelijking invoer' : 'Custom Equation Input', body: currentLanguage === 'zh' ? '使用直观的方程编辑器自由输入常微分方程，支持多种形式和阶数。' : currentLanguage === 'nl' ? 'Voer gewone differentiaalvergelijkingen vrij in met een intuïtieve editor, met ondersteuning voor meerdere vormen en ordes.' : 'Freely input ordinary differential equations with an intuitive equation editor, supporting multiple forms and orders.', icon: <GithubIcon size={22} /> },
     { title: currentLanguage === 'zh' ? '多种求解方法' : currentLanguage === 'nl' ? 'Meerdere oplossingsmethoden' : 'Multiple Solving Methods', body: currentLanguage === 'zh' ? '选择 Euler、Runge-Kutta、Adams-Bashforth 等数值方法求解方程。' : currentLanguage === 'nl' ? 'Kies uit numerieke methoden zoals Euler, Runge-Kutta en Adams-Bashforth.' : 'Choose from numerical methods including Euler, Runge-Kutta, Adams-Bashforth, and more.', icon: <Calculator size={22} /> },
@@ -60,7 +74,7 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
             <h1 className="ode-showcase-hero__title">ODE <span>Solver</span></h1>
             <p className="ode-showcase-hero__description">{currentLanguage === 'zh' ? '一款强大的应用程序，使用各种数值方法求解常微分方程。适合数学、工程和科学领域的学生、研究人员和专业人士使用。' : currentLanguage === 'nl' ? 'Een krachtige applicatie voor het oplossen van gewone differentiaalvergelijkingen met verschillende numerieke methoden. Perfect voor studenten, onderzoekers en professionals in wiskunde, techniek en wetenschap.' : 'A powerful application for solving ordinary differential equations using various numerical methods. Perfect for students, researchers, and professionals in mathematics, engineering, and science.'}</p>
             <div className="ode-showcase-hero__actions">
-              <a href="#ode-download" className={`${neoButtonClass('primary')} ode-showcase-button ode-showcase-button--primary`}><Download size={18} />{currentLanguage === 'zh' ? '立即下载' : currentLanguage === 'nl' ? 'Download nu' : 'Download Now'}</a>
+              <a href={downloadHref} className={`${neoButtonClass('primary')} ode-showcase-button ode-showcase-button--primary`} target="_blank" rel="noreferrer"><Download size={18} />{downloadLabel}</a>
               <a href={project.repoUrl ?? '#'} className={`${neoButtonClass('secondary')} ode-showcase-button`} target="_blank" rel="noreferrer"><GithubIcon size={18} />{currentLanguage === 'zh' ? '了解更多' : currentLanguage === 'nl' ? 'Meer informatie' : 'Learn More'}</a>
             </div>
           </div>
@@ -76,7 +90,45 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
       <section id="ode-download" className="section-shell ode-showcase-section">
         <h2 className="ode-showcase-section__title">{currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download'}</h2>
         <p className="ode-showcase-section__subtitle">{currentLanguage === 'zh' ? '只需点击几下即可开始使用 ODE 求解器。适用于 Windows 系统。' : currentLanguage === 'nl' ? 'Begin met ODE Solver in slechts enkele klikken. Beschikbaar voor Windows.' : 'Get started with ODE Solver in just a few clicks. Available for Windows.'}</p>
-        <NeoCard className="ode-showcase-download-card"><div className="ode-showcase-download-card__main"><a href={project.downloadUrl ?? project.repoUrl ?? '#'} className={`${neoButtonClass('primary')} ode-showcase-download-button`} target="_blank" rel="noreferrer"><Download size={24} />{currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows'}</a><p>{currentLanguage === 'zh' ? `版本 ${latestVersion || project.releaseAssets[0]?.version || '1.0.0'} | 稳定版` : currentLanguage === 'nl' ? `Versie ${latestVersion || project.releaseAssets[0]?.version || '1.0.0'} | Stabiele versie` : `Version ${latestVersion || project.releaseAssets[0]?.version || '1.0.0'} | Stable Version`}</p></div><div className="ode-showcase-install"><h3>{currentLanguage === 'zh' ? '安装说明' : currentLanguage === 'nl' ? 'Installatie-instructies' : 'Installation Instructions'}</h3><div className="ode-showcase-install__grid">{installSteps.map((step, index) => <NeoCard key={step} variant="inset" className="ode-showcase-install-step"><span>{index + 1}</span><p>{step}</p></NeoCard>)}</div></div></NeoCard>
+        <NeoCard className="ode-showcase-download-card">
+          <div className="ode-showcase-download-card__main">
+            {releaseAssets.length > 0 ? (
+              <div className="ode-showcase-download-list">
+                {releaseAssets.map(asset => (
+                  <NeoCard key={`${asset.href}-${asset.version}`} variant="inset" className="ode-showcase-download-option">
+                    <div>
+                      <h3>{localize(asset.label)}</h3>
+                      <p>{localize(asset.platform)}</p>
+                      <p>{currentLanguage === 'zh' ? `版本 ${asset.version}` : currentLanguage === 'nl' ? `Versie ${asset.version}` : `Version ${asset.version}`}</p>
+                      <p>{asset.size}</p>
+                      <p>{currentLanguage === 'zh' ? `发布日期 ${asset.releaseDate}` : currentLanguage === 'nl' ? `Uitgebracht op ${asset.releaseDate}` : `Released on ${asset.releaseDate}`}</p>
+                    </div>
+                    <a href={asset.href} className={`${neoButtonClass('primary')} ode-showcase-download-button`} target="_blank" rel="noreferrer">
+                      <Download size={18} />
+                      {currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download'}
+                    </a>
+                  </NeoCard>
+                ))}
+              </div>
+            ) : (
+              <div>
+                <p>{currentLanguage === 'zh' ? '暂时只提供 GitHub Release 下载。' : currentLanguage === 'nl' ? 'Voorlopig alleen beschikbaar via GitHub Releases.' : 'Currently available via GitHub Releases only.'}</p>
+                <a href={project.downloadUrl ?? project.repoUrl ?? '#'} className={`${neoButtonClass('primary')} ode-showcase-download-button`} target="_blank" rel="noreferrer"><Download size={18} />{currentLanguage === 'zh' ? '前往下载页' : currentLanguage === 'nl' ? 'Ga naar downloadpagina' : 'Go to Download Page'}</a>
+              </div>
+            )}
+          </div>
+          <div className="ode-showcase-install">
+            <h3>{currentLanguage === 'zh' ? '安装说明' : currentLanguage === 'nl' ? 'Installatie-instructies' : 'Installation Instructions'}</h3>
+            <div className="ode-showcase-install__grid">
+              {installSteps.map((step, index) => (
+                <NeoCard key={step} variant="inset" className="ode-showcase-install-step">
+                  <span>{index + 1}</span>
+                  <p>{step}</p>
+                </NeoCard>
+              ))}
+            </div>
+          </div>
+        </NeoCard>
       </section>
 
       <section className="section-shell ode-showcase-section"><h2 className="ode-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2><NeoCard className="ode-showcase-updates-card"><div className="ode-showcase-updates-card__current"><h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{latestVersion || project.releaseAssets[0]?.version || '1.0.0'}</span></h3></div><div className="ode-showcase-version-list">{versionHistory.map((version: any, index: number) => <div key={version.version} className={`ode-showcase-version ${index !== 0 ? 'ode-showcase-version--divided' : ''}`}><div className="ode-showcase-version__header"><h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4><span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span></div><ul className="ode-showcase-version__changes">{version.changes.map((change: string) => <li key={change}>{change}</li>)}</ul></div>)}</div></NeoCard></section>

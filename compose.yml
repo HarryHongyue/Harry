@@ -1,16 +1,13 @@
 services:
   harry-web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: harry-web:latest
+    image: ghcr.io/harryhongyue/harry-web:latest
     container_name: harry-web
     restart: unless-stopped
     ports:
       - "8080:80"
     volumes:
-      - ./public/releases:/usr/share/nginx/html/releases:ro
-      - ./public/downloads:/usr/share/nginx/html/downloads:ro
+      - ./releases:/usr/share/nginx/html/releases:ro
+      - ./downloads:/usr/share/nginx/html/downloads:ro
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 

@@ -27,16 +27,18 @@
         {
           "version": "1.0.1",
           "date": "2026-05-19",
-          "changes": "Automated release"
+          "changes": [
+            "Automated release"
+          ]
         },
         {
           "version": "v1.0.0",
           "date": "2025-07-05",
           "changes": [
-            "ODE Solver 初始版本发布",
-            "支持 Euler、Runge-Kutta 等求解方法",
-            "提供解曲线的交互式可视化",
-            "支持将结果导出为 CSV 和 PNG 等格式"
+            "ODE Solver ",
+            "Euler、Runge-Kutta ",
+            "PDF CSV PNG ",
+            "CSV PNG "
           ]
         }
       ]
@@ -49,12 +51,12 @@
         {
           "label": {
             "en": "Windows Installer",
-            "zh": "Windows 安装程序",
+            "zh": "Windows ",
             "nl": "Windows-installer"
           },
           "platform": {
             "en": "Windows 64-bit",
-            "zh": "Windows 64 位",
+            "zh": "Windows 64 ",
             "nl": "Windows 64-bit"
           },
           "version": "v1.2.3",
@@ -65,12 +67,12 @@
         {
           "label": {
             "en": "macOS Installer",
-            "zh": "macOS 安装程序",
+            "zh": "macOS ",
             "nl": "macOS-installer"
           },
           "platform": {
             "en": "macOS Universal",
-            "zh": "macOS 通用版",
+            "zh": "macOS ",
             "nl": "macOS universal"
           },
           "version": "v1.2.3",
@@ -84,10 +86,10 @@
           "version": "v1.2.3",
           "date": "2026-05-11",
           "changes": [
-            "PDF Reader 项目页面重构为专属展示页面",
-            "突出 OCR、文本表格提取和坐标感知解析能力",
-            "提供 Windows 与 macOS 安装入口",
-            "强化隐私、临时文件和 API 边界说明"
+            "PDF Reader ",
+            "OCR ",
+            "Windows macOS ",
+            "Windows macOS "
           ]
         }
       ]
@@ -99,7 +101,7 @@
       "assets": [
         {
           "label": {
-            "zh": "浏览器扩展",
+            "zh": "",
             "nl": "Browser-extensies",
             "en": "Browser Extensions"
           },
@@ -116,41 +118,20 @@
       ],
       "versionHistory": [
         {
-          "changes": "Automated release",
+          "version": "v1.0.0",
           "date": "2026-05-19",
-          "version": "v1.0.0"
-        },
-        {
-          "version": "v1.0.0",
-          "changes": "Automated release",
-          "date": "2026-05-19"
-        },
-        {
-          "date": "2026-05-19",
-          "changes": "Automated release",
-          "version": "v1.0.0"
-        },
-        {
-          "version": "v1.0.0",
-          "changes": "Automated release",
-          "date": "2026-05-19"
-        },
-        {
-          "version": "v1.0.0",
-          "changes": "Automated release",
-          "date": "2026-05-19"
-        },
-        {
-          "date": "2026-05-19",
-          "version": "v1.0.0",
-          "changes": "Automated release"
+          "changes": [
+            "Automated release"
+          ]
         },
         {
           "version": "v1.0.0",
           "date": "2026-05-11",
           "changes": [
-            "SurpriseMe 浏览器扩展初始版本发布",
-            "支持为任何网页添加可自定义的彩色边框",
+            "SurpriseMe ",
+            "Chrome Firefox Safari ",
+            "Windows macOS Linux ",
+            "Chrome Firefox Safari ",
             "支持多种颜色选择和自定义颜色创建",
             "适用于 Chrome、Firefox、Safari 等主流浏览器"
           ]
