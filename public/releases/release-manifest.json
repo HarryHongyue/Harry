@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-19T16:11:00.2601904+00:00",
+  "lastUpdated": "2026-05-19T16:12:32.9826943+00:00",
   "projects": {
     "ode-solver": {
       "slug": "ode-solver",
@@ -20,7 +20,7 @@
           "version": "1.0.1",
           "size": "126.8 MB",
           "href": "https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v1.0.1/ODE-Solver-Setup-1.0.1.exe",
-          "sha256": "8023995780a067107134491a49cf3b1c7b59e4230f29bdc1c916491651cc95f0"
+          "sha256": "f80a5e6d431ccb354123ddcacf445fcf87069fecf032c9e99b659cc281a567a6"
         }
       ],
       "versionHistory": [
