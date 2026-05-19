@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-19T15:50:35.6415137+00:00",
+  "lastUpdated": "2026-05-19T15:51:00.5572684+00:00",
   "projects": {
     "ode-solver": {
       "slug": "ode-solver",
@@ -98,39 +98,28 @@
       "releaseDate": "2026-05-19",
       "assets": [
         {
-          "version": "v1.0.0",
-          "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.0.0/SurpriseMe-Chrome-1.0.0.zip",
-          "size": "18.1 KB",
           "label": {
-            "zh": "Chrome 扩展",
-            "nl": "Chrome-extensie",
-            "en": "Chrome Extension"
+            "nl": "Browser-extensies",
+            "zh": "浏览器扩展",
+            "en": "Browser Extensions"
           },
           "platform": {
-            "zh": "Chrome/Edge/Brave/Vivaldi",
-            "nl": "Chrome/Edge/Brave/Vivaldi",
-            "en": "Chrome/Edge/Brave/Vivaldi"
+            "nl": "Chrome/Edge/Brave/Vivaldi/Firefox",
+            "zh": "Chrome/Edge/Brave/Vivaldi/Firefox",
+            "en": "Chrome/Edge/Brave/Vivaldi/Firefox"
           },
-          "sha256": "7a6b9aea8afa6dc78a9c1407f840cfbabbdccc5919c821fc83a07941ac808d8f"
-        },
-        {
-          "version": "v1.0.0",
-          "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.0.0/SurpriseMe-Firefox-1.0.0.zip",
-          "size": "18.1 KB",
-          "label": {
-            "zh": "Firefox 附加组件",
-            "nl": "Firefox-add-on",
-            "en": "Firefox Add-on"
-          },
-          "platform": {
-            "zh": "Firefox",
-            "nl": "Firefox",
-            "en": "Firefox"
-          },
-          "sha256": "809c1ad534f2395b6120f0de25dca413f6646959670b83c7947aa4895e5e1387"
+          "sha256": "1e751e4ca23dc688229485e52954f00cc93b3c03c686a07dd4038efded7a69f4",
+          "size": "41.2 KB",
+          "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.0.0/SurpriseMe-1.0.0.zip",
+          "version": "v1.0.0"
         }
       ],
       "versionHistory": [
+        {
+          "version": "v1.0.0",
+          "changes": "Automated release",
+          "date": "2026-05-19"
+        },
         {
           "date": "2026-05-19",
           "version": "v1.0.0",
