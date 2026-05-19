@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Download, Puzzle } from 'lucide-react';
 import { FaApple, FaGithub, FaLinux, FaWindows } from 'react-icons/fa';
 import NeoBadge from '../components/ui/NeoBadge';
@@ -14,6 +14,7 @@ import ProjectLogo from '../components/common/ProjectLogo';
 import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
 import downloadsHeroBackground from '../assets/images/Backgrounds/下载hero部分背景图.png';
+import { fetchReleaseManifest, getProjectAssets } from '../utils/releaseManifest';
 
 const getReleaseAssetIcon = (row: ProjectReleaseAsset) => {
   const text = `${row.label.en} ${row.platform.en}`.toLowerCase();
@@ -34,11 +35,39 @@ const getReleaseAssetIcon = (row: ProjectReleaseAsset) => {
   return <Download size={18} aria-hidden="true" />;
 };
 
+const manifestSlugOverrides: Record<string, string> = {
+  'ode-all-in-one-solver': 'ode-solver',
+  'metrology-certificate-management-system': 'metrology-certificate',
+};
+
 const DownloadsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
+  const [assetMap, setAssetMap] = useState<Record<string, ProjectReleaseAsset[]>>({});
+  const [loading, setLoading] = useState(true);
+
   const downloadsSubtitle = {
     primary: currentLanguage === 'zh' ? '一个愿景。多个项目。统一生态。' : currentLanguage === 'nl' ? 'Eén visie. Meerdere projecten. Eén ecosysteem.' : uiText.home.subtitleEn,
   };
+
+  useEffect(() => {
+    const loadAssets = async () => {
+      try {
+        const manifest = await fetchReleaseManifest();
+        const nextMap: Record<string, ProjectReleaseAsset[]> = {};
+        downloadsProjects.forEach(project => {
+          const manifestSlug = manifestSlugOverrides[project.slug] ?? project.slug;
+          nextMap[project.slug] = getProjectAssets(manifest, manifestSlug);
+        });
+        setAssetMap(nextMap);
+      } catch (error) {
+        console.error('Failed to load release assets for downloads page:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadAssets();
+  }, []);
 
   const columns = [
     {
@@ -104,23 +133,40 @@ const DownloadsPage: React.FC = () => {
       </div>
 
       <div className="section-shell neo-download-groups">
-        {downloadsProjects.map((project) => (
-          <div key={project.slug} className="neo-table-card neo-table-card--rich">
-            <div className="neo-table-card__header">
-              <div className="neo-project-card__header">
-                <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--compact" />
-                <div className="neo-project-card__header-content--centered">
-                  <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
-                  <p>{pickText(currentLanguage, project.tagline)}</p>
-                  {project.releaseAssets[0] ? (
-                    <NeoBadge tone="success" className="neo-badge--inline">{project.releaseAssets[0].version}</NeoBadge>
-                  ) : null}
+        {downloadsProjects.map((project) => {
+          const assets = assetMap[project.slug] || [];
+          if (!assets.length && !loading) {
+            return null;
+          }
+
+          return (
+            <div key={project.slug} className="neo-table-card neo-table-card--rich">
+              <div className="neo-table-card__header">
+                <div className="neo-project-card__header">
+                  <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--compact" />
+                  <div className="neo-project-card__header-content--centered">
+                    <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
+                    <p>{pickText(currentLanguage, project.tagline)}</p>
+                    {assets[0] ? (
+                      <NeoBadge tone="success" className="neo-badge--inline">{assets[0].version}</NeoBadge>
+                    ) : null}
+                  </div>
                 </div>
               </div>
+              {assets.length > 0 ? (
+                <NeoTable<ProjectReleaseAsset>
+                  rowKey={(row) => `${row.label.en}-${row.version}`}
+                  rows={assets}
+                  columns={columns}
+                />
+              ) : (
+                <div className="neo-empty-state">
+                  <p>{currentLanguage === 'zh' ? '暂无可用下载，敬请期待。' : currentLanguage === 'nl' ? 'Nog geen downloads beschikbaar.' : 'No downloads available yet.'}</p>
+                </div>
+              )}
             </div>
-            <NeoTable<ProjectReleaseAsset> rowKey={(row) => `${row.label.en}-${row.version}`} rows={project.releaseAssets} columns={columns} />
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

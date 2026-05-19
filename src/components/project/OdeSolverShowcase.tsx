@@ -131,7 +131,33 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
         </NeoCard>
       </section>
 
-      <section className="section-shell ode-showcase-section"><h2 className="ode-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2><NeoCard className="ode-showcase-updates-card"><div className="ode-showcase-updates-card__current"><h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{latestVersion || project.releaseAssets[0]?.version || '1.0.0'}</span></h3></div><div className="ode-showcase-version-list">{versionHistory.map((version: any, index: number) => <div key={version.version} className={`ode-showcase-version ${index !== 0 ? 'ode-showcase-version--divided' : ''}`}><div className="ode-showcase-version__header"><h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4><span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span></div><ul className="ode-showcase-version__changes">{version.changes.map((change: string) => <li key={change}>{change}</li>)}</ul></div>)}</div></NeoCard></section>
+      <section className="section-shell ode-showcase-section">
+        <h2 className="ode-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2>
+        <NeoCard className="ode-showcase-updates-card">
+          <div className="ode-showcase-updates-card__current">
+            <h3>
+              {currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}:
+              {' '}
+              <span>{latestVersion || primaryAsset?.version || '1.0.0'}</span>
+            </h3>
+          </div>
+          <div className="ode-showcase-version-list">
+            {versionHistory.map((version: any, index: number) => (
+              <div key={version.version} className={`ode-showcase-version ${index !== 0 ? 'ode-showcase-version--divided' : ''}`}>
+                <div className="ode-showcase-version__header">
+                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
+                  <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
+                </div>
+                <ul className="ode-showcase-version__changes">
+                  {(Array.isArray(version.changes) ? version.changes : [version.changes]).map((change: string) => (
+                    <li key={change}>{change}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </NeoCard>
+      </section>
 
       <section className="section-shell ode-showcase-section">
         <h2 className="ode-showcase-section__title">{currentLanguage === 'zh' ? '技术栈' : currentLanguage === 'nl' ? 'Tech Stack' : 'Tech Stack'}</h2>

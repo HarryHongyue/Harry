@@ -909,4 +909,4 @@ export async function initializeReleaseAssets() {
   }
 }
 
-export const downloadsProjects = filteredProjects.filter((project) => project.releaseAssets.length > 0);
+export const downloadsProjects = filteredProjects.filter((project) => project.downloadable);
