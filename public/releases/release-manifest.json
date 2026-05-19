@@ -1,21 +1,34 @@
 {
-  "lastUpdated": "2026-05-14T00:00:00Z",
+  "lastUpdated": "2026-05-19T14:37:08.3136269+00:00",
   "projects": {
     "ode-solver": {
       "slug": "ode-solver",
-      "latestVersion": "v1.0.0",
-      "releaseDate": "2025-07-05",
+      "latestVersion": "1.0.1",
+      "releaseDate": "2026-05-19",
       "assets": [
         {
-          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
-          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
-          "version": "v1.0.0",
+          "label": {
+            "en": "Windows Installer",
+            "zh": "Windows 安装程序",
+            "nl": "Windows-installer"
+          },
+          "platform": {
+            "en": "Windows 64-bit",
+            "zh": "Windows 64 位",
+            "nl": "Windows 64-bit"
+          },
+          "version": "1.0.1",
           "size": "126.8 MB",
-          "href": "https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v1.0.0/ODE-Solver-Setup.exe",
-          "sha256": "3f2b7e5c90f0b62d4a6df1e8bc9d2f7b441e3b9d52cfab8e01c7ddda7f1d53f2"
+          "href": "https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v1.0.1/ODE-Solver-Setup-1.0.1.exe",
+          "sha256": "e047cd1cf0999c944cf49eb52cce65b928aa65231da6759d321c6b65581c774a"
         }
       ],
       "versionHistory": [
+        {
+          "version": "1.0.1",
+          "date": "2026-05-19",
+          "changes": "Automated release"
+        },
         {
           "version": "v1.0.0",
           "date": "2025-07-05",
@@ -34,16 +47,32 @@
       "releaseDate": "2026-05-11",
       "assets": [
         {
-          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
-          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
+          "label": {
+            "en": "Windows Installer",
+            "zh": "Windows 安装程序",
+            "nl": "Windows-installer"
+          },
+          "platform": {
+            "en": "Windows 64-bit",
+            "zh": "Windows 64 位",
+            "nl": "Windows 64-bit"
+          },
           "version": "v1.2.3",
           "size": "148 MB",
           "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Setup.exe",
           "sha256": "a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2"
         },
         {
-          "label": {"en": "macOS Installer", "zh": "macOS 安装程序", "nl": "macOS-installer"},
-          "platform": {"en": "macOS Universal", "zh": "macOS 通用版", "nl": "macOS universal"},
+          "label": {
+            "en": "macOS Installer",
+            "zh": "macOS 安装程序",
+            "nl": "macOS-installer"
+          },
+          "platform": {
+            "en": "macOS Universal",
+            "zh": "macOS 通用版",
+            "nl": "macOS universal"
+          },
           "version": "v1.2.3",
           "size": "142 MB",
           "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Setup.dmg",
@@ -69,8 +98,16 @@
       "releaseDate": "2026-05-11",
       "assets": [
         {
-          "label": {"en": "Chrome Extension", "zh": "Chrome 扩展", "nl": "Chrome-extensie"},
-          "platform": {"en": "Chrome/Edge/Brave/Vivaldi", "zh": "Chrome/Edge/Brave/Vivaldi", "nl": "Chrome/Edge/Brave/Vivaldi"},
+          "label": {
+            "en": "Chrome Extension",
+            "zh": "Chrome 扩展",
+            "nl": "Chrome-extensie"
+          },
+          "platform": {
+            "en": "Chrome/Edge/Brave/Vivaldi",
+            "zh": "Chrome/Edge/Brave/Vivaldi",
+            "nl": "Chrome/Edge/Brave/Vivaldi"
+          },
           "version": "v1.0.0",
           "size": "19 KB",
           "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.0.0/SurpriseMe.zip",
@@ -96,8 +133,16 @@
       "releaseDate": "2026-05-14",
       "assets": [
         {
-          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
-          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
+          "label": {
+            "en": "Windows Installer",
+            "zh": "Windows 安装程序",
+            "nl": "Windows-installer"
+          },
+          "platform": {
+            "en": "Windows 64-bit",
+            "zh": "Windows 64 位",
+            "nl": "Windows 64-bit"
+          },
           "version": "v1.0.0",
           "size": "120 MB",
           "href": "https://github.com/HarryHongyue/Aircargo-EDI/releases/download/v1.0.0/Aircargo-EDI-Setup.exe",
@@ -123,8 +168,16 @@
       "releaseDate": "2026-05-14",
       "assets": [
         {
-          "label": {"en": "Windows Installer", "zh": "Windows 安装程序", "nl": "Windows-installer"},
-          "platform": {"en": "Windows 64-bit", "zh": "Windows 64 位", "nl": "Windows 64-bit"},
+          "label": {
+            "en": "Windows Installer",
+            "zh": "Windows 安装程序",
+            "nl": "Windows-installer"
+          },
+          "platform": {
+            "en": "Windows 64-bit",
+            "zh": "Windows 64 位",
+            "nl": "Windows 64-bit"
+          },
           "version": "v1.0.0",
           "size": "45 MB",
           "href": "https://github.com/HarryHongyue/计量证书管理系统/releases/download/v1.0.0/MetrologyCertificateManager-1.0.2.exe",
