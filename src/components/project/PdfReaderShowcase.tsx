@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Download, FileSearch, FileText, Globe, Layers, Lock, Scan, ScanText, ShieldCheck, Table2 } from 'lucide-react';
-import type { Project } from '../../types/project';
+import type { Project, ProjectReleaseAsset } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
-import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
+import { describeReleaseAssets, fetchReleaseManifest, getLatestReleaseDate, getLatestVersion, getProjectAssets, getProjectVersionHistory, normalizeVersion } from '../../utils/releaseManifest';
 
 const pdfReaderScreenshot = new URL('../../assets/images/PDF Reader/PDF reader.PNG', import.meta.url).href;
 
@@ -24,12 +24,14 @@ const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
   const [versionHistory, setVersionHistory] = useState<any[]>([]);
   const [latestVersion, setLatestVersion] = useState('');
   const [latestReleaseDate, setLatestReleaseDate] = useState('');
+  const [releaseAssets, setReleaseAssets] = useState<ProjectReleaseAsset[]>([]);
 
   useEffect(() => {
     fetchReleaseManifest().then(manifest => {
       setVersionHistory(getProjectVersionHistory(manifest, 'pdf-reader'));
       setLatestVersion(getLatestVersion(manifest, 'pdf-reader'));
       setLatestReleaseDate(getLatestReleaseDate(manifest, 'pdf-reader'));
+      setReleaseAssets(getProjectAssets(manifest, 'pdf-reader'));
     });
   }, []);
   const features = [
@@ -51,8 +53,9 @@ const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
     { title: currentLanguage === 'zh' ? '临时处理' : currentLanguage === 'nl' ? 'Tijdelijke verwerking' : 'Temporary Processing', body: currentLanguage === 'zh' ? '解析产物和临时文件应围绕任务生命周期进行清理。' : currentLanguage === 'nl' ? 'Afgeleide uitvoer en tijdelijke bestanden horen bij de taaklevenscyclus te worden opgeschoond.' : 'Derived output and temporary files should be cleaned around the job lifecycle.' },
     { title: currentLanguage === 'zh' ? '私有 API' : currentLanguage === 'nl' ? 'Private API' : 'Private API', body: currentLanguage === 'zh' ? '较重的 OCR 与解析能力应留在受控 API 边界之后。' : currentLanguage === 'nl' ? 'Zwaardere OCR- en parsinglogica blijft achter gecontroleerde API-grenzen.' : 'Heavier OCR and parsing logic stays behind controlled API boundaries.' },
   ];
-  const version = latestVersion || project.releaseAssets[0]?.version || 'v1.2.3';
+  const version = normalizeVersion(latestVersion || project.releaseAssets[0]?.version || 'v1.2.3');
   const releaseDate = latestReleaseDate || project.releaseAssets[0]?.releaseDate || '2026-05-11';
+  const describedAssets = describeReleaseAssets(releaseAssets.length > 0 ? releaseAssets : project.releaseAssets);
 
   return (
     <>
@@ -93,8 +96,19 @@ const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
         <p className="pdf-showcase-section__subtitle">{currentLanguage === 'zh' ? '只需几步即可开始使用 PDF Reader。适用于 Windows 和 macOS。' : currentLanguage === 'nl' ? 'Begin met PDF Reader in slechts enkele stappen. Beschikbaar voor Windows en macOS.' : 'Get started with PDF Reader in just a few steps. Available for Windows and macOS.'}</p>
         <NeoCard className="pdf-showcase-download-card">
           <div className="pdf-showcase-download-card__main">
-            <a href="/downloads" className={`${neoButtonClass('primary')} pdf-showcase-download-button`}><Download size={24} />{currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows'}</a>
-            <p>{currentLanguage === 'zh' ? `版本 ${version} | 稳定版` : currentLanguage === 'nl' ? `Versie ${version} | Stabiele versie` : `Version ${version} | Stable Version`}</p>
+            <div className="pdf-showcase-download-list">
+              {describedAssets.map(({ asset, kind }) => (
+                <div key={`${asset.href}-${asset.version}`} className="pdf-showcase-download-entry">
+                  <a href={asset.href} className={`${neoButtonClass('primary')} pdf-showcase-download-button`} target="_blank" rel="noreferrer">
+                    <Download size={24} />
+                    {kind === 'macos'
+                      ? (currentLanguage === 'zh' ? 'macOS版下载' : currentLanguage === 'nl' ? 'Download voor macOS' : 'Download for macOS')
+                      : (currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows')}
+                  </a>
+                  <p>{currentLanguage === 'zh' ? `版本 ${normalizeVersion(asset.version)}` : currentLanguage === 'nl' ? `Versie ${normalizeVersion(asset.version)}` : `Version ${normalizeVersion(asset.version)}`}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="pdf-showcase-install">
             <h3>{currentLanguage === 'zh' ? '使用说明' : currentLanguage === 'nl' ? 'Gebruiksinstructies' : 'Usage Instructions'}</h3>
@@ -119,7 +133,7 @@ const PdfReaderShowcase: React.FC<PdfReaderShowcaseProps> = ({ project }) => {
           <div className="pdf-showcase-version-list">
             <div className="pdf-showcase-version">
               <div className="pdf-showcase-version__header">
-                <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version}</h4>
+                <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {normalizeVersion(version)}</h4>
                 <span>{currentLanguage === 'zh' ? `发布日期 ${releaseDate}` : currentLanguage === 'nl' ? `Uitgebracht op ${releaseDate}` : `Released on ${releaseDate}`}</span>
               </div>
               <ul className="pdf-showcase-version__changes">

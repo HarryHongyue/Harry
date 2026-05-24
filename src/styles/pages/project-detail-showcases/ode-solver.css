@@ -123,6 +123,22 @@
   gap: 14px;
 }
 
+.ode-showcase-download-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.ode-showcase-download-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  text-align: left;
+}
+
 .ode-showcase-download-button {
   min-height: 64px;
   padding-inline: 40px;

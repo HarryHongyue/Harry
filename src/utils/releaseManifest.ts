@@ -28,6 +28,13 @@ export interface ReleaseManifest {
   projects: Record<string, ReleaseManifestProject>;
 }
 
+export type ReleaseAssetKind = 'windows' | 'macos' | 'linux' | 'zip' | 'crx' | 'browser-extension' | 'generic';
+
+export interface ReleaseAssetDescriptor {
+  asset: ProjectReleaseAsset;
+  kind: ReleaseAssetKind;
+}
+
 let cachedManifest: ReleaseManifest | null = null;
 
 export async function fetchReleaseManifest(): Promise<ReleaseManifest> {
@@ -89,4 +96,46 @@ export function getLatestReleaseDate(
 ): string {
   const project = manifest.projects[slug];
   return project?.releaseDate || '';
+}
+
+export function normalizeVersion(version?: string): string {
+  if (!version) return 'v1.0.0';
+  return version.toLowerCase().startsWith('v') ? version : `v${version}`;
+}
+
+export function detectReleaseAssetKind(asset: Pick<ProjectReleaseAsset, 'label' | 'platform' | 'href'>): ReleaseAssetKind {
+  const text = `${asset.label.en} ${asset.label.zh} ${asset.label.nl} ${asset.platform.en} ${asset.platform.zh} ${asset.platform.nl} ${asset.href}`.toLowerCase();
+
+  if (text.includes('.crx') || text.includes(' crx')) {
+    return 'crx';
+  }
+
+  if (text.includes('.zip') || text.includes(' zip')) {
+    return 'zip';
+  }
+
+  if (text.includes('windows') || text.includes('.exe') || text.includes('msi')) {
+    return 'windows';
+  }
+
+  if (text.includes('macos') || text.includes('mac os') || text.includes('.dmg') || text.includes('.pkg')) {
+    return 'macos';
+  }
+
+  if (text.includes('linux') || text.includes('.appimage') || text.includes('.deb') || text.includes('.rpm') || text.includes('.tar.gz')) {
+    return 'linux';
+  }
+
+  if (text.includes('extension') || text.includes('browser')) {
+    return 'browser-extension';
+  }
+
+  return 'generic';
+}
+
+export function describeReleaseAssets(assets: ProjectReleaseAsset[]): ReleaseAssetDescriptor[] {
+  return assets.map((asset) => ({
+    asset,
+    kind: detectReleaseAssetKind(asset),
+  }));
 }

@@ -2,46 +2,60 @@ import React, { useEffect, useState } from 'react';
 import { Download, Puzzle } from 'lucide-react';
 import { FaApple, FaGithub, FaLinux, FaWindows } from 'react-icons/fa';
 import NeoBadge from '../components/ui/NeoBadge';
-import NeoCard from '../components/ui/NeoCard';
-import NeoSection from '../components/ui/NeoSection';
-import NeoTable from '../components/ui/NeoTable';
-import { downloadsProjects } from '../data/projects';
-import { useLanguage } from '../contexts/LanguageContext';
-import { pickText, uiText } from '../data/siteContent';
-import type { ProjectReleaseAsset } from '../types/project';
 import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
-import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
+import { useLanguage } from '../contexts/LanguageContext';
+import { downloadsProjects } from '../data/projects';
+import { pickText, uiText } from '../data/siteContent';
+import { getProjectDisplayName } from '../lib/projectText';
 import downloadsHeroBackground from '../assets/images/Backgrounds/下载hero部分背景图.png';
-import { fetchReleaseManifest, getProjectAssets } from '../utils/releaseManifest';
-
-const getReleaseAssetIcon = (row: ProjectReleaseAsset) => {
-  const text = `${row.label.en} ${row.platform.en}`.toLowerCase();
-
-  if (text.includes('windows')) {
-    return <FaWindows aria-hidden="true" />;
-  }
-  if (text.includes('macos') || text.includes('mac os')) {
-    return <FaApple aria-hidden="true" />;
-  }
-  if (text.includes('linux')) {
-    return <FaLinux aria-hidden="true" />;
-  }
-  if (text.includes('browser') || text.includes('crx') || text.includes('plugin') || text.includes('extension')) {
-    return <Puzzle size={18} aria-hidden="true" />;
-  }
-
-  return <Download size={18} aria-hidden="true" />;
-};
+import type { ProjectReleaseAsset } from '../types/project';
+import {
+  describeReleaseAssets,
+  fetchReleaseManifest,
+  getProjectAssets,
+  normalizeVersion,
+  type ReleaseAssetKind,
+} from '../utils/releaseManifest';
 
 const manifestSlugOverrides: Record<string, string> = {
   'ode-all-in-one-solver': 'ode-solver',
   'metrology-certificate-management-system': 'metrology-certificate',
 };
 
+const getAssetKindIcon = (kind: ReleaseAssetKind) => {
+  if (kind === 'windows') return <FaWindows aria-hidden="true" />;
+  if (kind === 'macos') return <FaApple aria-hidden="true" />;
+  if (kind === 'linux') return <FaLinux aria-hidden="true" />;
+  if (kind === 'zip' || kind === 'crx' || kind === 'browser-extension') return <Puzzle size={18} aria-hidden="true" />;
+  return <Download size={18} aria-hidden="true" />;
+};
+
+const getAssetButtonLabel = (kind: ReleaseAssetKind, currentLanguage: 'en' | 'zh' | 'nl') => {
+  const labels: Record<ReleaseAssetKind, { en: string; zh: string; nl: string }> = {
+    windows: { en: 'Download for Windows', zh: 'Windows版下载', nl: 'Download voor Windows' },
+    macos: { en: 'Download for macOS', zh: 'macOS版下载', nl: 'Download voor macOS' },
+    linux: { en: 'Download for Linux', zh: 'Linux版下载', nl: 'Download voor Linux' },
+    zip: { en: 'Download ZIP', zh: '下载 ZIP', nl: 'Download ZIP' },
+    crx: { en: 'Download CRX', zh: '下载 CRX', nl: 'Download CRX' },
+    'browser-extension': { en: 'Download Extension', zh: '下载扩展', nl: 'Download extensie' },
+    generic: { en: 'Download', zh: '下载', nl: 'Download' },
+  };
+
+  return labels[kind][currentLanguage];
+};
+
+const formatVersionMeta = (asset: ProjectReleaseAsset, currentLanguage: 'en' | 'zh' | 'nl') => {
+  const version = normalizeVersion(asset.version);
+  if (currentLanguage === 'zh') return `版本 ${version}`;
+  if (currentLanguage === 'nl') return `Versie ${version}`;
+  return `Version ${version}`;
+};
+
 const DownloadsPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
+  const locale = currentLanguage as 'en' | 'zh' | 'nl';
   const [assetMap, setAssetMap] = useState<Record<string, ProjectReleaseAsset[]>>({});
   const [loading, setLoading] = useState(true);
 
@@ -54,7 +68,7 @@ const DownloadsPage: React.FC = () => {
       try {
         const manifest = await fetchReleaseManifest();
         const nextMap: Record<string, ProjectReleaseAsset[]> = {};
-        downloadsProjects.forEach(project => {
+        downloadsProjects.forEach((project) => {
           const manifestSlug = manifestSlugOverrides[project.slug] ?? project.slug;
           nextMap[project.slug] = getProjectAssets(manifest, manifestSlug);
         });
@@ -68,44 +82,6 @@ const DownloadsPage: React.FC = () => {
 
     loadAssets();
   }, []);
-
-  const columns = [
-    {
-      key: 'label',
-      header: currentLanguage === 'zh' ? '名称' : currentLanguage === 'nl' ? 'Naam' : 'Name',
-      render: (row: ProjectReleaseAsset) => (
-        <span className="neo-download-asset-name">
-          <span className="neo-download-asset-icon">{getReleaseAssetIcon(row)}</span>
-          {pickText(currentLanguage, row.label)}
-        </span>
-      ),
-    },
-    {
-      key: 'version',
-      header: currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version',
-      render: (row: ProjectReleaseAsset) => row.version,
-    },
-    {
-      key: 'size',
-      header: currentLanguage === 'zh' ? '大小' : currentLanguage === 'nl' ? 'Grootte' : 'Size',
-      render: (row: ProjectReleaseAsset) => row.size,
-    },
-    {
-      key: 'releaseDate',
-      header: currentLanguage === 'zh' ? '发布日期' : currentLanguage === 'nl' ? 'Releasedatum' : 'Release Date',
-      render: (row: ProjectReleaseAsset) => row.releaseDate,
-    },
-    {
-      key: 'href',
-      header: currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download',
-      render: (row: ProjectReleaseAsset) => (
-        <a href={row.href} className={`${neoButtonClass('ghost')} neo-download-button`} target={row.href.startsWith('http') ? '_blank' : undefined} rel={row.href.startsWith('http') ? 'noreferrer' : undefined}>
-          <Download size={16} />
-          {pickText(currentLanguage, uiText.common.download)}
-        </a>
-      ),
-    },
-  ];
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
@@ -135,6 +111,8 @@ const DownloadsPage: React.FC = () => {
       <div className="section-shell neo-download-groups">
         {downloadsProjects.map((project) => {
           const assets = assetMap[project.slug] || [];
+          const describedAssets = describeReleaseAssets(assets);
+
           if (!assets.length && !loading) {
             return null;
           }
@@ -145,23 +123,41 @@ const DownloadsPage: React.FC = () => {
                 <div className="neo-project-card__header">
                   <ProjectLogo src={project.logo} alt={project.englishName} className="neo-project-logo--compact" />
                   <div className="neo-project-card__header-content--centered">
-                    <h3>{getProjectDisplayName(project, currentLanguage)}</h3>
-                    <p>{pickText(currentLanguage, project.tagline)}</p>
+                    <h3>{getProjectDisplayName(project, locale)}</h3>
+                    <p>{pickText(locale, project.tagline)}</p>
                     {assets[0] ? (
-                      <NeoBadge tone="success" className="neo-badge--inline">{assets[0].version}</NeoBadge>
+                      <NeoBadge tone="success" className="neo-badge--inline">{normalizeVersion(assets[0].version)}</NeoBadge>
                     ) : null}
                   </div>
                 </div>
               </div>
-              {assets.length > 0 ? (
-                <NeoTable<ProjectReleaseAsset>
-                  rowKey={(row) => `${row.label.en}-${row.version}`}
-                  rows={assets}
-                  columns={columns}
-                />
+
+              {describedAssets.length > 0 ? (
+                <div className="neo-download-actions-grid">
+                  {describedAssets.map(({ asset, kind }) => (
+                    <div key={`${asset.href}-${asset.version}`} className="neo-download-action-card">
+                      <div className="neo-download-action-card__meta">
+                        <div className="neo-download-action-card__title">
+                          <span className="neo-download-asset-icon">{getAssetKindIcon(kind)}</span>
+                          <strong>{getAssetButtonLabel(kind, locale)}</strong>
+                        </div>
+                        <p>{formatVersionMeta(asset, locale)}</p>
+                      </div>
+                      <a
+                        href={asset.href}
+                        className={`${neoButtonClass('ghost')} neo-download-button`}
+                        target={asset.href.startsWith('http') ? '_blank' : undefined}
+                        rel={asset.href.startsWith('http') ? 'noreferrer' : undefined}
+                      >
+                        <Download size={16} />
+                        {currentLanguage === 'zh' ? '立即下载' : currentLanguage === 'nl' ? 'Nu downloaden' : 'Download'}
+                      </a>
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <div className="neo-empty-state">
-                  <p>{currentLanguage === 'zh' ? '暂无可用下载，敬请期待。' : currentLanguage === 'nl' ? 'Nog geen downloads beschikbaar.' : 'No downloads available yet.'}</p>
+                  <p>{currentLanguage === 'zh' ? '暂无可用下载，请稍后查看。' : currentLanguage === 'nl' ? 'Nog geen downloads beschikbaar.' : 'No downloads available yet.'}</p>
                 </div>
               )}
             </div>

@@ -5,7 +5,7 @@ import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
-import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate, getProjectAssets } from '../../utils/releaseManifest';
+import { describeReleaseAssets, fetchReleaseManifest, getProjectAssets, getProjectVersionHistory, getLatestReleaseDate, getLatestVersion, normalizeVersion } from '../../utils/releaseManifest';
 
 const odeSolverScreenshot = new URL('../../assets/images/ODE Solver/ODE Solver.PNG', import.meta.url).href;
 
@@ -43,8 +43,9 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
   };
 
   const primaryAsset = releaseAssets[0];
+  const describedAssets = describeReleaseAssets(releaseAssets.length > 0 ? releaseAssets : project.releaseAssets);
   const downloadHref = primaryAsset?.href ?? project.downloadUrl ?? project.repoUrl ?? '#';
-  const downloadLabel = primaryAsset ? `${localize(primaryAsset.label)} · ${primaryAsset.version}` : currentLanguage === 'zh' ? '立即下载' : currentLanguage === 'nl' ? 'Download nu' : 'Download Now';
+  const downloadLabel = currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows';
 
   const featureHighlights = [
     { title: currentLanguage === 'zh' ? '自定义方程输入' : currentLanguage === 'nl' ? 'Aangepaste vergelijking invoer' : 'Custom Equation Input', body: currentLanguage === 'zh' ? '使用直观的方程编辑器自由输入常微分方程，支持多种形式和阶数。' : currentLanguage === 'nl' ? 'Voer gewone differentiaalvergelijkingen vrij in met een intuïtieve editor, met ondersteuning voor meerdere vormen en ordes.' : 'Freely input ordinary differential equations with an intuitive equation editor, supporting multiple forms and orders.', icon: <GithubIcon size={22} /> },
@@ -94,18 +95,15 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
           <div className="ode-showcase-download-card__main">
             {releaseAssets.length > 0 ? (
               <div className="ode-showcase-download-list">
-                {releaseAssets.map(asset => (
+                {describedAssets.map(({ asset, kind }) => (
                   <NeoCard key={`${asset.href}-${asset.version}`} variant="inset" className="ode-showcase-download-option">
                     <div>
-                      <h3>{localize(asset.label)}</h3>
-                      <p>{localize(asset.platform)}</p>
-                      <p>{currentLanguage === 'zh' ? `版本 ${asset.version}` : currentLanguage === 'nl' ? `Versie ${asset.version}` : `Version ${asset.version}`}</p>
-                      <p>{asset.size}</p>
-                      <p>{currentLanguage === 'zh' ? `发布日期 ${asset.releaseDate}` : currentLanguage === 'nl' ? `Uitgebracht op ${asset.releaseDate}` : `Released on ${asset.releaseDate}`}</p>
+                      <h3>{kind === 'windows' ? (currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows') : localize(asset.label)}</h3>
+                      <p>{currentLanguage === 'zh' ? `版本 ${normalizeVersion(asset.version)}` : currentLanguage === 'nl' ? `Versie ${normalizeVersion(asset.version)}` : `Version ${normalizeVersion(asset.version)}`}</p>
                     </div>
                     <a href={asset.href} className={`${neoButtonClass('primary')} ode-showcase-download-button`} target="_blank" rel="noreferrer">
                       <Download size={18} />
-                      {currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download'}
+                      {currentLanguage === 'zh' ? '立即下载' : currentLanguage === 'nl' ? 'Nu downloaden' : 'Download'}
                     </a>
                   </NeoCard>
                 ))}
@@ -138,14 +136,14 @@ const OdeSolverShowcase: React.FC<OdeSolverShowcaseProps> = ({ project }) => {
             <h3>
               {currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}:
               {' '}
-              <span>{latestVersion || primaryAsset?.version || '1.0.0'}</span>
+              <span>{normalizeVersion(latestVersion || primaryAsset?.version || '1.0.0')}</span>
             </h3>
           </div>
           <div className="ode-showcase-version-list">
             {versionHistory.map((version: any, index: number) => (
               <div key={version.version} className={`ode-showcase-version ${index !== 0 ? 'ode-showcase-version--divided' : ''}`}>
                 <div className="ode-showcase-version__header">
-                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
+                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {normalizeVersion(version.version)}</h4>
                   <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
                 </div>
                 <ul className="ode-showcase-version__changes">

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Download, FileCheck2, FileText, Globe, PlaneTakeoff, Route, ShieldCheck, Warehouse } from 'lucide-react';
-import type { Project } from '../../types/project';
+import type { Project, ProjectReleaseAsset } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { pickText } from '../../data/siteContent';
 import ProjectTechStackCards from './ProjectTechStackCards';
-import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
+import { fetchReleaseManifest, getProjectAssets, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate, normalizeVersion } from '../../utils/releaseManifest';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -23,15 +23,17 @@ const AircargoEdiShowcase: React.FC<AircargoEdiShowcaseProps> = ({ project }) =>
   const [versionHistory, setVersionHistory] = useState<any[]>([]);
   const [latestVersion, setLatestVersion] = useState('');
   const [latestReleaseDate, setLatestReleaseDate] = useState('');
+  const [releaseAssets, setReleaseAssets] = useState<ProjectReleaseAsset[]>([]);
 
   useEffect(() => {
     fetchReleaseManifest().then(manifest => {
       setVersionHistory(getProjectVersionHistory(manifest, 'aircargo-edi'));
       setLatestVersion(getLatestVersion(manifest, 'aircargo-edi'));
       setLatestReleaseDate(getLatestReleaseDate(manifest, 'aircargo-edi'));
+      setReleaseAssets(getProjectAssets(manifest, 'aircargo-edi'));
     });
   }, []);
-  const primaryAsset = project.releaseAssets[0];
+  const primaryAsset = releaseAssets[0] ?? project.releaseAssets[0];
   const featureHighlights = [
     { title: currentLanguage === 'zh' ? 'AWB / HAWB 解析' : currentLanguage === 'nl' ? 'AWB / HAWB parsing' : 'AWB / HAWB Parsing', body: currentLanguage === 'zh' ? '把主单、分单和货运单据中的关键字段整理成稳定的结构化数据。' : currentLanguage === 'nl' ? 'Zet AWB-, HAWB- en cargodocumentvelden om naar stabiele gestructureerde data.' : 'Transform AWB, HAWB, and cargo document fields into stable structured data.', icon: <FileText size={22} /> },
     { title: currentLanguage === 'zh' ? '货运字段校验' : currentLanguage === 'nl' ? 'Cargoveld-validatie' : 'Cargo Field Validation', body: currentLanguage === 'zh' ? '围绕件数、重量、航线、收发货人和报文要求执行领域校验。' : currentLanguage === 'nl' ? 'Valideert pieces, weight, routing, partijen en berichtvereisten rond het cargodomein.' : 'Validate pieces, weight, routing, parties, and message requirements around the cargo domain.', icon: <FileCheck2 size={22} /> },
@@ -121,10 +123,10 @@ const AircargoEdiShowcase: React.FC<AircargoEdiShowcaseProps> = ({ project }) =>
       <section id="aircargo-download" className="section-shell aircargo-showcase-section">
         <h2 className="aircargo-showcase-section__title">{currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download'}</h2>
         <p className="aircargo-showcase-section__subtitle">{pickText(currentLanguage, project.description)}</p>
-        <NeoCard className="aircargo-showcase-download-card"><div className="aircargo-showcase-download-card__main"><a href={primaryAsset?.href ?? '/downloads'} className={`${neoButtonClass('primary')} aircargo-showcase-download-button`}><Download size={24} />{currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows'}</a><p>{currentLanguage === 'zh' ? `当前版本 ${latestVersion || primaryAsset?.version || 'v0.9.0'} | 空运报文工作流` : currentLanguage === 'nl' ? `Huidige versie ${latestVersion || primaryAsset?.version || 'v0.9.0'} | luchtvrachtberichten-workflow` : `Current version ${latestVersion || primaryAsset?.version || 'v0.9.0'} | air cargo messaging workflow`}</p></div><div className="aircargo-showcase-install"><h3>{currentLanguage === 'zh' ? '业务处理步骤' : currentLanguage === 'nl' ? 'Processtappen' : 'Processing Steps'}</h3><div className="aircargo-showcase-install__grid">{workflowSteps.map((step, index) => <NeoCard key={step} variant="inset" className="aircargo-showcase-install-step"><span>{index + 1}</span><p>{step}</p></NeoCard>)}</div></div></NeoCard>
+        <NeoCard className="aircargo-showcase-download-card"><div className="aircargo-showcase-download-card__main"><a href={primaryAsset?.href ?? '/downloads'} className={`${neoButtonClass('primary')} aircargo-showcase-download-button`} target={primaryAsset?.href ? '_blank' : undefined} rel={primaryAsset?.href ? 'noreferrer' : undefined}><Download size={24} />{currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows'}</a><p>{currentLanguage === 'zh' ? `版本 ${normalizeVersion(latestVersion || primaryAsset?.version || 'v0.9.0')}` : currentLanguage === 'nl' ? `Versie ${normalizeVersion(latestVersion || primaryAsset?.version || 'v0.9.0')}` : `Version ${normalizeVersion(latestVersion || primaryAsset?.version || 'v0.9.0')}`}</p></div><div className="aircargo-showcase-install"><h3>{currentLanguage === 'zh' ? '业务处理步骤' : currentLanguage === 'nl' ? 'Processtappen' : 'Processing Steps'}</h3><div className="aircargo-showcase-install__grid">{workflowSteps.map((step, index) => <NeoCard key={step} variant="inset" className="aircargo-showcase-install-step"><span>{index + 1}</span><p>{step}</p></NeoCard>)}</div></div></NeoCard>
       </section>
 
-      <section className="section-shell aircargo-showcase-section"><h2 className="aircargo-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2><NeoCard className="aircargo-showcase-updates-card"><div className="aircargo-showcase-updates-card__current"><h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{latestVersion || primaryAsset?.version || 'v0.9.0'}</span></h3></div><div className="aircargo-showcase-version-list"><div className="aircargo-showcase-version"><div className="aircargo-showcase-version__header"><h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {latestVersion || primaryAsset?.version || 'v0.9.0'}</h4><span>{currentLanguage === 'zh' ? `发布日期 ${latestReleaseDate || primaryAsset?.releaseDate || '2026-05-11'}` : currentLanguage === 'nl' ? `Uitgebracht op ${latestReleaseDate || primaryAsset?.releaseDate || '2026-05-11'}` : `Released on ${latestReleaseDate || primaryAsset?.releaseDate || '2026-05-11'}`}</span></div><ul className="aircargo-showcase-version__changes">{versionHistory[0]?.changes.map((change: string) => <li key={change}>{change}</li>)}</ul></div></div></NeoCard></section>
+      <section className="section-shell aircargo-showcase-section"><h2 className="aircargo-showcase-section__title">{currentLanguage === 'zh' ? '版本更新' : currentLanguage === 'nl' ? 'Versie-updates' : 'Version Updates'}</h2><NeoCard className="aircargo-showcase-updates-card"><div className="aircargo-showcase-updates-card__current"><h3>{currentLanguage === 'zh' ? '当前版本' : currentLanguage === 'nl' ? 'Huidige versie' : 'Current Version'}: <span>{normalizeVersion(latestVersion || primaryAsset?.version || 'v0.9.0')}</span></h3></div><div className="aircargo-showcase-version-list"><div className="aircargo-showcase-version"><div className="aircargo-showcase-version__header"><h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {normalizeVersion(latestVersion || primaryAsset?.version || 'v0.9.0')}</h4><span>{currentLanguage === 'zh' ? `发布日期 ${latestReleaseDate || primaryAsset?.releaseDate || '2026-05-11'}` : currentLanguage === 'nl' ? `Uitgebracht op ${latestReleaseDate || primaryAsset?.releaseDate || '2026-05-11'}` : `Released on ${latestReleaseDate || primaryAsset?.releaseDate || '2026-05-11'}`}</span></div><ul className="aircargo-showcase-version__changes">{versionHistory[0]?.changes.map((change: string) => <li key={change}>{change}</li>)}</ul></div></div></NeoCard></section>
 
       <section className="section-shell aircargo-showcase-section">
         <h2 className="aircargo-showcase-section__title">{currentLanguage === 'zh' ? '技术栈' : currentLanguage === 'nl' ? 'Tech Stack' : 'Tech Stack'}</h2>

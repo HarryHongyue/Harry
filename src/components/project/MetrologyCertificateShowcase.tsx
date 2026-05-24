@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Database, Download, FileSearch, FolderOpen, ShieldCheck } from 'lucide-react';
-import type { Project } from '../../types/project';
+import type { Project, ProjectReleaseAsset } from '../../types/project';
 import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
-import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
+import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate, getProjectAssets, normalizeVersion } from '../../utils/releaseManifest';
 
 const certificateScreenshots = [
   new URL('../../assets/images/计量证书管理系统/证书1.PNG', import.meta.url).href,
@@ -29,16 +29,19 @@ const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> 
   const [versionHistory, setVersionHistory] = useState<any[]>([]);
   const [latestVersion, setLatestVersion] = useState('');
   const [latestReleaseDate, setLatestReleaseDate] = useState('');
+  const [releaseAssets, setReleaseAssets] = useState<ProjectReleaseAsset[]>([]);
 
   useEffect(() => {
     fetchReleaseManifest().then(manifest => {
       setVersionHistory(getProjectVersionHistory(manifest, 'metrology-certificate'));
       setLatestVersion(getLatestVersion(manifest, 'metrology-certificate'));
       setLatestReleaseDate(getLatestReleaseDate(manifest, 'metrology-certificate'));
+      setReleaseAssets(getProjectAssets(manifest, 'metrology-certificate'));
     });
   }, []);
 
-  const version = latestVersion || project.releaseAssets[0]?.version || 'v1.0.0';
+  const primaryAsset = releaseAssets[0] ?? project.releaseAssets[0];
+  const version = normalizeVersion(latestVersion || primaryAsset?.version || 'v1.0.0');
   const releaseDate = latestReleaseDate || project.releaseAssets[0]?.releaseDate || '2026-05-11';
   const features = [
     {
@@ -116,11 +119,11 @@ const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> 
         </p>
         <NeoCard className="metrology-showcase-download-card">
           <div className="metrology-showcase-download-card__main">
-            <a href="/downloads" className={`${neoButtonClass('primary')} metrology-showcase-download-button`}>
+            <a href={primaryAsset?.href ?? '/downloads'} className={`${neoButtonClass('primary')} metrology-showcase-download-button`} target={primaryAsset?.href ? '_blank' : undefined} rel={primaryAsset?.href ? 'noreferrer' : undefined}>
               <Download size={24} />
               {currentLanguage === 'zh' ? 'Windows版下载' : currentLanguage === 'nl' ? 'Download voor Windows' : 'Download for Windows'}
             </a>
-            <p>{currentLanguage === 'zh' ? `版本 ${version} | 本地桌面版` : currentLanguage === 'nl' ? `Versie ${version} | Lokale desktopversie` : `Version ${version} | Local Desktop Edition`}</p>
+            <p>{currentLanguage === 'zh' ? `版本 ${version}` : currentLanguage === 'nl' ? `Versie ${version}` : `Version ${version}`}</p>
           </div>
         </NeoCard>
       </section>
@@ -135,7 +138,7 @@ const MetrologyCertificateShowcase: React.FC<MetrologyCertificateShowcaseProps> 
             {(versionHistory.length > 0 ? versionHistory : defaultVersionHistory).map((version: any, index: number) => (
               <div key={version.version} className={`metrology-showcase-version ${index !== 0 ? 'metrology-showcase-version--divided' : ''}`}>
                 <div className="metrology-showcase-version__header">
-                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
+                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {normalizeVersion(version.version)}</h4>
                   <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
                 </div>
                 <ul className="metrology-showcase-version__changes">

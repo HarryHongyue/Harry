@@ -7,7 +7,8 @@ import NeoCard from '../ui/NeoCard';
 import { neoButtonClass } from '../ui/NeoButton';
 import { useLanguage } from '../../contexts/LanguageContext';
 import ProjectTechStackCards from './ProjectTechStackCards';
-import { fetchReleaseManifest, getProjectVersionHistory, getLatestVersion, getLatestReleaseDate } from '../../utils/releaseManifest';
+import type { ProjectReleaseAsset } from '../../types/project';
+import { describeReleaseAssets, fetchReleaseManifest, getLatestReleaseDate, getLatestVersion, getProjectAssets, getProjectVersionHistory, normalizeVersion } from '../../utils/releaseManifest';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 24 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -34,16 +35,21 @@ const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
   const [versionHistory, setVersionHistory] = useState<any[]>([]);
   const [latestVersion, setLatestVersion] = useState('');
   const [latestReleaseDate, setLatestReleaseDate] = useState('');
+  const [releaseAssets, setReleaseAssets] = useState<ProjectReleaseAsset[]>([]);
 
   useEffect(() => {
     fetchReleaseManifest().then(manifest => {
       setVersionHistory(getProjectVersionHistory(manifest, 'surpriseme'));
       setLatestVersion(getLatestVersion(manifest, 'surpriseme'));
       setLatestReleaseDate(getLatestReleaseDate(manifest, 'surpriseme'));
+      setReleaseAssets(getProjectAssets(manifest, 'surpriseme'));
     });
   }, []);
-  const version = latestVersion || project.releaseAssets[0]?.version || 'v1.0.0';
+  const version = normalizeVersion(latestVersion || project.releaseAssets[0]?.version || 'v1.0.0');
   const releaseDate = latestReleaseDate || project.releaseAssets[0]?.releaseDate || '2026-05-11';
+  const describedAssets = describeReleaseAssets(releaseAssets);
+  const zipAsset = describedAssets.find(({ kind }) => kind === 'zip')?.asset;
+  const crxAsset = describedAssets.find(({ kind }) => kind === 'crx')?.asset;
   const features = [
     { title: currentLanguage === 'zh' ? '自定义' : currentLanguage === 'nl' ? 'Aanpassing' : 'Customization', body: currentLanguage === 'zh' ? '从多种颜色中选择或创建自己的自定义颜色。' : currentLanguage === 'nl' ? 'Kies uit verschillende kleuren of maak je eigen aangepaste kleur.' : 'Choose from a variety of colors or create your own custom color.', icon: <Palette size={22} /> },
     { title: currentLanguage === 'zh' ? '简单易用' : currentLanguage === 'nl' ? 'Eenvoud' : 'Simplicity', body: currentLanguage === 'zh' ? '一键激活和停用。没有复杂的设置。' : currentLanguage === 'nl' ? 'Activeren en deactiveren met één klik. Geen ingewikkelde instellingen.' : 'One-click activation and deactivation. No complicated settings.', icon: <Puzzle size={22} /> },
@@ -85,7 +91,7 @@ const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
         <p className="surprise-showcase-section__subtitle">{currentLanguage === 'zh' ? '立即开始使用 SurpriseMe！只需几秒钟即可安装，适用于 Chrome 浏览器。' : currentLanguage === 'nl' ? 'Begin met SurpriseMe in slechts enkele klikken. Beschikbaar voor Chrome browser.' : 'Get started with SurpriseMe in just a few clicks. Available for Chrome browser.'}</p>
         <NeoCard className="surprise-showcase-download-card">
           <div className="surprise-showcase-download-main">
-            <div><h3>{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? `版本 ${version} - 主要版本` : currentLanguage === 'nl' ? `Versie ${version} - Primaire Release` : `Version ${version} - Primary Release`}</p></div>
+            <div><h3>{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</h3><p>{currentLanguage === 'zh' ? `版本 ${version}` : currentLanguage === 'nl' ? `Versie ${version}` : `Version ${version}`}</p></div>
             <a href="https://chromewebstore.google.com/detail/SurpriseMe/badgnmgiefjegajabklbanhekhldbocg" className={`${neoButtonClass('primary')} surprise-showcase-download-button`} target="_blank" rel="noreferrer"><FaChrome size={20} />{currentLanguage === 'zh' ? '添加到 Chrome' : currentLanguage === 'nl' ? 'Toevoegen aan Chrome' : 'Add to Chrome'}</a>
           </div>
           <div className="surprise-showcase-browser-panel">
@@ -102,8 +108,8 @@ const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
           <div className="surprise-showcase-manual-panel">
             <p>{currentLanguage === 'zh' ? '或直接下载扩展文件进行手动安装：' : currentLanguage === 'nl' ? 'Of download de extensiebestanden direct voor handmatige installatie:' : 'Or download the extension files directly for manual installation:'}</p>
             <div className="surprise-showcase-manual-actions">
-              <a href="/SurpriseMe.crx" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .crx 文件' : currentLanguage === 'nl' ? 'Download .crx bestand' : 'Download .crx file'}</a>
-              <a href="/SurpriseMe.zip" download className={neoButtonClass('secondary')}><Download size={18} />{currentLanguage === 'zh' ? '下载 .zip 文件' : currentLanguage === 'nl' ? 'Download .zip bestand' : 'Download .zip file'}</a>
+              <a href={crxAsset?.href ?? '/SurpriseMe.crx'} download className={neoButtonClass('secondary')} target={crxAsset?.href?.startsWith('http') ? '_blank' : undefined} rel={crxAsset?.href?.startsWith('http') ? 'noreferrer' : undefined}><Download size={18} />{currentLanguage === 'zh' ? '下载 .crx 文件' : currentLanguage === 'nl' ? 'Download .crx bestand' : 'Download .crx file'}</a>
+              <a href={zipAsset?.href ?? '/SurpriseMe.zip'} download className={neoButtonClass('secondary')} target={zipAsset?.href?.startsWith('http') ? '_blank' : undefined} rel={zipAsset?.href?.startsWith('http') ? 'noreferrer' : undefined}><Download size={18} />{currentLanguage === 'zh' ? '下载 .zip 文件' : currentLanguage === 'nl' ? 'Download .zip bestand' : 'Download .zip file'}</a>
             </div>
           </div>
         </NeoCard>
@@ -119,7 +125,7 @@ const SurpriseMeShowcase: React.FC<SurpriseMeShowcaseProps> = ({ project }) => {
             {versionHistory.map((version: any, index: number) => (
               <div key={version.version} className={`surprise-showcase-version ${index !== 0 ? 'surprise-showcase-version--divided' : ''}`}>
                 <div className="surprise-showcase-version__header">
-                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {version.version}</h4>
+                  <h4>{currentLanguage === 'zh' ? '版本' : currentLanguage === 'nl' ? 'Versie' : 'Version'} {normalizeVersion(version.version)}</h4>
                   <span>{currentLanguage === 'zh' ? `发布日期 ${version.date}` : currentLanguage === 'nl' ? `Uitgebracht op ${version.date}` : `Released on ${version.date}`}</span>
                 </div>
                 <ul className="surprise-showcase-version__changes">
