@@ -306,8 +306,8 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: true,
     releaseAssets: [
-      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.2.3', '148 MB', '/downloads', 'a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2', '2026-05-11'),
-      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS Universal', 'macOS 通用版', 'macOS universal'), 'v1.2.3', '142 MB', '/downloads', '45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.2.3', '148 MB', 'https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-windows-x64.exe', 'a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2', '2026-05-11'),
+      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS Universal', 'macOS 通用版', 'macOS universal'), 'v1.2.3', '142 MB', 'https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-macos-universal.dmg', '45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e', '2026-05-11'),
     ],
     securityNotes: [
       l('Uploads should be validated by file type, request size, and allowed processing mode before entering OCR.', '上传必须先经过文件类型、大小限制和允许模式校验，再进入 OCR 处理。', 'Uploads moeten worden gevalideerd op bestandstype, grootte en toegestane modus voordat ze OCR ingaan.'),
@@ -374,7 +374,10 @@ export const projects: Project[] = [
     desktopApp: true,
     browserExtension: false,
     webVersion: true,
-    releaseAssets: [],
+    releaseAssets: [
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v2.1.0', '45 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v2.1.0/ODE-Solver-2.1.0-windows-x64.exe', 'e3f6a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a', '2026-05-11'),
+      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS Universal', 'macOS 通用版', 'macOS universal'), 'v2.1.0', '42 MB', 'https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v2.1.0/ODE-Solver-2.1.0-macos-universal.dmg', 'f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2a94e3', '2026-05-11'),
+    ],
     securityNotes: [
       l('Desktop installers should be distributed through trusted release channels and verified checksums.', '桌面安装包应当通过可信发布渠道分发，并附带可校验的哈希值。', 'Desktop-installers moeten via vertrouwde releasekanalen worden verspreid met verifieerbare checksums.'),
       l('Release notes should make platform support and package provenance explicit.', '发布说明应明确平台支持范围和安装包来源。', 'Release notes moeten platformondersteuning en package-herkomst expliciet maken.'),
@@ -438,8 +441,8 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: true,
     releaseAssets: [
-      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v0.9.0', '86 MB', '/downloads', 'b1238b4472d5f3adff0ea7f962ce8d94fd6a1cc5127bd004e92dcb026f9d0f30', '2026-05-11'),
-      asset(l('iOS Installer', 'iOS 安装程序', 'iOS-installer'), l('iOS App', 'iOS 应用', 'iOS-app'), 'v0.9.0', '42 MB', '/downloads', 'a0b1e7d8e2c14b6d8a7f04b67de0b835fc5c82d4474e8f1d309389cd787cf6b1', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v0.9.0', '86 MB', 'https://github.com/HarryHongyue/Aircargo-EDI/releases/download/v0.9.0/Aircargo-EDI-0.9.0-windows-x64.exe', 'b1238b4472d5f3adff0ea7f962ce8d94fd6a1cc5127bd004e92dcb026f9d0f30', '2026-05-11'),
+      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS Universal', 'macOS 通用版', 'macOS universal'), 'v0.9.0', '82 MB', 'https://github.com/HarryHongyue/Aircargo-EDI/releases/download/v0.9.0/Aircargo-EDI-0.9.0-macos-universal.dmg', 'a0b1e7d8e2c14b6d8a7f04b67de0b835fc5c82d4474e8f1d309389cd787cf6b1', '2026-05-11'),
     ],
     securityNotes: [
       l('Shipment documents should be treated as untrusted input and validated before message generation.', '货运单据必须被视作不可信输入，在生成报文之前完成校验。', 'Zendingdocumenten moeten als onbetrouwbare input worden behandeld en gevalideerd vóór berichtgeneratie.'),
@@ -731,7 +734,7 @@ export const projects: Project[] = [
     browserExtension: true,
     webVersion: true,
     releaseAssets: [
-      asset(l('Browser Plugin', '浏览器插件', 'Browserplugin'), l('CRX Package', 'CRX 包', 'CRX-pakket'), 'v1.4.0', '4.2 MB', 'https://github.com/HarryHongyue/SurpriseMe/releases', '4c18ae29c9c44b83e8af3fef4a3d8622e2eb1cb4463ae9dfbf3ff12d11a2e2f0', '2026-05-11'),
+      asset(l('Browser Plugin', '浏览器插件', 'Browserplugin'), l('CRX Package', 'CRX 包', 'CRX-pakket'), 'v1.4.0', '4.2 MB', 'https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.4.0/surpriseme-1.4.0.crx', '4c18ae29c9c44b83e8af3fef4a3d8622e2eb1cb4463ae9dfbf3ff12d11a2e2f0', '2026-05-11'),
     ],
     securityNotes: [
       l('The extension should request only the browser permissions that are strictly needed for window framing.', '扩展只应申请实现窗口着色所必需的浏览器权限。', 'De extensie mag alleen de browserrechten aanvragen die strikt nodig zijn voor vensterframing.'),
@@ -786,7 +789,7 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: false,
     releaseAssets: [
-      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), 'v1.0.0', '50 MB+', '/downloads', 'bc1186e59bd6d633ba44f1be5ddcc2ccde4373358d4e8c2f42187f0c88403aa2', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.0.0', '52 MB', 'https://github.com/HarryHongyue/计量证书管理系统/releases/download/v1.0.0/Metrology-Certificate-Management-1.0.0-windows-x64.exe', 'bc1186e59bd6d633ba44f1be5ddcc2ccde4373358d4e8c2f42187f0c88403aa2', '2026-05-11'),
     ],
     securityNotes: [
       l('Local certificate data and attachments should be stored with clear backup and export procedures.', '本地证书数据和附件应配备清晰的备份与导出流程。', 'Lokale certificaatdata en bijlagen moeten duidelijke back-up- en exportprocedures hebben.'),

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Download, ExternalLink, Globe2 } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import NeoBadge from '../components/ui/NeoBadge';
@@ -11,6 +11,8 @@ import { neoButtonClass } from '../components/ui/NeoButton';
 import ProjectLogo from '../components/common/ProjectLogo';
 import { getProjectDisplayName } from '../lib/projectText';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
+import { fetchReleaseManifest, getProjectAssets, normalizeVersion } from '../utils/releaseManifest';
+import type { ProjectReleaseAsset } from '../types/project';
 import SurpriseMeShowcase from '../components/project/SurpriseMeShowcase';
 import MetrologyCertificateShowcase from '../components/project/MetrologyCertificateShowcase';
 import PdfReaderShowcase from '../components/project/PdfReaderShowcase';
@@ -34,6 +36,29 @@ const ProjectDetailPage: React.FC = () => {
   const { slug } = useParams();
   const { currentLanguage } = useLanguage();
   const project = getProjectBySlug(slug);
+  const [manifestAssets, setManifestAssets] = useState<ProjectReleaseAsset[]>([]);
+
+  const manifestSlugOverrides: Record<string, string> = {
+    'ode-all-in-one-solver': 'ode-solver',
+    'metrology-certificate-management-system': 'metrology-certificate',
+  };
+
+  useEffect(() => {
+    if (!project || !project.downloadable) return;
+
+    const loadAssets = async () => {
+      try {
+        const manifest = await fetchReleaseManifest();
+        const manifestSlug = manifestSlugOverrides[project.slug] ?? project.slug;
+        const assets = getProjectAssets(manifest, manifestSlug);
+        setManifestAssets(assets);
+      } catch (error) {
+        console.error('Failed to load release assets for project detail page:', error);
+      }
+    };
+
+    loadAssets();
+  }, [project]);
 
   if (!project) {
     return (
@@ -108,7 +133,7 @@ const ProjectDetailPage: React.FC = () => {
                   </a>
                 ) : null}
                 {project.downloadUrl ? (
-                  <a href={project.downloadUrl} className={neoButtonClass('ghost')} target="_blank" rel="noreferrer">
+                  <a href={manifestAssets.length > 0 ? manifestAssets[0].href : (project.releaseAssets && project.releaseAssets.length > 0 ? project.releaseAssets[0].href : project.downloadUrl)} className={neoButtonClass('ghost')} target="_blank" rel="noreferrer">
                     <Download size={18} />
                     {currentLanguage === 'zh' ? '下载' : currentLanguage === 'nl' ? 'Download' : 'Download'}
                   </a>

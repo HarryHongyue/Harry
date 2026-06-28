@@ -3,8 +3,8 @@
   "projects": {
     "ode-solver": {
       "slug": "ode-solver",
-      "latestVersion": "1.0.1",
-      "releaseDate": "2026-05-19",
+      "latestVersion": "v2.1.0",
+      "releaseDate": "2026-05-11",
       "assets": [
         {
           "label": {
@@ -17,28 +17,35 @@
             "zh": "Windows 64 位",
             "nl": "Windows 64-bit"
           },
-          "version": "1.0.1",
-          "size": "126.8 MB",
-          "href": "https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v1.0.1/ODE-Solver-Setup-1.0.1.exe",
-          "sha256": "8b08fc7d34bb08c144926b8d480fdcf625fabddaabbb9433ee3c4560b3d36041"
+          "version": "v2.1.0",
+          "size": "45 MB",
+          "href": "https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v2.1.0/ODE-Solver-2.1.0-windows-x64.exe",
+          "sha256": "e3f6a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a"
+        },
+        {
+          "label": {
+            "en": "macOS Installer",
+            "zh": "macOS 安装程序",
+            "nl": "macOS-installer"
+          },
+          "platform": {
+            "en": "macOS Universal",
+            "zh": "macOS 通用版",
+            "nl": "macOS universal"
+          },
+          "version": "v2.1.0",
+          "size": "42 MB",
+          "href": "https://github.com/HarryHongyue/ODE-All-In-One-Solver/releases/download/v2.1.0/ODE-Solver-2.1.0-macos-universal.dmg",
+          "sha256": "f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2a94e3"
         }
       ],
       "versionHistory": [
         {
-          "version": "1.0.1",
-          "date": "2026-05-19",
+          "version": "v2.1.0",
+          "date": "2026-05-11",
           "changes": [
-            "Automated release"
-          ]
-        },
-        {
-          "version": "v1.0.0",
-          "date": "2025-07-05",
-          "changes": [
-            "ODE Solver ",
-            "Euler、Runge-Kutta ",
-            "PDF CSV PNG ",
-            "CSV PNG "
+            "ODE Solver v2.1.0 release",
+            "Windows and macOS installers"
           ]
         }
       ]
@@ -51,33 +58,33 @@
         {
           "label": {
             "en": "Windows Installer",
-            "zh": "Windows ",
+            "zh": "Windows 安装程序",
             "nl": "Windows-installer"
           },
           "platform": {
             "en": "Windows 64-bit",
-            "zh": "Windows 64 ",
+            "zh": "Windows 64 位",
             "nl": "Windows 64-bit"
           },
           "version": "v1.2.3",
           "size": "148 MB",
-          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Setup.exe",
+          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-windows-x64.exe",
           "sha256": "a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2"
         },
         {
           "label": {
             "en": "macOS Installer",
-            "zh": "macOS ",
+            "zh": "macOS 安装程序",
             "nl": "macOS-installer"
           },
           "platform": {
             "en": "macOS Universal",
-            "zh": "macOS ",
+            "zh": "macOS 通用版",
             "nl": "macOS universal"
           },
           "version": "v1.2.3",
           "size": "142 MB",
-          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Setup.dmg",
+          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-macos-universal.dmg",
           "sha256": "45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e"
         }
       ],
@@ -86,62 +93,49 @@
           "version": "v1.2.3",
           "date": "2026-05-11",
           "changes": [
-            "PDF Reader ",
-            "OCR ",
-            "Windows macOS ",
-            "Windows macOS "
+            "PDF Reader release with OCR support",
+            "Windows and macOS installers"
           ]
         }
       ]
     },
     "surpriseme": {
       "slug": "surpriseme",
-      "latestVersion": "v1.0.0",
-      "releaseDate": "2026-05-19",
+      "latestVersion": "v1.4.0",
+      "releaseDate": "2026-05-11",
       "assets": [
         {
           "label": {
-            "zh": "",
-            "nl": "Browser-extensies",
-            "en": "Browser Extensions"
+            "en": "Browser Plugin",
+            "zh": "浏览器插件",
+            "nl": "Browserplugin"
           },
-          "version": "v1.0.0",
-          "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.0.0/SurpriseMe-1.0.0.zip",
-          "size": "41.2 KB",
           "platform": {
-            "zh": "Chrome/Edge/Brave/Vivaldi/Firefox",
-            "nl": "Chrome/Edge/Brave/Vivaldi/Firefox",
-            "en": "Chrome/Edge/Brave/Vivaldi/Firefox"
+            "en": "CRX Package",
+            "zh": "CRX 包",
+            "nl": "CRX-pakket"
           },
-          "sha256": "2653a6bc7cca190b9f334f6c5d2d9a6ac75db420a93fbc9aa2098d95705e1806"
+          "version": "v1.4.0",
+          "size": "4.2 MB",
+          "href": "https://github.com/HarryHongyue/SurpriseMe/releases/download/v1.4.0/surpriseme-1.4.0.crx",
+          "sha256": "4c18ae29c9c44b83e8af3fef4a3d8622e2eb1cb4463ae9dfbf3ff12d11a2e2f0"
         }
       ],
       "versionHistory": [
         {
-          "version": "v1.0.0",
-          "date": "2026-05-19",
-          "changes": [
-            "Automated release"
-          ]
-        },
-        {
-          "version": "v1.0.0",
+          "version": "v1.4.0",
           "date": "2026-05-11",
           "changes": [
-            "SurpriseMe ",
-            "Chrome Firefox Safari ",
-            "Windows macOS Linux ",
-            "Chrome Firefox Safari ",
-            "支持多种颜色选择和自定义颜色创建",
-            "适用于 Chrome、Firefox、Safari 等主流浏览器"
+            "SurpriseMe v1.4.0 release",
+            "CRX package for Chrome/Edge"
           ]
         }
       ]
     },
     "aircargo-edi": {
       "slug": "aircargo-edi",
-      "latestVersion": "v1.0.0",
-      "releaseDate": "2026-05-14",
+      "latestVersion": "v0.9.0",
+      "releaseDate": "2026-05-11",
       "assets": [
         {
           "label": {
@@ -154,21 +148,35 @@
             "zh": "Windows 64 位",
             "nl": "Windows 64-bit"
           },
-          "version": "v1.0.0",
-          "size": "120 MB",
-          "href": "https://github.com/HarryHongyue/Aircargo-EDI/releases/download/v1.0.0/Aircargo-EDI-Setup.exe",
-          "sha256": "def4567890123456789012345678901234567890123456789012345678901234"
+          "version": "v0.9.0",
+          "size": "86 MB",
+          "href": "https://github.com/HarryHongyue/Aircargo-EDI/releases/download/v0.9.0/Aircargo-EDI-0.9.0-windows-x64.exe",
+          "sha256": "b1238b4472d5f3adff0ea7f962ce8d94fd6a1cc5127bd004e92dcb026f9d0f30"
+        },
+        {
+          "label": {
+            "en": "macOS Installer",
+            "zh": "macOS 安装程序",
+            "nl": "macOS-installer"
+          },
+          "platform": {
+            "en": "macOS Universal",
+            "zh": "macOS 通用版",
+            "nl": "macOS universal"
+          },
+          "version": "v0.9.0",
+          "size": "82 MB",
+          "href": "https://github.com/HarryHongyue/Aircargo-EDI/releases/download/v0.9.0/Aircargo-EDI-0.9.0-macos-universal.dmg",
+          "sha256": "a0b1e7d8e2c14b6d8a7f04b67de0b835fc5c82d4474e8f1d309389cd787cf6b1"
         }
       ],
       "versionHistory": [
         {
-          "version": "v1.0.0",
-          "date": "2026-05-14",
+          "version": "v0.9.0",
+          "date": "2026-05-11",
           "changes": [
-            "Aircargo EDI 初始版本发布",
-            "支持 PDF 解析和 AWB/HAWB 数据提取",
-            "支持 Cargo-IMP FWB/FHL 生成",
-            "提供桌面应用和在线 API"
+            "Aircargo EDI v0.9.0 release",
+            "Windows and macOS installers"
           ]
         }
       ]
@@ -176,7 +184,7 @@
     "metrology-certificate": {
       "slug": "metrology-certificate",
       "latestVersion": "v1.0.0",
-      "releaseDate": "2026-05-14",
+      "releaseDate": "2026-05-11",
       "assets": [
         {
           "label": {
@@ -190,20 +198,18 @@
             "nl": "Windows 64-bit"
           },
           "version": "v1.0.0",
-          "size": "45 MB",
-          "href": "https://github.com/HarryHongyue/计量证书管理系统/releases/download/v1.0.0/MetrologyCertificateManager-1.0.2.exe",
-          "sha256": "abc123def4567890123456789012345678901234567890123456789012345678"
+          "size": "52 MB",
+          "href": "https://github.com/HarryHongyue/计量证书管理系统/releases/download/v1.0.0/Metrology-Certificate-Management-1.0.0-windows-x64.exe",
+          "sha256": "bc1186e59bd6d633ba44f1be5ddcc2ccde4373358d4e8c2f42187f0c88403aa2"
         }
       ],
       "versionHistory": [
         {
           "version": "v1.0.0",
-          "date": "2026-05-14",
+          "date": "2026-05-11",
           "changes": [
-            "计量证书管理系统初始版本发布",
-            "支持证书的新增、编辑、查询和维护功能",
-            "支持证书附件的本地存储和管理",
-            "提供桌面安装包交付，支持 Windows 系统"
+            "Metrology Certificate Management v1.0.0 release",
+            "Windows installer"
           ]
         }
       ]
