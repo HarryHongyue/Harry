@@ -1,6 +1,8 @@
 name: Auto Rebuild on Release Update
 
 on:
+  push:
+    branches: [ main ]
   repository_dispatch:
     types: [release-update]
   workflow_dispatch:
