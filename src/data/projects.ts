@@ -40,11 +40,11 @@ export const statusLabels: Record<ProjectStatus, LocalizedText> = {
 
 export const projects: Project[] = [
   {
-    slug: 'future-website-building-platform',
-    name: 'Future Website Building Platform',
-    englishName: 'Future Website Building Platform',
-    chineseName: '未来网站构建平台',
-    dutchName: 'Toekomstig Websitebouwplatform',
+    slug: 'omnigent-os',
+    name: 'Omnigent OS',
+    englishName: 'Omnigent OS',
+    chineseName: 'Omnigent 操作系统',
+    dutchName: 'Omnigent OS',
     tagline: l(
       'A modular SaaS architecture for solo founders who want one ecosystem for commerce, support, logistics, education, and operations.',
       '一个面向一人公司和小团队的模块化 SaaS 体系，整合网店、客服、物流、教育和运营能力。',
@@ -56,9 +56,9 @@ export const projects: Project[] = [
       'Dit is het grootste en meest ambitieuze langetermijnplatform in het portfolio, gericht op herbruikbare modules en uniforme levering.',
     ),
     longDescription: l(
-      'Future Website Building Platform is not a decorative concept page. It is a serious SaaS direction that explores how one person can operate a full modular business stack through reusable surfaces, shared deployment standards, structured product data, and AI-assisted workflows.',
-      'Future Website Building Platform 不是一个空洞的概念页，而是一套严肃的平台化方向。它研究的是，如何让一人公司通过共享部署规范、可复用页面模块、结构化产品数据以及 AI 辅助工作流，运营一整套企业级业务能力。',
-      'Future Website Building Platform is geen lege conceptpagina, maar een serieuze platformrichting. Het onderzoekt hoe één persoon een volledige modulaire bedrijfsstack kan bedienen via gedeelde deployment-standaarden, herbruikbare pagina-oppervlakken, gestructureerde productdata en AI-ondersteunde workflows.',
+      'Omnigent OS is not a decorative concept page. It is a serious SaaS direction that explores how one person can operate a full modular business stack through reusable surfaces, shared deployment standards, structured product data, and AI-assisted workflows.',
+      'Omnigent OS 不是一个空洞的概念页，而是一套严肃的平台化方向。它研究的是，如何让一人公司通过共享部署规范、可复用页面模块、结构化产品数据以及 AI 辅助工作流，运营一整套企业级业务能力。',
+      'Omnigent OS is geen lege conceptpagina, maar een serieuze platformrichting. Het onderzoekt hoe één persoon een volledige modulaire bedrijfsstack kan bedienen via gedeelde deployment-standaarden, herbruikbare pagina-oppervlakken, gestructureerde productdata en AI-ondersteunde workflows.',
     ),
     category: ['saas-platform', 'architecture-reference'],
     status: 'featured',
@@ -104,11 +104,11 @@ export const projects: Project[] = [
     displayTags: ['Platform', 'Coming Soon'],
   },
   {
-    slug: 'ominigent',
-    name: 'Ominigent',
-    englishName: 'Ominigent',
-    chineseName: 'Ominigent 公司网站',
-    dutchName: 'Ominigent',
+    slug: 'omnigent',
+    name: 'Omnigent',
+    englishName: 'Omnigent',
+    chineseName: 'Omnigent 公司网站',
+    dutchName: 'Omnigent',
     tagline: l(
       'A founder-led B2B solutions website focused on systems, logistics, digital operations, and enterprise delivery.',
       '一个由创始人驱动的 B2B 解决方案网站，聚焦系统、物流、数字化运营与企业交付。',
@@ -120,15 +120,15 @@ export const projects: Project[] = [
       'Dit is de bedrijfswebsite voor Harry\'s eigen bedrijfslijn, gericht op praktisch probleemoplossen in plaats van generieke "software services".',
     ),
     longDescription: l(
-      'Ominigent repositions Harry\'s technical capabilities as a clear B2B offer: systems, logistics, warehouse design, process improvement, and operations automation. The site is less about portfolio nostalgia and more about credibility, clarity, and matching real client problems to solution surfaces.',
-      'Ominigent 把 Harry 的技术能力重新包装成清晰的 B2B 提案：系统、物流、仓储设计、流程优化和运营自动化。它不是怀旧式作品展示，而是更强调可信度、清晰度，以及如何把客户问题映射到真正的解决方案。',
-      'Ominigent herpositioneert Harry\'s technische capaciteiten als een helder B2B-aanbod: systemen, logistiek, magazijnontwerp, procesverbetering en operations-automatisering. De site draait minder om portfolio-nostalgie en meer om geloofwaardigheid, helderheid en het koppelen van echte klantproblemen aan concrete oplossingsoppervlakken.',
+      'Omnigent repositions Harry\'s technical capabilities as a clear B2B offer: systems, logistics, warehouse design, process improvement, and operations automation. The site is less about portfolio nostalgia and more about credibility, clarity, and matching real client problems to solution surfaces.',
+      'Omnigent 把 Harry 的技术能力重新包装成清晰的 B2B 提案：系统、物流、仓储设计、流程优化和运营自动化。它不是怀旧式作品展示，而是更强调可信度、清晰度，以及如何把客户问题映射到真正的解决方案。',
+      'Omnigent herpositioneert Harry\'s technische capaciteiten als een helder B2B-aanbod: systemen, logistiek, magazijnontwerp, procesverbetering en operations-automatisering. De site draait minder om portfolio-nostalgie en meer om geloofwaardigheid, helderheid en het koppelen van echte klantproblemen aan concrete oplossingsoppervlakken.',
     ),
     category: ['enterprise-website'],
     status: 'completed',
     projectType: ['website'],
-    logo: '/project-assets/ominigent-logo.png',
-    repoPath: 'G:\\GitHubPersonal\\Ominigent',
+    logo: '/project-assets/omnigent-logo.png',
+    repoPath: 'G:\\GitHubPersonal\\Omnigent',
     websiteUrl: 'https://omnigent.nl',
     techStackIds: ['react', 'typescript', 'vite', 'tailwind'],
     backendRequired: false,
@@ -808,9 +808,9 @@ export const projects: Project[] = [
     roadmap: [l('Improve export, backup, and audit visibility.', '继续提升导出、备份和审计可见性。', 'Export, back-up en audit-zichtbaarheid verder verbeteren.')],
   },
   {
-    slug: 'ominigent-logo-system',
-    name: 'Ominigent Brand System',
-    englishName: 'Ominigent Brand System',
+    slug: 'omnigent-logo-system',
+    name: 'Omnigent Brand System',
+    englishName: 'Omnigent Brand System',
     tagline: l('Reserved helper entry', '保留辅助条目', 'Gereseveerde helper-entry'),
     description: l('Reserved helper entry', '保留辅助条目', 'Gereseveerde helper-entry'),
     longDescription: l('Reserved helper entry', '保留辅助条目', 'Gereseveerde helper-entry'),
@@ -873,7 +873,7 @@ export const projects: Project[] = [
   },
 ];
 
-export const filteredProjects = projects.filter((project) => project.slug !== 'ominigent-logo-system' && project.slug !== 'harry-comprehensive-website');
+export const filteredProjects = projects.filter((project) => project.slug !== 'omnigent-logo-system' && project.slug !== 'harry-comprehensive-website');
 
 export const featuredProjects = filteredProjects.filter((project) => project.featured);
 

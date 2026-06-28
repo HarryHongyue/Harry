@@ -29,7 +29,7 @@ const InteractiveHeroScene: React.FC<InteractiveHeroSceneProps> = ({ variant = '
       <div className="neo-scene__platform">
         <div className="neo-scene__platform-ring" />
         <div className="neo-scene__core">
-          <ProjectLogo src="/project-assets/ominigent-logo.png" alt="Harry" className="neo-scene__logo" imageClassName="neo-scene__logo-image" />
+          <ProjectLogo src="/project-assets/omnigent-logo.png" alt="Harry" className="neo-scene__logo" imageClassName="neo-scene__logo-image" />
         </div>
       </div>
       {floating.map((item, index) => (

@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
                 </NeoBadge>
               ))}
               <a href="https://omnigent.nl" target="_blank" rel="noreferrer" className="neo-badge neo-badge--teal neo-badge--link">
-                {currentLanguage === 'zh' ? '去 Ominigent 合作' : currentLanguage === 'nl' ? 'Werk samen via Ominigent' : 'Collaborate via Ominigent'}
+                {currentLanguage === 'zh' ? '去 Omnigent 合作' : currentLanguage === 'nl' ? 'Werk samen via Omnigent' : 'Collaborate via Omnigent'}
               </a>
             </div>
           </div>

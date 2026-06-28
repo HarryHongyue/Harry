@@ -7,9 +7,9 @@
 
 .neo-footer__grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  gap: 30px;
+  gap: 20px;
 }
 
 .neo-footer__grid h4 {
@@ -29,6 +29,12 @@
 .neo-footer__brand {
   display: grid;
   gap: 16px;
+  max-width: 280px;
+}
+
+.neo-footer__brand p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .neo-footer__socials {

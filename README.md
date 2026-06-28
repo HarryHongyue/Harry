@@ -2,7 +2,7 @@
 
 Harry is the main personal showcase website for Harry Hongyue. It is a lightweight Vite + React + TypeScript shell for personal introduction, project catalog, project detail pages, downloads, deployment notes, and security guidance.
 
-This repository is not a monorepo and does not contain the source code for PDF Reader, Aircargo EDI, ODE All-In-One Solver, SurpriseMe, Harry Comprehensive Website, or Future Website Building Platform. Those projects remain independent repositories with independent builds and deployments.
+This repository is not a monorepo and does not contain the source code for PDF Reader, Aircargo EDI, ODE All-In-One Solver, SurpriseMe, Harry Comprehensive Website, or Omnigent OS. Those projects remain independent repositories with independent builds and deployments.
 
 ## Tech Stack
 
@@ -107,7 +107,7 @@ See:
 - ODE All-In-One Solver: Java/Maven/JavaFX desktop app plus static website and installer releases.
 - SurpriseMe: Vite website plus Chrome, Firefox, and Safari extension packages.
 - Harry Comprehensive Website: reference for multilingual project/download presentation.
-- Future Website Building Platform: reference only for modular shell, templates, deployment, and security documentation ideas.
+- Omnigent OS: reference only for modular shell, templates, deployment, and security documentation ideas.
 
 ## Security
 

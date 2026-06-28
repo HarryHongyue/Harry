@@ -277,7 +277,7 @@ cd g:\GitHubPersonal\Aircargo-EDI
 
 ## 三、网站案例项目
 
-### 6. Future Website Building Platform (Future-Website-Building-Platform)
+### 6. Omnigent OS (Future-Website-Building-Platform)
 
 #### 项目类型
 - **类型**: React 前端网站（独立运行）
@@ -313,7 +313,7 @@ cd g:\GitHubPersonal\Aircargo-EDI
 
 ---
 
-### 7. Ominigent (Ominigent)
+### 7. Omnigent (Omnigent)
 
 #### 项目类型
 - **类型**: 前端网站（独立运行）
@@ -326,7 +326,7 @@ cd g:\GitHubPersonal\Aircargo-EDI
 **重要说明**: 此项目是独立的网站项目，有自己的前端代码和部署方式。Harry 网站仅作为介绍页展示项目信息，不影响项目的独立运行。
 
 **步骤 1: 在 Harry 网站创建展示组件**
-- 在 `src/components/project/` 创建 `OminigentShowcase.tsx`
+- 在 `src/components/project/` 创建 `OmnigentShowcase.tsx`
 - 使用 Harry 网站的统一设计风格
 - 添加项目截图、功能介绍、技术栈等信息
 - 添加"访问网站"按钮链接到实际运行的网站

@@ -24,7 +24,7 @@ import './styles/pages/project-detail-showcases/surpriseme.css';
 import './styles/pages/project-detail-showcases/metrology-certificate.css';
 import './styles/pages/project-detail-showcases/pdf-reader.css';
 import './styles/pages/project-detail-showcases/future-website-platform.css';
-import './styles/pages/project-detail-showcases/ominigent.css';
+import './styles/pages/project-detail-showcases/omnigent.css';
 import './styles/pages/project-detail-showcases/cryocore-cooling.css';
 import './styles/pages/project-detail-showcases/song-yan.css';
 import './styles/pages/project-detail-showcases/harry-personal.css';

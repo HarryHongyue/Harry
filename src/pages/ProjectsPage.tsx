@@ -139,7 +139,7 @@ const ProjectsPage: React.FC = () => {
           <div className="neo-project-overview-card__title">
             <LayoutDashboard size={30} />
             <h2>
-              Projects at a Glance <span>{currentLanguage === 'zh' ? '项目速览' : currentLanguage === 'nl' ? 'Projectenoverzicht' : 'Project Overview'}</span>
+              {currentLanguage === 'zh' ? '项目速览' : currentLanguage === 'nl' ? 'Projectenoverzicht' : 'Project Overview'}
             </h2>
           </div>
           <div className="neo-project-overview-table">
@@ -157,7 +157,7 @@ const ProjectsPage: React.FC = () => {
               <tbody>
                 {[...visibleProjects].sort((a, b) => {
                   const priorityOrder: Record<string, number> = {
-                    'future-website-building-platform': 0,
+                    'omnigent-os': 0,
                     'harrys-hub': 1,
                     'pdf-reader': 2,
                     'aircargo-edi': 3,

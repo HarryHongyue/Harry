@@ -17,7 +17,7 @@ import PdfReaderShowcase from '../components/project/PdfReaderShowcase';
 import OdeSolverShowcase from '../components/project/OdeSolverShowcase';
 import AircargoEdiShowcase from '../components/project/AircargoEdiShowcase';
 import FutureWebsitePlatformShowcase from '../components/project/FutureWebsitePlatformShowcase';
-import OminigentShowcase from '../components/project/OminigentShowcase';
+import OmnigentShowcase from '../components/project/OmnigentShowcase';
 import CryoCoreCoolingShowcase from '../components/project/CryoCoreCoolingShowcase';
 import SongYanShowcase from '../components/project/SongYanShowcase';
 import HarryPersonalShowcase from '../components/project/HarryPersonalShowcase';
@@ -56,14 +56,14 @@ const ProjectDetailPage: React.FC = () => {
   const isAircargoEdi = project.slug === 'aircargo-edi';
   const isSurpriseMe = project.slug === 'surpriseme';
   const isMetrologyCertificate = project.slug === 'metrology-certificate-management-system';
-  const isFutureWebsitePlatform = project.slug === 'future-website-building-platform';
-  const isOminigent = project.slug === 'ominigent';
+  const isFutureWebsitePlatform = project.slug === 'omnigent-os';
+  const isOmnigent = project.slug === 'omnigent';
   const isCryoCoreCooling = project.slug === 'cryocore-cooling';
   const isSongYan = project.slug === 'song-yan';
   const isHarryPersonal = project.slug === 'harry';
   const isHarrysHub = project.slug === 'harrys-hub';
   const isElectronicProductSpecs = project.slug === 'electronic-product-specifications-analysis';
-  const isWebsiteShowcase = isFutureWebsitePlatform || isOminigent || isCryoCoreCooling || isSongYan || isHarryPersonal || isHarrysHub || isElectronicProductSpecs;
+  const isWebsiteShowcase = isFutureWebsitePlatform || isOmnigent || isCryoCoreCooling || isSongYan || isHarryPersonal || isHarrysHub || isElectronicProductSpecs;
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
@@ -164,7 +164,7 @@ const ProjectDetailPage: React.FC = () => {
 
       {isFutureWebsitePlatform ? <FutureWebsitePlatformShowcase project={project} /> : null}
 
-      {isOminigent ? <OminigentShowcase project={project} /> : null}
+      {isOmnigent ? <OmnigentShowcase project={project} /> : null}
 
       {isCryoCoreCooling ? <CryoCoreCoolingShowcase project={project} /> : null}
 

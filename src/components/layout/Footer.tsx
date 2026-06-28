@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>© 2026 Harry. All rights reserved.</p>
         </div>
 
-        <div style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
           <div style={{ width: 'fit-content' }}>
             <h4>{pickText(currentLanguage, uiText.nav.projects)}</h4>
             <div className="neo-footer__links">
@@ -35,17 +35,9 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ width: 'fit-content' }}>
-            <h4>{pickText(currentLanguage, uiText.common.documentation)}</h4>
-            <div className="neo-footer__links">
-              <Link to="/projects/harry">{currentLanguage === 'zh' ? '主站项目页' : currentLanguage === 'nl' ? 'Hoofdsite-project' : 'Main Site Case Study'}</Link>
-              <Link to="/projects/harrys-hub">{currentLanguage === 'zh' ? '资源站项目页' : currentLanguage === 'nl' ? 'Resourcehub-project' : 'Resource Hub Case Study'}</Link>
-              <Link to="/projects/future-website-building-platform">{currentLanguage === 'zh' ? '平台架构页' : currentLanguage === 'nl' ? 'Platformarchitectuur' : 'Platform Architecture'}</Link>
-            </div>
-          </div>
         </div>
 
-        <div style={{ width: 'fit-content', minWidth: '200px' }}>
+        <div style={{ width: 'fit-content', minWidth: '200px', marginRight: 'auto' }}>
           <h4>{pickText(currentLanguage, uiText.nav.contact)}</h4>
           <div className="neo-footer__links" style={{ whiteSpace: 'nowrap' }}>
             <a href="mailto:HarryHongyue@omnigent.nl">HarryHongyue@omnigent.nl</a>

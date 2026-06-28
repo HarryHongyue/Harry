@@ -95,7 +95,7 @@ const ContactPage: React.FC = () => {
               <NeoBadge tone="teal">{pickText(currentLanguage, uiText.common.secureByDesign)}</NeoBadge>
               <NeoBadge tone="purple">{currentLanguage === 'zh' ? '可扩展且可维护' : currentLanguage === 'nl' ? 'Schaalbaar en onderhoudbaar' : 'Scalable & Maintainable'}</NeoBadge>
               <a href="https://omnigent.nl" target="_blank" rel="noreferrer" className="neo-badge neo-badge--cyan neo-badge--link">
-                {currentLanguage === 'zh' ? '直接去 Ominigent 合作' : currentLanguage === 'nl' ? 'Werk direct samen via Ominigent' : 'Work with me through Ominigent'}
+                {currentLanguage === 'zh' ? '直接去 Omnigent 合作' : currentLanguage === 'nl' ? 'Werk direct samen via Omnigent' : 'Work with me through Omnigent'}
               </a>
             </div>
           </div>

@@ -1057,7 +1057,7 @@ docker ps | findstr aircargo-edi-api
 
 ### 重要说明
 
-网站案例项目（Future Website Building Platform、Ominigent、CryoCore Cooling、Song Yan、Harry Personal、Harry's Hub、Electronic Product Specifications Analysis）是**独立运行的网站项目**，有自己的前端代码和部署方式。
+网站案例项目（Omnigent OS、Omnigent、CryoCore Cooling、Song Yan、Harry Personal、Harry's Hub、Electronic Product Specifications Analysis）是**独立运行的网站项目**，有自己的前端代码和部署方式。
 
 **Harry 网站仅作为介绍页展示项目信息，不影响项目的独立运行。**
 
@@ -1065,7 +1065,7 @@ docker ps | findstr aircargo-edi-api
 
 ---
 
-### 6. Future Website Building Platform (Future-Website-Building-Platform)
+### 6. Omnigent OS (Future-Website-Building-Platform)
 
 #### 项目类型
 - **类型**: React 前端网站（独立运行）
@@ -1123,7 +1123,7 @@ const FutureWebsitePlatformShowcase: React.FC = () => {
     <>
       {/* Hero Section */}
       <section className="section-shell">
-        <h1>Future Website Building Platform</h1>
+        <h1>Omnigent OS</h1>
         <p>项目描述...</p>
         <a href="https://实际网站地址" className={neoButtonClass} target="_blank" rel="noopener noreferrer">
           <ExternalLink size={20} />
@@ -1152,7 +1152,7 @@ export default FutureWebsitePlatformShowcase;
 ```typescript
 {
   id: 'future-website-platform',
-  name: 'Future Website Building Platform',
+  name: 'Omnigent OS',
   slug: 'future-website-platform',
   description: '未来网站构建平台',
   category: 'website',
@@ -1192,20 +1192,20 @@ export default FutureWebsitePlatformShowcase;
 
 ---
 
-### 7. Ominigent (Ominigent)
+### 7. Omnigent (Omnigent)
 
 #### 项目类型
 - **类型**: 前端网站（独立运行）
 - **前端**: 有独立前端（保留，不删除）
 - **后端**: 可能有后端（保留，不删除）
 - **发布方式**: 独立部署，Harry 网站仅作为展示页
-- **项目路径**: `g:\GitHubPersonal\Ominigent`
+- **项目路径**: `g:\GitHubPersonal\Omnigent`
 
 #### 详细迁移步骤
 
 **步骤 1: 验证项目结构**
 ```powershell
-cd g:\GitHubPersonal\Ominigent
+cd g:\GitHubPersonal\Omnigent
 # 确认项目结构
 dir
 # 检查是否有后端
@@ -1214,19 +1214,19 @@ dir backend
 
 **步骤 2: 确认项目独立部署方式**
 
-检查项目的部署配置（同 Future Website Building Platform）。
+检查项目的部署配置（同 Omnigent OS）。
 
 **步骤 3: 在 Harry 网站创建展示组件（如果还没有）**
 
-参考 Future Website Building Platform 的步骤。
+参考 Omnigent OS 的步骤。
 
 **步骤 4: 在 Harry projects.ts 添加项目条目（如果还没有）**
 
-参考 Future Website Building Platform 的步骤。
+参考 Omnigent OS 的步骤。
 
 **步骤 5: 验证 Harry 网站展示页**
 
-参考 Future Website Building Platform 的步骤。
+参考 Omnigent OS 的步骤。
 
 #### 代码仓库操作清单
 - [x] 在 Harry 网站创建展示组件（如有）
@@ -1551,8 +1551,8 @@ docker ps | findstr harry-web
 - Aircargo EDI
 
 #### 网站案例项目（完全独立运行，无需任何修改）
-- Future Website Building Platform
-- Ominigent
+- Omnigent OS
+- Omnigent
 - CryoCore Cooling
 - Song Yan
 - Harry Personal

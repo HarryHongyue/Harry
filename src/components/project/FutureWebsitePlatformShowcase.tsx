@@ -16,7 +16,7 @@ const pickLocal = (locale: string, value: LocalizedText) => value[(locale === 'z
 
 const FutureWebsitePlatformShowcase: React.FC<FutureWebsitePlatformShowcaseProps> = ({ project }) => {
   const { currentLanguage } = useLanguage();
-  const visitUrl = project.websiteUrl ?? project.demoUrl ?? '/projects/future-website-building-platform';
+  const visitUrl = project.websiteUrl ?? project.demoUrl ?? '/projects/omnigent-os';
   const focus = l(`A modular SaaS platform concept designed for real multi-tenant operations, combining shared platform services, contract-first delivery, module management, permissions, auditability, background jobs, and AI-assisted workflows.`, `一个面向真实多租户运营的模块化 SaaS 平台方案，融合共享平台服务、契约优先交付、模块管理、权限控制、审计能力、后台任务和 AI 辅助工作流。`, `Een modulair SaaS-platformconcept voor echte multi-tenant operations, met gedeelde platformservices, contract-first delivery, modulebeheer, permissions, auditability, background jobs en AI-ondersteunde workflows.`);
   const value = l(`It presents commerce, support, logistics, education, storefronts, and admin operations as modular product areas supported by shared rules for contracts, permissions, events, audit trails, and future upgrades.`, `它将电商、客服、物流、教育、前台和后台运营呈现为可组合的产品模块，并通过统一的契约、权限、事件、审计和升级规则保持系统一致。`, `Het presenteert commerce, support, logistiek, educatie, storefronts en admin operations als modulaire productgebieden, ondersteund door gedeelde regels voor contracts, permissions, events, audit trails en toekomstige upgrades.`);
   const implementation = l(`The platform design brings together an Admin Portal, Storefront/PWA, authentication, authorization, audit, configuration, events, jobs, webhooks, notifications, analytics, AI enablement, and business domains for commerce, support, and logistics, with adapter paths for systems such as Saleor, Keycloak, and WordPress.`, `平台设计整合了 Admin Portal、Storefront/PWA、认证、授权、审计、配置、事件、任务、Webhook、通知、分析、AI 能力，以及电商、客服、物流等业务领域，并预留 Saleor、Keycloak、WordPress 等系统适配路径。`, `Het platformontwerp brengt Admin Portal, Storefront/PWA, authentication, authorization, audit, configuratie, events, jobs, webhooks, notifications, analytics, AI-enablement en commerce/support/logistics domeinen samen, met adapterpaden voor systemen zoals Saleor, Keycloak en WordPress.`);
@@ -30,7 +30,7 @@ const FutureWebsitePlatformShowcase: React.FC<FutureWebsitePlatformShowcaseProps
       <section className="section-shell future-platform-website-hero">
         <div className="future-platform-website-hero__inner">
           <div className="future-platform-website-hero__content">
-            <h1 className="future-platform-website-hero__title">Future <span>Platform</span></h1>
+            <h1 className="future-platform-website-hero__title">Omnigent <span>OS</span></h1>
             <p className="future-platform-website-hero__description">{pickText(currentLanguage, project.longDescription)}</p>
             <div className="future-platform-website-hero__actions">
               <a href={visitUrl} className={`${neoButtonClass('primary')} future-platform-website-button`} target="_blank" rel="noreferrer"><ExternalLink size={18} />{currentLanguage === 'zh' ? '访问网站' : currentLanguage === 'nl' ? 'Website bezoeken' : 'Explore Platform'}</a>

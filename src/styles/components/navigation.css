@@ -85,12 +85,12 @@
   padding: 12px 16px;
   color: var(--text-secondary);
   border-radius: 999px;
-  background: linear-gradient(145deg, rgba(38, 61, 145, 0.42), rgba(82, 94, 185, 0.38));
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.10), rgba(38, 61, 145, 0.28));
   box-shadow:
-    inset 6px 6px 12px rgba(38, 61, 145, 0.52),
-    inset -6px -6px 12px rgba(38, 61, 145, 0.38),
-    inset 1px 1px 1px rgba(38, 61, 145, 0.28),
-    inset -1px -1px 1px rgba(202, 206, 239, 0.08);
+    7px 7px 16px rgba(38, 61, 145, 0.22),
+    -3px -3px 10px rgba(202, 206, 239, 0.06),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.14),
+    inset -1px -1px 1px rgba(38, 61, 145, 0.16);
   backdrop-filter: blur(14px);
 }
 
@@ -107,12 +107,12 @@
 
 .site-nav a.active {
   color: var(--text-primary);
-  background: linear-gradient(145deg, rgba(164, 166, 255, 0.10), rgba(38, 61, 145, 0.28));
+  background: linear-gradient(145deg, rgba(38, 61, 145, 0.42), rgba(82, 94, 185, 0.38));
   box-shadow:
-    7px 7px 16px rgba(38, 61, 145, 0.22),
-    -3px -3px 10px rgba(202, 206, 239, 0.06),
-    inset 1px 1px 1px rgba(202, 206, 239, 0.14),
-    inset -1px -1px 1px rgba(38, 61, 145, 0.16);
+    inset 6px 6px 12px rgba(38, 61, 145, 0.52),
+    inset -6px -6px 12px rgba(38, 61, 145, 0.38),
+    inset 1px 1px 1px rgba(38, 61, 145, 0.28),
+    inset -1px -1px 1px rgba(202, 206, 239, 0.08);
 }
 
 .lang-switcher {
