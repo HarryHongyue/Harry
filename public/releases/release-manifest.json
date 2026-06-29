@@ -68,7 +68,7 @@
           },
           "version": "v1.2.3",
           "size": "148 MB",
-          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-windows-x64.exe",
+          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Windows.zip",
           "sha256": "a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2"
         },
         {
@@ -84,7 +84,7 @@
           },
           "version": "v1.2.3",
           "size": "142 MB",
-          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-macos-universal.dmg",
+          "href": "https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Mac.zip",
           "sha256": "45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e"
         }
       ],

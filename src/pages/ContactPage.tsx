@@ -1,5 +1,5 @@
-import React from 'react';
-import { Code2, Mail, MessageCircleMore, Rocket, Users } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Code2, Copy, Mail, MessageCircleMore, Rocket, Users } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import NeoBadge from '../components/ui/NeoBadge';
 import NeoCard from '../components/ui/NeoCard';
@@ -16,6 +16,17 @@ const CONTACT_EMAIL = 'HarryHongyue@omnigent.nl';
 
 const ContactPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
 
   const cards = [
     {
@@ -141,12 +152,21 @@ const ContactPage: React.FC = () => {
               <MessageCircleMore size={18} />
               <h3>{currentLanguage === 'zh' ? '联系方式' : currentLanguage === 'nl' ? 'Contactkanalen' : 'Contact Channels'}</h3>
             </div>
-            <a className="neo-contact-link-block neo-contact-link-block--email" href={`mailto:${CONTACT_EMAIL}`}>
-              <span className="neo-contact-link-block__icon">
-                <SocialLogo name="email" size={28} />
-              </span>
-              <span>{CONTACT_EMAIL}</span>
-            </a>
+            <div className="neo-contact-email-row">
+              <a className="neo-contact-link-block neo-contact-link-block--email neo-contact-link-block--compact" href={`mailto:${CONTACT_EMAIL}`}>
+                <span className="neo-contact-link-block__icon">
+                  <SocialLogo name="email" size={28} />
+                </span>
+                <span>{CONTACT_EMAIL}</span>
+              </a>
+              <button
+                className="neo-contact-copy-button"
+                onClick={copyEmail}
+                title={emailCopied ? (currentLanguage === 'zh' ? '已复制' : currentLanguage === 'nl' ? 'Gekopieerd' : 'Copied') : (currentLanguage === 'zh' ? '复制邮箱' : currentLanguage === 'nl' ? 'E-mail kopiëren' : 'Copy email')}
+              >
+                {emailCopied ? <Check size={18} className="neo-contact-copy-button__success" /> : <Copy size={18} />}
+              </button>
+            </div>
             <div className="neo-contact-actions-grid">
               {contactButtons.map((button) => (
                 <a key={button.label} href={button.href} target="_blank" rel="noreferrer" className="neo-contact-link-block">

@@ -122,3 +122,49 @@
   box-shadow: var(--shadow-inset), var(--glow-cyan);
 }
 
+.neo-contact-email-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.neo-contact-link-block--compact {
+  padding: 10px 12px;
+  gap: 8px;
+}
+
+.neo-contact-copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(164, 166, 255, 0.14), rgba(82, 94, 185, 0.26) 45%, rgba(38, 61, 145, 0.46));
+  box-shadow:
+    6px 6px 16px rgba(38, 61, 145, 0.25),
+    -3px -3px 10px rgba(202, 206, 239, 0.05),
+    inset 1px 1px 1px rgba(202, 206, 239, 0.15);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.neo-contact-copy-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(202, 206, 239, 0.34);
+  box-shadow: var(--shadow-raised), var(--glow-violet);
+  color: var(--text-primary);
+}
+
+.neo-contact-copy-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-inset);
+}
+
+.neo-contact-copy-button__success {
+  color: #4ade80;
+}
+

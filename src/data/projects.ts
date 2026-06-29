@@ -306,8 +306,8 @@ export const projects: Project[] = [
     browserExtension: false,
     webVersion: true,
     releaseAssets: [
-      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.2.3', '148 MB', 'https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-windows-x64.exe', 'a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2', '2026-05-11'),
-      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS Universal', 'macOS 通用版', 'macOS universal'), 'v1.2.3', '142 MB', 'https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-1.2.3-macos-universal.dmg', '45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e', '2026-05-11'),
+      asset(l('Windows Installer', 'Windows 安装程序', 'Windows-installer'), l('Windows 64-bit', 'Windows 64 位', 'Windows 64-bit'), 'v1.2.3', '148 MB', 'https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Windows.zip', 'a94e3f6129384b79de1ec0f2bd9c10bb8234fbcff9914ee53d2c9a147ef0a4f2', '2026-05-11'),
+      asset(l('macOS Installer', 'macOS 安装程序', 'macOS-installer'), l('macOS Universal', 'macOS 通用版', 'macOS universal'), 'v1.2.3', '142 MB', 'https://github.com/HarryHongyue/PDF-Reader/releases/download/v1.2.3/PDF-Reader-Mac.zip', '45f1e2340ce91c9d947b4051f4343f12b4a9d4c2f8c0a9be1165404b0c111f6e', '2026-05-11'),
     ],
     securityNotes: [
       l('Uploads should be validated by file type, request size, and allowed processing mode before entering OCR.', '上传必须先经过文件类型、大小限制和允许模式校验，再进入 OCR 处理。', 'Uploads moeten worden gevalideerd op bestandstype, grootte en toegestane modus voordat ze OCR ingaan.'),
