@@ -110,10 +110,6 @@ export function detectReleaseAssetKind(asset: Pick<ProjectReleaseAsset, 'label' 
     return 'crx';
   }
 
-  if (text.includes('.zip') || text.includes(' zip')) {
-    return 'zip';
-  }
-
   if (text.includes('windows') || text.includes('.exe') || text.includes('msi')) {
     return 'windows';
   }
@@ -124,6 +120,10 @@ export function detectReleaseAssetKind(asset: Pick<ProjectReleaseAsset, 'label' 
 
   if (text.includes('linux') || text.includes('.appimage') || text.includes('.deb') || text.includes('.rpm') || text.includes('.tar.gz')) {
     return 'linux';
+  }
+
+  if (text.includes('.zip') || text.includes(' zip')) {
+    return 'zip';
   }
 
   if (text.includes('extension') || text.includes('browser')) {

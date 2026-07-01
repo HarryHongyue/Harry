@@ -12,7 +12,7 @@ import SocialLogo from '../components/common/SocialLogo';
 import Breadcrumbs from '../components/navigation/Breadcrumbs';
 import contactHeroBackground from '../assets/images/Backgrounds/联系hero部分背景图.png';
 
-const CONTACT_EMAIL = 'HarryHongyue@omnigent.nl';
+const CONTACT_EMAIL = 'HarryHongyue@Omnigent.nl';
 
 const ContactPage: React.FC = () => {
   const { currentLanguage } = useLanguage();
@@ -85,10 +85,10 @@ const ContactPage: React.FC = () => {
   ];
 
   const contactButtons = [
-    { label: 'WhatsApp', href: 'https://wa.me/310000000000', logo: 'whatsapp' as const },
-    { label: 'Telegram', href: 'https://t.me/example', logo: 'telegram' as const },
-    { label: 'XChat', href: 'https://x.com', logo: 'xchat' as const },
-    { label: 'Signal', href: 'https://signal.me/#eu/example', logo: 'signal' as const },
+    { label: 'WhatsApp', href: 'https://wa.me/message/OTROOMGVETFGH1', logo: 'whatsapp' as const },
+    { label: 'Telegram', href: 'https://t.me/Omnigent_nl', logo: 'telegram' as const },
+    { label: 'XChat', href: 'https://x.com/messages/compose?recipient_id=2055597482466238465', logo: 'xchat' as const },
+    { label: 'Signal', href: 'https://signal.me/#eu/tirH4v6-G4XbvxicvAdrKr3ef5cO8-QPKOevUDAuhF_ym5b-gzxPxK-O81astj-0', logo: 'signal' as const },
   ];
 
   return (
