@@ -21,6 +21,7 @@ import AircargoEdiShowcase from '../components/project/AircargoEdiShowcase';
 import FutureWebsitePlatformShowcase from '../components/project/FutureWebsitePlatformShowcase';
 import OmnigentShowcase from '../components/project/OmnigentShowcase';
 import CryoCoreCoolingShowcase from '../components/project/CryoCoreCoolingShowcase';
+import WehaLogisticShowcase from '../components/project/WehaLogisticShowcase';
 import SongYanShowcase from '../components/project/SongYanShowcase';
 import HarryPersonalShowcase from '../components/project/HarryPersonalShowcase';
 import HarrysHubShowcase from '../components/project/HarrysHubShowcase';
@@ -84,11 +85,12 @@ const ProjectDetailPage: React.FC = () => {
   const isFutureWebsitePlatform = project.slug === 'omnigent-os';
   const isOmnigent = project.slug === 'omnigent';
   const isCryoCoreCooling = project.slug === 'cryocore-cooling';
+  const isWehaLogistic = project.slug === 'weha-logistic';
   const isSongYan = project.slug === 'song-yan';
   const isHarryPersonal = project.slug === 'harry';
   const isHarrysHub = project.slug === 'harrys-hub';
   const isElectronicProductSpecs = project.slug === 'electronic-product-specifications-analysis';
-  const isWebsiteShowcase = isFutureWebsitePlatform || isOmnigent || isCryoCoreCooling || isSongYan || isHarryPersonal || isHarrysHub || isElectronicProductSpecs;
+  const isWebsiteShowcase = isFutureWebsitePlatform || isOmnigent || isCryoCoreCooling || isWehaLogistic || isSongYan || isHarryPersonal || isHarrysHub || isElectronicProductSpecs;
 
   return (
     <div className="neo-page" data-lang={currentLanguage}>
@@ -192,6 +194,8 @@ const ProjectDetailPage: React.FC = () => {
       {isOmnigent ? <OmnigentShowcase project={project} /> : null}
 
       {isCryoCoreCooling ? <CryoCoreCoolingShowcase project={project} /> : null}
+
+      {isWehaLogistic ? <WehaLogisticShowcase project={project} /> : null}
 
       {isSongYan ? <SongYanShowcase project={project} /> : null}
 
