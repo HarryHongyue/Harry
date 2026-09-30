@@ -5,7 +5,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -16,10 +16,10 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "jsx": "react",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
+    "rootDir": "./src",
     "outDir": "./dist"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/types/*.d.ts"],

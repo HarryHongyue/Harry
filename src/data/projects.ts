@@ -65,6 +65,7 @@ export const projects: Project[] = [
     projectType: ['saas-concept', 'website'],
     logo: '/project-assets/fwbp-logo.png',
     repoPath: 'G:\\GitHubPersonal\\Future-Website-Building-Platform',
+    websiteUrl: 'https://os.omnigent.nl',
     techStackIds: ['react', 'typescript', 'fastapi', 'nodejs', 'postgresql', 'docker', 'caddy'],
     backendRequired: true,
     downloadable: false,
